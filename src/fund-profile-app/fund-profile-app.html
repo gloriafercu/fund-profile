@@ -1,4 +1,7 @@
 <link rel="import" href="../../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../../bower_components/iron-ajax/iron-ajax.html">
+<link rel="import" href="../fund-profile-app/components/general-information.html">
+<link rel="import" href="../fund-profile-app/components/rentabilidad-calculation.html">
 
 <dom-module id="fund-profile-app">
   <template>
@@ -7,7 +10,18 @@
         display: block;
       }
     </style>
-    <h2>Hello [[prop1]]!</h2>
+   
+  
+  <iron-ajax
+     auto
+     url="http://localhost:3000/data"
+     handle-as="json"
+     last-response="{{bond}}"
+     on-response="handleResponse">
+    </iron-ajax>
+  
+  <general-information data="[[bond]]"></general-information>
+  <rentabilidad-calculation data="[[bond]]"></rentabilidad-calculation>
   </template>
 
   <script>
@@ -19,11 +33,24 @@
       static get is() { return 'fund-profile-app'; }
       static get properties() {
         return {
-          prop1: {
-            type: String,
-            value: 'fund-profile-app'
-          }
+          bond: Object,
+          loading: Boolean
         };
+      }
+         constructor() {
+            super();
+        }
+
+            /**
+             * Use for one-time configuration of your component after local DOM is initialized. 
+             */
+            ready() {
+                super.ready();
+                this.loading = true
+            }
+
+      handleresponse() {
+        this.loading = !this.loading
       }
     }
 

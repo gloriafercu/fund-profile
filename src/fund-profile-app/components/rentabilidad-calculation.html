@@ -1,0 +1,73 @@
+<link rel="import" href="../../../bower_components/polymer/polymer-element.html">
+
+<dom-module id="rentabilidad-calculation">
+    <template>
+        <style>
+            :host {
+                display: block
+            }
+        </style>
+
+        
+<div class="sidebar-table-2">
+    <h2>Datos al [[date]]</h2>
+        <dl>
+            <dt>Valor liquidativo</dt>
+            <dd>[[data.ValorLiquidativo]]</dd>
+        </dl>
+
+        <dl>
+            <dt>Rentabilidad del mes en curso</dt>
+            <dd></dd>
+        </dl>
+        <dl>
+            <dt>Rentabilidad del año en curso</dt>
+            <dd></dd>
+        </dl>
+</div>  
+    </template>
+
+    <script>
+        /**
+         * `rentabilidad-calculation` Description
+         *
+         * @summary ShortDescription.
+         * @customElement
+         * @polymer
+         * @extends {Polymer.Element}
+         */
+        class RentabilidadCalculation extends Polymer.Element {
+            /**
+             * String providing the tag name to register the element under.
+             */
+            static get is() {
+                return 'rentabilidad-calculation';
+            }
+
+            /**
+             * Object describing property-related metadata used by Polymer features
+             */
+            static get properties() {
+                return {
+                    date: String
+                };
+            }
+
+            constructor() {
+                super();
+            }
+
+            /**
+             * Use for one-time configuration of your component after local DOM is initialized. 
+             */
+            ready() {
+                super.ready();
+
+               this.date = Date.now().toString()
+            }
+
+        }
+
+        window.customElements.define(RentabilidadCalculation.is, RentabilidadCalculation);
+    </script>
+</dom-module>

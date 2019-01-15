@@ -1,4 +1,6 @@
 <link rel="import" href="../../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../../bower_components/iron-ajax/iron-ajax.html">
+<link rel="import" href="../../bower_components/polymer/lib/elements/dom-repeat.html">
 
 <dom-module id="fund-profile-app">
   <template>
@@ -7,7 +9,21 @@
         display: block;
       }
     </style>
-    <h2>Hello [[prop1]]!</h2>
+      <iron-ajax
+        auto
+        url="http://localhost:3000/funds"
+        handle-as="json"
+        last-response="{{funds}}"
+        on-response="handleResponse"
+      >
+      </iron-ajax>
+    <template 
+      is="dom-repeat"
+      items="[[funds]]"
+    >
+      <h1>[[item.Name]], <span>[[item.TypeShort]]</span></h1>
+      <h2>[[item.Subtype]]</h2>
+    </template>
   </template>
 
   <script>
@@ -19,10 +35,8 @@
       static get is() { return 'fund-profile-app'; }
       static get properties() {
         return {
-          prop1: {
-            type: String,
-            value: 'fund-profile-app'
-          }
+          funds: Array,
+          fund: Object
         };
       }
     }

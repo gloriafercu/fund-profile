@@ -1,6 +1,15 @@
 {
-    "ISIN": "ES0113276002",
-    "Country": "Spain",
-    "Currency": "EURO",
-    "ValorLiquidativo": "10,116501"
+    "funds": [ 
+        {
+            "Name": "BBVA BONOS CASH",
+            "Type": "Fondo de inversión",
+            "TypeShort": "FI",
+            "Subtype": "Monetarios",
+            "ISIN": "ES0113276002",
+            "Country": "Spain",
+            "Currency": "EURO",
+            "RiskLevel": 1,
+            "ValorLiquidativo": "10,116501"
+        }
+    ]
 }

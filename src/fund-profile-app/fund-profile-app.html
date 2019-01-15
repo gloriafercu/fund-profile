@@ -1,6 +1,8 @@
 <link rel="import" href="../../bower_components/polymer/polymer-element.html">
 <link rel="import" href="../../bower_components/iron-ajax/iron-ajax.html">
 <link rel="import" href="../../bower_components/polymer/lib/elements/dom-repeat.html">
+<link rel="import" href="../fund-profile-app/components/general-information.html">
+<link rel="import" href="../fund-profile-app/components/rentabilidad-calculation.html">
 
 <dom-module id="fund-profile-app">
   <template>
@@ -23,6 +25,9 @@
     >
       <h1>[[item.Name]], <span>[[item.TypeShort]]</span></h1>
       <h2>[[item.Subtype]]</h2>
+
+      <general-information data="[[item]]"></general-information>
+      <rentabilidad-calculation data="[[item]]"></rentabilidad-calculation>
     </template>
   </template>
 
@@ -36,8 +41,25 @@
       static get properties() {
         return {
           funds: Array,
-          fund: Object
+          fund: Object,
+          bond: Object,
+          loading: Boolean
         };
+      }
+         constructor() {
+            super();
+        }
+
+            /**
+             * Use for one-time configuration of your component after local DOM is initialized. 
+             */
+            ready() {
+                super.ready();
+                this.loading = true
+            }
+
+      handleresponse() {
+        this.loading = !this.loading
       }
     }
 

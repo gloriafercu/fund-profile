@@ -1,37 +1,35 @@
 <link rel="import" href="../../../bower_components/polymer/polymer-element.html">
-<link rel="import" href="../../../bower_components/highcharts-polymer/highcharts-stock.html">
+<link rel="import" href="../theme/shared-styles.html">
 
-<dom-module id="posicion-global-chart">
+<dom-module id="evolucion-tab">
     <template>
-        <style>
+        <style include="shared-styles">
             :host {
                 display: block
             }
         </style>
 
-    <highcharts-stock
-        data-url='./data-graph.json'
-        title='Bonos Cash'
-        subtitle='Valor Liquidativo'>
-    </highcharts-stock>
-
+        
+    <div class="header-tab">
+        <h2>Evolución</h2>
+    </div> 
     </template>
 
     <script>
         /**
-         * `posicion-global-chart` Description
+         * `evolucion-tab` Description
          *
          * @summary ShortDescription.
          * @customElement
          * @polymer
          * @extends {Polymer.Element}
          */
-        class PosicionGlobalChart extends Polymer.Element {
+        class EvolucionTab extends Polymer.Element {
             /**
              * String providing the tag name to register the element under.
              */
             static get is() {
-                return 'posicion-global-chart';
+                return 'evolucion-tab';
             }
 
             /**
@@ -65,6 +63,6 @@
 
         }
 
-        window.customElements.define(PosicionGlobalChart.is, PosicionGlobalChart);
+        window.customElements.define(EvolucionTab.is, EvolucionTab);
     </script>
 </dom-module>

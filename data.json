@@ -1,5 +1,5 @@
 {
-    "funds": [ 
+    "funds": 
         {
             "Name": "BBVA BONOS CASH",
             "Type": "Fondo de inversión",
@@ -11,5 +11,5 @@
             "RiskLevel": 1,
             "ValorLiquidativo": "10,116501"
         }
-    ]
+
 }

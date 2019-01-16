@@ -1,0 +1,92 @@
+<link rel="import" href="../../../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../../../bower_components/paper-tabs/paper-tab.html">
+<link rel="import" href="../../../bower_components/paper-tabs/paper-tabs.html">
+<link rel="import" href="../../../bower_components/iron-pages/iron-pages.html">
+<link rel="import" href="../views/documentacion-tab.html">
+<link rel="import" href="../views/posición-global.html">
+<link rel="import" href="../views/evolucion-tab.html">
+<link rel="import" href="../views/datos-tab.html">
+<dom-module id="tab-menu">
+    <template>
+        <style>
+            :host {
+                display: block
+            }
+
+            paper-tab{
+                color: blue;
+            }
+        </style>
+
+    <paper-tabs selected="{{selected}}" no-bar>
+        <paper-tab>Información</paper-tab>
+        <paper-tab>Documentación</paper-tab>
+        <paper-tab>Evolución</paper-tab>
+        <paper-tab>Datos</paper-tab>
+        <paper-tab>Comentario Gestor</paper-tab>
+        <paper-tab>Cartera</paper-tab>
+    </paper-tabs>
+
+    <iron-pages selected="{{selected}}">
+        <div>
+            <posicion-global></posicion-global>
+        </div>
+
+        <div>
+            <documentacion-tab></documentacion-tab>
+        </div>
+        <div>
+            <evolucion-tab></evolucion-tab>
+        </div>
+        <div>
+            <datos-tab fund="{{ fund }}"></datos-tab>
+        </div>
+
+        <div>
+            <p>Comentario Gestor</p>
+        </div>
+        <div>
+            <p>Cartera</p>
+        </div>
+
+    </iron-pages>
+
+    </template>
+
+    <script>
+        /**
+         * `tab-menu` Description
+         *
+         * @summary ShortDescription.
+         * @customElement
+         * @polymer
+         * @extends {Polymer.Element}
+         */
+        class TabMenu extends Polymer.Element {
+            /**
+             * String providing the tag name to register the element under.
+             */
+            static get is() {
+                return 'tab-menu';
+            }
+
+            /**
+             * Object describing property-related metadata used by Polymer features
+             */
+            static get properties() {
+                return {
+                    selected: {
+                        type: Number,
+                        value: 0
+                    },
+                    fund: Object
+                };
+            }
+
+           
+
+        }
+
+        window.customElements.define(TabMenu.is, TabMenu);
+    </script>
+</dom-module>

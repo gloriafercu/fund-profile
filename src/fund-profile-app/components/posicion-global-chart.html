@@ -1,0 +1,70 @@
+<link rel="import" href="../../../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../../../bower_components/highcharts-polymer/highcharts-stock.html">
+
+<dom-module id="posicion-global-chart">
+    <template>
+        <style>
+            :host {
+                display: block
+            }
+        </style>
+
+    <highcharts-stock
+        data-url='./data-graph.json'
+        title='Bonos Cash'
+        subtitle='Valor Liquidativo'>
+    </highcharts-stock>
+
+    </template>
+
+    <script>
+        /**
+         * `posicion-global-chart` Description
+         *
+         * @summary ShortDescription.
+         * @customElement
+         * @polymer
+         * @extends {Polymer.Element}
+         */
+        class PosicionGlobalChart extends Polymer.Element {
+            /**
+             * String providing the tag name to register the element under.
+             */
+            static get is() {
+                return 'posicion-global-chart';
+            }
+
+            /**
+             * Object describing property-related metadata used by Polymer features
+             */
+            static get properties() {
+                return {
+                    
+                };
+            }
+
+            /**
+             * Instance of the element is created/upgraded. Use: initializing state,
+             * set up event listeners, create shadow dom.
+             * @constructor
+             */
+            constructor() {
+                super();
+            }
+
+            /**
+             * Use for one-time configuration of your component after local DOM is initialized. 
+             */
+            ready() {
+                super.ready();
+
+                Polymer.RenderStatus.afterNextRender(this, function() {
+                    
+                });
+            }
+
+        }
+
+        window.customElements.define(PosicionGlobalChart.is, PosicionGlobalChart);
+    </script>
+</dom-module>

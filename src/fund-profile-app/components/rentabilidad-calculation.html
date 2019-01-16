@@ -12,19 +12,19 @@
     </style>
 
     <div class="sidebar-table-2">
-      <h2>Datos al [[today]]</h2>
+      <h2>Datos al [[ today ]]</h2>
       <dl>
         <dt>Valor liquidativo</dt>
-        <dd>[[dateData.netAssetValue]]</dd>
+        <dd>[[ dateData.netAssetValue ]]</dd>
       </dl>
 
       <dl>
         <dt>Rentabilidad del mes en curso</dt>
-        <dd>[[currentMonthRentability]]</dd>
+        <dd>[[ currentMonthRentability ]]</dd>
       </dl>
       <dl>
         <dt>Rentabilidad del año en curso</dt>
-        <dd>[[currentYearRentability]]</dd>
+        <dd>[[ currentYearRentability ]]</dd>
       </dl>
     </div>
   </template>
@@ -51,8 +51,12 @@
        */
       static get properties() {
         return {
-          data: Array,
+          fund: Object,
           date: Date,
+          dateData: {
+            type: Object,
+            computed: "getDateData(date)"
+          },
           today: {
             type: String,
             computed: "getDate(date)"
@@ -64,10 +68,6 @@
           firstOfYear: {
             type: Number,
             computed: "getFirstOfYear(date)"
-          },
-          dateData: {
-            type: Object,
-            computed: "getDateData(date)"
           },
           currentMonthRentability: {
             type: Number,
@@ -92,7 +92,7 @@
         this.date = new Date().setHours(0, 0, 0, 0);
       }
       getDateData(day) {
-        let result = this.data.find(element => element.date === day );
+        let result = this.fund.data.find(element => element.date === day );
         return result;
       }
       getFirstOfMonth(day) {

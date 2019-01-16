@@ -1,0 +1,100 @@
+<link rel="import" href="../../../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../theme/shared-styles.html">
+
+<dom-module id="datos-tab">
+    <template>
+        <style include="shared-styles">
+            :host {
+                display: block
+            }
+
+            .data-table {
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .data-table dd {
+                justify-self: right;
+            }
+
+        </style>
+
+    <div class="header-tab">
+        <h2>Datos</h2>
+    </div> 
+
+    <dl class="data-table">
+        <dt>Divisa denominación fondo</dt>
+        <dd>[[fund.Currency]]</dd>
+
+        <dt>Bono</dt>
+        <dd>[[fund.Name]]</dd>
+
+        <dt>Typeshort</dt>
+        <dd>[[fund.TypeShort]]</dd>
+
+        <dt>Subtype</dt>
+        <dd>[[fund.Subtype]]</dd>
+
+        <dt>Risk Level</dt>
+        <dd>[[fund.RiskLevel]]</dd>
+
+        <dt>ISIN</dt>
+        <dd>[[fund.ISIN]]</dd>
+
+    </dl>
+     
+
+    </template>
+
+    <script>
+        /**
+         * `datos-tab` Description
+         *
+         * @summary ShortDescription.
+         * @customElement
+         * @polymer
+         * @extends {Polymer.Element}
+         */
+        class DatosTab extends Polymer.Element {
+            /**
+             * String providing the tag name to register the element under.
+             */
+            static get is() {
+                return 'datos-tab';
+            }
+
+            /**
+             * Object describing property-related metadata used by Polymer features
+             */
+            static get properties() {
+                return {
+                    
+                };
+            }
+
+            /**
+             * Instance of the element is created/upgraded. Use: initializing state,
+             * set up event listeners, create shadow dom.
+             * @constructor
+             */
+            constructor() {
+                super();
+            }
+
+            /**
+             * Use for one-time configuration of your component after local DOM is initialized. 
+             */
+            ready() {
+                super.ready();
+
+                Polymer.RenderStatus.afterNextRender(this, function() {
+                    
+                });
+            }
+
+        }
+
+        window.customElements.define(DatosTab.is, DatosTab);
+    </script>
+</dom-module>

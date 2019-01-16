@@ -1,56 +1,37 @@
-<link rel="import" href="../../../bower_components/polymer/polymer-element.html">
-<link rel="import" href="../../../bower_components/paper-button/paper-button.html">
+<link rel="import" href="../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../../../bower_components/highcharts-polymer/highcharts-stock.html">
 
-<link rel="import" href="../components/posicion-global-chart.html">
-
-<link rel="import" href="../theme/shared-styles.html">
-
-
-<dom-module id="posicion-global">
+<dom-module id="posicion-global-chart">
     <template>
-        <style include="shared-styles">
+        <style>
             :host {
                 display: block
             }
-
-
-            paper-button.blue{
-                background-color: blue;
-                max-width: 20%;
-                color: white;
-                justify-self: right;
-            }
-
-
         </style>
 
-    <div class="header-tab">
-        <h2>Posición Global</h2>
-        <paper-button class="blue">EXPORTAR</paper-button>
-    </div>    
-
-    <p>Período consultado:</p>
-    <p>Última actualización:</p>
-
-    <posicion-global-chart></posicion-global-chart>
+    <highcharts-stock
+        data-url='./data-graph.json'
+        title='Apple Inc.'
+        subtitle='Stock Price'>
+    </highcharts-stock>
 
     </template>
 
     <script>
         /**
-         * `posicion-global` Description
+         * `posicion-global-chart` Description
          *
          * @summary ShortDescription.
          * @customElement
          * @polymer
          * @extends {Polymer.Element}
          */
-        class PosicionGlobal extends Polymer.Element {
+        class PosicionGlobalChart extends Polymer.Element {
             /**
              * String providing the tag name to register the element under.
              */
             static get is() {
-                return 'posicion-global';
+                return 'posicion-global-chart';
             }
 
             /**
@@ -84,6 +65,6 @@
 
         }
 
-        window.customElements.define(PosicionGlobal.is, PosicionGlobal);
+        window.customElements.define(PosicionGlobalChart.is, PosicionGlobalChart);
     </script>
 </dom-module>

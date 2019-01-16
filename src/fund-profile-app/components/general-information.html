@@ -1,82 +1,81 @@
-<link rel="import" href="../../../bower_components/polymer/polymer-element.html">
+<link
+  rel="import"
+  href="../../../bower_components/polymer/polymer-element.html"
+/>
 
 <dom-module id="general-information">
-    <template>
-        <style >
-            :host {
-                display: block
-            }
-
-            
-        </style>
+  <template>
+    <style>
+      :host {
+        display: block;
+      }
+    </style>
 
     <div class="sidebar-table">
-        <h2>Información general</h2>
-            <dl>
-                <dt>ISIN</dt>
-                <dd>[[data.ISIN]]</dd>
-            </dl>
+      <h2>Información general</h2>
+      <dl>
+        <dt>ISIN</dt>
+        <dd>[[bond.ISIN]]</dd>
+      </dl>
 
-            <dl>
-                <dt>Domicilio</dt>
-                <dd>[[data.Country]]</dd>
-            </dl>
-            <dl>
-                <dt>Divisa</dt>
-                <dd>[[data.Currency]]</dd>
-            </dl>
-    </div>  
+      <dl>
+        <dt>Domicilio</dt>
+        <dd>[[bond.country]]</dd>
+      </dl>
+      <dl>
+        <dt>Divisa</dt>
+        <dd>[[bond.currency]]</dd>
+      </dl>
+      <dl>
+        <dt>Riesgo de inversión</dt>
+        <dd>[[bond.riskLevel]]</dd>
+      </dl>
+    </div>
+  </template>
 
-    </template>
+  <script>
+    /**
+     * `general-information` Description
+     *
+     * @summary ShortDescription.
+     * @customElement
+     * @polymer
+     * @extends {Polymer.Element}
+     */
+    class GeneralInformation extends Polymer.Element {
+      /**
+       * String providing the tag name to register the element under.
+       */
+      static get is() {
+        return "general-information";
+      }
 
-    <script>
-        /**
-         * `general-information` Description
-         *
-         * @summary ShortDescription.
-         * @customElement
-         * @polymer
-         * @extends {Polymer.Element}
-         */
-        class GeneralInformation extends Polymer.Element {
-            /**
-             * String providing the tag name to register the element under.
-             */
-            static get is() {
-                return 'general-information';
-            }
+      /**
+       * Object describing property-related metadata used by Polymer features
+       */
+      static get properties() {
+        return {};
+      }
 
-            /**
-             * Object describing property-related metadata used by Polymer features
-             */
-            static get properties() {
-                return {
-                    
-                };
-            }
+      /**
+       * Instance of the element is created/upgraded. Use: initializing state,
+       * set up event listeners, create shadow dom.
+       * @constructor
+       */
+      constructor() {
+        super();
+      }
 
-            /**
-             * Instance of the element is created/upgraded. Use: initializing state,
-             * set up event listeners, create shadow dom.
-             * @constructor
-             */
-            constructor() {
-                super();
-            }
+      /**
+       * Use for one-time configuration of your component after local DOM is initialized.
+       */
+      ready() {
+        super.ready();
 
-            /**
-             * Use for one-time configuration of your component after local DOM is initialized. 
-             */
-            ready() {
-                super.ready();
+        Polymer.RenderStatus.afterNextRender(this, function() {});
+      }
+    }
 
-                Polymer.RenderStatus.afterNextRender(this, function() {
-                    
-                });
-            }
-
-        }
-
-        window.customElements.define(GeneralInformation.is, GeneralInformation);
-    </script>
+    window.customElements.define(GeneralInformation.is, GeneralInformation);
+  </script>
 </dom-module>

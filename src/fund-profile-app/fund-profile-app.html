@@ -1,34 +1,42 @@
-<link rel="import" href="../../bower_components/polymer/polymer-element.html">
-<link rel="import" href="../../bower_components/iron-ajax/iron-ajax.html">
-<link rel="import" href="../../bower_components/polymer/lib/elements/dom-repeat.html">
-<link rel="import" href="../fund-profile-app/components/general-information.html">
-<link rel="import" href="../fund-profile-app/components/rentabilidad-calculation.html">
-<link rel="import" href="../../src/fund-profile-app/theme/shared-styles.html">
+<link rel="import" href="../../bower_components/polymer/polymer-element.html" />
+<link rel="import" href="../../bower_components/iron-ajax/iron-ajax.html" />
+<link
+  rel="import"
+  href="../../bower_components/polymer/lib/elements/dom-repeat.html"
+/>
+<link
+  rel="import"
+  href="../fund-profile-app/components/general-information.html"
+/>
+<link
+  rel="import"
+  href="../fund-profile-app/components/rentabilidad-calculation.html"
+/>
+<link rel="import" href="../../src/fund-profile-app/theme/shared-styles.html" />
 
 <dom-module id="fund-profile-app">
   <template>
     <style include="shared-styles">
       :host {
         display: block;
+        margin: auto;
+        width: 970px;
       }
     </style>
-      <iron-ajax
-        auto
-        url="http://localhost:3000/funds"
-        handle-as="json"
-        last-response="{{funds}}"
-        on-response="handleResponse"
-      >
-      </iron-ajax>
-    <template 
-      is="dom-repeat"
-      items="[[funds]]"
+    <iron-ajax
+      auto
+      url="http://localhost:3000/funds"
+      handle-as="json"
+      last-response="{{ funds }}"
+      on-response="(handleResponse)"
     >
-      <h1>[[item.Name]], <span>[[item.TypeShort]]</span></h1>
-      <h2>[[item.Subtype]]</h2>
+    </iron-ajax>
+    <template is="dom-repeat" items="[[funds]]">
+      <h1>[[item.name]], <span>[[item.typeShort]]</span></h1>
+      <h2>[[item.subtype]]</h2>
 
-      <general-information data="[[item]]"></general-information>
-      <rentabilidad-calculation data="[[item]]"></rentabilidad-calculation>
+      <general-information bond="[[item]]"></general-information>
+      <rentabilidad-calculation data="[[item.data]]"></rentabilidad-calculation>
     </template>
   </template>
 
@@ -38,7 +46,9 @@
      * @polymer
      */
     class FundProfileApp extends Polymer.Element {
-      static get is() { return 'fund-profile-app'; }
+      static get is() {
+        return "fund-profile-app";
+      }
       static get properties() {
         return {
           funds: Array,
@@ -47,20 +57,20 @@
           loading: Boolean
         };
       }
-         constructor() {
-            super();
-        }
+      constructor() {
+        super();
+      }
 
-            /**
-             * Use for one-time configuration of your component after local DOM is initialized. 
-             */
-            ready() {
-                super.ready();
-                this.loading = true
-            }
+      /**
+       * Use for one-time configuration of your component after local DOM is initialized.
+       */
+      ready() {
+        super.ready();
+        this.loading = true;
+      }
 
       handleresponse() {
-        this.loading = !this.loading
+        this.loading = !this.loading;
       }
     }
 

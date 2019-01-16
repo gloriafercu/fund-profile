@@ -1,0 +1,22 @@
+@font-face {
+  font-family: 'BentonSans Bold';
+  src: url('fonts/BentonSans-Bold.ttf') format('truetype');
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'BentonSans Regular';
+  src: url('fonts/BentonSans-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'BentonSans Light';
+  src: url('fonts/BentonSans-Light.woff2') format('woff2'),
+       url('fonts/BentonSans-Light.woff') format('woff'),
+       url('fonts/BentonSans-Light.ttf') format('truetype');
+  font-weight: 300;
+  font-style: normal;
+}

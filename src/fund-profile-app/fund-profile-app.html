@@ -6,17 +6,28 @@
 <link rel="import" href="../../src/fund-profile-app/components/tab-menu.html">
 <link rel="import" href="../../src/fund-profile-app/theme/shared-styles.html">
 
-<dom-module id="fund-profile-app">
+<dom-module id="fund-profile-app" class="fund-profile-app">
   <template>
     <style include="shared-styles">
       :host {
-        display: block;
+        display: flex;
+        flex-direction: column;
+        flex: 1;
         max-width: 960px;
         margin: 0 auto;
       }
       .page-container {
         display: grid;
         grid-template-columns: 1fr 2fr;
+      }
+      h1 {
+        font-size: 30px;
+        line-height: 35px;
+      }
+      h5 {
+        font-size: 16px;
+        font-weight: 400px;
+        line-height: 20px;
       }
     </style>
 
@@ -29,11 +40,11 @@
     >
     </iron-ajax>
 
+    <h1>[[fund.Name]], <span>[[fund.TypeShort]]</span></h1>
+    <h5>[[fund.Subtype]]</h5>
+
     <div class="page-container">
       <div class="sidebar-container">
-        
-        <h1>[[fund.Name]], <span>[[fund.TypeShort]]</span></h1>
-        <h2>[[fund.Subtype]]</h2>
         <general-information data="[[fund]]"></general-information>
         <rentabilidad-calculation data="[[fund]]"></rentabilidad-calculation>
        

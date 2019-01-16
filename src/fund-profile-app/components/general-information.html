@@ -1,8 +1,9 @@
 <link rel="import" href="../../../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../theme/shared-styles.html">
 
 <dom-module id="general-information">
     <template>
-        <style >
+        <style include="shared-styles">
             :host {
                 display: block
             }
@@ -10,22 +11,28 @@
             
         </style>
 
-    <div class="sidebar-table">
-        <h2>Información general</h2>
-            <dl>
-                <dt>ISIN</dt>
-                <dd>[[data.ISIN]]</dd>
-            </dl>
+        <table>
 
-            <dl>
-                <dt>Domicilio</dt>
-                <dd>[[data.Country]]</dd>
-            </dl>
-            <dl>
-                <dt>Divisa</dt>
-                <dd>[[data.Currency]]</dd>
-            </dl>
-    </div>  
+
+            
+        </table>
+
+        <div class="sidebar-table">
+            <h5>Información general</h5>
+                <dl>
+                    <dt>ISIN</dt>
+                    <dd>[[data.ISIN]]</dd>
+                </dl>
+
+                <dl>
+                    <dt>Domicilio</dt>
+                    <dd>[[data.Country]]</dd>
+                </dl>
+                <dl>
+                    <dt>Divisa</dt>
+                    <dd>[[data.Currency]]</dd>
+                </dl>
+        </div>  
 
     </template>
 

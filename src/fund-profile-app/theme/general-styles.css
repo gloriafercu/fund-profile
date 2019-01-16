@@ -1,15 +1,3 @@
-* {
-  box-sizing: border-box;
-  padding: 0;
-  color: #121212;
-}
-
-.body {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-}
-
 @font-face {
   font-family: 'BentonSans Regular';
   src: url('../../../fonts/BentonSans-Regular.eot');
@@ -40,3 +28,16 @@
   font-style: normal;
 }
 
+* {
+  box-sizing: border-box;
+  padding: 0;
+  color: #121212;
+}
+
+.body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  margin: 0;
+  font-family: 'BentonSans Light', Arial, Helvetica, sans-serif;
+}

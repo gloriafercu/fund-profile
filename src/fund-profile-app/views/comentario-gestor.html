@@ -1,0 +1,94 @@
+<link rel="import" href="../../../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../theme/shared-styles.html">
+<link rel="import" href="../../../bower_components/web-animations-js/web-animations-next-lite.min.js">
+<link rel="import" href="../../../bower_components/neon-animation/web-animations.html">
+<link rel="import" href="../../../bower_components/paper-dropdown-menu/paper-dropdown-menu.html">
+<link rel="import" href="../../../bower_components/paper-listbox/paper-listbox.html">
+<link rel="import" href="../../../bower_components/paper-item/paper-item.html">
+
+
+<dom-module id="comentario-gestor">
+    <template>
+        <style include="shared-styles">
+            :host {
+                display: block
+            }
+
+            .dropdown-menu {
+                width: 100%
+            }
+
+            iron-dropdown {
+                border: 1px solid gray;
+                background: white;
+                font-size: 2em;
+            }
+
+        </style>
+
+    <div class="header-tab">
+        <h2>Comentario Gestor</h2>
+    </div>  
+
+    <paper-dropdown-menu class="dropdown-menu" label="Mes" horizontal-offset="200">
+        <paper-listbox slot="dropdown-content" selected="1">
+            <paper-item>Enero</paper-item>
+            <paper-item>Diciembre</paper-item>
+            <paper-item>Noviembre</paper-item>
+            <paper-item>Octubre</paper-item>
+        </paper-listbox>
+    </paper-dropdown-menu>
+
+    </template>
+
+    <script>
+        /**
+         * `comentario-gestor` Description
+         *
+         * @summary ShortDescription.
+         * @customElement
+         * @polymer
+         * @extends {Polymer.Element}
+         */
+        class ComentarioGestor extends Polymer.Element {
+            /**
+             * String providing the tag name to register the element under.
+             */
+            static get is() {
+                return 'comentario-gestor';
+            }
+
+            /**
+             * Object describing property-related metadata used by Polymer features
+             */
+            static get properties() {
+                return {
+                    
+                };
+            }
+
+            /**
+             * Instance of the element is created/upgraded. Use: initializing state,
+             * set up event listeners, create shadow dom.
+             * @constructor
+             */
+            constructor() {
+                super();
+            }
+
+            /**
+             * Use for one-time configuration of your component after local DOM is initialized. 
+             */
+            ready() {
+                super.ready();
+
+                Polymer.RenderStatus.afterNextRender(this, function() {
+                    
+                });
+            }
+
+        }
+
+        window.customElements.define(ComentarioGestor.is, ComentarioGestor);
+    </script>
+</dom-module>

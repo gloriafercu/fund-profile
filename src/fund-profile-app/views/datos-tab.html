@@ -7,13 +7,43 @@
             :host {
                 display: block
             }
+
+            .data-table {
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .data-table dd {
+                justify-self: right;
+            }
+
         </style>
 
     <div class="header-tab">
         <h2>Datos</h2>
     </div> 
 
-    <p>Divisa denominación fondo [[fund.Currency]]</p>
+    <dl class="data-table">
+        <dt>Divisa denominación fondo</dt>
+        <dd>[[fund.Currency]]</dd>
+
+        <dt>Bono</dt>
+        <dd>[[fund.Name]]</dd>
+
+        <dt>Typeshort</dt>
+        <dd>[[fund.TypeShort]]</dd>
+
+        <dt>Subtype</dt>
+        <dd>[[fund.Subtype]]</dd>
+
+        <dt>Risk Level</dt>
+        <dd>[[fund.RiskLevel]]</dd>
+
+        <dt>ISIN</dt>
+        <dd>[[fund.ISIN]]</dd>
+
+    </dl>
+     
 
     </template>
 

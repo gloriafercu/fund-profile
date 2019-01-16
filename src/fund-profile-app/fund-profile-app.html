@@ -22,26 +22,23 @@
       auto
       url="http://localhost:3000/funds"
       handle-as="json"
-      last-response="{{funds}}"
+      last-response="{{ fund }}"
       on-response="handleResponse"
     >
     </iron-ajax>
 
     <div class="page-container">
       <div class="sidebar-container">
-        <template 
-          is="dom-repeat"
-          items="[[funds]]"
-        >
-          <h1>[[item.Name]], <span>[[item.TypeShort]]</span></h1>
-          <h2>[[item.Subtype]]</h2>
-          <general-information data="[[item]]"></general-information>
-          <rentabilidad-calculation data="[[item]]"></rentabilidad-calculation>
-        </template>
+        
+        <h1>[[fund.Name]], <span>[[fund.TypeShort]]</span></h1>
+        <h2>[[fund.Subtype]]</h2>
+        <general-information data="[[fund]]"></general-information>
+        <rentabilidad-calculation data="[[fund]]"></rentabilidad-calculation>
+       
       </div>
       <div class="main-container">
-        <tab-menu></tab-menu>
-      </div>
+        <tab-menu fund="[[ fund ]]"></tab-menu>
+      </div> 
     </div>
    
   </template>
@@ -56,9 +53,7 @@
       static get is() { return 'fund-profile-app'; }
       static get properties() {
         return {
-          funds: Array,
           fund: Object,
-          bond: Object,
           loading: Boolean
         };
       }
@@ -74,9 +69,9 @@
                 this.loading = true
             }
 
-      handleresponse() {
-        this.loading = !this.loading
-      }
+            handleresponse() {
+              this.loading = !this.loading
+            }
     }
 
     window.customElements.define(FundProfileApp.is, FundProfileApp);

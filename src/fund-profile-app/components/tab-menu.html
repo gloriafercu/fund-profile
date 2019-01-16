@@ -4,6 +4,8 @@
 <link rel="import" href="../../../bower_components/iron-pages/iron-pages.html">
 <link rel="import" href="../views/documentacion-tab.html">
 <link rel="import" href="../views/posición-global.html">
+<link rel="import" href="../views/evolucion-tab.html">
+<link rel="import" href="../views/datos-tab.html">
 <dom-module id="tab-menu">
     <template>
         <style>
@@ -34,10 +36,10 @@
             <documentacion-tab></documentacion-tab>
         </div>
         <div>
-            <p>Evolución</p>
+            <evolucion-tab></evolucion-tab>
         </div>
         <div>
-            <p>Datos</p>
+            <datos-tab fund="{{ fund }}"></datos-tab>
         </div>
 
         <div>
@@ -77,6 +79,7 @@
                         type: Number,
                         value: 0
                     },
+                    fund: Object
                 };
             }
 

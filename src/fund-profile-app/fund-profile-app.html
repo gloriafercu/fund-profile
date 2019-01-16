@@ -4,6 +4,9 @@
 <link rel="import" href="../fund-profile-app/components/general-information.html">
 <link rel="import" href="../fund-profile-app/components/rentabilidad-calculation.html">
 <link rel="import" href="../../src/fund-profile-app/theme/shared-styles.html">
+<link rel="import" href="../../bower_components/highcharts-polymer/highcharts-stock.html">
+
+
 
 <dom-module id="fund-profile-app">
   <template>
@@ -29,8 +32,18 @@
 
       <general-information data="[[item]]"></general-information>
       <rentabilidad-calculation data="[[item]]"></rentabilidad-calculation>
+     
+      <highcharts-stock
+        data-url='./data-graph.json'
+        title='Apple Inc.'
+        subtitle='Stock Price'
+        >
+      </highcharts-stock>
+    
+     
     </template>
   </template>
+
 
   <script>
     /**

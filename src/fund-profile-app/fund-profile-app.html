@@ -1,12 +1,11 @@
 <link rel="import" href="../../bower_components/polymer/polymer-element.html">
 <link rel="import" href="../../bower_components/iron-ajax/iron-ajax.html">
+<link rel="import" href="../../bower_components/highcharts-polymer/highcharts-stock.html">
 <link rel="import" href="../../bower_components/polymer/lib/elements/dom-repeat.html">
 <link rel="import" href="../fund-profile-app/components/general-information.html">
 <link rel="import" href="../fund-profile-app/components/rentabilidad-calculation.html">
+<link rel="import" href="../../src/fund-profile-app/components/tab-menu.html">
 <link rel="import" href="../../src/fund-profile-app/theme/shared-styles.html">
-<link rel="import" href="../../bower_components/highcharts-polymer/highcharts-stock.html">
-
-
 
 <dom-module id="fund-profile-app">
   <template>
@@ -14,34 +13,43 @@
       :host {
         display: block;
       }
+      .page-container {
+        display: grid;
+        grid-template-columns: 1fr 2fr;
+      }
     </style>
-      <iron-ajax
-        auto
-        url="http://localhost:3000/funds"
-        handle-as="json"
-        last-response="{{funds}}"
-        on-response="handleResponse"
-      >
-      </iron-ajax>
-    <template 
-      is="dom-repeat"
-      items="[[funds]]"
-    >
-      <h1>[[item.Name]], <span>[[item.TypeShort]]</span></h1>
-      <h2>[[item.Subtype]]</h2>
 
-      <general-information data="[[item]]"></general-information>
-      <rentabilidad-calculation data="[[item]]"></rentabilidad-calculation>
-     
-      <highcharts-stock
-        data-url='./data-graph.json'
-        title='Apple Inc.'
-        subtitle='Stock Price'
+    <iron-ajax
+      auto
+      url="http://localhost:3000/funds"
+      handle-as="json"
+      last-response="{{funds}}"
+      on-response="handleResponse"
+    >
+    </iron-ajax>
+
+    <div class="page-container">
+      <div class="sidebar-container">
+        <template 
+          is="dom-repeat"
+          items="[[funds]]"
         >
-      </highcharts-stock>
-    
-     
-    </template>
+          <h1>[[item.Name]], <span>[[item.TypeShort]]</span></h1>
+          <h2>[[item.Subtype]]</h2>
+          <general-information data="[[item]]"></general-information>
+          <rentabilidad-calculation data="[[item]]"></rentabilidad-calculation>
+        </template>
+      </div>
+      <div class="main-container">
+        <tab-menu></tab-menu>
+      </div>
+    </div>
+    <highcharts-stock
+    data-url='./data-graph.json'
+    title='Apple Inc.'
+    subtitle='Stock Price'
+    >
+    </highcharts-stock>
   </template>
 
 

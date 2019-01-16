@@ -1,0 +1,127 @@
+<link rel="import" href="../../../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../../../bower_components/iron-icon/iron-icon.html">
+
+<link rel="import" href="../../../bower_components/iron-icons/image-icons.html">
+
+<link rel="import" href="../theme/shared-styles.html">
+
+<dom-module id="documentacion-tab">
+    <template>
+        <style include="shared-styles">
+            :host {
+                display: block
+            }
+
+            .pdf-icon {
+                --iron-icon-height: 40px;  
+                --iron-icon-width: 40px;  
+                
+            }
+
+            .documents {
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .documents a {
+                color: blue;
+                padding-top: 2%;
+                text-decoration: none;
+            }
+
+        </style>
+
+    <div class="header-tab">
+        <h2>Documentación</h2>
+    </div>   
+
+    <div class="documents">
+        <a href="#"><iron-icon class="pdf-icon" icon="image:picture-as-pdf"></iron-icon>Datos Fundamentales Inversor</a>
+        <a href="#"><iron-icon class="pdf-icon" icon="image:picture-as-pdf"></iron-icon>Folleto Completo</a>
+        <a href="#"><iron-icon class="pdf-icon" icon="image:picture-as-pdf"></iron-icon>Documento de información complementaria</a>
+    </div>
+
+    <div class="header-tab">
+        <h2>Información del producto</h2>
+    </div>   
+
+    <div class="documents">
+        <a href="#"><iron-icon class="pdf-icon" icon="image:picture-as-pdf"></iron-icon>Información de Producto</a>
+        <a href="#"><iron-icon class="pdf-icon" icon="image:picture-as-pdf"></iron-icon>Ficha de Seguimiiento</a>
+    </div>
+
+    <div class="header-tab">
+        <h2>Informes periódicos</h2>
+    </div>   
+    
+    <div class="documents">
+            <a href="#"><iron-icon class="pdf-icon" icon="image:picture-as-pdf"></iron-icon>Informe </a>
+            <a href="#"><iron-icon class="pdf-icon" icon="image:picture-as-pdf"></iron-icon>Informe </a>
+            <a href="#"><iron-icon class="pdf-icon" icon="image:picture-as-pdf"></iron-icon>Informe </a>
+            <a href="#"><iron-icon class="pdf-icon" icon="image:picture-as-pdf"></iron-icon>Informe </a>
+            <a href="#"><iron-icon class="pdf-icon" icon="image:picture-as-pdf"></iron-icon>Informe </a>
+            <a href="#"><iron-icon class="pdf-icon" icon="image:picture-as-pdf"></iron-icon>Informe </a>
+    </div>
+
+    <div class="header-tab">
+        <h2>Otros Documentos</h2>
+    </div>   
+        
+    <div class="documents">
+        <a href="#"><iron-icon class="pdf-icon" icon="image:picture-as-pdf"></iron-icon>Anuncio de autorización de fusión</a>
+        <a href="#"><iron-icon class="pdf-icon" icon="image:picture-as-pdf"></iron-icon>Cartas enviadas a pertícipes</a>
+    </div>
+
+</template>
+
+    <script>
+        /**
+         * `documentacion-tab` Description
+         *
+         * @summary ShortDescription.
+         * @customElement
+         * @polymer
+         * @extends {Polymer.Element}
+         */
+        class DocumentacionTab extends Polymer.Element {
+            /**
+             * String providing the tag name to register the element under.
+             */
+            static get is() {
+                return 'documentacion-tab';
+            }
+
+            /**
+             * Object describing property-related metadata used by Polymer features
+             */
+            static get properties() {
+                return {
+                    
+                };
+            }
+
+            /**
+             * Instance of the element is created/upgraded. Use: initializing state,
+             * set up event listeners, create shadow dom.
+             * @constructor
+             */
+            constructor() {
+                super();
+            }
+
+            /**
+             * Use for one-time configuration of your component after local DOM is initialized. 
+             */
+            ready() {
+                super.ready();
+
+                Polymer.RenderStatus.afterNextRender(this, function() {
+                    
+                });
+            }
+
+        }
+
+        window.customElements.define(DocumentacionTab.is, DocumentacionTab);
+    </script>
+</dom-module>

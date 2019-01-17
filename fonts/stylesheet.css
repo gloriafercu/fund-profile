@@ -1,0 +1,30 @@
+@font-face {
+    font-family: 'BentonSans';
+    src: url('BentonSans-Regular.eot');
+    src: url('BentonSans-Regular.eot?#iefix') format('embedded-opentype'),
+        url('BentonSans-Regular.woff2') format('woff2'),
+        url('BentonSans-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'BentonSans';
+    src: url('BentonSans-Bold.eot');
+    src: url('BentonSans-Bold.eot?#iefix') format('embedded-opentype'),
+        url('BentonSans-Bold.woff2') format('woff2'),
+        url('BentonSans-Bold.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'BentonSans';
+    src: url('BentonSans-Light.eot');
+    src: url('BentonSans-Light.eot?#iefix') format('embedded-opentype'),
+        url('BentonSans-Light.woff2') format('woff2'),
+        url('BentonSans-Light.woff') format('woff');
+    font-weight: 300;
+    font-style: normal;
+}
+

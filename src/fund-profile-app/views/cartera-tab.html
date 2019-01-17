@@ -1,0 +1,87 @@
+<link rel="import" href="../../../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../../../bower_components/google-charts/google-chart.html">
+
+
+<dom-module id="cartera-tab">
+    <template>
+        <style>
+            :host {
+                display: block;
+            }
+        </style>
+
+    <p>Cartera</p>
+
+    <google-chart
+        type="pie"
+        data="{{cartera}}"
+        options='{
+            "pieHole": 0.5,
+            "colors": ["#2277BB", "#EDA572"],
+            "chartArea": {
+                "left" : "200"
+              }
+        }'
+        >
+    </google-chart>
+   
+    </template>
+
+    <script>
+        /**
+         * `cartera-tab` Description
+         *
+         * @summary ShortDescription.
+         * @customElement
+         * @polymer
+         * @extends {Polymer.Element}
+         */
+        class CarteraTab extends Polymer.Element {
+            /**
+             * String providing the tag name to register the element under.
+             */
+            static get is() {
+                return 'cartera-tab';
+            }
+
+            /**
+             * Object describing property-related metadata used by Polymer features
+             */
+            static get properties() {
+                return {
+                    activosmonetarios: Number,
+                    rentafija: {
+                        type: Number,
+                        computed: 'activosmonetariosChanged(activosmonetarios)'
+                    },
+                    cartera: {
+                        type: Object,
+                        value: function () {
+                            return {}
+                        }
+                    }
+                };
+            }
+
+            static get observers() {
+                return [
+                    'dataChanged(activosmonetarios, rentafija)'
+                ];
+            }
+
+            activosmonetariosChanged(activosmonetarios) {
+                return (100 - activosmonetarios)
+            }
+
+            dataChanged() {
+                this.set('cartera', [["Category","Amount"],
+                                    ["Activos Monetarios", this.activosmonetarios],
+                                    ["Renta Fija", this.rentafija]])
+            }
+
+
+        }
+
+        window.customElements.define(CarteraTab.is, CarteraTab);
+    </script>
+</dom-module>

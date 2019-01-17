@@ -2,33 +2,70 @@
   rel="import"
   href="../../../bower_components/polymer/polymer-element.html"
 />
+<link
+  rel="import"
+  href="../../../bower_components/l2t-paper-rating/l2t-paper-rating.html"
+/>
+<link rel="import" href="../theme/shared-styles.html" />
 
 <dom-module id="general-information">
   <template>
-    <style>
+    <style include="shared-styles">
       :host {
         display: block;
+        margin-bottom: 5px;
+        font-size: 1em;
+        --rating-icon-color: #da3851;
+        --rating-icon-size: 10px;
+    }
+      .sidebar-table {
+        border: 1px solid #dde3ea;
+        padding-bottom: 10px;
+      }
+      dl {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        border-bottom: 1px solid #dcdcdc;
+        margin: 0 20px;
+        padding: 10px 0;
+      }
+      dl:last-child {
+        border-bottom: none;
+        padding-bottom: 10px;
+      }
+      dd {
+        font-family: "BentonSans Regular";
       }
     </style>
 
-    <div class="sidebar-table">
-      <h2>Información general</h2>
+    <div >
       <dl>
         <dt>ISIN</dt>
-        <dd>[[fund.ISIN]]</dd>
+        <dd>[[data.ISIN]]</dd>
       </dl>
 
       <dl>
         <dt>Domicilio</dt>
-        <dd>[[fund.country]]</dd>
+        <dd>[[data.country]]</dd>
       </dl>
+
       <dl>
         <dt>Divisa</dt>
-        <dd>[[fund.currency]]</dd>
+        <dd>[[data.currency]]</dd>
       </dl>
+
       <dl>
         <dt>Riesgo de inversión</dt>
-        <dd>[[fund.riskLevel]]</dd>
+        <dd>
+          <l2t-paper-rating
+            readonly
+            total="7"
+            rating="[[data.riskLevel]]"
+            icon="image:lens"
+          >
+          </l2t-paper-rating>
+        </dd>
       </dl>
     </div>
   </template>

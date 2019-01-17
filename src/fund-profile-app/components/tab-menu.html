@@ -6,16 +6,37 @@
 <link rel="import" href="../views/posición-global.html">
 <link rel="import" href="../views/evolucion-tab.html">
 <link rel="import" href="../views/datos-tab.html">
+<link rel="import" href="../views/comentario-gestor.html">
+<link rel="import" href="../views/cartera-tab.html">
+
+
 <dom-module id="tab-menu">
     <template>
         <style>
             :host {
-                display: block
+                display: block;
+                --paper-tab-ink: var(--bbva-light-blue);
+            }
+            paper-tabs{
+                display: flex;
+                justify-content: flex-start;
+            }           
+            paper-tab{
+                color: var(--bbva-light-blue);
+                display: inline-block;
+                width: auto;
+                height: auto; 
+                transition: all 0.3s ease-in  
+            }
+            paper-tab:hover{
+                background-color: var(--bbva-light-blue);
+                color: white;
+            }
+            paper-tab.iron-selected{
+                font-size: 1.2em;
+                transition: all 0.2s ease-in;
             }
 
-            paper-tab{
-                color: blue;
-            }
         </style>
 
     <paper-tabs selected="{{selected}}" no-bar>
@@ -43,10 +64,10 @@
         </div>
 
         <div>
-            <p>Comentario Gestor</p>
+            <comentario-gestor fund="{{ fund }}"></comentario-gestor>
         </div>
         <div>
-            <p>Cartera</p>
+            <cartera-tab activosmonetarios="{{ fund.activosMonetarios }}"></cartera-tab>
         </div>
 
     </iron-pages>

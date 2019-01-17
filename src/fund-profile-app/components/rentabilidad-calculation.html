@@ -9,30 +9,47 @@
       :host {
         display: block;
       }
+      .sidebar-table {
+        border: 1px solid #dde3ea;
+        padding-bottom: 10px;
+      }
+      dl,
+      .see-date {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        border-bottom: 1px solid #dcdcdc;
+        margin: 0 20px;
+        padding: 10px 0;
+      }
+      .see-date {
+        border-bottom: none;
+        padding-bottom: 10px;
+      }
+      dd {
+        font-family: "BentonSans Regular";
+      }
     </style>
-    <iron-ajax
-    auto
-    url="http://localhost:3000/funds/{{fund.name}}"
-    handle-as="json"
-    last-response="{{ data }}"
-    on-response="handleResponse"
-  >
-  </iron-ajax>
-    <div class="sidebar-table-2">
-      <h2>Datos al [[ today ]]</h2>
+
+    <div>
       <dl>
         <dt>Valor liquidativo</dt>
         <dd>[[ dateData.netAssetValue ]]</dd>
       </dl>
 
       <dl>
-        <dt>Rentabilidad del mes en curso</dt>
-        <dd>[[ currentMonthRentability ]]</dd>
+        <dt>Rentabilidad mes en curso</dt>
+        <dd></dd>
       </dl>
       <dl>
-        <dt>Rentabilidad del año en curso</dt>
-        <dd>[[ currentYearRentability ]]</dd>
+        <dt>Rentabilidad año en curso</dt>
+        <dd></dd>
       </dl>
+      <dl>
+        <dt>Rentabilidad últ. 12 meses</dt>
+        <dd></dd>
+      </dl>
+      <p class="see-date">Consultar otra fecha</p>
     </div>
   </template>
 
@@ -58,15 +75,8 @@
        */
       static get properties() {
         return {
-          date: Date,
-          dateData: {
-            type: Object,
-            computed: "getDateData(date)"
-          },
-          today: {
-            type: String,
-            computed: "getDate(date)"
-          },
+          data: Object,
+          dateData: Object,
           firstOfMonth: {
             type: Number,
             computed: "getFirstOfMonth(date)"
@@ -85,6 +95,7 @@
           }
         };
       }
+
       constructor() {
         super();
       }
@@ -94,40 +105,38 @@
        */
       ready() {
         super.ready();
+        this.data = this.getData()
+        this.dateData = this.getDateData(date)
+      }
 
-        this.date = new Date().setHours(0, 0, 0, 0);
+      getData(){
+        this.data = data;
       }
       getDateData(day) {
-        let result = this
-        console.log(result)
-        return result;
+        let result = this.data.data.find(element => element.date === day);
+        this.dateData = result;
       }
       getFirstOfMonth(day) {
-        let date = new Date(day)
-        let firstDay = new Date(date.getFullYear(), date.getMonth(), 1)
-        return this.firstOfMonth = firstDay.getTime();
+        let date = new Date(day);
+        let firstDay = new Date(date.getFullYear(), date.getMonth(), 1);
+        return (this.firstOfMonth = firstDay.getTime());
       }
       getFirstOfYear(day) {
-        let date = new Date(day)
-        let firstDay = new Date(date.getFullYear(), 0, 1)
-        return this.firstOfYear = firstDay.getTime();
-      }
-      getDate(date) {
-        const addZero = value => (value < 10 ? "0" + value : value);
-        let today = new Date(date);
-        let D = today.getDate();
-        let M = today.getMonth() + 1;
-        let YYYY = today.getFullYear();
-
-        return `${addZero(D)}/${addZero(M)}/${YYYY}`;
+        let date = new Date(day);
+        let firstDay = new Date(date.getFullYear(), 0, 1);
+        return (this.firstOfYear = firstDay.getTime());
       }
 
       rentability(startDate, endDate) {
-        let startRentability = this.getDateData(startDate).netAssetValue
-        let endRentability = this.getDateData(endDate).netAssetValue
+        let startRentability = this.getDateData(startDate).netAssetValue;
+        let endRentability = this.getDateData(endDate).netAssetValue;
         return (
-          ((endRentability - startRentability) / startRentability).toFixed(2) + "%"
+          ((endRentability - startRentability) / startRentability).toFixed(2) +
+          "%"
         );
+      }
+      dataChanged(data) {
+        this.data = data
       }
     }
 

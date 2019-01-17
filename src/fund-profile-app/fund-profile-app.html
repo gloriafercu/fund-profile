@@ -6,17 +6,30 @@
 <link rel="import" href="../../src/fund-profile-app/components/tab-menu.html">
 <link rel="import" href="../../src/fund-profile-app/theme/shared-styles.html">
 
-<dom-module id="fund-profile-app">
+<dom-module id="fund-profile-app" class="fund-profile-app">
   <template>
     <style include="shared-styles">
       :host {
-        display: block;
-        margin: auto;
-        width: 970px;
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+        width: 100%;
+        max-width: 940px;
+        margin: 0 auto;
       }
       .page-container {
         display: grid;
         grid-template-columns: 1fr 2fr;
+        grid-column-gap: 15px;
+      }
+      h1 {
+        font-size: 30px;
+        line-height: 35px;
+      }
+      h5 {
+        font-size: 16px;
+        font-weight: 400px;
+        line-height: 20px;
       }
     </style>
     <iron-ajax
@@ -27,6 +40,9 @@
       on-response="handleResponse"
     >
     </iron-ajax>
+
+    <h1>[[fund.name]], <span>[[fund.typeShort]]</span></h1>
+    <h5>[[fund.subtype]]</h5>
 
     <div class="page-container">
       <div class="sidebar-container">

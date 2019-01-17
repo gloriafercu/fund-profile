@@ -6,15 +6,25 @@
 <link rel="import" href="../views/posición-global.html">
 <link rel="import" href="../views/evolucion-tab.html">
 <link rel="import" href="../views/datos-tab.html">
+<link rel="import" href="../views/comentario-gestor.html">
+<link rel="import" href="../views/cartera-tab.html">
+
+
 <dom-module id="tab-menu">
     <template>
         <style>
             :host {
-                display: block
+                display: block;
             }
-
-            paper-tab{
+            paper-tabs{
+                display: flex;
+                justify-content: flex-start;
+            }           
+             paper-tab{
                 color: blue;
+                display: inline-block;
+                width: auto;
+                height: auto;    
             }
         </style>
 
@@ -43,10 +53,10 @@
         </div>
 
         <div>
-            <p>Comentario Gestor</p>
+            <comentario-gestor fund="{{ fund }}"></comentario-gestor>
         </div>
         <div>
-            <p>Cartera</p>
+            <cartera-tab activosmonetarios="{{ fund.activosMonetarios }}"></cartera-tab>
         </div>
 
     </iron-pages>

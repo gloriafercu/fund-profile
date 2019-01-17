@@ -1,33 +1,13 @@
 {
     "funds": 
         {
-            "name": "BBVA BONOS CASH",
+            "entity": "BBVA",
+            "name": "Bonos Cash",
             "type": "Fondo de inversión",
             "typeShort": "FI",
             "subtype": "Monetarios",
             "ISIN": "ES0113276002",
             "country": "Spain",
             "currency": "EURO",
-            "riskLevel": 1,
-            "data": [
-                {
-                    "date": 1546297200000,
-                    "netAssetValue" : 10.116501
-                },
-                {
-                    "date": 1546355597000,
-                    "netAssetValue" : 10.101232 
-                },
-                {
-                    "date": 1547565197000,
-                    "netAssetValue" : 10.821231
-                },
-                {
-                    "date": 1547593200000,
-                    "netAssetValue" : 10.823231
-                }
-
-            ]
-        }
-
-}
+            "riskLevel": 1        
+}}

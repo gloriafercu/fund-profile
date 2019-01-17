@@ -31,10 +31,10 @@
     <div class="page-container">
       <div class="sidebar-container">
         
-        <h1>[[fund.name]], <span>[[fund.typeShort]]</span></h1>
-        <h2>[[fund.subtype]]</h2>
+        <h1>[[ fund.entity ]] [[ fund.name ]], <span>[[ fund.typeShort ]]</span></h1>
+        <h2>[[ fund.subtype ]]</h2>
         <general-information fund="[[ fund ]]"></general-information>
-        <rentabilidad-calculation fund="[[ fund ]]"></rentabilidad-calculation>
+        <rentabilidad-calculation data="[[ fund ]]"></rentabilidad-calculation>
        
       </div>
       <div class="main-container">
@@ -72,7 +72,7 @@
         this.loading = true;
       }
 
-      handleresponse() {
+      handleResponse() {
         this.loading = !this.loading;
       }
     }

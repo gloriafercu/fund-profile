@@ -10,7 +10,14 @@
         display: block;
       }
     </style>
-
+    <iron-ajax
+    auto
+    url="http://localhost:3000/funds/{{fund.name}}"
+    handle-as="json"
+    last-response="{{ data }}"
+    on-response="handleResponse"
+  >
+  </iron-ajax>
     <div class="sidebar-table-2">
       <h2>Datos al [[ today ]]</h2>
       <dl>
@@ -51,7 +58,6 @@
        */
       static get properties() {
         return {
-          fund: Object,
           date: Date,
           dateData: {
             type: Object,
@@ -92,7 +98,8 @@
         this.date = new Date().setHours(0, 0, 0, 0);
       }
       getDateData(day) {
-        let result = this.fund.data.find(element => element.date === day );
+        let result = this
+        console.log(result)
         return result;
       }
       getFirstOfMonth(day) {
@@ -116,8 +123,6 @@
       }
 
       rentability(startDate, endDate) {
-        console.log(startDate)
-        console.log(endDate)
         let startRentability = this.getDateData(startDate).netAssetValue
         let endRentability = this.getDateData(endDate).netAssetValue
         return (

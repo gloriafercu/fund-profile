@@ -10,13 +10,27 @@
                 font-size: 16px;
                 font-weight: 100;
                 --bbva-light-blue: rgb(42, 134, 202);
+                --bbva-light-grey: rgb(233,233,233);
+                --paper-button-ink-color: white;
+            }
+            paper-button.blue{
+                background-color: var(--bbva-light-blue);
+                padding: 10px 20px;
+                font-size: 0.8em;
+                color: white;
+                justify-self: right;
             }
             .header-tab {
-               background-color: #e0e0eb;
-               padding: 2%;
-               display: grid;
-               grid-template-columns: repeat(2, 1fr);
-               margin-top: 2%;
+               background-color: var(--bbva-light-grey);
+               padding: 10px;
+               display: flex;
+               justify-content: space-between
+            }
+            .header-tab h2{
+                margin: 0;
+                font-size: 1em;
+                line-height: 2em;
+                font-weight: 500;
             }
             h1{
                 font-weight: 100;

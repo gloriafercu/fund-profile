@@ -23,22 +23,16 @@
         flex-direction: column;
       }
       main{
-        display:flex;
-        flex-direction: row;
-        flex:1;
+        display:grid;
+        grid-template-columns: 1fr 2fr;
       }
       .sidebar-container {
-        display:flex;
-        flex-direction: column;
-        flex: 1;
         padding-right: 20px;
       }
-      .main-container{
-        flex: 2;
-      }
+
       .page-container {
         display: grid;
-        grid-template-columns: 1fr 2fr;
+        grid-template-rows: auto;
         grid-column-gap: 15px;
       }
       h1 {
@@ -60,10 +54,6 @@
       on-response="handleResponse"
     >
     </iron-ajax>
-
-    <h1>[[fund.name]], <span>[[fund.typeShort]]</span></h1>
-    <h5>[[fund.subtype]]</h5>
-
     <div class="page-container">
       <header>
         <h1>[[fund.name]], <span>[[fund.typeShort]]</span></h1>
@@ -101,6 +91,7 @@
       static get properties() {
         return {
           fund: Object,
+          data:Object,
           date: Date,
           today: {
             type: String,

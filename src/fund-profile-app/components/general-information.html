@@ -14,28 +14,13 @@
       :host {
         display: block;
         margin-bottom: 5px;
-      }
+        font-size: 1em;
+        --rating-icon-color: #da3851;
+        --rating-icon-size: 10px;
+    }
       .sidebar-table {
         border: 1px solid #dde3ea;
         padding-bottom: 10px;
-      }
-      .description__table {
-        display: flex;
-        flex-direction: column;
-        padding: 10px 0 5px;
-      }
-      .info__title__container {
-        display: flex;
-        align-items: center;
-        justify-content: flex-start;
-        border-bottom: 1px solid #dcdcdc;
-        padding: 0 20px;
-      }
-      .info__title {
-        font-size: 16px;
-        color: #333333;
-        padding: 20px 0;
-        margin: 0;
       }
       dl {
         display: flex;
@@ -54,11 +39,7 @@
       }
     </style>
 
-    <div class="sidebar-table">
-      <div class="info__title__container">
-        <h5 class="info__title">Información general</h5>
-      </div>
-      <div class="description__table"></div>
+    <div >
       <dl>
         <dt>ISIN</dt>
         <dd>[[data.ISIN]]</dd>
@@ -86,7 +67,6 @@
           </l2t-paper-rating>
         </dd>
       </dl>
-
     </div>
   </template>
 

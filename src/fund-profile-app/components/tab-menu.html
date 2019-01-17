@@ -15,17 +15,28 @@
         <style>
             :host {
                 display: block;
+                --paper-tab-ink: var(--bbva-light-blue);
             }
             paper-tabs{
                 display: flex;
                 justify-content: flex-start;
             }           
-             paper-tab{
-                color: blue;
+            paper-tab{
+                color: var(--bbva-light-blue);
                 display: inline-block;
                 width: auto;
-                height: auto;    
+                height: auto; 
+                transition: all 0.3s ease-in  
             }
+            paper-tab:hover{
+                background-color: var(--bbva-light-blue);
+                color: white;
+            }
+            paper-tab.iron-selected{
+                font-size: 1.2em;
+                transition: all 0.2s ease-in;
+            }
+
         </style>
 
     <paper-tabs selected="{{selected}}" no-bar>

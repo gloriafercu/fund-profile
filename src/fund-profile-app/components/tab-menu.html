@@ -7,6 +7,9 @@
 <link rel="import" href="../views/evolucion-tab.html">
 <link rel="import" href="../views/datos-tab.html">
 <link rel="import" href="../views/comentario-gestor.html">
+<link rel="import" href="../views/cartera-tab.html">
+
+
 <dom-module id="tab-menu">
     <template>
         <style>
@@ -47,7 +50,7 @@
             <comentario-gestor fund="{{ fund }}"></comentario-gestor>
         </div>
         <div>
-            <p>Cartera</p>
+            <cartera-tab activosmonetarios="{{ fund.activosMonetarios }}"></cartera-tab>
         </div>
 
     </iron-pages>

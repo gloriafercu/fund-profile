@@ -6,25 +6,73 @@
             :host {
                 display: block
             }
+            .sidebar-table {
+                border: 1px solid  #dde3ea;
+                padding-bottom: 10px;
+            }
+            .description__table {
+                display: flex;
+                flex-direction: column;
+                padding: 10px 0 5px;
+            }
+            .info__title__container {
+                display: flex;
+                align-items: center;
+                justify-content: flex-start;
+                border-bottom: 1px solid #dcdcdc;
+                padding: 0 20px; 
+              
+            }
+            .info__title {
+                font-size: 16px;
+                color:#333333;
+                padding: 20px 0;
+                margin: 0;
+            }
+            dl, 
+            .see-date {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                border-bottom: 1px solid #dcdcdc;
+                margin:  0 20px;
+                padding: 10px 0;
+            }
+            .see-date {
+                border-bottom: none;
+                padding-bottom: 10px;
+            }
+            dd {
+                font-family: 'BentonSans Regular';
+            }
         </style>
 
-        
-<div class="sidebar-table-2">
-    <h5>Datos al [[date]]</h5>
-        <dl>
-            <dt>Valor liquidativo</dt>
-            <dd>[[data.ValorLiquidativo]]</dd>
-        </dl>
+                
+        <div class="sidebar-table">
+            <div class="info__title__container">
+                 <h5 class="info__title">Datos al [[date]]</h5>
+            </div>
+            <div class="description__table">
+                <dl>
+                    <dt>Valor liquidativo</dt>
+                    <dd>[[data.ValorLiquidativo]]</dd>
+                </dl>
 
-        <dl>
-            <dt>Rentabilidad del mes en curso</dt>
-            <dd></dd>
-        </dl>
-        <dl>
-            <dt>Rentabilidad del año en curso</dt>
-            <dd></dd>
-        </dl>
-</div>  
+                <dl>
+                    <dt>Rentabilidad mes en curso</dt>
+                    <dd></dd>
+                </dl>
+                <dl>
+                    <dt>Rentabilidad año en curso</dt>
+                    <dd></dd>
+                </dl>
+                <dl>
+                    <dt>Rentabilidad últ. 12 meses</dt>
+                    <dd></dd>
+                </dl>
+                <p class="see-date">Consultar otra fecha</p>
+            </div>
+        </div>  
     </template>
 
     <script>

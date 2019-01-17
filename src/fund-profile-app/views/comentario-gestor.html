@@ -5,6 +5,7 @@
 <link rel="import" href="../../../bower_components/paper-dropdown-menu/paper-dropdown-menu.html">
 <link rel="import" href="../../../bower_components/paper-listbox/paper-listbox.html">
 <link rel="import" href="../../../bower_components/paper-item/paper-item.html">
+<link rel="import" href="../../../bower_components/iron-pages/iron-pages.html">
 
 
 <dom-module id="comentario-gestor">
@@ -31,14 +32,30 @@
     </div>  
 
     <paper-dropdown-menu class="dropdown-menu" label="Mes" horizontal-offset="200">
-        <paper-listbox slot="dropdown-content" selected="1">
-            <paper-item>Enero</paper-item>
+        <paper-listbox slot="dropdown-content" selected="{{ selected }}">
             <paper-item>Diciembre</paper-item>
             <paper-item>Noviembre</paper-item>
             <paper-item>Octubre</paper-item>
+            <paper-item>Septiembre</paper-item>
+            <paper-item>Agosto</paper-item>
+            <paper-item>Julio</paper-item>
+            <paper-item>Junio</paper-item>
+            <paper-item>Mayo</paper-item>
+            <paper-item>Abril</paper-item>
+            <paper-item>Marzo</paper-item>
+            <paper-item>Febrero</paper-item>
+            <paper-item>Enero</paper-item>
         </paper-listbox>
     </paper-dropdown-menu>
 
+    
+    <iron-pages selected="{{ selected }}">
+        <section><p>[[ fund.managerComments.december ]]</p></section>
+        <section><p>[[ fund.managerComments.november ]]</p></section>
+        <section><p>[[ fund.managerComments.october ]]</p></section>
+    </iron-pages>
+    
+    
     </template>
 
     <script>
@@ -63,7 +80,10 @@
              */
             static get properties() {
                 return {
-                    
+                    selected: {
+                        type: Number,
+                        value: 0
+                    }
                 };
             }
 

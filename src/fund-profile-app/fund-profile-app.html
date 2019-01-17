@@ -1,10 +1,11 @@
 <link rel="import" href="../../bower_components/polymer/polymer-element.html">
 <link rel="import" href="../../bower_components/iron-ajax/iron-ajax.html">
 <link rel="import" href="../../bower_components/polymer/lib/elements/dom-repeat.html">
+<link rel="import" href="../fund-profile-app/components/tab-menu.html">
+<link rel="import" href="../fund-profile-app/theme/shared-styles.html">
 <link rel="import" href="../fund-profile-app/components/general-information.html">
 <link rel="import" href="../fund-profile-app/components/rentabilidad-calculation.html">
-<link rel="import" href="../../src/fund-profile-app/components/tab-menu.html">
-<link rel="import" href="../../src/fund-profile-app/theme/shared-styles.html">
+<link rel="import" href="../fund-profile-app/components/info-table.html">
 
 <dom-module id="fund-profile-app">
   <template>
@@ -14,10 +15,30 @@
         margin: auto;
         width: 970px;
       }
-      .page-container {
-        display: grid;
-        grid-template-columns: 1fr 2fr;
+      header{
+        display: flex;
+        flex-direction: column;
       }
+      main{
+        display:flex;
+        flex-direction: row;
+        flex:1;
+      }
+      .sidebar-container {
+        display:flex;
+        flex-direction: column;
+        flex: 1;
+        padding-right: 20px;
+      }
+      .main-container{
+        flex: 2;
+      }
+      .page-container {
+        display: flex;
+        flex-direction: column;
+        padding: 0 20px
+      }
+
     </style>
     <iron-ajax
       auto
@@ -29,17 +50,25 @@
     </iron-ajax>
 
     <div class="page-container">
-      <div class="sidebar-container">
-        
+      <header>
         <h1>[[fund.name]], <span>[[fund.typeShort]]</span></h1>
-        <h2>[[fund.subtype]]</h2>
-        <general-information fund="[[ fund ]]"></general-information>
-        <rentabilidad-calculation fund="[[ fund ]]"></rentabilidad-calculation>
-       
-      </div>
-      <div class="main-container">
-        <tab-menu fund="[[ fund ]]"></tab-menu>
-      </div> 
+        <h5>[[fund.subtype]]</h5>
+      </header>
+      <main>
+        <div class="sidebar-container">
+            <info-table>
+              <span slot="title">Información general</span>
+              <div slot="lines"><general-information fund="[[ fund ]]"></general-information></div>
+            </info-table>
+          <info-table>
+            <span slot="title">Datos al [[ today ]]</span>
+            <div slot="lines"><rentabilidad-calculation fund="[[ fund ]]" date="[[ date ]]"></rentabilidad-calculation></div>
+          </info-table> 
+        </div>
+        <div class="main-container">
+          <tab-menu fund="[[ fund ]]"></tab-menu>
+        </div> 
+      </main>
     </div>
    
   </template>
@@ -57,6 +86,11 @@
       static get properties() {
         return {
           fund: Object,
+          date: Date,
+          today: {
+            type: String,
+            computed: "getDate(date)"
+          },
           loading: Boolean
         };
       }
@@ -70,8 +104,17 @@
       ready() {
         super.ready();
         this.loading = true;
+        this.date = new Date().setHours(0, 0, 0, 0);
       }
+      getDate(date) {
+        const addZero = value => (value < 10 ? "0" + value : value);
+        let today = new Date(date);
+        let D = today.getDate();
+        let M = today.getMonth() + 1;
+        let YYYY = today.getFullYear();
 
+        return `${addZero(D)}/${addZero(M)}/${YYYY}`;
+      }
       handleresponse() {
         this.loading = !this.loading;
       }

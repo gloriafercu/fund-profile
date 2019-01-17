@@ -10,7 +10,6 @@
         display: block;
       }
     </style>
-
     <div class="sidebar-table-2">
       <h2>Datos al [[ today ]]</h2>
       <dl>
@@ -52,15 +51,11 @@
       static get properties() {
         return {
           fund: Object,
-          date: Date,
           dateData: {
             type: Object,
             computed: "getDateData(date)"
           },
-          today: {
-            type: String,
-            computed: "getDate(date)"
-          },
+
           firstOfMonth: {
             type: Number,
             computed: "getFirstOfMonth(date)"
@@ -88,11 +83,10 @@
        */
       ready() {
         super.ready();
-
-        this.date = new Date().setHours(0, 0, 0, 0);
       }
+      
       getDateData(day) {
-        let result = this.fund.data.find(element => element.date === day );
+        let result = this.fund.data.find(element => element.date === day)
         return result;
       }
       getFirstOfMonth(day) {
@@ -105,19 +99,8 @@
         let firstDay = new Date(date.getFullYear(), 0, 1)
         return this.firstOfYear = firstDay.getTime();
       }
-      getDate(date) {
-        const addZero = value => (value < 10 ? "0" + value : value);
-        let today = new Date(date);
-        let D = today.getDate();
-        let M = today.getMonth() + 1;
-        let YYYY = today.getFullYear();
-
-        return `${addZero(D)}/${addZero(M)}/${YYYY}`;
-      }
 
       rentability(startDate, endDate) {
-        console.log(startDate)
-        console.log(endDate)
         let startRentability = this.getDateData(startDate).netAssetValue
         let endRentability = this.getDateData(endDate).netAssetValue
         return (

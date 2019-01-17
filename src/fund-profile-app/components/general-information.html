@@ -6,13 +6,27 @@
 <dom-module id="general-information">
   <template>
     <style>
-      :host {
-        display: block;
+      dl:not(:last-child) {
+        content: '-';
+        border-bottom: 1px solid #dde3ea;
+      }
+      dl {
+        display:flex;
+        flex-direction: row;
+        justify-content: space-between;
+        padding-bottom: 5px;
+      }
+      dd, dt{
+        text-transform: uppercase;
+        line-height: 1.2em;
+      }
+      dd {
+        font-weight: bold;
       }
     </style>
 
-    <div class="sidebar-table">
-      <h2>Información general</h2>
+    <div class="lines">
+
       <dl>
         <dt>ISIN</dt>
         <dd>[[fund.ISIN]]</dd>
@@ -22,14 +36,17 @@
         <dt>Domicilio</dt>
         <dd>[[fund.country]]</dd>
       </dl>
+
       <dl>
         <dt>Divisa</dt>
         <dd>[[fund.currency]]</dd>
       </dl>
+
       <dl>
         <dt>Riesgo de inversión</dt>
         <dd>[[fund.riskLevel]]</dd>
       </dl>
+
     </div>
   </template>
 

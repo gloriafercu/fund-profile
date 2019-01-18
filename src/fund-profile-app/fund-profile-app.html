@@ -56,7 +56,7 @@
     </iron-ajax>
     <div class="page-container">
       <header>
-        <h1>[[fund.name]], <span>[[fund.typeShort]]</span></h1>
+        <h1>[[ fund.entity ]] [[fund.name]], <span>[[fund.typeShort]]</span></h1>
         <h5>[[fund.subtype]]</h5>
       </header>
       <main>
@@ -67,7 +67,7 @@
             </info-table>
           <info-table>
             <span slot="title">Datos al [[ today ]]</span>
-            <div slot="lines"><rentabilidad-calculation data="[[ fund ]]" date="[[ date ]]"></rentabilidad-calculation></div>
+            <div slot="lines"><rentabilidad-calculation fund="{{ fund }} " date="{{ date }}"></rentabilidad-calculation></div>
           </info-table> 
         </div>
         <div class="main-container">
@@ -121,7 +121,7 @@
 
         return `${addZero(D)}/${addZero(M)}/${YYYY}`;
       }
-      handleresponse() {
+      handleResponse() {
         this.loading = !this.loading;
       }
     }

@@ -75,8 +75,12 @@
        */
       static get properties() {
         return {
-          data: Object,
-          dateData: Object,
+          fund: Object,
+          date: Date,
+          dateData: {
+            type: Object,
+            observer: "getDateData(date)"
+          },
           firstOfMonth: {
             type: Number,
             computed: "getFirstOfMonth(date)"
@@ -96,6 +100,12 @@
         };
       }
 
+      static get observers() {
+        return [
+          "getDateData(date)"
+        ]
+      }
+
       constructor() {
         super();
       }
@@ -105,16 +115,11 @@
        */
       ready() {
         super.ready();
-        this.data = this.getData()
-        this.dateData = this.getDateData(date)
-      }
-
-      getData(){
-        this.data = data;
       }
       getDateData(day) {
-        let result = this.data.data.find(element => element.date === day);
-        this.dateData = result;
+          console.log(this.fund)
+          let result = this.fund.data.find(element => element.date === day)
+          return result;
       }
       getFirstOfMonth(day) {
         let date = new Date(day);
@@ -134,9 +139,6 @@
           ((endRentability - startRentability) / startRentability).toFixed(2) +
           "%"
         );
-      }
-      dataChanged(data) {
-        this.data = data
       }
     }
 

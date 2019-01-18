@@ -7,8 +7,8 @@
             "typeShort": "FI",
             "subtype": "Monetarios",
             "ISIN": "ES0113276002",
-            "country": "Spain",
-            "currency": "EURO",
+            "country": "España",
+            "currency": "EUR",
             "riskLevel": 1,
             "data": [
                 {
@@ -26,7 +26,12 @@
                 {
                     "date": 1547593200000,
                     "netAssetValue" : 10.823231
+                },
+                {
+                    "date": 1547679600000,
+                    "netAssetValue" : 10.899971
                 }
+
 
             ],
             "activosMonetarios": 7,

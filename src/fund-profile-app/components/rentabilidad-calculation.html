@@ -29,21 +29,30 @@
       dd {
         font-family: "BentonSans Regular";
       }
+
+      .green {
+        color: green;
+      }
+
+      .red {
+        color: red;
+      }
+
     </style>
 
     <div>
       <dl>
         <dt>Valor liquidativo</dt>
-        <dd>[[ dateData.netAssetValue ]]</dd>
+        <dd></dd>
       </dl>
 
       <dl>
         <dt>Rentabilidad mes en curso</dt>
-        <dd></dd>
+        <dd class$="{{changeValueClass(rentabilidadmensual)}}">[[rentabilidadmensual]]</dd>
       </dl>
       <dl>
         <dt>Rentabilidad año en curso</dt>
-        <dd></dd>
+        <dd class$="{{changeValueClass(rentabilidadanual)}}">[[rentabilidadanual]]</dd>
       </dl>
       <dl>
         <dt>Rentabilidad últ. 12 meses</dt>
@@ -75,69 +84,74 @@
        */
       static get properties() {
         return {
-          data: Object,
-          dateData: Object,
-          firstOfMonth: {
-            type: Number,
-            computed: "getFirstOfMonth(date)"
+          funddata: Array,
+          date: Number, 
+          todayValue: {
+            type: Number, 
+            computed: 'getTodayValue(funddata)'
           },
-          firstOfYear: {
+          firstDayValue: {
             type: Number,
-            computed: "getFirstOfYear(date)"
+            computed: 'getFirstDayValue(funddata)'
           },
-          currentMonthRentability: {
+          firstDayOfYearValue: {
             type: Number,
-            computed: "rentability(firstOfMonth, date)"
+            computed: 'getFirstDayOfYearValue(funddata)'
           },
-          currentYearRentability: {
+          rentabilidadmensual: {
             type: Number,
-            computed: "rentability(firstOfYear, date)"
+            computed: 'valuesChanged(todayValue, firstDayValue)'
+          },
+          rentabilidadanual: {
+            type: Number,
+            computed: 'valuesChanged(todayValue, firstDayOfYearValue)'
           }
-        };
-      }
-
-      constructor() {
-        super();
+        }
       }
 
       /**
-       * Use for one-time configuration of your component after local DOM is initialized.
-       */
-      ready() {
-        super.ready();
-        this.data = this.getData()
-        this.dateData = this.getDateData(date)
+        * Array of strings describing multi-property observer methods and their
+        * dependant properties
+        */
+      // static get observers() {
+      //   return [
+      //     'valuesChanged(todayValue, firstDayValue)'
+      //   ];
+      // }
+
+      getTodayValue(fundData) {
+        if (!fundData) {
+          return
+        }
+        const todayValues = fundData.find(item => item.date === this.date)
+        return todayValues.netAssetValue
       }
 
-      getData(){
-        this.data = data;
-      }
-      getDateData(day) {
-        let result = this.data.data.find(element => element.date === day);
-        this.dateData = result;
-      }
-      getFirstOfMonth(day) {
-        let date = new Date(day);
-        let firstDay = new Date(date.getFullYear(), date.getMonth(), 1);
-        return (this.firstOfMonth = firstDay.getTime());
-      }
-      getFirstOfYear(day) {
-        let date = new Date(day);
-        let firstDay = new Date(date.getFullYear(), 0, 1);
-        return (this.firstOfYear = firstDay.getTime());
+      getFirstDayValue(fundData) {
+        const today = new Date()
+        let firstDay = new Date(today.getFullYear(), today.getMonth(), 1);
+        const firstDayTimestamp = firstDay.getTime()
+        const firstDayValues = fundData.find(item => item.date === firstDayTimestamp)
+        return firstDayValues.netAssetValue
       }
 
-      rentability(startDate, endDate) {
-        let startRentability = this.getDateData(startDate).netAssetValue;
-        let endRentability = this.getDateData(endDate).netAssetValue;
-        return (
-          ((endRentability - startRentability) / startRentability).toFixed(2) +
-          "%"
-        );
+      getFirstDayOfYearValue(fundData) {
+        const today = new Date()
+        let firstDay = new Date(today.getFullYear(), 0, 1);
+        const firstDayTimestamp = firstDay.getTime()
+        const firstDayValues = fundData.find(item => item.date === firstDayTimestamp)
+        return firstDayValues.netAssetValue
       }
-      dataChanged(data) {
-        this.data = data
+
+      valuesChanged(todayValue, firstDayValue) {
+        const rentabilidad = ((todayValue-firstDayValue)/firstDayValue).toFixed(2) + '%'
+        return rentabilidad
       }
+
+      changeValueClass(value){
+        return ( parseFloat(value) >= 0 ) ? 'green' : 'red'
+      }
+
     }
 
     window.customElements.define(

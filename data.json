@@ -33,7 +33,24 @@
                 "december": "Diciembre: el año cierra con un crecimiento global bastante mejor de lo esperado a principios de año, del orden del 3,6%. A esta mejora en las previsiones han contribuido las economías emergentes y, especialmente, las desarrolladas. En los mercados desarrollados, el crecimiento podría situarse en 2017 en el 2,3%, bastante similar en EE.UU. y la eurozona. Una inflación, que a pesar de no generar miedos deflacionistas, ha permanecido bastante contenida. Y unas incertidumbres políticas que aunque persisten, han sido menores que en 2016 donde tuvimos los eventos del referéndum del Brexit en Reino Unido y la elección del Presidente Trump en EE.UU. Todo ello ha resultado en un entorno de muy baja volatilidad, muy favorecedor para los activos de riesgo que, a pesar del alargado ciclo económico, se han mantenido como los instrumentos con mayor retorno.",
                 "november": "Noviembre: Después del Brexit, hemos sido testigos de la victoria de Trump en las elecciones presidenciales de EE.UU. y del fracaso del referéndum de la reforma constitucional italiana y la dimisión del primer ministro. La caída en las previsiones de crecimiento observada en la primera mitad del año desapareció durante el 3T e incluso se ha transformado en el 4T en una mejora de previsiones tanto para este año como para el que viene, especialmente en los países desarrollados. Los buenos datos económicos publicados (índices de sorpresas económicas en máximos de los últimos años) han sorprendido positivamente y han permitido cerrar el año de forma bastante tranquila. Los tipos de interés en la zona Euro han cerrado el año a niveles mínimos históricos con todas las curvas de Gobiernos a c/p sumergidas en niveles negativos así comos los fixing del Euribor ( 12 meses -0,08%) a cierre de ejercicio.",
                 "october": "Octubre: La huida a la calidad, las sorpresas bajistas en los datos macro y una moderación de las expectativas de normalización monetaria han dado apoyo este mes a la deuda soberana de mayor calidad, con aplanamiento de las curvas de tipos desde los máximos de febrero y ampliación de los diferenciales a favor de EE.UU. En Alemania los tipos a 2 y 10 años se reducen 6pb y 16pb a -0,60% y 0,50%, mientras que en EE.UU. el tipo a 2 años apenas sube 2pb a 2,27% (tras tocar máximos de 2,35%) y el 10 años baja 12pb a 2,74%. Pese al impacto alcista de la deriva proteccionista de Trump, las expectativas de inflación a largo plazo en EE.UU. se moderan 6pb a 2,06%, apoyadas por las sorpresas a la baja en los datos de salarios y precios. El mercado, sin embargo, descuenta más inflación en Alemania, con un repunte de las expectativas a 10 años de 8pb a 1,37%. La deuda periférica europea ha tenido un comportamiento relativamente favorable. Aunque el clima de aversión al riesgo ha tenido impacto en la deuda corporativa, la ampliación de los diferenciales de crédito ha sido moderada, con un mejor comportamiento relativo del segmento especulativo frente al de mayor calidad. Las compras del BCE en Europa y el bajo ritmo de emisiones en EE.UU. por la reforma fiscal siguen siendo factores de apoyo al crédito."
-            }
+            },
+            "cartera": [
+                {   "name": "FRANCE (GOVT OF) 1.3 19",
+                    "percentage": 19.58
+                },
+                {   "name": "BUONI ORDINARI DEL TES 0 19",
+                    "percentage": 12.98
+                },
+                {   "name": "BUONI POLIENNALI DEL TES 2.35 19",
+                    "percentage": 11.27
+                },
+                {   "name": "SPAIN LETRAS DEL TESORO 0 19",
+                    "percentage": 10.24
+                },
+                {   "name": "CCTS EU 0 11/1/18",
+                    "percentage": 5.85
+                }
+            ]
         }
 
 }

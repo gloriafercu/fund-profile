@@ -7,14 +7,24 @@
         <style >
             :host {
                 font-family: 'Roboto', sans-serif;
-                font-size: 16px;
+                font-size: 14px;
                 font-weight: 100;
-                --bbva-light-blue: rgb(42, 134, 202);
+                /* BLUES */
+                --bbva-blue: rgb(42, 134, 202);
+                --bbva-light-blue: rgb(212, 236, 252);
+                --bbva-dark-blue: rgb(7, 33, 70);
+                /* GREYS */
                 --bbva-light-grey: rgb(233,233,233);
                 --paper-button-ink-color: white;
+                /* EVALUATIVE */
+                --evaluate-low:  #da3851;
+                --evaluate-high: #48ae64;
+            }
+            p{
+                font-size: 0.8rem;
             }
             paper-button.blue{
-                background-color: var(--bbva-light-blue);
+                background-color: var(--bbva-blue);
                 padding: 10px 20px;
                 font-size: 0.8em;
                 color: white;
@@ -23,8 +33,8 @@
             }
             paper-button.blue:hover{
                 background-color:white;
-                color: var(--bbva-light-blue);
-                border: 1px solid var(--bbva-light-blue);
+                color: var(--bbva-blue);
+                border: 1px solid var(--bbva-blue);
                 transition: all 0.3s ease-in
             }
             .header-tab {

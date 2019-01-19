@@ -23,7 +23,7 @@
             }
 
             .documents a {
-                color: var(--bbva-light-blue);
+                color: var(--bbva-blue);
                 padding: 15px 0;
                 font-weight: bold;
                 font-size: 14px;
@@ -110,18 +110,6 @@
             constructor() {
                 super();
             }
-
-            /**
-             * Use for one-time configuration of your component after local DOM is initialized. 
-             */
-            ready() {
-                super.ready();
-
-                Polymer.RenderStatus.afterNextRender(this, function() {
-                    
-                });
-            }
-
         }
 
         window.customElements.define(DocumentacionTab.is, DocumentacionTab);

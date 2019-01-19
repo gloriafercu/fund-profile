@@ -1,4 +1,7 @@
-<link rel="import" href="../../../bower_components/polymer/polymer-element.html" />
+<link
+  rel="import"
+  href="../../../bower_components/polymer/polymer-element.html"
+/>
 
 <dom-module id="info-table">
   <template>
@@ -10,13 +13,13 @@
         border-radius: 4px;
         background-color: white;
         margin-bottom: 5px;
-        font-size: 0.8em;
+        font-size: 0.8rem;
       }
       header {
         display: block;
         background: #fefefe;
         background-size: 100%;
-        background: var(--bbva-light-blue);
+        background: var(--bbva-blue);
         -moz-border-radius: 4px 4px 0 0;
         -webkit-border-radius: 4px;
         border-radius: 4px 4px 0 0;
@@ -24,8 +27,8 @@
       }
       header h3 {
         border: none;
-        color:  white;
-        font-size: 16px;
+        color: white;
+        font-size: 14px;
         font-weight: lighter;
         margin: 0;
         padding: 15px 0 15px 20px;
@@ -37,7 +40,9 @@
     <header>
       <h3><slot name="title"></slot></h3>
     </header>
-    <content> <slot name="lines"></slot> </content>
+    <content>
+      <slot name="rows"></slot>
+    </content>
   </template>
 
   <script>

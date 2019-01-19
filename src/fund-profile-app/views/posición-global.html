@@ -12,20 +12,18 @@
             :host {
                 display: block
             }
-            p{
-                font-size: 0.8em;
-            }
+
         </style>
 
-    <div class="header-tab">
-        <h2>Posición Global</h2>
-        <paper-button class="blue">EXPORTAR</paper-button>
-    </div>    
+        <div class="header-tab">
+            <h2>Posición Global</h2>
+            <paper-button class="blue">Exportar</paper-button>
+        </div>    
 
-    <p>Período consultado:</p>
-    <p>Última actualización:</p>
+        <p>Período consultado:</p>
+        <p>Última actualización:</p>
 
-    <posicion-global-chart></posicion-global-chart>
+        <posicion-global-chart></posicion-global-chart>
 
     </template>
 
@@ -62,17 +60,6 @@
              */
             constructor() {
                 super();
-            }
-
-            /**
-             * Use for one-time configuration of your component after local DOM is initialized. 
-             */
-            ready() {
-                super.ready();
-
-                Polymer.RenderStatus.afterNextRender(this, function() {
-                    
-                });
             }
 
         }

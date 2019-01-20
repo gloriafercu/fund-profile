@@ -1,102 +1,131 @@
 <link rel="import" href="../../../bower_components/polymer/polymer-element.html">
 <link rel="import" href="../../../bower_components/google-charts/google-chart.html">
 <link rel="import" href="../../../bower_components/iron-dropdown/iron-dropdown.html">
-
+<link rel="import" href="../theme/shared-styles.html" />
 
 <dom-module id="cartera-tab">
     <template>
-        <style>
+        <style include="shared-styles">
             :host {
                 display: block;
-            }
-
-            .top-ten-header{
-                width: 100%;
-                background-color: #E0E0EB;
-                padding: 2% 0 2% 0;
-                display: grid;
-                grid-template-columns: 3fr 1fr;
             }
 
             button {
                 font-size: 1.5rem;
                 background-color: transparent;
+                color: var(--bbva-dark-grey);
+                font-family: 'Roboto', 'BentonSans Light', Arial !important;
+                font-size: 1em;
+                line-height: 2.4em;
+                font-weight: 500;
                 border: none;
                 outline: none;
             }
-
-            .top-ten-table {
-                display: grid;
-                grid-template-columns: repeat(2, 1fr);
+            .header-tab{
+                justify-content: space-around;
+                height: 30px;
             }
 
-            .top-ten-table dd {
+            #top-ten-table {
+                width: 627px;
+                display: grid;
+                grid-auto-flow: row;
+            }
+            dl{
+                display: grid;
+                margin: 0;
+                padding: 10px 50px;
+                grid-auto-flow: column;
+                grid-template-columns: auto 150px;
+                border: 1px solid var(--bbva-light-grey)
+            }
+            dl:first-child{
+                background: var(--table-head-sandy);
+            }
+            dl:not(:first-child) >*{
+                font-size: 11px;
+            }
+            dd {
                 justify-self: right;
             }
-
-            .top-ten-table dd, dt {
-                margin-top: 6%;
-            }
-
+            
             .arrow-down {
                 width: 0; 
                 height: 0; 
                 border-left: 10px solid transparent;
                 border-right: 10px solid transparent;
-                border-top: 10px solid black;
+                border-top: 10px solid var(--bbva-dark-grey);
+                transition: all 0.3s ease-out;
             }
 
-            .arrow-left {
+            .arrow-right {
                 width: 0; 
                 height: 0; 
                 border-top: 10px solid transparent;
                 border-bottom: 10px solid transparent;
-                border-left: 10px solid black;
-                transform: rotate(-180deg);       
+                border-right: 10px solid var(--bbva-dark-grey);
+                transform: rotate(-180deg) translate(0%, -100%);    
+                transform-origin: 100% -20%;   
+                transition: all 0.3s ease-out;
             }
-
+            google-chart{
+                margin: auto;
+            }
+            google-chart::slotted #chartdiv{
+                cursor: grab;
+            }
         </style>
 
-    <google-chart
-        type="pie"
-        data="{{ cartera }}"
-        options='{
-            "pieHole": 0.5,
-            "colors": ["#2277BB", "#EDA572"],
-            "chartArea": {
-                "left" : "200"
-              }
-        }'
-        >
-    </google-chart>
+        <google-chart
+            type="pie"
+            data="{{ cartera }}"
+            options='{
+                "colors": ["#2277BB", "#EDA572"],
+                "chartArea": {
+                    "height": "60%",
+                    "top": "20%",
+                    "width" : "100%"
+                },
+                "fontName": "Roboto",
+                "height": 300,
+                "legend": {
+                    "alignment": "center",
+                    "position": "right",
+                    "textStyle": {
+                        "fontSize": 12
+                    }
+                },
+                "pieHole": 0.6,
+                "pieSliceBorderColor": "none",
+                "pieSliceText": "none",
+                "tooltip": {
+                    "trigger": "selection"
+                },
+                "width": 500
+            }'
+            >
+        </google-chart>
 
-    <div on-click='dropdownOpen' class="top-ten-header">
-        <button >Top Ten Inversiones</button>
-        <p class$="[[arrow]]"></p>
-    </div>
-
-      <iron-dropdown id="dropdown" no-overlap>
-        <div slot="dropdown-content">
-            <div class="top-ten-table">
-
-                <dt><b>Inversiones</b></dt>
-                <dd><b>Peso Cartera</b></dd>
-
-            </div>
-
-            <template is="dom-repeat"
+        <div on-click='dropdownOpen' class="header-tab">
+            <button >Top Ten Inversiones</button>
+            <p class$="[[arrow]]"></p>
+        </div>
+        <iron-dropdown id="dropdown" no-overlap>
+            <div id="top-ten-table" slot="dropdown-content" >
+                <dl>
+                    <dt>Inversiones</dt>
+                    <dd>Peso Cartera</dd>
+                </dl>
+                <template is="dom-repeat"
                 items="[[inversiones]]"
                 as="inversion">
-                
-                <div class="top-ten-table">
-                    <dt>[[inversion.name]]</dt>
-                    <dd>[[inversion.percentage]]</dd>
-                </div>
-            </template>
-                
-        </div>
-      </iron-dropdown>
-   
+                    <dl>
+                        <dt>[[inversion.name]]</dt>
+                        <dd>[[inversion.percentage]]%</dd>
+                    </dl>
+                </template>
+            </div>    
+        </iron-dropdown>
     </template>
 
     <script>
@@ -132,13 +161,13 @@
                         value: function () {
                             return 
                                 [["Category","Amount"],
-                                ["Activos Monetarios", 0],
-                                ["Renta Fija", 0]]
+                                ["ACTIVOS MONETARIOS", 0],
+                                ["RENTA FIJA", 0]]
                         }
                     },
                     arrow: {
                         type: String, 
-                        value: 'arrow-down'
+                        value: 'arrow-right'
                     }
                 };
             }
@@ -158,14 +187,13 @@
 
             dataChanged() {
                 this.set('cartera', [["Category","Amount"],
-                                    ["Activos Monetarios", this.activosmonetarios],
-                                    ["Renta Fija", this.rentafija]])
+                                    ["ACTIVOS MONETARIOS", this.activosmonetarios],
+                                    ["RENTA FIJA", this.rentafija]])
             }
 
             dropdownOpen() {
                 this.$.dropdown.open()
-                this.arrow = (this.arrow === 'arrow-down') ? 'arrow-left' : 'arrow-down'
-              
+                this.arrow = (this.arrow === 'arrow-down') ? 'arrow-right' : 'arrow-down'
             }
         }
 

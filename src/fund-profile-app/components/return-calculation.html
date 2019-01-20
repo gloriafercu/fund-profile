@@ -2,12 +2,14 @@
   rel="import"
   href="../../../bower_components/polymer/polymer-element.html"
 />
+<link rel="import" href="../theme/shared-styles.html" />
 
 <dom-module id="return-calculation">
   <template>
-    <style>
+    <style include="shared-styles">
       :host {
         display: block;
+        font-size: 1em;
       }
       .see-date {
         display: flex;
@@ -38,19 +40,19 @@
     </table-row>
     <table-row>
       <span slot="value-name">Rentabilidad mes en curso</span>
-      <span slot="value" class$="{{ changeValueClass(monthlyReturn) }}"
+      <span slot="value" class$="{{ changeValueClass( monthlyReturn ) }}"
         >[[monthlyReturn]]%</span
       >
     </table-row>
     <table-row>
       <span slot="value-name">Rentabilidad año en curso</span>
-      <span slot="value" class$="{{ changeValueClass(thisYearReturn) }}"
+      <span slot="value" class$="{{ changeValueClass( thisYearReturn ) }}"
         >[[thisYearReturn]]%</span
       >
     </table-row>
     <table-row>
       <span slot="value-name">Rentabilidad últ. 12 meses</span>
-      <span slot="value" class$="{{ changeValueClass(anualReturn) }}"
+      <span slot="value" class$="{{ changeValueClass( anualReturn ) }}"
         >[[anualReturn]]%</span
       >
     </table-row>
@@ -83,55 +85,56 @@
           date: Number,
           todayValue: {
             type: Number,
-            computed: "getDateValue(fundData)"
+            computed: "getDateValue( fundData)"
           },
           firstDayOfMonthValue: {
             type: Number,
-            computed: "getDateValue(fundData, , 1)"
+            computed: "getDateValue( fundData, , 1)"
           },
           firstDayOfYearValue: {
             type: Number,
-            computed: "getDateValue(fundData, , 1, 0)"
+            computed: "getDateValue( fundData, , 1, 0 )"
           },
           yearAgoValue: {
             type: Number,
-            computed: "getDateValue(fundData, 'true', -1)"
+            computed: "getDateValue( fundData, 'true', -1 )"
           },
           monthlyReturn: {
             type: Number,
-            computed: "valuesChange(todayValue, firstDayOfMonthValue)"
+            computed: "valuesChange( todayValue, firstDayOfMonthValue )"
           },
           thisYearReturn: {
             type: Number,
-            computed: "valuesChange(todayValue, firstDayOfYearValue)"
+            computed: "valuesChange( todayValue, firstDayOfYearValue )"
           },
           anualReturn: {
             type: Number,
-            computed: "valuesChange(todayValue, yearAgoValue)"
+            computed: "valuesChange( todayValue, yearAgoValue )"
           }
         };
       }
 
       getDateValue(data, computed, ...args) {
         const today = new Date();
-        let dateTimestamp;
+        let date;
 
         if (computed) {
           let [years = 0, months = 0, days = 0] = args;
           let year = today.getFullYear(),
               month = today.getMonth(),
               day = today.getDate();
-          dateTimestamp = new Date(year - years, month - months, day - days).getTime()
+          date = new Date(year - years, month - months, day - days)
         } else {
           let [
             day = today.getDate(),
             month = today.getMonth(),
             year = today.getFullYear()
           ] = args;
-          dateTimestamp = new Date(year, month, day).getTime();
+          date = new Date(year, month, day)
+          
         }
 
-        return data.find(item => item.date === dateTimestamp).netAssetValue;
+        return data.find(item => item.date === date.getTime()).netAssetValue;
       }
 
       valuesChange(todayValue, firstDayValue) {

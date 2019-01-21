@@ -2,10 +2,11 @@
   rel="import"
   href="../../../bower_components/polymer/polymer-element.html"
 />
+<link rel="import" href="../theme/shared-styles.html" />
 
 <dom-module id="rentabilidad-calculation">
   <template>
-    <style>
+    <style include="shared-styles">
       :host {
         display: block;
       }
@@ -31,31 +32,30 @@
       }
     </style>
 
-    <div>
-      <dl>
-        <dt>Valor liquidativo</dt>
-        <dd>[[ dateData.netAssetValue ]]</dd>
-      </dl>
+    <dl>
+      <dt>Valor liquidativo</dt>
+      <dd>[[ dateData.netAssetValue ]]</dd>
+    </dl>
 
-      <dl>
-        <dt>Rentabilidad mes en curso</dt>
-        <dd></dd>
-      </dl>
-      <dl>
-        <dt>Rentabilidad año en curso</dt>
-        <dd></dd>
-      </dl>
-      <dl>
-        <dt>Rentabilidad últ. 12 meses</dt>
-        <dd></dd>
-      </dl>
-      <p class="see-date">Consultar otra fecha</p>
-    </div>
+    <dl>
+      <dt>Rentabilidad mes en curso</dt>
+      <dd></dd>
+    </dl>
+    <dl>
+      <dt>Rentabilidad año en curso</dt>
+      <dd></dd>
+    </dl>
+    <dl>
+      <dt>Rentabilidad últ. 12 meses</dt>
+      <dd></dd>
+    </dl>
+    <p class="see-date">Consultar otra fecha</p>
   </template>
 
   <script>
     /**
-     * `rentabilidad-calculation` Description
+     * `rentabilidad-calcula
+     tion` Description
      *
      * @summary ShortDescription.
      * @customElement
@@ -75,8 +75,6 @@
        */
       static get properties() {
         return {
-          data: Object,
-          dateData: Object,
           firstOfMonth: {
             type: Number,
             computed: "getFirstOfMonth(date)"
@@ -99,30 +97,21 @@
       constructor() {
         super();
       }
-
-      /**
-       * Use for one-time configuration of your component after local DOM is initialized.
-       */
-      ready() {
-        super.ready();
-        this.data = this.getData()
-        this.dateData = this.getDateData(date)
+      static get observers() {
+        return ["getDateData(date, fundData)"];
       }
 
-      getData(){
-        this.data = data;
-      }
-      getDateData(day) {
-        let result = this.data.data.find(element => element.date === day);
+      getDateData(date, fundData) {
+        let result = fundData.find(element => element.date === date);
         this.dateData = result;
       }
-      getFirstOfMonth(day) {
-        let date = new Date(day);
+      getFirstOfMonth() {
+        let date = new Date();
         let firstDay = new Date(date.getFullYear(), date.getMonth(), 1);
         return (this.firstOfMonth = firstDay.getTime());
       }
-      getFirstOfYear(day) {
-        let date = new Date(day);
+      getFirstOfYear() {
+        let date = new Date();
         let firstDay = new Date(date.getFullYear(), 0, 1);
         return (this.firstOfYear = firstDay.getTime());
       }
@@ -136,7 +125,7 @@
         );
       }
       dataChanged(data) {
-        this.data = data
+        this.data = data;
       }
     }
 

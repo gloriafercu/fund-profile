@@ -1,6 +1,6 @@
+<script src="../../../bower_components/web-animations-js/web-animations-next-lite.min.js"></script>
 <link rel="import" href="../../../bower_components/polymer/polymer-element.html">
 <link rel="import" href="../theme/shared-styles.html">
-<link rel="import" href="../../../bower_components/web-animations-js/web-animations-next-lite.min.js">
 <link rel="import" href="../../../bower_components/neon-animation/web-animations.html">
 <link rel="import" href="../../../bower_components/paper-dropdown-menu/paper-dropdown-menu.html">
 <link rel="import" href="../../../bower_components/paper-listbox/paper-listbox.html">
@@ -94,18 +94,6 @@
             constructor() {
                 super();
             }
-
-            /**
-             * Use for one-time configuration of your component after local DOM is initialized. 
-             */
-            ready() {
-                super.ready();
-
-                Polymer.RenderStatus.afterNextRender(this, function() {
-                    
-                });
-            }
-
         }
 
         window.customElements.define(ComentarioGestor.is, ComentarioGestor);

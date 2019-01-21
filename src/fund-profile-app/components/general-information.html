@@ -17,7 +17,7 @@
         font-size: 1em;
         --rating-icon-color: #da3851;
         --rating-icon-size: 10px;
-    }
+      }
       .sidebar-table {
         border: 1px solid #dde3ea;
         padding-bottom: 10px;
@@ -39,35 +39,33 @@
       }
     </style>
 
-    <div >
-      <dl>
-        <dt>ISIN</dt>
-        <dd>[[data.ISIN]]</dd>
-      </dl>
+    <dl>
+      <dt>ISIN</dt>
+      <dd>[[data.ISIN]]</dd>
+    </dl>
 
-      <dl>
-        <dt>Domicilio</dt>
-        <dd>[[data.country]]</dd>
-      </dl>
+    <dl>
+      <dt>Domicilio</dt>
+      <dd>[[data.country]]</dd>
+    </dl>
 
-      <dl>
-        <dt>Divisa</dt>
-        <dd>[[data.currency]]</dd>
-      </dl>
+    <dl>
+      <dt>Divisa</dt>
+      <dd>[[data.currency]]</dd>
+    </dl>
 
-      <dl>
-        <dt>Riesgo de inversión</dt>
-        <dd>
-          <l2t-paper-rating
-            readonly
-            total="7"
-            rating="[[data.riskLevel]]"
-            icon="image:lens"
-          >
-          </l2t-paper-rating>
-        </dd>
-      </dl>
-    </div>
+    <dl>
+      <dt>Riesgo de inversión</dt>
+      <dd>
+        <l2t-paper-rating
+          readonly
+          total="7"
+          rating="[[data.riskLevel]]"
+          icon="image:lens"
+        >
+        </l2t-paper-rating>
+      </dd>
+    </dl>
   </template>
 
   <script>

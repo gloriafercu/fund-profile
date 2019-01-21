@@ -123,18 +123,19 @@
           let year = today.getFullYear(),
               month = today.getMonth(),
               day = today.getDate();
-          date = new Date(year - years, month - months, day - days)
+          date = new Date((year + years), (month + months), (day + days)).getTime()
+    
         } else {
           let [
             day = today.getDate(),
             month = today.getMonth(),
             year = today.getFullYear()
           ] = args;
-          date = new Date(year, month, day)
-          
+          date = new Date(year, month, day).getTime()
+          console.log(date)
         }
 
-        return data.find(item => item.date === date.getTime()).netAssetValue;
+        return data.find(item => item.date === date).netAssetValue;
       }
 
       valuesChange(todayValue, firstDayValue) {

@@ -1,5 +1,6 @@
 <link rel="import" href="../../../bower_components/polymer/polymer-element.html">
 <link rel="import" href="../../../bower_components/google-charts/google-chart.html">
+<link rel="import" href="../../../bower_components/iron-dropdown/iron-dropdown.html">
 
 
 <dom-module id="cartera-tab">
@@ -8,13 +9,57 @@
             :host {
                 display: block;
             }
-        </style>
 
-    <p>Cartera</p>
+            .top-ten-header{
+                width: 100%;
+                background-color: #E0E0EB;
+                padding: 2% 0 2% 0;
+                display: grid;
+                grid-template-columns: 3fr 1fr;
+            }
+
+            button {
+                font-size: 1.5rem;
+                background-color: transparent;
+                border: none;
+                outline: none;
+            }
+
+            .top-ten-table {
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .top-ten-table dd {
+                justify-self: right;
+            }
+
+            .top-ten-table dd, dt {
+                margin-top: 6%;
+            }
+
+            .arrow-down {
+                width: 0; 
+                height: 0; 
+                border-left: 10px solid transparent;
+                border-right: 10px solid transparent;
+                border-top: 10px solid black;
+            }
+
+            .arrow-left {
+                width: 0; 
+                height: 0; 
+                border-top: 10px solid transparent;
+                border-bottom: 10px solid transparent;
+                border-left: 10px solid black;
+                transform: rotate(-180deg);       
+            }
+
+        </style>
 
     <google-chart
         type="pie"
-        data="{{cartera}}"
+        data="{{ cartera }}"
         options='{
             "pieHole": 0.5,
             "colors": ["#2277BB", "#EDA572"],
@@ -24,6 +69,33 @@
         }'
         >
     </google-chart>
+
+    <div on-click='dropdownOpen' class="top-ten-header">
+        <button >Top Ten Inversiones</button>
+        <p class$="[[arrow]]"></p>
+    </div>
+
+      <iron-dropdown id="dropdown" no-overlap>
+        <div slot="dropdown-content">
+            <div class="top-ten-table">
+
+                <dt><b>Inversiones</b></dt>
+                <dd><b>Peso Cartera</b></dd>
+
+            </div>
+
+            <template is="dom-repeat"
+                items="[[inversiones]]"
+                as="inversion">
+                
+                <div class="top-ten-table">
+                    <dt>[[inversion.name]]</dt>
+                    <dd>[[inversion.percentage]]</dd>
+                </div>
+            </template>
+                
+        </div>
+      </iron-dropdown>
    
     </template>
 
@@ -50,6 +122,7 @@
             static get properties() {
                 return {
                     activosmonetarios: Number,
+                    inversiones: Array,
                     rentafija: {
                         type: Number,
                         computed: 'activosmonetariosChanged(activosmonetarios)'
@@ -57,8 +130,15 @@
                     cartera: {
                         type: Object,
                         value: function () {
-                            return {}
+                            return 
+                                [["Category","Amount"],
+                                ["Activos Monetarios", 0],
+                                ["Renta Fija", 0]]
                         }
+                    },
+                    arrow: {
+                        type: String, 
+                        value: 'arrow-down'
                     }
                 };
             }
@@ -70,6 +150,9 @@
             }
 
             activosmonetariosChanged(activosmonetarios) {
+                if (!activosmonetarios) {
+                    return
+                }
                 return (100 - activosmonetarios)
             }
 
@@ -79,7 +162,11 @@
                                     ["Renta Fija", this.rentafija]])
             }
 
-
+            dropdownOpen() {
+                this.$.dropdown.open()
+                this.arrow = (this.arrow === 'arrow-down') ? 'arrow-left' : 'arrow-down'
+              
+            }
         }
 
         window.customElements.define(CarteraTab.is, CarteraTab);

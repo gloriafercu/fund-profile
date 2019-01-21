@@ -91,7 +91,6 @@
       static get properties() {
         return {
           fund: Object,
-          fundData: Object,
           data: Object,
           date: Object,
           today: {
@@ -111,8 +110,9 @@
       ready() {
         super.ready();
         this.loading = true;
-        this.date = new Date().setHours(0,0,0,0)
-      }
+        this.date = new Date().setHours(0, 0, 0, 0)
+      }  
+
       getDate(date) {
         const addZero = value => (value < 10 ? "0" + value : value);
         let today = new Date(date);

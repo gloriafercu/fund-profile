@@ -17,7 +17,7 @@
                 display: block;
                 --paper-tab-ink: var(--bbva-light-blue);
             }
-            paper-tabs{
+            paper-tabs {
                 display: flex;
                 justify-content: flex-start;
             }           
@@ -67,7 +67,7 @@
             <comentario-gestor fund="{{ fund }}"></comentario-gestor>
         </div>
         <div>
-            <cartera-tab activosmonetarios="{{ fund.activosMonetarios }}"></cartera-tab>
+            <cartera-tab activosmonetarios="[[ fund.activosMonetarios ]]" inversiones="[[fund.cartera]]"></cartera-tab>
         </div>
 
     </iron-pages>

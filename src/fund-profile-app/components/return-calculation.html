@@ -1,0 +1,156 @@
+<link
+  rel="import"
+  href="../../../bower_components/polymer/polymer-element.html"
+/>
+<link rel="import" href="../theme/shared-styles.html" />
+
+<dom-module id="return-calculation">
+  <template>
+    <style include="shared-styles">
+      :host {
+        display: block;
+        font-size: 1em;
+      }
+      .see-date {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin: 0 20px;
+        padding: 10px 0;
+      }
+      table-row{
+        border-bottom: 1px solid #dcdcdc;
+      }
+      table-row:last-child, .see-date {
+        border-bottom: none;
+        padding-bottom: 10px;
+      }
+
+      .green {
+        color: var(--evaluate-high);
+      }
+
+      .red {
+        color: var(--evaluate-low);
+      }
+    </style>
+    <table-row>
+      <span slot="value-name">Valor liquidativo</span>
+      <span slot="value">[[todayValue]] €</span>
+    </table-row>
+    <table-row>
+      <span slot="value-name">Rentabilidad mes en curso</span>
+      <span slot="value" class$="{{ changeValueClass( monthlyReturn ) }}"
+        >[[monthlyReturn]]%</span
+      >
+    </table-row>
+    <table-row>
+      <span slot="value-name">Rentabilidad año en curso</span>
+      <span slot="value" class$="{{ changeValueClass( thisYearReturn ) }}"
+        >[[thisYearReturn]]%</span
+      >
+    </table-row>
+    <table-row>
+      <span slot="value-name">Rentabilidad últ. 12 meses</span>
+      <span slot="value" class$="{{ changeValueClass( anualReturn ) }}"
+        >[[anualReturn]]%</span
+      >
+    </table-row>
+    <p class="see-date">Consultar otra fecha</p>
+  </template>
+
+  <script>
+    /**
+     * `return-calculation` Description
+     *
+     * @summary ShortDescription.
+     * @customElement
+     * @polymer
+     * @extends {Polymer.Element}
+     */
+    class ReturnCalculation extends Polymer.Element {
+      /**
+       * String providing the tag name to register the element under.
+       */
+      static get is() {
+        return "return-calculation";
+      }
+
+      /**
+       * Object describing property-related metadata used by Polymer features
+       */
+      static get properties() {
+        return {
+          fundData: Array,
+          date: Number,
+          todayValue: {
+            type: Number,
+            computed: "getDateValue( fundData)"
+          },
+          firstDayOfMonthValue: {
+            type: Number,
+            computed: "getDateValue( fundData, , 1)"
+          },
+          firstDayOfYearValue: {
+            type: Number,
+            computed: "getDateValue( fundData, , 1, 0 )"
+          },
+          yearAgoValue: {
+            type: Number,
+            computed: "getDateValue( fundData, 'true', -1 )"
+          },
+          monthlyReturn: {
+            type: Number,
+            computed: "valuesChange( todayValue, firstDayOfMonthValue )"
+          },
+          thisYearReturn: {
+            type: Number,
+            computed: "valuesChange( todayValue, firstDayOfYearValue )"
+          },
+          anualReturn: {
+            type: Number,
+            computed: "valuesChange( todayValue, yearAgoValue )"
+          }
+        };
+      }
+
+      getDateValue(data, computed, ...args) {
+        const today = new Date();
+        let date;
+
+        if (computed) {
+          let [years = 0, months = 0, days = 0] = args;
+          let year = today.getFullYear(),
+              month = today.getMonth(),
+              day = today.getDate();
+          date = new Date((year + years), (month + months), (day + days)).getTime()
+    
+        } else {
+          let [
+            day = today.getDate(),
+            month = today.getMonth(),
+            year = today.getFullYear()
+          ] = args;
+          date = new Date(year, month, day).getTime()
+          console.log(date)
+        }
+
+        return data.find(item => item.date === date).netAssetValue;
+      }
+
+      valuesChange(todayValue, firstDayValue) {
+        const rentability = (
+          (todayValue - firstDayValue) /
+          firstDayValue
+        ).toFixed(2);
+        return rentability;
+      }
+
+      changeValueClass(value) {
+        return value >= 0 ? "green" : "red";
+      }
+    }
+
+    window.customElements.define(ReturnCalculation.is, ReturnCalculation);
+  </script>
+</dom-module>

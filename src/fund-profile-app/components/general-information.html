@@ -14,49 +14,39 @@
       :host {
         display: block;
         margin-bottom: 5px;
-        font-size: 1em;
-        --rating-icon-color: #da3851;
+        --rating-icon-color: var(--evaluate-low);
         --rating-icon-size: 10px;
+        font-size: 1em;
       }
-      .sidebar-table {
-        border: 1px solid #dde3ea;
-        padding-bottom: 10px;
+      l2t-paper-rating:focus {
+        outline: none;
       }
-      dl {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
+      table-row{
         border-bottom: 1px solid #dcdcdc;
-        margin: 0 20px;
-        padding: 10px 0;
       }
-      dl:last-child {
+      table-row:last-child{
         border-bottom: none;
-        padding-bottom: 10px;
-      }
-      dd {
-        font-family: "BentonSans Regular";
       }
     </style>
 
-    <dl>
-      <dt>ISIN</dt>
-      <dd>[[data.ISIN]]</dd>
-    </dl>
+    <table-row>
+      <span slot="value-name">ISIN</span>
+      <span slot="value">[[data.ISIN]]</span>
+    </table-row>
 
-    <dl>
-      <dt>Domicilio</dt>
-      <dd>[[data.country]]</dd>
-    </dl>
+    <table-row>
+      <span slot="value-name">Domicilio</span>
+      <span slot="value">[[data.country]]</span>
+    </table-row>
 
-    <dl>
-      <dt>Divisa</dt>
-      <dd>[[data.currency]]</dd>
-    </dl>
+    <table-row>
+      <span slot="value-name">Divisa</span>
+      <span slot="value">[[data.currency]]</span>
+    </table-row>
 
-    <dl>
-      <dt>Riesgo de inversión</dt>
-      <dd>
+    <table-row>
+      <span slot="value-name">Riesgo de inversión</span>
+      <span slot="value">
         <l2t-paper-rating
           readonly
           total="7"
@@ -64,8 +54,8 @@
           icon="image:lens"
         >
         </l2t-paper-rating>
-      </dd>
-    </dl>
+      </span>
+    </table-row>
   </template>
 
   <script>
@@ -99,15 +89,6 @@
        */
       constructor() {
         super();
-      }
-
-      /**
-       * Use for one-time configuration of your component after local DOM is initialized.
-       */
-      ready() {
-        super.ready();
-
-        Polymer.RenderStatus.afterNextRender(this, function() {});
       }
     }
 

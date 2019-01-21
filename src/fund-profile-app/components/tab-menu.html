@@ -15,63 +15,50 @@
         <style>
             :host {
                 display: block;
-                --paper-tab-ink: var(--bbva-light-blue);
+                --paper-tab-ink: var(--bbva-blue);
             }
             paper-tabs {
                 display: flex;
                 justify-content: flex-start;
+                border-bottom: 5px solid var(--bbva-dark-blue)
             }           
             paper-tab{
-                color: var(--bbva-light-blue);
+                color: var(--bbva-blue);
                 display: inline-block;
                 width: auto;
                 height: auto; 
                 transition: all 0.3s ease-in  
             }
             paper-tab:hover{
-                background-color: var(--bbva-light-blue);
+                background-color: var(--bbva-blue);
                 color: white;
             }
             paper-tab.iron-selected{
                 font-size: 1.2em;
                 transition: all 0.2s ease-in;
+                background-color: var(--bbva-dark-blue);
+                color:white;
             }
-
         </style>
 
-    <paper-tabs selected="{{selected}}" no-bar>
-        <paper-tab>Información</paper-tab>
-        <paper-tab>Documentación</paper-tab>
-        <paper-tab>Evolución</paper-tab>
-        <paper-tab>Datos</paper-tab>
-        <paper-tab>Comentario Gestor</paper-tab>
-        <paper-tab>Cartera</paper-tab>
-    </paper-tabs>
+        <paper-tabs selected="{{selected}}" no-bar>
+            <paper-tab>Información</paper-tab>
+            <paper-tab>Documentación</paper-tab>
+            <paper-tab>Evolución</paper-tab>
+            <paper-tab>Datos</paper-tab>
+            <paper-tab>Comentario Gestor</paper-tab>
+            <paper-tab>Cartera</paper-tab>
+        </paper-tabs>
 
-    <iron-pages selected="{{selected}}">
-        <div>
+        <iron-pages selected="{{selected}}">
             <posicion-global></posicion-global>
-        </div>
-
-        <div>
             <documentacion-tab></documentacion-tab>
-        </div>
-        <div>
             <evolucion-tab></evolucion-tab>
-        </div>
-        <div>
             <datos-tab fund="{{ fund }}"></datos-tab>
-        </div>
-
-        <div>
             <comentario-gestor fund="{{ fund }}"></comentario-gestor>
-        </div>
-        <div>
             <cartera-tab activosmonetarios="[[ fund.activosMonetarios ]]" inversiones="[[fund.cartera]]"></cartera-tab>
-        </div>
-
-    </iron-pages>
-
+        </iron-pages>
+        
     </template>
 
     <script>
@@ -103,11 +90,7 @@
                     fund: Object
                 };
             }
-
-           
-
         }
-
         window.customElements.define(TabMenu.is, TabMenu);
     </script>
 </dom-module>

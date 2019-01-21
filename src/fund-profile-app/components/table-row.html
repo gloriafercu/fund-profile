@@ -1,0 +1,70 @@
+<link
+  rel="import"
+  href="../../../bower_components/polymer/polymer-element.html"
+/>
+
+<dom-module id="table-row">
+  <template>
+    <style>
+      :host {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        
+        margin: 0 20px;
+        padding: 10px 0;
+      }
+      :host::slotted:last-child{
+        border-bottom:none;
+      }
+      
+      dd {
+        font-family: "BentonSans Regular";
+        text-transform: uppercase;
+        font-weight: bold;
+      }
+    </style>
+
+      <dt><slot name="value-name"></slot></dt>
+      <dd><slot name="value"></slot></dd>
+  
+    </template>
+
+  <script>
+    /**
+     * `table-row` Description
+     *
+     * @summary ShortDescription.
+     * @customElement
+     * @polymer
+     * @extends {Polymer.Element}
+     */
+    class TableRow extends Polymer.Element {
+      /**
+       * String providing the tag name to register the element under.
+       */
+      static get is() {
+        return "table-row";
+      }
+
+      /**
+       * Object describing property-related metadata used by Polymer features
+       */
+      static get properties() {
+        return {};
+      }
+
+      /**
+       * Instance of the element is created/upgraded. Use: initializing state,
+       * set up event listeners, create shadow dom.
+       * @constructor
+       */
+      constructor() {
+        super();
+      }
+    }
+
+    window.customElements.define(TableRow.is, TableRow);
+  </script>
+</dom-module>

@@ -1,11 +1,21 @@
-<link rel="import" href="../../bower_components/polymer/polymer-element.html">
-<link rel="import" href="../../bower_components/iron-ajax/iron-ajax.html">
-<link rel="import" href="../../bower_components/polymer/lib/elements/dom-repeat.html">
-<link rel="import" href="../fund-profile-app/components/tab-menu.html">
-<link rel="import" href="../fund-profile-app/theme/shared-styles.html">
-<link rel="import" href="../fund-profile-app/components/general-information.html">
-<link rel="import" href="../fund-profile-app/components/rentabilidad-calculation.html">
-<link rel="import" href="../fund-profile-app/components/info-table.html">
+<link rel="import" href="../../bower_components/polymer/polymer-element.html" />
+<link rel="import" href="../../bower_components/iron-ajax/iron-ajax.html" />
+<link
+  rel="import"
+  href="../../bower_components/polymer/lib/elements/dom-repeat.html"
+/>
+<link rel="import" href="../fund-profile-app/components/tab-menu.html" />
+<link rel="import" href="../fund-profile-app/theme/shared-styles.html" />
+<link
+  rel="import"
+  href="../fund-profile-app/components/general-information.html"
+/>
+<link
+  rel="import"
+  href="../fund-profile-app/components/return-calculation.html"
+/>
+<link rel="import" href="../fund-profile-app/components/info-table.html" />
+<link rel="import" href="../fund-profile-app/components/table-row.html" />
 
 <dom-module id="fund-profile-app" class="fund-profile-app">
   <template>
@@ -18,15 +28,15 @@
         max-width: 940px;
         margin: 0 auto;
       }
-      header{
+      header {
         display: flex;
         flex-direction: column;
       }
-      main{
-        display:grid;
+      main {
+        display: grid;
         grid-template-columns: 1fr 2fr;
       }
-      .sidebar-container {
+      sidebar {
         padding-right: 20px;
       }
 
@@ -44,40 +54,47 @@
         font-weight: 400px;
         line-height: 20px;
       }
-
     </style>
     <iron-ajax
       auto
       url="http://localhost:3000/funds"
       handle-as="json"
       last-response="{{ fund }}"
-      on-response="handleResponse"
+      on-response="(handleResponse)"
     >
     </iron-ajax>
     <div class="page-container">
       <header>
-        <h1>[[fund.name]], <span>[[fund.typeShort]]</span></h1>
+        <h1>
+          [[ fund.entity ]] [[fund.name]], <span>[[fund.typeShort]]</span>
+        </h1>
         <h5>[[fund.subtype]]</h5>
       </header>
       <main>
-        <div class="sidebar-container">
-            <info-table>
-              <span slot="title">Información general</span>
-              <div slot="lines"><general-information data="[[ fund ]]"></general-information></div>
-            </info-table>
+        <sidebar>
+          <info-table>
+            <span slot="title">Información general</span>
+            <general-information
+              slot="rows"
+              data="[[ fund ]]"
+            ></general-information>
+          </info-table>
           <info-table>
             <span slot="title">Datos al [[ today ]]</span>
-            <div slot="lines"><rentabilidad-calculation fund-data="[[ fund.data ]]" date="[[ date ]]"></rentabilidad-calculation></div>
-          </info-table> 
-        </div>
+            <return-calculation
+              slot="rows"
+              fund-data="[[ fund.data ]]"
+              date="[[ date ]]"
+            >
+            </return-calculation>
+          </info-table>
+        </sidebar>
         <div class="main-container">
           <tab-menu fund="[[ fund ]]"></tab-menu>
-        </div> 
+        </div>
       </main>
     </div>
-   
   </template>
-
 
   <script>
     /**
@@ -95,7 +112,7 @@
           date: Object,
           today: {
             type: String,
-            computed: "getDate(date)"
+            computed: "formatDate(date)"
           },
           loading: Boolean
         };
@@ -110,10 +127,10 @@
       ready() {
         super.ready();
         this.loading = true;
-        this.date = new Date().setHours(0, 0, 0, 0)
-      }  
+        this.date = new Date().setHours(0, 0, 0, 0);
+      }
 
-      getDate(date) {
+      formatDate(date) {
         const addZero = value => (value < 10 ? "0" + value : value);
         let today = new Date(date);
         let D = today.getDate();

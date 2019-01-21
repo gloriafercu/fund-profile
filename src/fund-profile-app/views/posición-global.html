@@ -13,16 +13,10 @@
                 display: block
             }
 
-
-            paper-button.blue {
-                background-color: #2a86ca;
-                text-transform: capitalize;
-                color: white;
-            }
         </style>
 
         <div class="header-tab">
-            <h3>Posición Global</h3>
+            <h2>Posición Global</h2>
             <paper-button class="blue">Exportar</paper-button>
         </div>    
 
@@ -66,17 +60,6 @@
              */
             constructor() {
                 super();
-            }
-
-            /**
-             * Use for one-time configuration of your component after local DOM is initialized. 
-             */
-            ready() {
-                super.ready();
-
-                Polymer.RenderStatus.afterNextRender(this, function() {
-                    
-                });
             }
 
         }

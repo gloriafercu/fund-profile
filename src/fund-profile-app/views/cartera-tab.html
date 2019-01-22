@@ -25,25 +25,29 @@
                 justify-content: space-around;
                 height: 30px;
             }
-
             #top-ten-table {
                 width: 627px;
                 display: grid;
-                grid-auto-flow: row;
             }
             dl{
                 display: grid;
                 margin: 0;
-                padding: 10px 50px;
+                padding: 0 50px;
                 grid-auto-flow: column;
                 grid-template-columns: auto 150px;
                 border: 1px solid var(--bbva-light-grey)
             }
             dl:first-child{
-                background: var(--table-head-sandy);
+                background: var(--sandy);
+            }
+            dl:first-child dt{
+                border-right: 1px solid var(--bbva-light-grey);
             }
             dl:not(:first-child) >*{
                 font-size: 11px;
+            }
+            dd,dt{
+                padding: 10px 0;
             }
             dd {
                 justify-self: right;
@@ -79,38 +83,15 @@
         <google-chart
             type="pie"
             data="{{ cartera }}"
-            options='{
-                "colors": ["#2277BB", "#EDA572"],
-                "chartArea": {
-                    "height": "60%",
-                    "top": "20%",
-                    "width" : "100%"
-                },
-                "fontName": "Roboto",
-                "height": 300,
-                "legend": {
-                    "alignment": "center",
-                    "position": "right",
-                    "textStyle": {
-                        "fontSize": 12
-                    }
-                },
-                "pieHole": 0.6,
-                "pieSliceBorderColor": "none",
-                "pieSliceText": "none",
-                "tooltip": {
-                    "trigger": "selection"
-                },
-                "width": 500
-            }'
+            options="[[options]]"
             >
         </google-chart>
 
-        <div on-click='dropdownOpen' class="header-tab">
+        <div on-click="dropdownOpen" class="header-tab">
             <button >Top Ten Inversiones</button>
             <p class$="[[arrow]]"></p>
         </div>
-        <iron-dropdown id="dropdown" no-overlap>
+        <iron-dropdown id="dropdown" no-overlap allow-outside-scroll>
             <div id="top-ten-table" slot="dropdown-content" >
                 <dl>
                     <dt>Inversiones</dt>
@@ -155,6 +136,37 @@
                     rentafija: {
                         type: Number,
                         computed: 'activosmonetariosChanged(activosmonetarios)'
+                    },
+                    options: {
+                        type: Object,
+                        value: {
+                            colors: ["#2277BB", "#EDA572"],
+                            chartArea: {
+                                height: "60%",
+                                top: "20%",
+                                width : "100%"
+                            },
+                            fontName: "Roboto",
+                            height: 300,
+                            legend: {
+                                alignment: "center",
+                                position: "right",
+                                textStyle: {
+                                    fontSize: 12
+                                }
+                            },
+                            pieHole: 0.6,
+                            pieSliceBorderColor: "none",
+                            pieSliceText: "percentage",
+                            pieSliceTextStyle: {
+                                fontSize: 12,
+                                bold: true
+                                },
+                            tooltip: {
+                                trigger: "selection"
+                            },
+                            width: 500
+                        }
                     },
                     cartera: {
                         type: Object,

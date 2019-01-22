@@ -1,0 +1,142 @@
+<link rel="import" href="../../../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../../../bower_components/vaadin-date-picker/vaadin-date-picker.html">
+<link rel="import" href="../../../bower_components/iron-icon/iron-icon.html">
+<link rel="import" href="../../../bower_components/vaadin-lumo-styles/icons.html">
+
+<link rel="import" href="../../fund-profile-app/theme/shared-styles.html">
+
+<dom-module id="date-browser">
+    <template>
+        <style include="shared-styles">
+            :host {
+                display: grid;
+                align-items: end;
+                grid-template-columns: auto 1fr;
+                grid-auto-rows: auto;
+                margin: 0 20px;
+                --lumo-body-text-color: var(--body-text-color);
+                --lumo-primary-text-color: var(--bbva-blue);
+                --lumo-secondary-text-color: var(--bbva-dark-grey);
+                --lumo-contrast-10pct: var(--sandy);
+                --lumo-font-size-m: 0.8rem;
+                --lumo-border-radius: 0%;
+            }
+            paper-button{
+                height: 36px;
+                margin-bottom: 4px
+            }
+        </style>
+        <vaadin-date-picker label="[[label]]" placeholder="[[date]]" i18n="[[i18n]]"></vaadin-date-picker>
+        <paper-button class="blue"><iron-icon icon="search"></iron-icon></paper-button>
+    </template>
+
+    <script>
+        /**
+         * `date-browser` Description
+         *
+         * @summary ShortDescription.
+         * @customElement
+         * @polymer
+         * @extends {Polymer.Element}
+         */
+        class DateBrowser extends Polymer.Element {
+            /**
+             * String providing the tag name to register the element under.
+             */
+            static get is() {
+                return 'date-browser';
+            }
+
+            /**
+             * Object describing property-related metadata used by Polymer features
+             */
+            static get properties() {
+                return {
+                   label: String,
+                   placeholder: String,
+                   i18n:{
+                       type: Object,
+                       value: {
+                                // An array with the full names of months starting
+                                // with January.
+                                monthNames: [
+                                    'Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo',
+                                    'Junio', 'Julio', 'Agosto', 'Septiembre',
+                                    'Octubre', 'Noviembre', 'Diciembre'
+                                ],
+
+                                // An array of weekday names starting with Sunday. Used
+                                // in screen reader announcements.
+                                weekdays: [
+                                    'Domingo', 'Lunes', 'Martes', 'Miercoles',
+                                    'Jueves', 'Viernes', 'Sábado'
+                                ],
+
+                                // An array of short weekday names starting with Sunday.
+                                // Displayed in the calendar.
+                                weekdaysShort: [
+                                    'Dom', 'Lun', 'Mar', 'Mie', 'Jue', 'Vie', 'Sáb'
+                                ],
+
+                                // An integer indicating the first day of the week
+                                // (0 = Sunday, 1 = Monday, etc.).
+                                firstDayOfWeek: 0,
+
+                                // Used in screen reader announcements along with week
+                                // numbers, if they are displayed.
+                                week: 'semana',
+
+                                // Translation of the Calendar icon button title.
+                                calendar: 'Calendario',
+
+                                // Translation of the Clear icon button title.
+                                clear: 'Borrar',
+
+                                // Translation of the Today shortcut button text.
+                                today: 'Hoy',
+
+                                // Translation of the Cancel button text.
+                                cancel: 'Volver',
+
+                                // A function to format given `Object` as
+                                // date string. Object is in the format `{ day: ..., month: ..., year: ... }`
+                                formatDate: d => {
+                                    // returns a string representation of the given
+                                    // object in Spanish 'DD/MM/YYYY' format
+                                    return `${d.day}/${d.month+1}/${d.year}`
+                                },
+
+                                // A function to parse the given text to an `Object` in the format `{ day: ..., month: ..., year: ... }`.
+                                // Must properly parse (at least) text
+                                // formatted by `formatDate`.
+                                // Setting the property to null will disable
+                                // keyboard input feature.
+                                parseDate: text => {
+                                    // Parses a string in 'MM/DD/YY', 'MM/DD' or 'DD' -format to
+                                    // an `Object` in the format `{ day: ..., month: ..., year: ... }`.
+                                },
+
+                                // A function to format given `monthName` and
+                                // `fullYear` integer as calendar title string.
+                                formatTitle: (monthName, fullYear) => {
+                                    return monthName + ' ' + fullYear;
+                                }
+                            }
+                   }
+                };
+            }
+
+            /**
+             * Instance of the element is created/upgraded. Use: initializing state,
+             * set up event listeners, create shadow dom.
+             * @constructor
+             */
+            constructor() {
+                super();
+            }
+
+        }
+
+        window.customElements.define(DateBrowser.is, DateBrowser);
+    </script>
+</dom-module>

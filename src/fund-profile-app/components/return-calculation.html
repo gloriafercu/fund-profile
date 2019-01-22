@@ -1,7 +1,5 @@
-<link
-  rel="import"
-  href="../../../bower_components/polymer/polymer-element.html"
-/>
+<link rel="import" href="../../../bower_components/polymer/polymer-element.html"/>
+<link rel="import" href="../components/date-browser.html">
 <link rel="import" href="../theme/shared-styles.html" />
 
 <dom-module id="return-calculation">
@@ -56,7 +54,7 @@
         >[[anualReturn]]%</span
       >
     </table-row>
-    <p class="see-date">Consultar otra fecha</p>
+    <date-browser label="Consultar otra fecha" date="{{today}}"></date-browser>
   </template>
 
   <script>
@@ -83,6 +81,7 @@
         return {
           fundData: Array,
           date: Number,
+          today: String,
           todayValue: {
             type: Number,
             computed: "getDateValue( fundData)"

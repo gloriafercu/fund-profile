@@ -1,11 +1,11 @@
 <link rel="import" href="../../bower_components/polymer/polymer-element.html" />
 <link rel="import" href="../../bower_components/iron-ajax/iron-ajax.html" />
-<link rel="import" href="../../bower_components/polymer/lib/elements/dom-repeat.html"/>
-<link rel="import" href="../../bower_components/paper-button/paper-button.html">
+<link rel="import" href="../../bower_components/polymer/lib/elements/dom-repeat.html" />
+<link rel="import" href="../../bower_components/paper-button/paper-button.html" />
 <link rel="import" href="../fund-profile-app/components/tab-menu.html" />
 <link rel="import" href="../fund-profile-app/theme/shared-styles.html" />
-<link rel="import" href="../fund-profile-app/components/general-information.html"/>
-<link rel="import" href="../fund-profile-app/components/return-calculation.html"/>
+<link rel="import" href="../fund-profile-app/components/general-information.html" />
+<link rel="import" href="../fund-profile-app/components/return-calculation.html" />
 <link rel="import" href="../fund-profile-app/components/info-table.html" />
 <link rel="import" href="../fund-profile-app/components/table-row.html" />
 
@@ -20,14 +20,17 @@
         max-width: 940px;
         margin: 0 auto;
       }
+
       header {
         display: flex;
         flex-direction: column;
       }
+
       main {
         display: grid;
         grid-template-columns: 1fr 2fr;
       }
+
       sidebar {
         padding-right: 20px;
       }
@@ -37,23 +40,19 @@
         grid-template-rows: auto;
         grid-column-gap: 15px;
       }
+
       h1 {
         font-size: 30px;
         line-height: 35px;
       }
+
       h5 {
         font-size: 16px;
         font-weight: 400px;
         line-height: 20px;
       }
     </style>
-    <iron-ajax
-      auto
-      url="http://localhost:3000/funds"
-      handle-as="json"
-      last-response="{{ fund }}"
-      on-response="(handleResponse)"
-    >
+    <iron-ajax auto url="http://localhost:3000/funds" handle-as="json" last-response="{{ fund }}" on-response="(handleResponse)">
     </iron-ajax>
     <div class="page-container">
       <header>
@@ -66,19 +65,17 @@
         <sidebar>
           <info-table>
             <span slot="title">Información general</span>
-            <general-information
-              slot="rows"
-              data="[[ fund ]]"
-            ></general-information>
+            <general-information slot="rows" data="[[ fund ]]"></general-information>
           </info-table>
           <info-table>
             <span slot="title">Datos al [[ today ]]</span>
-            <return-calculation
-              slot="rows"
-              fund-data="[[ fund.data ]]"
-              date="[[ date ]]"
-              today="[[ today ]]"
-            >
+            <return-calculation slot="rows" fund-data="[[ fund.data ]]" date="[[ date ]]">
+            </return-calculation>
+          </info-table>
+          <date-browser label="Consultar otra fecha" set-date="[[ today ]]" on-date-changed="changeDate"></date-browser>
+          <info-table>
+            <span slot="title">Datos al [[ comparedDate ]]</span>
+            <return-calculation slot="rows" fund-data="[[ fund.data ]]">
             </return-calculation>
           </info-table>
         </sidebar>
@@ -135,6 +132,11 @@
       }
       handleResponse() {
         this.loading = !this.loading;
+      }
+      changeDate(newValue, oldValue) {
+        console.log(newValue)
+        // let selected = new Date(e.detail.value)
+        // this.comparedDate = this.formatDate(selected)
       }
     }
 

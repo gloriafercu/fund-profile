@@ -1,5 +1,5 @@
-<link rel="import" href="../../../bower_components/polymer/polymer-element.html"/>
-<link rel="import" href="../components/date-browser.html">
+<link rel="import" href="../../../bower_components/polymer/polymer-element.html" />
+<link rel="import" href="../components/date-browser.html" />
 <link rel="import" href="../theme/shared-styles.html" />
 
 <dom-module id="return-calculation">
@@ -9,6 +9,7 @@
         display: block;
         font-size: 1em;
       }
+
       .see-date {
         display: flex;
         align-items: center;
@@ -16,10 +17,13 @@
         margin: 0 20px;
         padding: 10px 0;
       }
-      table-row{
+
+      table-row {
         border-bottom: 1px solid #dcdcdc;
       }
-      table-row:last-child, .see-date {
+
+      table-row:last-child,
+      .see-date {
         border-bottom: none;
         padding-bottom: 10px;
       }
@@ -38,23 +42,16 @@
     </table-row>
     <table-row>
       <span slot="value-name">Rentabilidad mes en curso</span>
-      <span slot="value" class$="{{ changeValueClass( monthlyReturn ) }}"
-        >[[monthlyReturn]]%</span
-      >
+      <span slot="value" class$="{{ changeValueClass(monthlyReturn) }}">[[monthlyReturn]]%</span>
     </table-row>
     <table-row>
       <span slot="value-name">Rentabilidad año en curso</span>
-      <span slot="value" class$="{{ changeValueClass( thisYearReturn ) }}"
-        >[[thisYearReturn]]%</span
-      >
+      <span slot="value" class$="{{ changeValueClass(thisYearReturn) }}">[[thisYearReturn]]%</span>
     </table-row>
     <table-row>
       <span slot="value-name">Rentabilidad últ. 12 meses</span>
-      <span slot="value" class$="{{ changeValueClass( anualReturn ) }}"
-        >[[anualReturn]]%</span
-      >
+      <span slot="value" class$="{{ changeValueClass(anualReturn) }}">[[anualReturn]]%</span>
     </table-row>
-    <date-browser label="Consultar otra fecha" date="{{today}}"></date-browser>
   </template>
 
   <script>
@@ -96,7 +93,7 @@
           },
           yearAgoValue: {
             type: Number,
-            // computed: "getDateValue( fundData, 'true', -1 )"
+            computed: "getDateValue( fundData, 'true', -1 )"
           },
           monthlyReturn: {
             type: Number,
@@ -116,21 +113,23 @@
       getDateValue(data, computed, ...args) {
         const today = new Date();
         let date;
-        if (computed === "true") {
+        let UTCoffset;
+        if (computed) {
           let [years = 0, months = 0, days = 0] = args;
           let year = today.getFullYear(),
-              month = today.getMonth(),
-              day = today.getDate();
-          date = new Date((year + years), (month + months), (day + days)).getTime()
-          
+            month = today.getMonth(),
+            day = today.getDate();
+          date = new Date(year + years, month + months, day + days)
         } else {
           let [
             day = today.getDate(),
             month = today.getMonth(),
             year = today.getFullYear()
           ] = args;
-          date = new Date(year, month, day).getTime()
+          date = new Date(year, month, day)
         }
+        UTCoffset = date.getTimezoneOffset() * 60 * 1000
+        date = date.getTime() - UTCoffset
         console.log(date)
         return data.find(item => item.date === date).netAssetValue;
       }

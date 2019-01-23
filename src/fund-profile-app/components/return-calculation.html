@@ -81,27 +81,27 @@
        */
       static get properties() {
         return {
-          fundData: Array,
+          funddata: Array,
           date: Number,
           todayValue: {
             type: Number,
-            computed: "getDateValue( fundData)"
+            computed: "getDateValue(fundData)"
           },
           firstDayOfMonthValue: {
             type: Number,
-            computed: "getDateValue( fundData, , 1)"
+            computed: "getDateValue(fundData, , 1)"
           },
           firstDayOfYearValue: {
             type: Number,
-            computed: "getDateValue( fundData, , 1, 0 )"
+            computed: "getDateValue(fundData, , 1, 0 )"
           },
           yearAgoValue: {
             type: Number,
-            computed: "getDateValue( fundData, 'true', -1 )"
+            computed: "getDateValue(fundData, 'true', -1 )"
           },
           monthlyReturn: {
             type: Number,
-            computed: "valuesChange( todayValue, firstDayOfMonthValue )"
+            computed: "valuesChange(todayValue, firstDayOfMonthValue )"
           },
           thisYearReturn: {
             type: Number,
@@ -132,10 +132,9 @@
             year = today.getFullYear()
           ] = args;
           date = new Date(year, month, day).getTime()
-          console.log(date)
         }
-
-        return data.find(item => item.date === date).netAssetValue;
+        // console.log(date)
+        return data.find(item => item.Date === date).netAssetValue;
       }
 
       valuesChange(todayValue, firstDayValue) {

@@ -15,7 +15,8 @@
     "paper-item": "PolymerElements/paper-item#^2.0.0",
     "web-animations-js": "web-animations/web-animations-js#2.2.2",
     "google-charts": "GoogleWebComponents/google-chart#^2.0.0",
-    "l2t-paper-rating": "^2.0.4"
+    "l2t-paper-rating": "^2.0.4",
+    "vaadin-date-picker": "vaadin/vaadin-date-picker#^3.3.2"
   },
   "devDependencies": {
     "web-component-tester": "Polymer/web-component-tester#^6.0.0",

@@ -7623,6 +7623,14 @@
       {
         "date": 1546214400000,
         "netAssetValue": 10.110595
+      }, 
+      {
+        "date": 1546297200000,
+        "netAssetValue": 10.106501
+      },
+      {
+        "date": 1546355597000,
+        "netAssetValue": 10.101232
       },
       {
         "date": 1546300800000,
@@ -7686,59 +7694,315 @@
       },
       {
         "date": 1547596800000,
-        "netAssetValue": 10.117186
+        "netAssetValue": 10.111231
       },
       {
         "date": 1547683200000,
+        "netAssetValue": 10.113231
+      },
+      {
+        "date": 1547769600000,
+        "netAssetValue": 10.117186
+      },
+      {
+        "date": 1547856000000,
         "netAssetValue": 10.116691
       },
       {
-        "date": 1546297200000,
-        "netAssetValue": 10.106501
+        "date": 1547942400000,
+        "netAssetValue": 10.119971
       },
       {
-        "date": 1546355597000,
-        "netAssetValue": 10.101232
+        "date": 1548028800000,
+        "netAssetValue": 10.206600
       },
       {
-        "date": 1547565197000,
-        "netAssetValue": 10.821231
-      },
-      {
-        "date": 1547593200000,
-        "netAssetValue": 10.823231
-      },
-      {
-        "date": 1547679600000,
-        "netAssetValue": 10.899971
-      },
-      {
-        "date": 1547766000000,
-        "netAssetValue": 9.206600
-      },
-      {
-        "date": 1547852400000,
-        "netAssetValue": 8.206600
-      },
-      {
-        "date": 1547938800000,
-        "netAssetValue": 9.206600
-      },
-      {
-        "date": 1548025200000,
-        "netAssetValue": 11.117600
-      },
-      {
-        "date": 1548111600000,
-        "netAssetValue": 10.723123
+        "date": 1548115200000,
+        "netAssetValue": 10.206600
       },
       {
         "date": 1548201600000,
-        "netAssetValue": 10.942123
+        "netAssetValue": 10.206600
       },
       {
         "date": 1548288000000,
-        "netAssetValue": 11.122123
+        "netAssetValue": 10.117600
+      },
+      {
+        "date": 1548374400000,
+        "netAssetValue": 10.117600
+      },
+      {
+        "date": 1548460800000,
+        "netAssetValue": 10.123123
+      },
+      {
+        "date": 1548547200000,
+        "netAssetValue": 10.142123
+      },
+      {
+        "date": 1548633600000,
+        "netAssetValue": 10.122123
+      },
+      {
+        "date": 1548720000000,
+        "netAssetValue": 10.123000
+      },
+      {
+        "date": 1548806400000,
+        "netAssetValue": 10.122110
+      },
+      {
+        "date": 1548892800000,
+        "netAssetValue": 10.000000
+      },
+      
+
+
+
+      {
+        "date": 1548892800000,
+        "netAssetValue": 10.020660
+      },
+      {
+        "date": 1549065600000,
+        "netAssetValue": 10.020670
+      },
+      {
+        "date": 1549152000000,
+        "netAssetValue": 10.020600
+      },
+      {
+        "date": 1549238400000,
+        "netAssetValue": 10.020662
+      },
+      {
+        "date": 1549324800000,
+        "netAssetValue": 10.020670
+      },
+      {
+        "date": 1549411200000,
+        "netAssetValue": 10.020671
+      },
+      {
+        "date": 1549497600000,
+        "netAssetValue": 10.020678
+      },
+      {
+        "date": 1549584000000,
+        "netAssetValue": 10.020710
+      },
+      {
+        "date": 1549670400000,
+        "netAssetValue": 10.020610
+      },
+      {
+        "date": 1549756800000,
+        "netAssetValue": 10.020459
+      },
+      {
+        "date": 1549843200000,
+        "netAssetValue": 10.0202369
+      },
+      {
+        "date": 1549929600000,
+        "netAssetValue": 10.020123
+      },
+      {
+        "date": 1550016000000,
+        "netAssetValue": 10.020147
+      },
+      {
+        "date": 1550102400000,
+        "netAssetValue": 10.020159
+      },
+      {
+        "date": 1550188800000,
+        "netAssetValue": 10.020753
+      },
+      {
+        "date": 1550275200000,
+        "netAssetValue": 10.020645
+      },
+      {
+        "date": 1550361600000,
+        "netAssetValue": 10.020625
+      },
+      {
+        "date": 1550448000000,
+        "netAssetValue": 10.020663
+      },
+      {
+        "date": 1550534400000,
+        "netAssetValue": 10.020650
+      },
+      {
+        "date": 1550620800000,
+        "netAssetValue": 10.020628
+      },
+      {
+        "date": 1550707200000,
+        "netAssetValue": 10.020664
+      },
+      {
+        "date": 1550793600000,
+        "netAssetValue": 10.020660
+      },
+      {
+        "date": 1550880000000,
+        "netAssetValue": 10.020660
+      },
+      {
+        "date": 1550966400000,
+        "netAssetValue": 10.020660
+      },
+
+
+
+
+      {
+        "date": 1551052800000,
+        "netAssetValue": 10.0205600
+      },
+      {
+        "date": 1551139200000,
+        "netAssetValue": 10.0205555
+      },
+      {
+        "date": 1551225600000,
+        "netAssetValue": 10.0205550
+      },
+      {
+        "date": 1551312000000,
+        "netAssetValue": 10.0205545
+      },
+      {
+        "date": 1551398400000,
+        "netAssetValue": 10.0205542
+      },
+      {
+        "date": 1551484800000,
+        "netAssetValue": 10.0205540
+      },
+      {
+        "date": 1551571200000,
+        "netAssetValue": 10.0205539
+      },
+      {
+        "date": 1551657600000,
+        "netAssetValue": 10.0205538
+      },
+      {
+        "date": 1551744000000,
+        "netAssetValue": 10.0205537
+      },
+      {
+        "date": 1551830400000,
+        "netAssetValue": 10.0205536
+      },
+      {
+        "date": 1551916800000,
+        "netAssetValue": 10.0205530
+      },
+      {
+        "date": 1552003200000,
+        "netAssetValue": 10.0205525
+      },
+      {
+        "date": 1552089600000,
+        "netAssetValue": 10.0205523
+      },
+      {
+        "date": 1552176000000,
+        "netAssetValue": 10.0205521
+      },
+      {
+        "date": 1552262400000,
+        "netAssetValue": 10.0205511
+      },
+      {
+        "date": 1552348800000,
+        "netAssetValue": 10.0205500
+      },
+      {
+        "date": 1552435200000,
+        "netAssetValue": 10.0205400
+      },
+      {
+        "date": 1552521600000,
+        "netAssetValue": 10.0205390
+      },
+      {
+        "date": 1552608000000,
+        "netAssetValue": 10.0205370
+      },
+      {
+        "date": 1552694400000,
+        "netAssetValue": 10.0205340
+      },
+      {
+        "date": 1552780800000,
+        "netAssetValue": 10.0205300
+      },
+      {
+        "date": 1552867200000,
+        "netAssetValue": 10.0205200
+      },
+      {
+        "date": 1552953600000,
+        "netAssetValue": 10.0204220
+      },
+      {
+        "date": 1553040000000,
+        "netAssetValue": 10.0205244
+      },
+      {
+        "date": 1553126400000,
+        "netAssetValue": 10.0204244
+      },
+      {
+        "date": 1553212800000,
+        "netAssetValue": 10.0203344
+      },
+      {
+        "date": 1553299200000,
+        "netAssetValue": 10.0204694
+      },
+      {
+        "date": 1553385600000,
+        "netAssetValue": 10.0205144
+      },
+      {
+        "date": 1553472000000,
+        "netAssetValue": 10.023000
+      },
+      {
+        "date": 1553558400000,
+        "netAssetValue": 10.042110
+      },
+      {
+        "date": 1553644800000,
+        "netAssetValue": 10.030000
+      },
+      {
+        "date": 1553731200000,
+        "netAssetValue": 10.036600
+      },
+      {
+        "date": 1553817600000,
+        "netAssetValue": 10.003600
+      },
+      {
+        "date": 1553904000000,
+        "netAssetValue": 10.006600
+      },
+      {
+        "date": 1553990400000,
+        "netAssetValue": 10.007600
+      },
+      {
+        "date": 1554076800000,
+        "netAssetValue": 10.007690
       }
     ]
   }

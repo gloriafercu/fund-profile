@@ -9,28 +9,17 @@
             :host {
                 display: block
             }
-            
         </style>
 
-    <vaadin-date-picker 
-        label="Desde" 
-        placeholder="Elija una fecha" 
-        value="{{dateStart}}">
-    </vaadin-date-picker>   
+        <vaadin-date-picker label="Desde" placeholder="Elija una fecha" value="{{dateStart}}">
+        </vaadin-date-picker>
 
-    <vaadin-date-picker 
-        label="Hasta" 
-        placeholder="Elija una fecha" 
-        value="{{dateEnd}}">
-    </vaadin-date-picker> 
+        <vaadin-date-picker label="Hasta" placeholder="Elija una fecha" value="{{dateEnd}}">
+        </vaadin-date-picker>
 
 
-    <highcharts-stock
-        title='Bonos Cash'
-        subtitle='Valor Liquidativo'
-        series='[[series]]'
-        >
-    </highcharts-stock>
+        <highcharts-stock title='Bonos Cash' subtitle='Valor Liquidativo' series='[[series]]'>
+        </highcharts-stock>
 
     </template>
 
@@ -56,64 +45,64 @@
              */
             static get properties() {
                 return {
-                    dateStart: String, 
-                    dateEnd: String, 
+                    dateStart: String,
+                    dateEnd: String,
                     values: Array,
                     name: String,
                     userValue: Array,
                     series: {
-                        type: Object, 
+                        type: Object,
                         value: function () {
                             return {}
                         }
                     }
+                }
+            }
+
+            /**
+              * Array of strings describing multi-property observer methods and their
+              * dependant properties
+              */
+            static get observers() {
+                return [
+                    'valuesAndNameChanged(values, name)',
+                    'dateStartAndEndChanged(dateStart, dateEnd)'
+                ];
+            }
+
+            valuesAndNameChanged(values, name) {
+                let newValues = []
+                values.map(function (item) {
+                    if (item.date > 1500854400000) {
+                        newValues.push([item.date, item.netAssetValue])
                     }
+                })
+                this.set('series', [{ name: name, data: newValues }])
+            }
+
+            dateStartAndEndChanged(dateStart, dateEnd) {
+
+                let date1;
+                let date2;
+
+                if (!dateStart && !dateEnd) {
+                    return
+                } else if (dateStart && !dateEnd) {
+                    date1 = new Date(this.dateStart).getTime()
+                    date2 = 1548198000000
+                } else if (!dateStart && dateEnd) {
+                    date1 = 1382659200000
+                    date2 = new Date(this.dateEnd).getTime()
+                } else {
+                    date1 = new Date(this.dateStart).getTime()
+                    date2 = new Date(this.dateEnd).getTime()
                 }
 
-                /**
-                  * Array of strings describing multi-property observer methods and their
-                  * dependant properties
-                  */
-                static get observers() {
-                    return [
-                        'valuesAndNameChanged(values, name)',
-                        'dateStartAndEndChanged(dateStart, dateEnd)'
-                    ];
-                }
+                const newArray = this.values.filter(value => value.date > date1 && value.date < date2)
+                const newData = newArray.map(item => [item.date, item.netAssetValue])
+                this.set('series', [{ name: this.name, data: newData }])
+            }
 
-                valuesAndNameChanged(values, name) {
-                    let newValues = []
-                    values.map(function (item) {
-                        if (item.date > 1500854400000) {
-                            newValues.push([item.date, item.netAssetValue])
-                        }
-                    })
-                    this.set('series', [{ name: name, data: newValues}])
-                }
-
-                dateStartAndEndChanged(dateStart, dateEnd){
-
-                    let date1;
-                    let date2;
-
-                    if (!dateStart && !dateEnd) {
-                        return
-                    } else if (dateStart && !dateEnd) {
-                        date1 = new Date(this.dateStart).getTime()
-                        date2 = 1548198000000
-                    } else if (!dateStart && dateEnd) {
-                        date1 = 1382659200000
-                        date2 = new Date(this.dateEnd).getTime()
-                    } else {
-                        date1 = new Date(this.dateStart).getTime()
-                        date2 = new Date(this.dateEnd).getTime()
-                    }
-                    
-                    const newArray = this.values.filter(value => value.date > date1 && value.date < date2)
-                    const newData = newArray.map(item => [item.date, item.netAssetValue])
-                    this.set('series', [{ name: this.name, data: newData}])
-                }
-            
 
             /**
              * Instance of the element is created/upgraded. Use: initializing state,
@@ -129,7 +118,7 @@
              */
             ready() {
                 super.ready();
-        }
+            }
         }
 
         window.customElements.define(PosicionGlobalChart.is, PosicionGlobalChart);

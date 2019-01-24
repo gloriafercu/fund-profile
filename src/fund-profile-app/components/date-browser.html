@@ -10,21 +10,9 @@
     <style include="shared-styles">
       :host {
         display: grid;
-        margin: 0 20px;
-        --lumo-body-text-color: var(--body-text-color);
-        --lumo-primary-text-color: var(--bbva-blue);
-        --lumo-secondary-text-color: var(--bbva-dark-grey);
-        --lumo-contrast-10pct: var(--sandy);
-        --lumo-font-size-m: 0.8rem;
-        --lumo-border-radius: 0%;
-      }
-
-      paper-button {
-        height: 36px;
-        margin-bottom: 4px;
       }
     </style>
-    <vaadin-date-picker label="[[label]]" placeholder="[[setDate]]" i18n="[[i18n]]" value="{{ date }}"></vaadin-date-picker>
+    <vaadin-date-picker label="[[label]]" placeholder="[[set-date]]" i18n="[[i18n]]" value="{{ date }}" max="[[maxDate]]"></vaadin-date-picker>
     <!-- <paper-button class="blue">
       <iron-icon icon="search"></iron-icon>
     </paper-button> -->
@@ -54,6 +42,7 @@
         return {
           label: String,
           placeholder: String,
+
           date: {
             type: String,
             notify: true
@@ -115,6 +104,10 @@
             }
           }
         }
+      }
+      ready() {
+        super.ready()
+        this.maxDate = new Date().toISOString().slice(0, 10)
       }
     }
 

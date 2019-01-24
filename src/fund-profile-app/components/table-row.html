@@ -1,7 +1,4 @@
-<link
-  rel="import"
-  href="../../../bower_components/polymer/polymer-element.html"
-/>
+<link rel="import" href="../../../bower_components/polymer/polymer-element.html" />
 
 <dom-module id="table-row">
   <template>
@@ -11,14 +8,13 @@
         flex-direction: row;
         align-items: center;
         justify-content: space-between;
-        
-        margin: 0 20px;
         padding: 10px 0;
       }
-      :host::slotted:last-child{
-        border-bottom:none;
+
+      :host::slotted:last-child {
+        border-bottom: none;
       }
-      
+
       dd {
         font-family: "BentonSans Regular";
         text-transform: uppercase;
@@ -26,10 +22,14 @@
       }
     </style>
 
-      <dt><slot name="value-name"></slot></dt>
-      <dd><slot name="value"></slot></dd>
-  
-    </template>
+    <dt>
+      <slot name="value-name"></slot>
+    </dt>
+    <dd>
+      <slot name="value"></slot>
+    </dd>
+
+  </template>
 
   <script>
     /**

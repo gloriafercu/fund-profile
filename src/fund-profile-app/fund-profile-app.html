@@ -65,22 +65,22 @@
       <main>
         <sidebar>
           <info-table>
-            <span slot="title">Información general</span>
-            <general-information slot="rows" data="[[ fund ]]"></general-information>
+            <span slot="title" blue>Información general</span>
+            <general-information slot="rows" underline data="[[ fund ]]"></general-information>
           </info-table>
           <info-table>
-            <span slot="title">Datos al [[ today ]]</span>
-            <return-calculation slot="rows" fund-data="[[ fund.data ]]" date="[[ date ]]">
+            <span slot="title" blue>Datos al [[ today ]]</span>
+            <return-calculation slot="rows" underline fund-data="[[ fund.data ]]" date="[[ date ]]">
             </return-calculation>
+            <date-browser slot="annex_controller" label="Consultar otra fecha" set-date="[[ today ]]" on-date-changed="changeDate"></date-browser>
+            <template is="dom-if" if="[[comparedDate]]">
+              <info-table slot="annex_content">
+                <div slot="title">Datos al [[ formatDate(comparedDate) ]]</div>
+                <return-calculation slot="rows" fund-data="[[ fund.data ]]" date="[[convertDate(comparedDate)]]">
+                </return-calculation>
+              </info-table>
+            </template>
           </info-table>
-          <date-browser label="Consultar otra fecha" set-date="[[ today ]]" on-date-changed="changeDate"></date-browser>
-          <template is="dom-if" if="[[comparedDate]]">
-            <info-table>
-              <span slot="title">Datos al [[ formatDate(comparedDate) ]]</span>
-              <return-calculation slot="rows" fund-data="[[ fund.data ]]" date="[[comparedDate]]">
-              </return-calculation>
-            </info-table>
-          </template>
         </sidebar>
         <div class="main-container">
           <tab-menu fund="[[ fund ]]"></tab-menu>
@@ -101,12 +101,11 @@
       static get properties() {
         return {
           fund: Object,
-          date: Object,
+          date: Number,
           comparedDate: Number,
           today: {
             type: String,
             computed: "formatDate(date)",
-            bubbles: true
           },
           loading: Boolean
         };
@@ -132,6 +131,13 @@
         let YYYY = today.getFullYear();
 
         return `${addZero(D)}/${addZero(M)}/${YYYY}`;
+      }
+      convertDate(date) {
+        let day = new Date(date)
+        let time = day.setHours(0, 0, 0, 0)
+        let UTCoffset = day.getTimezoneOffset() * 60 * 1000
+
+        return time - UTCoffset
       }
       handleResponse() {
         this.loading = !this.loading;

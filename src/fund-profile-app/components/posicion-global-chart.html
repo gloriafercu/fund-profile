@@ -1,5 +1,7 @@
 <link rel="import" href="../../../bower_components/polymer/polymer-element.html">
 <link rel="import" href="../../../bower_components/highcharts-polymer/highcharts-stock.html">
+<link rel="import" href="../../../bower_components/vaadin-date-picker/vaadin-date-picker.html">
+
 
 <dom-module id="posicion-global-chart">
     <template>
@@ -9,7 +11,14 @@
             }
         </style>
 
-        <highcharts-stock data-url='./data-graph.json' title='Bonos Cash' subtitle='Valor Liquidativo'>
+        <vaadin-date-picker label="Desde" placeholder="Elija una fecha" value="{{dateStart}}">
+        </vaadin-date-picker>
+
+        <vaadin-date-picker label="Hasta" placeholder="Elija una fecha" value="{{dateEnd}}">
+        </vaadin-date-picker>
+
+
+        <highcharts-stock title='Bonos Cash' subtitle='Valor Liquidativo' series='[[series]]'>
         </highcharts-stock>
 
     </template>
@@ -36,9 +45,64 @@
              */
             static get properties() {
                 return {
-
-                };
+                    dateStart: String,
+                    dateEnd: String,
+                    values: Array,
+                    name: String,
+                    userValue: Array,
+                    series: {
+                        type: Object,
+                        value: function () {
+                            return {}
+                        }
+                    }
+                }
             }
+
+            /**
+              * Array of strings describing multi-property observer methods and their
+              * dependant properties
+              */
+            static get observers() {
+                return [
+                    'valuesAndNameChanged(values, name)',
+                    'dateStartAndEndChanged(dateStart, dateEnd)'
+                ];
+            }
+
+            valuesAndNameChanged(values, name) {
+                let newValues = []
+                values.map(function (item) {
+                    if (item.date > 1500854400000) {
+                        newValues.push([item.date, item.netAssetValue])
+                    }
+                })
+                this.set('series', [{ name: name, data: newValues }])
+            }
+
+            dateStartAndEndChanged(dateStart, dateEnd) {
+
+                let date1;
+                let date2;
+
+                if (!dateStart && !dateEnd) {
+                    return
+                } else if (dateStart && !dateEnd) {
+                    date1 = new Date(this.dateStart).getTime()
+                    date2 = 1548198000000
+                } else if (!dateStart && dateEnd) {
+                    date1 = 1382659200000
+                    date2 = new Date(this.dateEnd).getTime()
+                } else {
+                    date1 = new Date(this.dateStart).getTime()
+                    date2 = new Date(this.dateEnd).getTime()
+                }
+
+                const newArray = this.values.filter(value => value.date > date1 && value.date < date2)
+                const newData = newArray.map(item => [item.date, item.netAssetValue])
+                this.set('series', [{ name: this.name, data: newData }])
+            }
+
 
             /**
              * Instance of the element is created/upgraded. Use: initializing state,
@@ -47,6 +111,13 @@
              */
             constructor() {
                 super();
+            }
+
+            /**
+             * Use for one-time configuration of your component after local DOM is initialized. 
+             */
+            ready() {
+                super.ready();
             }
         }
 

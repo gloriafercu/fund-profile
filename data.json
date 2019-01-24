@@ -7676,13 +7676,17 @@
         "netAssetValue": 11.187186
       },
       {
-        "Date": 1547683200000,
+        "Date": 1516748400000,
         "netAssetValue": 10.146691
       }, 
       {
         "Date": 1516662000000, 
         "netAssetValue": 9.116000
-      }
+      },
+      {
+        "Date": 1548284400000,
+        "netAssetValue": 9.996000
+      } 
     ]
   }
 }

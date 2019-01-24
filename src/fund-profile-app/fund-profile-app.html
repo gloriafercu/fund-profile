@@ -2,6 +2,7 @@
 <link rel="import" href="../../bower_components/iron-ajax/iron-ajax.html" />
 <link rel="import" href="../../bower_components/polymer/lib/elements/dom-repeat.html" />
 <link rel="import" href="../../bower_components/paper-button/paper-button.html" />
+<link rel="import" href="../../bower_components/polymer/lib/elements/dom-if.html">
 <link rel="import" href="../fund-profile-app/components/tab-menu.html" />
 <link rel="import" href="../fund-profile-app/theme/shared-styles.html" />
 <link rel="import" href="../fund-profile-app/components/general-information.html" />
@@ -73,11 +74,13 @@
             </return-calculation>
           </info-table>
           <date-browser label="Consultar otra fecha" set-date="[[ today ]]" on-date-changed="changeDate"></date-browser>
-          <info-table>
-            <span slot="title">Datos al [[ comparedDate ]]</span>
-            <return-calculation slot="rows" fund-data="[[ fund.data ]]">
-            </return-calculation>
-          </info-table>
+          <template is="dom-if" if="[[comparedDate]]">
+            <info-table>
+              <span slot="title">Datos al [[ formatDate(comparedDate) ]]</span>
+              <return-calculation slot="rows" fund-data="[[ fund.data ]]" date="[[comparedDate]]">
+              </return-calculation>
+            </info-table>
+          </template>
         </sidebar>
         <div class="main-container">
           <tab-menu fund="[[ fund ]]"></tab-menu>
@@ -100,6 +103,7 @@
           fund: Object,
           data: Object,
           date: Object,
+          comparedDate: Number,
           today: {
             type: String,
             computed: "formatDate(date)",
@@ -133,10 +137,8 @@
       handleResponse() {
         this.loading = !this.loading;
       }
-      changeDate(newValue, oldValue) {
-        console.log(newValue)
-        // let selected = new Date(e.detail.value)
-        // this.comparedDate = this.formatDate(selected)
+      changeDate(e) {
+        this.set("comparedDate", e.detail.value)
       }
     }
 

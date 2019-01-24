@@ -9,9 +9,31 @@
         border: 1px solid #dde3ea;
         border-radius: 10px;
         background-color: white;
-        margin-bottom: 5px;
         font-size: 0.8rem;
         overflow: hidden;
+        margin-bottom: 5px;
+      }
+
+      :host([slot="annex_content"]) {
+        border: none;
+        border-radius: 0;
+        margin-bottom: 0;
+        position: relative;
+      }
+
+      :host([slot="annex_content"])::before {
+        content: "";
+        width: 0;
+        height: 0;
+        display: block;
+        border-left: 10px solid transparent;
+        border-right: 10px solid transparent;
+        border-top: 10px solid #e2ece2;
+        transition: all 0.3s ease-out;
+        position: absolute;
+        top: 0;
+        left: 50%;
+        z-index: 999
       }
 
       :host ::slotted([blue]) {

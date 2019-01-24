@@ -52,8 +52,14 @@
         line-height: 20px;
       }
     </style>
-    <iron-ajax auto url="http://localhost:3000/funds" handle-as="json" last-response="{{ fund }}" on-response="(handleResponse)">
-    </iron-ajax>
+
+    <iron-ajax 
+      auto 
+      url="http://localhost:3000/funds" 
+      handle-as="json" 
+      last-response="{{ fund }}" 
+      on-response="(handleResponse)"></iron-ajax>
+
     <div class="page-container">
       <header>
         <h1>
@@ -61,27 +67,43 @@
         </h1>
         <h5>[[fund.subtype]]</h5>
       </header>
+
       <main>
         <sidebar>
           <info-table>
             <span slot="title">Información general</span>
-            <general-information slot="rows" data="[[ fund ]]"></general-information>
+            <general-information 
+              slot="rows" 
+              data="[[ fund ]]"></general-information>
           </info-table>
+
           <info-table>
             <span slot="title">Datos al [[ today ]]</span>
-            <return-calculation slot="rows" fund-data="[[ fund.data ]]" date="[[ date ]]">
-            </return-calculation>
+            <return-calculation 
+              slot="rows" 
+              fund-data="[[ fund.data ]]" 
+              date="[[ date ]]"></return-calculation>
           </info-table>
-          <date-browser label="Consultar otra fecha" set-date="[[ today ]]" on-date-changed="changeDate"></date-browser>
+
+          <date-browser 
+            label="Consultar otra fecha" 
+            set-date="[[ today ]]" 
+            on-date-changed="changeDate"></date-browser>
+
           <info-table>
             <span slot="title">Datos al [[ comparedDate ]]</span>
-            <return-calculation slot="rows" fund-data="[[ fund.data ]]">
-            </return-calculation>
+            <return-calculation 
+              slot="rows" 
+              fund-data="[[ fund.data ]]"></return-calculation>
           </info-table>
+
         </sidebar>
+
         <div class="main-container">
-          <tab-menu fund="[[ fund ]]"></tab-menu>
+          <tab-menu 
+            fund="[[ fund ]]"></tab-menu>
         </div>
+
       </main>
     </div>
   </template>
@@ -97,9 +119,24 @@
       }
       static get properties() {
         return {
-          fund: Object,
-          data: Object,
-          date: Object,
+          fund: {
+            type:Object,
+            value: function(){
+              return {}
+            }
+          },
+          data: {
+            type: Object,
+            value: function(){
+              return {}
+            }
+          },
+          date: {
+            type: Object,
+            value: function(){
+              return{}
+            }
+          },
           today: {
             type: String,
             computed: "formatDate(date)",

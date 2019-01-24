@@ -1,6 +1,4 @@
 <link rel="import" href="../../../bower_components/polymer/polymer-element.html">
-
-
 <link rel="import" href="../components/posicion-global-chart.html">
 
 <link rel="import" href="../theme/shared-styles.html">
@@ -20,10 +18,16 @@
             <paper-button class="blue">Exportar</paper-button>
         </div>    
 
-        <p>Período consultado:</p>
-        <p>Última actualización:</p>
+        <p>Período consultado: [[datestart]] - [[dateend]]</p>
+        <p>Última actualización: [[today]]</p>
 
-        <posicion-global-chart  values="[[values]]" name="[[name]]"></posicion-global-chart>
+        <posicion-global-chart 
+            on-datestart-changed="dateStartChanged" 
+            on-dateend-changed="dateEndChanged" 
+            values="[[values]]" 
+            name="[[name]]"
+            today="[[today]]">
+        </posicion-global-chart>
 
     </template>
 
@@ -50,10 +54,19 @@
             static get properties() {
                 return {
                     values: Array,
-                    name: String
+                    name: String,
+                    datestart: String, 
+                    dateend: String
                 };
             }
 
+            dateStartChanged (e) {
+                this.datestart = e.detail.value
+            }
+
+            dateEndChanged (e) {
+                this.dateend = e.detail.value
+            }
         }
 
         window.customElements.define(PosicionGlobal.is, PosicionGlobal);

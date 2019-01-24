@@ -51,9 +51,9 @@
         </paper-tabs>
 
         <iron-pages selected="{{selected}}">
-            <posicion-global values="{{ fund.data }}" name="{{fund.name}}"></posicion-global>
+            <posicion-global values="[[ fund.data ]]" name="[[fund.name]]" today="[[today]]"></posicion-global>
             <documentacion-tab></documentacion-tab>
-            <evolucion-tab></evolucion-tab>
+            <evolucion-tab values="{{ fund.data }}" name="[[fund.name]]"></evolucion-tab>
             <datos-tab fund="{{ fund }}"></datos-tab>
             <comentario-gestor fund="{{ fund }}"></comentario-gestor>
             <cartera-tab activosmonetarios="[[ fund.activosMonetarios ]]" inversiones="[[fund.cartera]]"></cartera-tab>

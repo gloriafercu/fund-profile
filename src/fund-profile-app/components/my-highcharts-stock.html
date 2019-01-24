@@ -1,0 +1,21 @@
+<link rel="import" href="my-highcharts-chart.html">
+
+<dom-module id="my-highcharts-stock">
+  <script>
+  /**
+  * `my-highcharts-stock`
+  * Polymer wrapper for highcharts stock graph
+  *
+  * @customElement
+  * @polymer
+  * @demo demo/index.html
+  */
+  class MyHighchartsStock extends MyHighchartsChart {
+  static get is() { return 'my-highcharts-stock'; }
+  static get properties() { return {}; }
+  _drawChart(options) { Highcharts.stockChart(options); }
+  
+};
+customElements.define(MyHighchartsStock.is, MyHighchartsStock);
+  </script>
+</dom-module>

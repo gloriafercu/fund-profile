@@ -51,7 +51,7 @@
         </paper-tabs>
 
         <iron-pages selected="{{selected}}">
-            <posicion-global></posicion-global>
+            <posicion-global values="{{ fund.data }}" name="{{fund.name}}"></posicion-global>
             <documentacion-tab></documentacion-tab>
             <evolucion-tab></evolucion-tab>
             <datos-tab fund="{{ fund }}"></datos-tab>

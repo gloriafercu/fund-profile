@@ -23,7 +23,7 @@
         <p>Período consultado:</p>
         <p>Última actualización:</p>
 
-        <posicion-global-chart></posicion-global-chart>
+        <posicion-global-chart  values="[[values]]" name="[[name]]"></posicion-global-chart>
 
     </template>
 
@@ -49,17 +49,9 @@
              */
             static get properties() {
                 return {
-                    
+                    values: Array,
+                    name: String
                 };
-            }
-
-            /**
-             * Instance of the element is created/upgraded. Use: initializing state,
-             * set up event listeners, create shadow dom.
-             * @constructor
-             */
-            constructor() {
-                super();
             }
 
         }

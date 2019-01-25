@@ -1,0 +1,26 @@
+{
+  "name": "fund-profile",
+  "version": "1.0.0",
+  "description": "Fund Profile is developed with Polymeron 2 and Node 8.11.4",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "@polymer/iron-component-page": "^4.0.1"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gloriafercu/fund-profile.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/gloriafercu/fund-profile/issues"
+  },
+  "homepage": "https://github.com/gloriafercu/fund-profile#readme"
+}

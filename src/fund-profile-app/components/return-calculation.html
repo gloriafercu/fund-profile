@@ -71,24 +71,24 @@
        */
       static get properties() {
         return {
-          fundData: Array,
+          // funddata: Array,
           date: Number,
           today: String,
           todayValue: {
             type: Number,
-            computed: "getDateValue( date, fundData)"
+            computed: "getDateValue( fundData )"
           },
           firstDayOfMonthValue: {
             type: Number,
-            computed: "getDateValue( date, fundData, , 1)"
+            computed: "getDateValue( fundData, , 1)"
           },
           firstDayOfYearValue: {
             type: Number,
-            computed: "getDateValue( date, fundData, , 1, 0 )"
+            computed: "getDateValue( fundData, , 1, 0 )"
           },
           yearAgoValue: {
             type: Number,
-            computed: "getDateValue( date, fundData, 'true', -1 )"
+            computed: "getDateValue( fundData, 'true', -1 )"
           },
           monthlyReturn: {
             type: Number,
@@ -104,8 +104,9 @@
           }
         };
       }
-      getDateValue(inputDate, data, computed, ...args) {
-        const today = new Date(inputDate);
+
+      getDateValue(data, computed, ...args) {
+        const today = new Date(this.date);
         let date;
         let UTCoffset;
         if (computed) {
@@ -122,8 +123,8 @@
           ] = args;
           date = new Date(year, month, day)
         }
-        UTCoffset = date.getTimezoneOffset() * 60 * 1000
-        date = date.getTime() - UTCoffset
+        UTCoffset = date.getTimezoneOffset() * 60 * 1000;
+        date = date.getTime() - UTCoffset;
         return data.find(item => item.date === date).netAssetValue;
       }
       valuesChange(todayValue, firstDayValue) {

@@ -78,24 +78,31 @@
       static get properties() {
         return {
           fundData: Array,
-          date: Number,
+
+          date: {
+            type: Number,
+            observer:"dateobserver"
+          },
           today: String,
+
           todayValue: {
             type: Number,
-            computed: "getDateValue( fundData)"
+            computed: "mgetDateValue( fundData)"
           },
+
           firstDayOfMonthValue: {
             type: Number,
-            computed: "getDateValue( fundData, , 1)"
+            computed: "mgetDateValue( fundData, , 1)"
           },
           firstDayOfYearValue: {
             type: Number,
-            computed: "getDateValue( fundData, , 1, 0 )"
+            computed: "mgetDateValue( fundData, , 1, 0 )"
           },
           yearAgoValue: {
             type: Number,
-            computed: "getDateValue( fundData, 'true', -1 )"
+            computed: "mgetDateValue( fundData, 'true', -1 )"
           },
+
           monthlyReturn: {
             type: Number,
             computed: "valuesChange( todayValue, firstDayOfMonthValue )"
@@ -111,11 +118,59 @@
         };
       }
 
-      getDateValue(data, computed, ...args) {
+      dateobserver(valor,oldvalor){
+        console.log(valor,oldvalor);
+        let requestDate=new Date(valor)
+        console.log(requestDate) 
+      
+        
+      }
+
+      mgetDateValue(data,computed,...args){
+        console.log(data);
+        console.log(computed);
         console.log(args)
+        let [refDay,refMount]=args;
+        console.log(refDay,refMount)
+        let nowDate=new Date(); //fecha de hoy-ahora
+        
+        let day=nowDate.getDate()-2 //return el dia de mes
+        let month=nowDate.getMonth() //return mes
+        let year=nowDate.getFullYear() 
+        console.log(day,month,year)
+
+        //for today value
+        let date = new Date(year, month, day)
+        let timestampDate=date.getTime()
+        console.log(timestampDate)
+
+        if (refDay===1){
+          console.log("vamos a principios de mes")
+          let firstMount=new Date(year,month,1)
+          console.log(Date.parse(firstMount))
+
+        }
+
+        if (refDay===1 && refMount===0){
+          console.log("vamos a principios de año")
+          let firstYear=new Date(year,0,1)
+          console.log(Date.parse(firstYear))
+
+        }
+
+
+        return data.find(item => item.date === timestampDate).netAssetValue;
+
+      }
+
+/*
+      getDateValue(data, computed, ...args) {
+        
         const today = new Date();
+        console.log(today)
         let date;
         let UTCoffset;
+
         if (computed) {
           let [years = 0, months = 0, days = 0] = args;
           let year = today.getFullYear(),
@@ -123,18 +178,24 @@
             day = today.getDate();
           date = new Date(year + years, month + months, day + days)
         } else {
+          console.log("No computed, args: ", args)
           let [
             day = today.getDate(),
             month = today.getMonth(),
             year = today.getFullYear()
           ] = args;
+          console.log("internamente day: ",day)
+          console.log("internamente month: ",month)
+          console.log("internamente year: ",year)
           date = new Date(year, month, day)
         }
+
         UTCoffset = date.getTimezoneOffset() * 60 * 1000
         date = date.getTime() - UTCoffset
-        console.log(date);
+        
         return data.find(item => item.date === date).netAssetValue;
       }
+*/
 
       valuesChange(todayValue, firstDayValue) {
         const rentability = (

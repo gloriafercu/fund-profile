@@ -91,10 +91,11 @@
             on-date-changed="changeDate"></date-browser>
 
           <info-table>
-            <span slot="title">Datos al [[ comparedDate ]]</span>
+            <span slot="title">Datos al [[ comparedDateString ]]</span>
             <return-calculation 
               slot="rows" 
-              fund-data="[[ fund.data ]]"></return-calculation>
+              fund-data="[[ fund.data ]]"
+              date="[[comparedDate]]"></return-calculation>
           </info-table>
 
         </sidebar>
@@ -132,19 +133,24 @@
             }
           },
           date: {
-            type: Object,
-            value: function(){
-              return{}
-            }
+            type: String
           },
           today: {
             type: String,
             computed: "formatDate(date)",
             bubbles: true
           },
+          comparedDate:{
+            type: String
+          },
+          comparedDateString:{
+            type: String,
+            computed:"formatDate(comparedDate)"
+          },
           loading: Boolean
-        };
+        }
       }
+
       constructor() {
         super();
       }
@@ -165,15 +171,17 @@
         let M = today.getMonth() + 1;
         let YYYY = today.getFullYear();
 
+        if (!date) return `(No data selected)`
+
         return `${addZero(D)}/${addZero(M)}/${YYYY}`;
       }
       handleResponse() {
         this.loading = !this.loading;
       }
-      changeDate(newValue, oldValue) {
-        console.log(newValue)
-        // let selected = new Date(e.detail.value)
-        // this.comparedDate = this.formatDate(selected)
+      changeDate(e) {
+        let formatedSelectedDate=Date.parse(e.detail.value)
+        console.log(formatedSelectedDate)
+        this.comparedDate=formatedSelectedDate;
       }
     }
 

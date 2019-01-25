@@ -10,7 +10,6 @@
         display: block;
         font-size: 1em;
       }
-
       .see-date {
         display: flex;
         align-items: center;
@@ -18,21 +17,17 @@
         margin: 0 20px;
         padding: 10px 0;
       }
-
       table-row {
         border-bottom: 1px solid #dcdcdc;
       }
-
       table-row:last-child,
       .see-date {
         border-bottom: none;
         padding-bottom: 10px;
       }
-
       .green {
         color: var(--evaluate-high);
       }
-
       .red {
         color: var(--evaluate-low);
       }
@@ -71,39 +66,20 @@
       static get is() {
         return "return-calculation";
       }
-
       /**
        * Object describing property-related metadata used by Polymer features
        */
       static get properties() {
         return {
           fundData: Array,
-
-          date: {
-            type: Number,
-            observer:"dateobserver"
-          },
-          funddata: Array,
           date: Number,
           today: String,
-
           todayValue: {
             type: Number,
-            //computed: "mgetDateValue( fundData)"
             computed: "getDateValue( date, fundData)"
           },
-
           firstDayOfMonthValue: {
             type: Number,
-            computed: "mgetDateValue( fundData, , 1)"
-          },
-          firstDayOfYearValue: {
-            type: Number,
-            computed: "mgetDateValue( fundData, , 1, 0 )"
-          },
-          yearAgoValue: {
-            type: Number,
-            //computed: "mgetDateValue( fundData, 'true', -1 )",
             computed: "getDateValue( date, fundData, , 1)"
           },
           firstDayOfYearValue: {
@@ -114,7 +90,6 @@
             type: Number,
             computed: "getDateValue( date, fundData, 'true', -1 )"
           },
-
           monthlyReturn: {
             type: Number,
             computed: "valuesChange( todayValue, firstDayOfMonthValue )"
@@ -129,59 +104,10 @@
           }
         };
       }
-
-      dateobserver(valor,oldvalor){
-        console.log(valor,oldvalor);
-        let requestDate=new Date(valor)
-        console.log(requestDate) 
-      
-        
-      }
-
-      mgetDateValue(data,computed,...args){
-        console.log(data);
-        console.log(computed);
-        console.log(args)
-        let [refDay,refMount]=args;
-        console.log(refDay,refMount)
-        let nowDate=new Date(); //fecha de hoy-ahora
-        
-        let day=nowDate.getDate()-2 //return el dia de mes
-        let month=nowDate.getMonth() //return mes
-        let year=nowDate.getFullYear() 
-        console.log(day,month,year)
-
-        //for today value
-        let date = new Date(year, month, day)
-        let timestampDate=date.getTime()
-        console.log(timestampDate)
-
-        if (refDay===1){
-          console.log("vamos a principios de mes")
-          let firstMount=new Date(year,month,1)
-          console.log(Date.parse(firstMount))
-
-        }
-
-        if (refDay===1 && refMount===0){
-          console.log("vamos a principios de año")
-          let firstYear=new Date(year,0,1)
-          console.log(Date.parse(firstYear))
-
-        }
-
-
-        return data.find(item => item.date === timestampDate).netAssetValue;
-
-      }
-
-
-   
       getDateValue(inputDate, data, computed, ...args) {
         const today = new Date(inputDate);
         let date;
         let UTCoffset;
-
         if (computed) {
           let [years = 0, months = 0, days = 0] = args;
           let year = today.getFullYear(),
@@ -189,25 +115,17 @@
             day = today.getDate();
           date = new Date(year + years, month + months, day + days)
         } else {
-          console.log("No computed, args: ", args)
           let [
             day = today.getDate(),
             month = today.getMonth(),
             year = today.getFullYear()
           ] = args;
-          console.log("internamente day: ",day)
-          console.log("internamente month: ",month)
-          console.log("internamente year: ",year)
           date = new Date(year, month, day)
         }
-
         UTCoffset = date.getTimezoneOffset() * 60 * 1000
         date = date.getTime() - UTCoffset
-        
         return data.find(item => item.date === date).netAssetValue;
       }
-
-
       valuesChange(todayValue, firstDayValue) {
         const rentability = (
           (todayValue - firstDayValue) /
@@ -215,12 +133,10 @@
         ).toFixed(2);
         return rentability;
       }
-
       changeValueClass(value) {
         return value >= 0 ? "green" : "red";
       }
     }
-
     window.customElements.define(ReturnCalculation.is, ReturnCalculation);
   </script>
 </dom-module>

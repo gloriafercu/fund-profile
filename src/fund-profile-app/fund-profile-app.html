@@ -21,46 +21,34 @@
         max-width: 940px;
         margin: 0 auto;
       }
-
       header {
         display: flex;
         flex-direction: column;
       }
-
       main {
         display: grid;
         grid-template-columns: 1fr 2fr;
       }
-
       sidebar {
         padding-right: 20px;
       }
-
       .page-container {
         display: grid;
         grid-template-rows: auto;
         grid-column-gap: 15px;
       }
-
       h1 {
         font-size: 30px;
         line-height: 35px;
       }
-
       h5 {
         font-size: 16px;
         font-weight: 400px;
         line-height: 20px;
       }
     </style>
-
-    <iron-ajax 
-      auto 
-      url="http://localhost:3000/funds" 
-      handle-as="json" 
-      last-response="{{ fund }}" 
-      on-response="(handleResponse)"></iron-ajax>
-
+    <iron-ajax auto url="http://localhost:3000/funds" handle-as="json" last-response="{{ fund }}" on-response="(handleResponse)">
+    </iron-ajax>
     <div class="page-container">
       <header>
         <h1>
@@ -72,24 +60,11 @@
       <main>
         <sidebar>
           <info-table>
-            <span slot="title">Datos al [[ today ]]</span>
-            <return-calculation 
-              fund-data="[[ fund.data ]]" 
-              date="[[ date ]]"></return-calculation>
+            <span slot="title" blue>Información general</span>
+            <general-information slot="rows" underline data="[[ fund ]]"></general-information>
           </info-table>
-
-          <date-browser 
-            label="Consultar otra fecha" 
-            set-date="[[ today ]]" 
-            on-date-changed="changeDate"></date-browser>
-
+          
           <info-table>
-            <span slot="title">Datos al [[ comparedDateString ]]</span>
-            <return-calculation 
-              slot="rows" 
-              fund-data="[[ fund.data ]]"
-              date="[[comparedDate]]"></return-calculation>
-
             <span slot="title" blue>Datos al [[ today ]]</span>
             <return-calculation slot="rows" underline fund-data="[[ fund.data ]]" date="[[ date ]]">
             </return-calculation>
@@ -101,15 +76,11 @@
                 </return-calculation>
               </info-table>
             </template>
-
           </info-table>
-
         </sidebar>
-
         <div class="main-container">
           <tab-menu fund="[[ fund ]]" today="[[today]]"></tab-menu>
         </div>
-
       </main>
     </div>
   </template>
@@ -132,21 +103,12 @@
             type: String,
             computed: "formatDate(date)",
           },
-          comparedDate:{
-            type: String
-          },
-          comparedDateString:{
-            type: String,
-            computed:"formatDate(comparedDate)"
-          },
           loading: Boolean
-        }
+        };
       }
-
       constructor() {
         super();
       }
-
       /**
        * Use for one-time configuration of your component after local DOM is initialized.
        */
@@ -155,23 +117,18 @@
         this.loading = true;
         this.date = new Date().setHours(0, 0, 0, 0);
       }
-
       formatDate(date) {
         const addZero = value => (value < 10 ? "0" + value : value);
         let today = new Date(date);
         let D = today.getDate();
         let M = today.getMonth() + 1;
         let YYYY = today.getFullYear();
-
-        if (!date) return `(No data selected)`
-
         return `${addZero(D)}/${addZero(M)}/${YYYY}`;
       }
       convertDate(date) {
         let day = new Date(date)
         let time = day.setHours(0, 0, 0, 0)
         let UTCoffset = day.getTimezoneOffset() * 60 * 1000
-
         return time - UTCoffset
       }
       handleResponse() {
@@ -181,7 +138,6 @@
         this.set("comparedDate", e.detail.value)
       }
     }
-
     window.customElements.define(FundProfileApp.is, FundProfileApp);
   </script>
 </dom-module>

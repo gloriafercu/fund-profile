@@ -80,7 +80,14 @@
        * Object describing property-related metadata used by Polymer features
        */
       static get properties() {
-        return {};
+        return {
+          data: {
+            type: Object,
+            value: function(){
+              return {}
+            }
+          }
+        };
       }
 
       /**

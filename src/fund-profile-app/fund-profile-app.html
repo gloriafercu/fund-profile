@@ -2,6 +2,7 @@
 <link rel="import" href="../../bower_components/iron-ajax/iron-ajax.html" />
 <link rel="import" href="../../bower_components/polymer/lib/elements/dom-repeat.html" />
 <link rel="import" href="../../bower_components/paper-button/paper-button.html" />
+<link rel="import" href="../../bower_components/paper-spinner/paper-spinner-lite.html">
 <link rel="import" href="../../bower_components/polymer/lib/elements/dom-if.html">
 <link rel="import" href="../fund-profile-app/components/tab-menu.html" />
 <link rel="import" href="../fund-profile-app/theme/shared-styles.html" />
@@ -53,7 +54,9 @@
         line-height: 20px;
       }
     </style>
-    <iron-ajax auto url="http://localhost:3000/funds" handle-as="json" last-response="{{ fund }}" on-response="(handleResponse)">
+    <paper-spinner-lite active="[[ loading ]]">
+    </paper-spinner-lite>
+    <iron-ajax auto url="http://localhost:3000/funds" handle-as="json" last-response="{{ fund }}" on-response="handleResponse">
     </iron-ajax>
     <div class="page-container">
       <header>

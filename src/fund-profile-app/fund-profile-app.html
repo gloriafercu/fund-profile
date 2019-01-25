@@ -89,10 +89,19 @@
   </template>
 
   <script>
+
     /**
-     * @customElement
-     * @polymer
-     */
+      * `<fund-profile-app>` root of app, main view
+      * just slap `<fund-profile-app>` on your index.html:
+      * and you have a demo of banking operations
+      * <body class="body">
+      *
+      *   <fund-profile-app></fund-profile-app>
+      *
+      * </body>
+      * @customElement
+      * @polymer
+      */
     class FundProfileApp extends Polymer.Element {
       static get is() {
         return "fund-profile-app";
@@ -120,6 +129,14 @@
         this.loading = true;
         this.date = new Date().setHours(0, 0, 0, 0);
       }
+
+      /**
+      * Return a date in string format (DD/MM/YYYY) from a timestamp.
+      * 
+       * @param {number} date timestamp, miliseconds from 1970
+       *
+      * @return {string} the date in string format DD/MM/YYYY
+      */
       formatDate(date) {
         const addZero = value => (value < 10 ? "0" + value : value);
         let today = new Date(date);
@@ -128,11 +145,25 @@
         let YYYY = today.getFullYear();
         return `${addZero(D)}/${addZero(M)}/${YYYY}`;
       }
+
+       /**
+      * From a date in "YYYY-MM-DD" format 
+      * Return a date as timestamp with day, year and mouth
+      * and 0 hours, 0 minutes, 0 seconds, 0 ms....
+      * and sustraying it the offset from timezone.
+      * 
+       * @param {string} date in YYYY-MM-DD format
+       *
+      * @return {number} the "roundeddate" in timestamp format
+      */
       convertDate(date) {
+        console.log(date)
         let day = new Date(date)
         let time = day.setHours(0, 0, 0, 0)
         let UTCoffset = day.getTimezoneOffset() * 60 * 1000
+        console.log(time - UTCoffset);
         return time - UTCoffset
+        
       }
       handleResponse() {
         this.loading = !this.loading;

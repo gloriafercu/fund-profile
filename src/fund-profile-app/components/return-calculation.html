@@ -51,6 +51,8 @@
   </template>
 
   <script>
+
+    
     /**
      * `return-calculation` Description
      *
@@ -104,8 +106,20 @@
           }
         };
       }
+      
 
+       /**
+      * Return the value of "netAssetValue", the financial data
+      * corresponding to a date (which is a timestamp)
+      * 
+       * @param {array} data array of objects timestamp + financialdata
+       * @param {boolean} computed, true for ref to last year
+       * @param {...number} args, values for first day of year or first day of mouth
+       *
+      * @return {number} the financial data for that date-timestamp
+      */
       getDateValue(data, computed, ...args) {
+        console.log(data)
         const today = new Date(this.date);
         let date;
         let UTCoffset;
@@ -127,6 +141,15 @@
         date = date.getTime() - UTCoffset;
         return data.find(item => item.date === date).netAssetValue;
       }
+
+        /**
+      * Return the rentability value calculated for a interval, from origin 
+      * (first day of year or mouth) to today
+      * 
+      * @param {number} todayValue financial value for today
+      * @param {number} firstDayValue, financial value or calculation oringin
+      * @return {number} the calculated rentability value
+      */
       valuesChange(todayValue, firstDayValue) {
         const rentability = (
           (todayValue - firstDayValue) /
@@ -134,6 +157,14 @@
         ).toFixed(2);
         return rentability;
       }
+
+      
+        /**
+      * From calculated value of rentability set the class to show it
+      * 
+      * @param {number} value, rentability value
+      * @return {string} the class returned to change color
+      */
       changeValueClass(value) {
         return value >= 0 ? "green" : "red";
       }

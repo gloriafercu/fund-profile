@@ -12828,11 +12828,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 56,
+              "line": 57,
               "column": 20
             },
             "end": {
-              "line": 59,
+              "line": 60,
               "column": 21
             }
           },
@@ -12850,11 +12850,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 60,
+              "line": 61,
               "column": 20
             },
             "end": {
-              "line": 63,
+              "line": 64,
               "column": 21
             }
           },
@@ -12872,11 +12872,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 64,
+              "line": 65,
               "column": 20
             },
             "end": {
-              "line": 64,
+              "line": 65,
               "column": 35
             }
           },
@@ -12893,11 +12893,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 65,
+              "line": 66,
               "column": 20
             },
             "end": {
-              "line": 65,
+              "line": 66,
               "column": 33
             }
           },
@@ -12914,11 +12914,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 66,
+              "line": 67,
               "column": 20
             },
             "end": {
-              "line": 66,
+              "line": 67,
               "column": 32
             }
           },
@@ -12935,11 +12935,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 67,
+              "line": 68,
               "column": 20
             },
             "end": {
-              "line": 67,
+              "line": 68,
               "column": 36
             }
           },
@@ -12956,11 +12956,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 68,
+              "line": 69,
               "column": 20
             },
             "end": {
-              "line": 73,
+              "line": 74,
               "column": 21
             }
           },
@@ -13222,11 +13222,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 134,
+              "line": 135,
               "column": 12
             },
             "end": {
-              "line": 138,
+              "line": 139,
               "column": 13
             }
           },
@@ -15193,11 +15193,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 88,
+              "line": 89,
               "column": 12
             },
             "end": {
-              "line": 96,
+              "line": 97,
               "column": 13
             }
           },
@@ -15220,11 +15220,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 98,
+              "line": 99,
               "column": 12
             },
             "end": {
-              "line": 119,
+              "line": 120,
               "column": 13
             }
           },
@@ -16203,11 +16203,11 @@
       "metadata": {},
       "sourceRange": {
         "start": {
-          "line": 43,
+          "line": 44,
           "column": 8
         },
         "end": {
-          "line": 139,
+          "line": 140,
           "column": 9
         }
       },
@@ -16220,11 +16220,11 @@
           "description": "",
           "sourceRange": {
             "start": {
-              "line": 56,
+              "line": 57,
               "column": 20
             },
             "end": {
-              "line": 59,
+              "line": 60,
               "column": 21
             }
           },
@@ -16236,11 +16236,11 @@
           "description": "",
           "sourceRange": {
             "start": {
-              "line": 60,
+              "line": 61,
               "column": 20
             },
             "end": {
-              "line": 63,
+              "line": 64,
               "column": 21
             }
           },
@@ -16252,11 +16252,11 @@
           "description": "",
           "sourceRange": {
             "start": {
-              "line": 64,
+              "line": 65,
               "column": 20
             },
             "end": {
-              "line": 64,
+              "line": 65,
               "column": 35
             }
           },
@@ -16268,11 +16268,11 @@
           "description": "",
           "sourceRange": {
             "start": {
-              "line": 65,
+              "line": 66,
               "column": 20
             },
             "end": {
-              "line": 65,
+              "line": 66,
               "column": 33
             }
           },
@@ -16284,11 +16284,11 @@
           "description": "",
           "sourceRange": {
             "start": {
-              "line": 66,
+              "line": 67,
               "column": 20
             },
             "end": {
-              "line": 66,
+              "line": 67,
               "column": 32
             }
           },
@@ -16300,11 +16300,11 @@
           "description": "",
           "sourceRange": {
             "start": {
-              "line": 67,
+              "line": 68,
               "column": 20
             },
             "end": {
-              "line": 67,
+              "line": 68,
               "column": 36
             }
           },
@@ -16316,11 +16316,11 @@
           "description": "",
           "sourceRange": {
             "start": {
-              "line": 68,
+              "line": 69,
               "column": 20
             },
             "end": {
-              "line": 73,
+              "line": 74,
               "column": 21
             }
           },
@@ -52083,11 +52083,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 74,
+              "line": 76,
               "column": 10
             },
             "end": {
-              "line": 74,
+              "line": 76,
               "column": 22
             }
           },
@@ -52104,11 +52104,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 75,
+              "line": 77,
               "column": 10
             },
             "end": {
-              "line": 75,
+              "line": 77,
               "column": 23
             }
           },
@@ -52125,11 +52125,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 76,
+              "line": 78,
               "column": 10
             },
             "end": {
-              "line": 79,
+              "line": 81,
               "column": 11
             }
           },
@@ -52147,11 +52147,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 80,
+              "line": 82,
               "column": 10
             },
             "end": {
-              "line": 83,
+              "line": 85,
               "column": 11
             }
           },
@@ -52169,11 +52169,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 84,
+              "line": 86,
               "column": 10
             },
             "end": {
-              "line": 87,
+              "line": 89,
               "column": 11
             }
           },
@@ -52191,11 +52191,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 88,
+              "line": 90,
               "column": 10
             },
             "end": {
-              "line": 91,
+              "line": 93,
               "column": 11
             }
           },
@@ -52213,11 +52213,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 92,
+              "line": 94,
               "column": 10
             },
             "end": {
-              "line": 95,
+              "line": 97,
               "column": 11
             }
           },
@@ -52235,11 +52235,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 96,
+              "line": 98,
               "column": 10
             },
             "end": {
-              "line": 99,
+              "line": 101,
               "column": 11
             }
           },
@@ -52257,11 +52257,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 100,
+              "line": 102,
               "column": 10
             },
             "end": {
-              "line": 103,
+              "line": 105,
               "column": 11
             }
           },
@@ -54492,76 +54492,100 @@
         },
         {
           "name": "getDateValue",
-          "description": "",
+          "description": "Return the value of \"netAssetValue\", the financial data\ncorresponding to a date (which is a timestamp)",
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 107,
+              "line": 120,
               "column": 6
             },
             "end": {
-              "line": 128,
+              "line": 142,
               "column": 7
             }
           },
           "metadata": {},
           "params": [
             {
-              "name": "data"
+              "name": "data",
+              "type": "array",
+              "description": "array of objects timestamp + financialdata"
             },
             {
-              "name": "computed"
+              "name": "computed",
+              "type": "boolean",
+              "description": ", true for ref to last year"
             },
             {
               "name": "args",
-              "rest": true
+              "type": "...number",
+              "rest": true,
+              "description": ", values for first day of year or first day of mouth"
             }
-          ]
+          ],
+          "return": {
+            "type": "number",
+            "desc": "the financial data for that date-timestamp"
+          }
         },
         {
           "name": "valuesChange",
-          "description": "",
+          "description": "Return the rentability value calculated for a interval, from origin\n(first day of year or mouth) to today",
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 129,
+              "line": 152,
               "column": 6
             },
             "end": {
-              "line": 135,
+              "line": 158,
               "column": 7
             }
           },
           "metadata": {},
           "params": [
             {
-              "name": "todayValue"
+              "name": "todayValue",
+              "type": "number",
+              "description": "financial value for today"
             },
             {
-              "name": "firstDayValue"
+              "name": "firstDayValue",
+              "type": "number",
+              "description": ", financial value or calculation oringin"
             }
-          ]
+          ],
+          "return": {
+            "type": "number",
+            "desc": "the calculated rentability value"
+          }
         },
         {
           "name": "changeValueClass",
-          "description": "",
+          "description": "From calculated value of rentability set the class to show it",
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 136,
+              "line": 167,
               "column": 6
             },
             "end": {
-              "line": 138,
+              "line": 169,
               "column": 7
             }
           },
           "metadata": {},
           "params": [
             {
-              "name": "value"
+              "name": "value",
+              "type": "number",
+              "description": ", rentability value"
             }
-          ]
+          ],
+          "return": {
+            "type": "string",
+            "desc": "the class returned to change color"
+          }
         }
       ],
       "staticMethods": [
@@ -55525,11 +55549,11 @@
       "metadata": {},
       "sourceRange": {
         "start": {
-          "line": 61,
+          "line": 63,
           "column": 4
         },
         "end": {
-          "line": 139,
+          "line": 170,
           "column": 5
         }
       },
@@ -55542,11 +55566,11 @@
           "description": "funddata: Array,",
           "sourceRange": {
             "start": {
-              "line": 74,
+              "line": 76,
               "column": 10
             },
             "end": {
-              "line": 74,
+              "line": 76,
               "column": 22
             }
           },
@@ -55558,11 +55582,11 @@
           "description": "",
           "sourceRange": {
             "start": {
-              "line": 75,
+              "line": 77,
               "column": 10
             },
             "end": {
-              "line": 75,
+              "line": 77,
               "column": 23
             }
           },
@@ -55574,11 +55598,11 @@
           "description": "",
           "sourceRange": {
             "start": {
-              "line": 76,
+              "line": 78,
               "column": 10
             },
             "end": {
-              "line": 79,
+              "line": 81,
               "column": 11
             }
           },
@@ -55590,11 +55614,11 @@
           "description": "",
           "sourceRange": {
             "start": {
-              "line": 80,
+              "line": 82,
               "column": 10
             },
             "end": {
-              "line": 83,
+              "line": 85,
               "column": 11
             }
           },
@@ -55606,11 +55630,11 @@
           "description": "",
           "sourceRange": {
             "start": {
-              "line": 84,
+              "line": 86,
               "column": 10
             },
             "end": {
-              "line": 87,
+              "line": 89,
               "column": 11
             }
           },
@@ -55622,11 +55646,11 @@
           "description": "",
           "sourceRange": {
             "start": {
-              "line": 88,
+              "line": 90,
               "column": 10
             },
             "end": {
-              "line": 91,
+              "line": 93,
               "column": 11
             }
           },
@@ -55638,11 +55662,11 @@
           "description": "",
           "sourceRange": {
             "start": {
-              "line": 92,
+              "line": 94,
               "column": 10
             },
             "end": {
-              "line": 95,
+              "line": 97,
               "column": 11
             }
           },
@@ -55654,11 +55678,11 @@
           "description": "",
           "sourceRange": {
             "start": {
-              "line": 96,
+              "line": 98,
               "column": 10
             },
             "end": {
-              "line": 99,
+              "line": 101,
               "column": 11
             }
           },
@@ -55670,11 +55694,11 @@
           "description": "",
           "sourceRange": {
             "start": {
-              "line": 100,
+              "line": 102,
               "column": 10
             },
             "end": {
-              "line": 103,
+              "line": 105,
               "column": 11
             }
           },
@@ -59473,11 +59497,11 @@
       "metadata": {},
       "sourceRange": {
         "start": {
-          "line": 71,
+          "line": 72,
           "column": 4
         },
         "end": {
-          "line": 85,
+          "line": 86,
           "column": 5
         }
       },
@@ -59496,11 +59520,11 @@
           "name": "title",
           "range": {
             "start": {
-              "line": 63,
+              "line": 64,
               "column": 4
             },
             "end": {
-              "line": 63,
+              "line": 64,
               "column": 30
             }
           }
@@ -59510,11 +59534,11 @@
           "name": "rows",
           "range": {
             "start": {
-              "line": 64,
+              "line": 65,
               "column": 4
             },
             "end": {
-              "line": 64,
+              "line": 65,
               "column": 29
             }
           }
@@ -59524,11 +59548,11 @@
           "name": "annex_controller",
           "range": {
             "start": {
-              "line": 65,
+              "line": 66,
               "column": 4
             },
             "end": {
-              "line": 65,
+              "line": 66,
               "column": 41
             }
           }
@@ -59538,11 +59562,11 @@
           "name": "annex_content",
           "range": {
             "start": {
-              "line": 66,
+              "line": 67,
               "column": 4
             },
             "end": {
-              "line": 66,
+              "line": 67,
               "column": 38
             }
           }
@@ -59551,7 +59575,7 @@
       "tagname": "info-table"
     },
     {
-      "description": "",
+      "description": "`<fund-profile-app>` root of app, main view\njust slap `<fund-profile-app>` on your index.html:\nand you have a demo of banking operations\n<body class=\"body\">\n\n  <fund-profile-app></fund-profile-app>\n\n</body>",
       "summary": "",
       "path": "src/fund-profile-app/fund-profile-app.html",
       "properties": [
@@ -60160,11 +60184,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 101,
+              "line": 110,
               "column": 10
             },
             "end": {
-              "line": 101,
+              "line": 110,
               "column": 22
             }
           },
@@ -60181,11 +60205,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 102,
+              "line": 111,
               "column": 10
             },
             "end": {
-              "line": 102,
+              "line": 111,
               "column": 22
             }
           },
@@ -60202,11 +60226,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 103,
+              "line": 112,
               "column": 10
             },
             "end": {
-              "line": 103,
+              "line": 112,
               "column": 30
             }
           },
@@ -60223,11 +60247,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 104,
+              "line": 113,
               "column": 10
             },
             "end": {
-              "line": 107,
+              "line": 116,
               "column": 11
             }
           },
@@ -60245,11 +60269,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 108,
+              "line": 117,
               "column": 10
             },
             "end": {
-              "line": 108,
+              "line": 117,
               "column": 26
             }
           },
@@ -60510,11 +60534,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 117,
+              "line": 126,
               "column": 6
             },
             "end": {
-              "line": 121,
+              "line": 130,
               "column": 7
             }
           },
@@ -62477,45 +62501,57 @@
         },
         {
           "name": "formatDate",
-          "description": "",
+          "description": "Return a date in string format (DD/MM/YYYY) from a timestamp.",
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 122,
+              "line": 139,
               "column": 6
             },
             "end": {
-              "line": 129,
+              "line": 146,
               "column": 7
             }
           },
           "metadata": {},
           "params": [
             {
-              "name": "date"
+              "name": "date",
+              "type": "number",
+              "description": "timestamp, miliseconds from 1970"
             }
-          ]
+          ],
+          "return": {
+            "type": "string",
+            "desc": "the date in string format DD/MM/YYYY"
+          }
         },
         {
           "name": "convertDate",
-          "description": "",
+          "description": "From a date in \"YYYY-MM-DD\" format\nReturn a date as timestamp with day, year and mouth\nand 0 hours, 0 minutes, 0 seconds, 0 ms....\nand sustraying it the offset from timezone.",
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 130,
+              "line": 158,
               "column": 6
             },
             "end": {
-              "line": 135,
+              "line": 166,
               "column": 7
             }
           },
           "metadata": {},
           "params": [
             {
-              "name": "date"
+              "name": "date",
+              "type": "string",
+              "description": "in YYYY-MM-DD format"
             }
-          ]
+          ],
+          "return": {
+            "type": "number",
+            "desc": "the \"roundeddate\" in timestamp format"
+          }
         },
         {
           "name": "handleResponse",
@@ -62523,11 +62559,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 136,
+              "line": 167,
               "column": 6
             },
             "end": {
-              "line": 138,
+              "line": 169,
               "column": 7
             }
           },
@@ -62543,11 +62579,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 139,
+              "line": 170,
               "column": 6
             },
             "end": {
-              "line": 141,
+              "line": 172,
               "column": 7
             }
           },
@@ -63523,11 +63559,11 @@
       "metadata": {},
       "sourceRange": {
         "start": {
-          "line": 95,
+          "line": 104,
           "column": 4
         },
         "end": {
-          "line": 142,
+          "line": 173,
           "column": 5
         }
       },
@@ -63540,11 +63576,11 @@
           "description": "",
           "sourceRange": {
             "start": {
-              "line": 101,
+              "line": 110,
               "column": 10
             },
             "end": {
-              "line": 101,
+              "line": 110,
               "column": 22
             }
           },
@@ -63556,11 +63592,11 @@
           "description": "",
           "sourceRange": {
             "start": {
-              "line": 102,
+              "line": 111,
               "column": 10
             },
             "end": {
-              "line": 102,
+              "line": 111,
               "column": 22
             }
           },
@@ -63572,11 +63608,11 @@
           "description": "",
           "sourceRange": {
             "start": {
-              "line": 103,
+              "line": 112,
               "column": 10
             },
             "end": {
-              "line": 103,
+              "line": 112,
               "column": 30
             }
           },
@@ -63588,11 +63624,11 @@
           "description": "",
           "sourceRange": {
             "start": {
-              "line": 104,
+              "line": 113,
               "column": 10
             },
             "end": {
-              "line": 107,
+              "line": 116,
               "column": 11
             }
           },
@@ -63604,11 +63640,11 @@
           "description": "",
           "sourceRange": {
             "start": {
-              "line": 108,
+              "line": 117,
               "column": 10
             },
             "end": {
-              "line": 108,
+              "line": 117,
               "column": 26
             }
           },

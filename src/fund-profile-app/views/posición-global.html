@@ -21,10 +21,16 @@
             <paper-button class="blue">Exportar</paper-button>
         </div>    
 
-        <p>Período consultado:</p>
-        <p>Última actualización:</p>
+        <p>Período consultado: [[datestart]] - [[dateend]]</p>
+        <p>Última actualización: [[today]]</p>
 
-        <posicion-global-chart></posicion-global-chart>
+        <posicion-global-chart 
+            on-datestart-changed="dateStartChanged" 
+            on-dateend-changed="dateEndChanged" 
+            values="[[values]]" 
+            name="[[name]]"
+            today="[[today]]">
+        </posicion-global-chart>
 
     </template>
 
@@ -50,19 +56,20 @@
              */
             static get properties() {
                 return {
-                    
+                    values: Array,
+                    name: String,
+                    datestart: String, 
+                    dateend: String
                 };
             }
 
-            /**
-             * Instance of the element is created/upgraded. Use: initializing state,
-             * set up event listeners, create shadow dom.
-             * @constructor
-             */
-            constructor() {
-                super();
+            dateStartChanged (e) {
+                this.datestart = e.detail.value
             }
 
+            dateEndChanged (e) {
+                this.dateend = e.detail.value
+            }
         }
 
         window.customElements.define(PosicionGlobal.is, PosicionGlobal);

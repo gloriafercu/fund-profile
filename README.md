@@ -1,5 +1,33 @@
 # \<fund-profile\>
 
+# Install
+
+Fund Profile is developed with Polymeron 2 and Node 8.11.4  
+
+## Git clone
+
+```
+git clone https://github.com/gloriafercu/fund-profile
+```
+
+## Install
+
+```
+bower install
+```
+
+## Run API server
+
+It works with json-server
+
+```
+json-server --watch data.json
+```
+
+## Run development mode
+
+```
+polymer serve
 
 
 ## Install the Polymer-CLI

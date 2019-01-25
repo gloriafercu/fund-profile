@@ -4,7 +4,7 @@
 
 <dom-module id="shared-styles">
     <template>
-        <style >
+        <style>
             :host {
                 font-family: 'Roboto', sans-serif;
                 font-size: 14px;
@@ -14,57 +14,69 @@
                 --bbva-light-blue: rgb(212, 236, 252);
                 --bbva-dark-blue: rgb(7, 33, 70);
                 /* GREYS */
-                --bbva-light-grey: rgb(233,233,233);
+                --bbva-light-grey: rgb(233, 233, 233);
                 --bbva-dark-grey: rgb(102, 102, 102);
                 --body-text-color: rgb(102, 102, 102);
                 --sandy: rgb(244, 244, 244);
                 --paper-button-ink-color: white;
                 /* EVALUATIVE */
-                --evaluate-low:  #da3851;
+                --evaluate-low: #da3851;
                 --evaluate-high: #48ae64;
+                --correct: #f4f7f5;
+                /* LUMO VAADIN STYLES */
+                --lumo-body-text-color: var(--body-text-color);
+                --lumo-primary-text-color: var(--bbva-blue);
+                --lumo-secondary-text-color: var(--bbva-dark-grey);
+                --lumo-contrast-10pct: var(--sandy);
+                --lumo-font-size-m: 0.8rem;
+                --lumo-border-radius: 0%;
             }
-            p{
+
+            p {
                 font-size: 0.8rem;
                 line-height: 1.2rem;
-                text-align:justify
+                text-align: justify
             }
-            paper-button.blue{
+
+            paper-button.blue {
                 background-color: var(--bbva-blue);
                 font-size: 0.8em;
                 color: white;
                 border: 1px solid transparent;
             }
-            paper-button.blue:hover{
-                background-color:white;
+
+            paper-button.blue:hover {
+                background-color: white;
                 color: var(--bbva-blue);
                 border: 1px solid var(--bbva-blue);
                 transition: all 0.3s ease-in
             }
+
             .header-tab {
-               background-color: var(--bbva-light-grey);
-               padding: 10px;
-               display: flex;
-               justify-content: space-between
+                background-color: var(--bbva-light-grey);
+                padding: 10px;
+                display: flex;
+                justify-content: space-between
             }
-            .header-tab h2{
+
+            .header-tab h2 {
                 margin: 0;
                 font-size: 1em;
                 line-height: 2.4em;
                 font-weight: 500;
             }
-            h1{
+
+            h1 {
                 font-weight: 100;
                 text-transform: uppercase;
                 font-size: 30px;
                 color: #121212;
             }
-            h5{
+
+            h5 {
                 margin-top: 0;
                 margin-bottom: 20px;
             }
-            
         </style>
     </template>
 </dom-module>
-
-

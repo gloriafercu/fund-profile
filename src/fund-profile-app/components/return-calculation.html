@@ -83,11 +83,14 @@
             type: Number,
             observer:"dateobserver"
           },
+          funddata: Array,
+          date: Number,
           today: String,
 
           todayValue: {
             type: Number,
-            computed: "mgetDateValue( fundData)"
+            //computed: "mgetDateValue( fundData)"
+            computed: "getDateValue( date, fundData)"
           },
 
           firstDayOfMonthValue: {
@@ -100,7 +103,16 @@
           },
           yearAgoValue: {
             type: Number,
-            computed: "mgetDateValue( fundData, 'true', -1 )"
+            //computed: "mgetDateValue( fundData, 'true', -1 )",
+            computed: "getDateValue( date, fundData, , 1)"
+          },
+          firstDayOfYearValue: {
+            type: Number,
+            computed: "getDateValue( date, fundData, , 1, 0 )"
+          },
+          yearAgoValue: {
+            type: Number,
+            computed: "getDateValue( date, fundData, 'true', -1 )"
           },
 
           monthlyReturn: {
@@ -163,11 +175,10 @@
 
       }
 
-/*
-      getDateValue(data, computed, ...args) {
-        
-        const today = new Date();
-        console.log(today)
+
+   
+      getDateValue(inputDate, data, computed, ...args) {
+        const today = new Date(inputDate);
         let date;
         let UTCoffset;
 
@@ -195,12 +206,12 @@
         
         return data.find(item => item.date === date).netAssetValue;
       }
-*/
+
 
       valuesChange(todayValue, firstDayValue) {
         const rentability = (
           (todayValue - firstDayValue) /
-          firstDayValue
+          firstDayValue * 100
         ).toFixed(2);
         return rentability;
       }

@@ -2,6 +2,7 @@
 <link rel="import" href="../../bower_components/iron-ajax/iron-ajax.html" />
 <link rel="import" href="../../bower_components/polymer/lib/elements/dom-repeat.html" />
 <link rel="import" href="../../bower_components/paper-button/paper-button.html" />
+<link rel="import" href="../../bower_components/polymer/lib/elements/dom-if.html">
 <link rel="import" href="../fund-profile-app/components/tab-menu.html" />
 <link rel="import" href="../fund-profile-app/theme/shared-styles.html" />
 <link rel="import" href="../fund-profile-app/components/general-information.html" />
@@ -71,16 +72,8 @@
       <main>
         <sidebar>
           <info-table>
-            <span slot="title">Información general</span>
-            <general-information 
-              slot="rows" 
-              data="[[ fund ]]"></general-information>
-          </info-table>
-
-          <info-table>
             <span slot="title">Datos al [[ today ]]</span>
             <return-calculation 
-              slot="rows" 
               fund-data="[[ fund.data ]]" 
               date="[[ date ]]"></return-calculation>
           </info-table>
@@ -96,13 +89,25 @@
               slot="rows" 
               fund-data="[[ fund.data ]]"
               date="[[comparedDate]]"></return-calculation>
+
+            <span slot="title" blue>Datos al [[ today ]]</span>
+            <return-calculation slot="rows" underline fund-data="[[ fund.data ]]" date="[[ date ]]">
+            </return-calculation>
+            <date-browser slot="annex_controller" label="Consultar otra fecha" set-date="[[ today ]]" on-date-changed="changeDate"></date-browser>
+            <template is="dom-if" if="[[comparedDate]]">
+              <info-table slot="annex_content">
+                <div slot="title">Datos al [[ formatDate(comparedDate) ]]</div>
+                <return-calculation slot="rows" fund-data="[[ fund.data ]]" date="[[convertDate(comparedDate)]]">
+                </return-calculation>
+              </info-table>
+            </template>
+
           </info-table>
 
         </sidebar>
 
         <div class="main-container">
-          <tab-menu 
-            fund="[[ fund ]]"></tab-menu>
+          <tab-menu fund="[[ fund ]]" today="[[today]]"></tab-menu>
         </div>
 
       </main>
@@ -120,25 +125,12 @@
       }
       static get properties() {
         return {
-          fund: {
-            type:Object,
-            value: function(){
-              return {}
-            }
-          },
-          data: {
-            type: Object,
-            value: function(){
-              return {}
-            }
-          },
-          date: {
-            type: String
-          },
+          fund: Object,
+          date: Number,
+          comparedDate: Number,
           today: {
             type: String,
             computed: "formatDate(date)",
-            bubbles: true
           },
           comparedDate:{
             type: String
@@ -175,13 +167,18 @@
 
         return `${addZero(D)}/${addZero(M)}/${YYYY}`;
       }
+      convertDate(date) {
+        let day = new Date(date)
+        let time = day.setHours(0, 0, 0, 0)
+        let UTCoffset = day.getTimezoneOffset() * 60 * 1000
+
+        return time - UTCoffset
+      }
       handleResponse() {
         this.loading = !this.loading;
       }
       changeDate(e) {
-        let formatedSelectedDate=Date.parse(e.detail.value)
-        console.log(formatedSelectedDate)
-        this.comparedDate=formatedSelectedDate;
+        this.set("comparedDate", e.detail.value)
       }
     }
 

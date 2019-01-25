@@ -87,6 +87,17 @@
                 ];
             }
 
+            
+                
+            /**
+            * Observer of changes in values and name.
+            * set 'series'
+            * 
+            * @param {array} values array of string, values of series
+            * @param {string} name of serie
+            * @return {undefined} 
+            */
+
             valuesAndNameChanged(values, name) {
                 let newValues = []
                 values.map(function (item) {
@@ -97,8 +108,17 @@
                 this.set('series', [{ name: name, data: newValues }])
             }
 
-            dateStartAndEndChanged(datestart, dateend) {
+            /**
+            * Observer of changes in datestart and dateend.
+            * both in string format "YYYY-MM-DD" 
+            * set series to show
+            * 
+            * @param {string} datestart in format "YYYY-MM-DD"
+            * @param {string} dateend in format "YYYY-MM-DD"
+            * @return {undefined} 
+            */
 
+            dateStartAndEndChanged(datestart, dateend) {
                 let date1;
                 let date2;
 

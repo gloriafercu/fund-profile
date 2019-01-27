@@ -48,8 +48,10 @@
         line-height: 20px;
       }
     </style>
-    <paper-spinner-lite active="[[ loading ]]">
-    </paper-spinner-lite>
+    <template dom-if="[[loading]]">
+      <paper-spinner-lite active="[[ loading ]]">
+      </paper-spinner-lite>
+    </template>
     <iron-ajax auto url="http://localhost:3000/funds" handle-as="json" last-response="{{ fund }}" on-response="handleResponse">
     </iron-ajax>
     <div class="page-container">

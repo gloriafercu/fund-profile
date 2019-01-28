@@ -140,15 +140,50 @@
              */
             static get properties() {
                 return {
+                    
+                      /**
+                    * Array objects time (timestamp) financial value from fund.data
+                    * @type Array[object]
+                    */
+
                     values: Array,
+                      /**
+                    * From fund.name, name of the fund.
+                    * @type String
+                    */
+
                     name: String,
+                       /**
+                    * Date origin of calcs
+                    * @type String
+                    */
+
                     datestart: String, 
+
+                       /**
+                    * .Date end of calcs
+                    * @type String
+                    */
                     dateend: String
                 };
             }
+
+            /**
+            * Fired when `posicion-global-chart` changes its date start.
+            * format e.detail.value: string YYYY/MM/DD
+            * @event datestart-changed
+            * @param {string} date origin for calculations.
+            */
             dateStartChanged (e) {
                 this.datestart = e.detail.value
             }
+
+             /**
+            * Fired when `posicion-global-chart` changes its date start.
+            * format e.detail.value:  string YYYY/MM/DD
+            * @event dateend-changed
+            * @param {string} date end for calculations.
+            */
             dateEndChanged (e) {
                 this.dateend = e.detail.value
             }

@@ -52,9 +52,25 @@
              */
             static get properties() {
                 return {
+                      /**
+                    * Array objects time (timestamp) financial value from fund.data
+                    * @type Array[object]
+                    */
                     values: Array,
+                      /**
+                    * From fund.name, name of the fund.
+                    * @type String
+                    */
                     name: String,
+                       /**
+                    * Date origin of calcs
+                    * @type String
+                    */
                     datestart: String, 
+                       /**
+                    * .Date end of calcs
+                    * @type String
+                    */
                     dateend: String
                 };
             }

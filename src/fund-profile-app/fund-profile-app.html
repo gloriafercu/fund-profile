@@ -48,8 +48,10 @@
         line-height: 20px;
       }
     </style>
-    <paper-spinner-lite active="[[ loading ]]">
-    </paper-spinner-lite>
+    <template dom-if="[[loading]]">
+      <paper-spinner-lite active="[[ loading ]]">
+      </paper-spinner-lite>
+    </template>
     <iron-ajax auto url="http://localhost:3000/funds" handle-as="json" last-response="{{ fund }}" on-response="handleResponse">
     </iron-ajax>
     <div class="page-container">
@@ -69,10 +71,10 @@
           
           <info-table>
             <span slot="title" blue>Datos al [[ today ]]</span>
-            <return-calculation slot="rows" underline fund-data="[[ fund.data ]]" date="[[ date ]]">
+            <return-calculation white slot="rows" underline fund-data="[[ fund.data ]]" date="[[ date ]]">
             </return-calculation>
-            <date-browser slot="annex_controller" label="Consultar otra fecha" set-date="[[ today ]]" on-date-changed="changeDate"></date-browser>
-            <template is="dom-if" if="[[comparedDate]]">
+            <date-browser white slot="annex_controller" label="Consultar otra fecha" set-date="[[ today ]]" on-date-changed="changeDate"></date-browser>
+            <template id="annex" is="dom-if" restamp if="[[comparedDate]]">
               <info-table slot="annex_content">
                 <div slot="title">Datos al [[ formatDate(comparedDate) ]]</div>
                 <return-calculation slot="rows" fund-data="[[ fund.data ]]" date="[[convertDate(comparedDate)]]">

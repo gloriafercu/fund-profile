@@ -8,17 +8,15 @@
         flex-direction: column;
         border: 1px solid #dde3ea;
         border-radius: 5px;
-        background-color: white;
         font-size: 0.8rem;
         overflow: hidden;
-        margin-bottom: 5px;
+        margin-bottom: 10px;
       }
 
       :host([slot="annex_content"]) {
         border: none;
         border-radius: 0;
         margin-bottom: 0;
-        position: relative;
       }
 
       :host([slot="annex_content"])::before {
@@ -35,7 +33,9 @@
         left: 50%;
         z-index: 999
       }
-
+      :host ::slotted([white]) {
+        background:white;
+      }
       :host ::slotted([blue]) {
         background: var(--bbva-blue);
         color: white;
@@ -43,22 +43,26 @@
 
       :host ::slotted([slot="title"]) {
         font-size: 14px;
-        padding: 20px;
+        padding: 17px 20px;
       }
 
-      :host ::slotted(*) {
-        padding: 10px 20px;
+      :host > ::slotted(*) {
+        padding: 0 20px 10px 20px;
+        position: relative;
+        z-index: 3
       }
 
       :host ::slotted([slot="annex_content"]) {
         background: var(--correct);
         font-size: 0.7rem;
+        position: relative;
+        z-index: 1
       }
     </style>
     <slot name="title"></slot>
     <slot name="rows"></slot>
     <slot name="annex_controller"></slot>
-    <slot name="annex_content"></slot>
+    <slot name="annex_content" id="animatable"></slot>
   </template>
 
   <script>
@@ -84,6 +88,21 @@
       static get properties() {
         return {};
       }
+      connectedCallback() {
+        super.connectedCallback()
+        if(this.getAttribute("slot") === "annex_content")
+          this.show()
+      }
+
+      show() {
+        //seconds constant value in milliseconds
+        const s = 1000
+        this.animate([
+          {transform:'translateY(-100%)', opacity: 0},
+          {transform:'translateY(0)', opacity: 1 }
+        ],{ duration:1*s, easing: "cubic-bezier(0.68, -0.55, 0.265, 1.55)", fill: "forwards" });
+      }
+
     }
 
     window.customElements.define(InfoTable.is, InfoTable);

@@ -194,8 +194,17 @@
       handleResponse() {
         this.loading = !this.loading;
       }
+
+         /**
+     * Fired when `vaadin-date-picker` changes and sent a data on event.detail.value
+     * as a string "2019-01-16"
+     *
+     * @event vaadin-date-picker
+     * @param {string} string format "YYYY-DD-MM".
+     */
       changeDate(e) {
-        this.set("comparedDate", e.detail.value)
+        console.log("en changeDAte: ",e);
+        this.set("comparedDate", e.detail.value);
       }
     }
     window.customElements.define(FundProfileApp.is, FundProfileApp);

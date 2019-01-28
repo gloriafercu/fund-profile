@@ -55,18 +55,52 @@
              */
             static get properties() {
                 return {
+                    /**
+                    * Date start for calculation and graph.
+                    * @type {string}}
+                    */
                     datestart: {
                         type: String, 
                         notify: true
                     },
+
+                     /**
+                    * Date end for calculation and graph.
+                    * @type {string}}
+                    */
                     dateend: {
                         type: String, 
                         notify: true
                     },
+
+                     /**
+                    * Date max from data
+                    * @type {string}
+                    */
                     maxdate: String,
+
+                    /**
+                    * Date max from data.
+                    * @type {Array}
+                    */
                     values: Array,
+
+                    /**
+                    * Name of data series.
+                    * @type {string}
+                    */
                     name: String,
+
+                    /**
+                    *
+                    * @type {Array}
+                    */
                     userValue: Array,
+
+                    /**
+                    * Object with nave of serie and data selected by date
+                    * @type {Object.<string,Array>}
+                    */
                     series: {
                         type: Object,
                         value: function () {
@@ -137,6 +171,7 @@
 
                 const newArray = this.values.filter(value => value.date >= date1 && value.date <= date2)
                 const newData = newArray.map(item => [item.date, item.netAssetValue])
+                console.log(newData)
                 this.set('series', [{ name: this.name, data: newData }])
             }
 

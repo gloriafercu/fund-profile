@@ -12823,30 +12823,8 @@
         },
         {
           "name": "datestart",
-          "type": "string | null | undefined",
-          "description": "",
-          "privacy": "public",
-          "sourceRange": {
-            "start": {
-              "line": 57,
-              "column": 20
-            },
-            "end": {
-              "line": 60,
-              "column": 21
-            }
-          },
-          "metadata": {
-            "polymer": {
-              "notify": true,
-              "attributeType": "String"
-            }
-          }
-        },
-        {
-          "name": "dateend",
-          "type": "string | null | undefined",
-          "description": "",
+          "type": "string",
+          "description": "Date start for calculation and graph.",
           "privacy": "public",
           "sourceRange": {
             "start": {
@@ -12866,17 +12844,39 @@
           }
         },
         {
-          "name": "maxdate",
-          "type": "string | null | undefined",
-          "description": "",
+          "name": "dateend",
+          "type": "string",
+          "description": "Date end for calculation and graph.",
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 65,
+              "line": 70,
               "column": 20
             },
             "end": {
-              "line": 65,
+              "line": 73,
+              "column": 21
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "notify": true,
+              "attributeType": "String"
+            }
+          }
+        },
+        {
+          "name": "maxdate",
+          "type": "string",
+          "description": "Date max from data",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 79,
+              "column": 20
+            },
+            "end": {
+              "line": 79,
               "column": 35
             }
           },
@@ -12888,16 +12888,16 @@
         },
         {
           "name": "values",
-          "type": "Array | null | undefined",
-          "description": "",
+          "type": "Array",
+          "description": "Date max from data.",
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 66,
+              "line": 85,
               "column": 20
             },
             "end": {
-              "line": 66,
+              "line": 85,
               "column": 33
             }
           },
@@ -12909,16 +12909,16 @@
         },
         {
           "name": "name",
-          "type": "string | null | undefined",
-          "description": "",
+          "type": "string",
+          "description": "Name of data series.",
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 67,
+              "line": 91,
               "column": 20
             },
             "end": {
-              "line": 67,
+              "line": 91,
               "column": 32
             }
           },
@@ -12930,16 +12930,16 @@
         },
         {
           "name": "userValue",
-          "type": "Array | null | undefined",
+          "type": "Array",
           "description": "",
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 68,
+              "line": 97,
               "column": 20
             },
             "end": {
-              "line": 68,
+              "line": 97,
               "column": 36
             }
           },
@@ -12951,16 +12951,16 @@
         },
         {
           "name": "series",
-          "type": "Object | null | undefined",
-          "description": "",
+          "type": "Object.<string, Array>",
+          "description": "Object with nave of serie and data selected by date",
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 69,
+              "line": 103,
               "column": 20
             },
             "end": {
-              "line": 74,
+              "line": 108,
               "column": 21
             }
           },
@@ -13222,11 +13222,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 135,
+              "line": 190,
               "column": 12
             },
             "end": {
-              "line": 139,
+              "line": 194,
               "column": 13
             }
           },
@@ -15193,11 +15193,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 89,
+              "line": 134,
               "column": 12
             },
             "end": {
-              "line": 97,
+              "line": 142,
               "column": 13
             }
           },
@@ -15220,11 +15220,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 99,
+              "line": 154,
               "column": 12
             },
             "end": {
-              "line": 120,
+              "line": 175,
               "column": 13
             }
           },
@@ -16207,7 +16207,7 @@
           "column": 8
         },
         "end": {
-          "line": 140,
+          "line": 195,
           "column": 9
         }
       },
@@ -16217,23 +16217,7 @@
       "attributes": [
         {
           "name": "datestart",
-          "description": "",
-          "sourceRange": {
-            "start": {
-              "line": 57,
-              "column": 20
-            },
-            "end": {
-              "line": 60,
-              "column": 21
-            }
-          },
-          "metadata": {},
-          "type": "string | null | undefined"
-        },
-        {
-          "name": "dateend",
-          "description": "",
+          "description": "Date start for calculation and graph.",
           "sourceRange": {
             "start": {
               "line": 61,
@@ -16245,87 +16229,103 @@
             }
           },
           "metadata": {},
-          "type": "string | null | undefined"
+          "type": "string"
         },
         {
-          "name": "maxdate",
-          "description": "",
+          "name": "dateend",
+          "description": "Date end for calculation and graph.",
           "sourceRange": {
             "start": {
-              "line": 65,
+              "line": 70,
               "column": 20
             },
             "end": {
-              "line": 65,
+              "line": 73,
+              "column": 21
+            }
+          },
+          "metadata": {},
+          "type": "string"
+        },
+        {
+          "name": "maxdate",
+          "description": "Date max from data",
+          "sourceRange": {
+            "start": {
+              "line": 79,
+              "column": 20
+            },
+            "end": {
+              "line": 79,
               "column": 35
             }
           },
           "metadata": {},
-          "type": "string | null | undefined"
+          "type": "string"
         },
         {
           "name": "values",
-          "description": "",
+          "description": "Date max from data.",
           "sourceRange": {
             "start": {
-              "line": 66,
+              "line": 85,
               "column": 20
             },
             "end": {
-              "line": 66,
+              "line": 85,
               "column": 33
             }
           },
           "metadata": {},
-          "type": "Array | null | undefined"
+          "type": "Array"
         },
         {
           "name": "name",
-          "description": "",
+          "description": "Name of data series.",
           "sourceRange": {
             "start": {
-              "line": 67,
+              "line": 91,
               "column": 20
             },
             "end": {
-              "line": 67,
+              "line": 91,
               "column": 32
             }
           },
           "metadata": {},
-          "type": "string | null | undefined"
+          "type": "string"
         },
         {
           "name": "user-value",
           "description": "",
           "sourceRange": {
             "start": {
-              "line": 68,
+              "line": 97,
               "column": 20
             },
             "end": {
-              "line": 68,
+              "line": 97,
               "column": 36
             }
           },
           "metadata": {},
-          "type": "Array | null | undefined"
+          "type": "Array"
         },
         {
           "name": "series",
-          "description": "",
+          "description": "Object with nave of serie and data selected by date",
           "sourceRange": {
             "start": {
-              "line": 69,
+              "line": 103,
               "column": 20
             },
             "end": {
-              "line": 74,
+              "line": 108,
               "column": 21
             }
           },
           "metadata": {},
-          "type": "Object | null | undefined"
+          "type": "Object.<string, Array>"
         }
       ],
       "events": [
@@ -16955,15 +16955,15 @@
         {
           "name": "values",
           "type": "Array | null | undefined",
-          "description": "",
+          "description": "Array objects time (timestamp) financial value from fund.data",
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 54,
+              "line": 58,
               "column": 20
             },
             "end": {
-              "line": 54,
+              "line": 58,
               "column": 33
             }
           },
@@ -16976,15 +16976,15 @@
         {
           "name": "name",
           "type": "string | null | undefined",
-          "description": "",
+          "description": "From fund.name, name of the fund.",
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 55,
+              "line": 63,
               "column": 20
             },
             "end": {
-              "line": 55,
+              "line": 63,
               "column": 32
             }
           },
@@ -16997,15 +16997,15 @@
         {
           "name": "datestart",
           "type": "string | null | undefined",
-          "description": "",
+          "description": "Date origin of calcs",
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 56,
+              "line": 68,
               "column": 20
             },
             "end": {
-              "line": 56,
+              "line": 68,
               "column": 37
             }
           },
@@ -17018,15 +17018,15 @@
         {
           "name": "dateend",
           "type": "string | null | undefined",
-          "description": "",
+          "description": ".Date end of calcs",
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 57,
+              "line": 73,
               "column": 20
             },
             "end": {
-              "line": 57,
+              "line": 73,
               "column": 35
             }
           },
@@ -19256,15 +19256,15 @@
         },
         {
           "name": "dateStartChanged",
-          "description": "",
+          "description": "Fired when `posicion-global-chart` changes its date start.\nformat e.detail.value: string YYYY/MM/DD",
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 60,
+              "line": 83,
               "column": 12
             },
             "end": {
-              "line": 62,
+              "line": 85,
               "column": 13
             }
           },
@@ -19280,15 +19280,15 @@
         },
         {
           "name": "dateEndChanged",
-          "description": "",
+          "description": "Fired when `posicion-global-chart` changes its date start.\nformat e.detail.value:  string YYYY/MM/DD",
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 63,
+              "line": 93,
               "column": 12
             },
             "end": {
-              "line": 65,
+              "line": 95,
               "column": 13
             }
           },
@@ -20268,7 +20268,7 @@
           "column": 8
         },
         "end": {
-          "line": 66,
+          "line": 96,
           "column": 9
         }
       },
@@ -20278,14 +20278,14 @@
       "attributes": [
         {
           "name": "values",
-          "description": "",
+          "description": "Array objects time (timestamp) financial value from fund.data",
           "sourceRange": {
             "start": {
-              "line": 54,
+              "line": 58,
               "column": 20
             },
             "end": {
-              "line": 54,
+              "line": 58,
               "column": 33
             }
           },
@@ -20294,14 +20294,14 @@
         },
         {
           "name": "name",
-          "description": "",
+          "description": "From fund.name, name of the fund.",
           "sourceRange": {
             "start": {
-              "line": 55,
+              "line": 63,
               "column": 20
             },
             "end": {
-              "line": 55,
+              "line": 63,
               "column": 32
             }
           },
@@ -20310,14 +20310,14 @@
         },
         {
           "name": "datestart",
-          "description": "",
+          "description": "Date origin of calcs",
           "sourceRange": {
             "start": {
-              "line": 56,
+              "line": 68,
               "column": 20
             },
             "end": {
-              "line": 56,
+              "line": 68,
               "column": 37
             }
           },
@@ -20326,14 +20326,14 @@
         },
         {
           "name": "dateend",
-          "description": "",
+          "description": ".Date end of calcs",
           "sourceRange": {
             "start": {
-              "line": 57,
+              "line": 73,
               "column": 20
             },
             "end": {
-              "line": 57,
+              "line": 73,
               "column": 35
             }
           },
@@ -20341,7 +20341,20 @@
           "type": "string | null | undefined"
         }
       ],
-      "events": [],
+      "events": [
+        {
+          "type": "CustomEvent",
+          "name": "dateend-changed",
+          "description": "Fired when `posicion-global-chart` changes its date start.\nformat e.detail.value:  string YYYY/MM/DD",
+          "metadata": {}
+        },
+        {
+          "type": "CustomEvent",
+          "name": "datestart-changed",
+          "description": "Fired when `posicion-global-chart` changes its date start.\nformat e.detail.value: string YYYY/MM/DD",
+          "metadata": {}
+        }
+      ],
       "styling": {
         "cssVariables": [],
         "selectors": []
@@ -28640,11 +28653,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 81,
+              "line": 80,
               "column": 20
             },
             "end": {
-              "line": 84,
+              "line": 83,
               "column": 21
             }
           },
@@ -31835,11 +31848,11 @@
       "metadata": {},
       "sourceRange": {
         "start": {
-          "line": 68,
+          "line": 67,
           "column": 8
         },
         "end": {
-          "line": 96,
+          "line": 95,
           "column": 9
         }
       },
@@ -31852,11 +31865,11 @@
           "description": "",
           "sourceRange": {
             "start": {
-              "line": 81,
+              "line": 80,
               "column": 20
             },
             "end": {
-              "line": 84,
+              "line": 83,
               "column": 21
             }
           },
@@ -44283,11 +44296,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 83,
+              "line": 82,
               "column": 10
             },
             "end": {
-              "line": 88,
+              "line": 87,
               "column": 11
             }
           },
@@ -47478,11 +47491,11 @@
       "metadata": {},
       "sourceRange": {
         "start": {
-          "line": 70,
+          "line": 69,
           "column": 4
         },
         "end": {
-          "line": 100,
+          "line": 99,
           "column": 5
         }
       },
@@ -47495,11 +47508,11 @@
           "description": "",
           "sourceRange": {
             "start": {
-              "line": 83,
+              "line": 82,
               "column": 10
             },
             "end": {
-              "line": 88,
+              "line": 87,
               "column": 11
             }
           },
@@ -48193,7 +48206,7 @@
               "column": 10
             },
             "end": {
-              "line": 107,
+              "line": 108,
               "column": 11
             }
           },
@@ -48454,11 +48467,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 110,
+              "line": 111,
               "column": 6
             },
             "end": {
-              "line": 113,
+              "line": 114,
               "column": 7
             }
           },
@@ -51385,7 +51398,7 @@
           "column": 4
         },
         "end": {
-          "line": 114,
+          "line": 115,
           "column": 5
         }
       },
@@ -51450,7 +51463,7 @@
               "column": 10
             },
             "end": {
-              "line": 107,
+              "line": 108,
               "column": 11
             }
           },
@@ -54500,7 +54513,7 @@
               "column": 6
             },
             "end": {
-              "line": 142,
+              "line": 141,
               "column": 7
             }
           },
@@ -54508,7 +54521,7 @@
           "params": [
             {
               "name": "data",
-              "type": "array",
+              "type": "Array.<Object>",
               "description": "array of objects timestamp + financialdata"
             },
             {
@@ -54534,11 +54547,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 152,
+              "line": 151,
               "column": 6
             },
             "end": {
-              "line": 158,
+              "line": 157,
               "column": 7
             }
           },
@@ -54552,7 +54565,7 @@
             {
               "name": "firstDayValue",
               "type": "number",
-              "description": ", financial value or calculation oringin"
+              "description": "financial value or calculation oringin"
             }
           ],
           "return": {
@@ -54566,11 +54579,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 167,
+              "line": 166,
               "column": 6
             },
             "end": {
-              "line": 169,
+              "line": 168,
               "column": 7
             }
           },
@@ -55553,7 +55566,7 @@
           "column": 4
         },
         "end": {
-          "line": 170,
+          "line": 169,
           "column": 5
         }
       },
@@ -58402,16 +58415,15 @@
         },
         {
           "name": "connectedCallback",
-          "description": "Provides a default implementation of the standard Custom Elements\n`connectedCallback`.\n\nThe default implementation enables the property effects system and\nflushes any pending properties, and updates shimmed CSS properties\nwhen using the ShadyCSS scoping/custom properties polyfill.",
+          "description": "",
           "privacy": "public",
           "sourceRange": {
-            "file": "../../../../polymer/lib/mixins/element-mixin.html",
             "start": {
-              "line": 590,
+              "line": 90,
               "column": 6
             },
             "end": {
-              "line": 595,
+              "line": 94,
               "column": 7
             }
           },
@@ -58419,8 +58431,7 @@
           "params": [],
           "return": {
             "type": "void"
-          },
-          "inheritedFrom": "Polymer.ElementMixin"
+          }
         },
         {
           "name": "disconnectedCallback",
@@ -58534,6 +58545,26 @@
             "desc": "Rewritten URL relative to base"
           },
           "inheritedFrom": "Polymer.ElementMixin"
+        },
+        {
+          "name": "show",
+          "description": "",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 96,
+              "column": 6
+            },
+            "end": {
+              "line": 103,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "params": [],
+          "return": {
+            "type": "void"
+          }
         }
       ],
       "staticMethods": [
@@ -59497,11 +59528,11 @@
       "metadata": {},
       "sourceRange": {
         "start": {
-          "line": 72,
+          "line": 76,
           "column": 4
         },
         "end": {
-          "line": 86,
+          "line": 105,
           "column": 5
         }
       },
@@ -59520,11 +59551,11 @@
           "name": "title",
           "range": {
             "start": {
-              "line": 64,
+              "line": 67,
               "column": 4
             },
             "end": {
-              "line": 64,
+              "line": 67,
               "column": 30
             }
           }
@@ -59534,11 +59565,11 @@
           "name": "rows",
           "range": {
             "start": {
-              "line": 65,
+              "line": 68,
               "column": 4
             },
             "end": {
-              "line": 65,
+              "line": 68,
               "column": 29
             }
           }
@@ -59548,11 +59579,11 @@
           "name": "annex_controller",
           "range": {
             "start": {
-              "line": 66,
+              "line": 69,
               "column": 4
             },
             "end": {
-              "line": 66,
+              "line": 69,
               "column": 41
             }
           }
@@ -59562,12 +59593,12 @@
           "name": "annex_content",
           "range": {
             "start": {
-              "line": 67,
+              "line": 70,
               "column": 4
             },
             "end": {
-              "line": 67,
-              "column": 38
+              "line": 70,
+              "column": 54
             }
           }
         }
@@ -60179,16 +60210,16 @@
         },
         {
           "name": "fund",
-          "type": "Object | null | undefined",
-          "description": "",
+          "type": "{elements: Array.<HTMLElement>, level: number}",
+          "description": "fund object with finantial data.",
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 110,
+              "line": 117,
               "column": 10
             },
             "end": {
-              "line": 110,
+              "line": 117,
               "column": 22
             }
           },
@@ -60201,15 +60232,15 @@
         {
           "name": "date",
           "type": "number | null | undefined",
-          "description": "",
+          "description": "Date in Number (timestamp) format,today rounded with 0 h, m, s, and ms.",
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 111,
+              "line": 124,
               "column": 10
             },
             "end": {
-              "line": 111,
+              "line": 124,
               "column": 22
             }
           },
@@ -60222,15 +60253,15 @@
         {
           "name": "comparedDate",
           "type": "number | null | undefined",
-          "description": "",
+          "description": "Date in Number (timestamp) format, date selected.",
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 112,
+              "line": 131,
               "column": 10
             },
             "end": {
-              "line": 112,
+              "line": 131,
               "column": 30
             }
           },
@@ -60243,15 +60274,15 @@
         {
           "name": "today",
           "type": "string | null | undefined",
-          "description": "",
+          "description": "today date in strin DD/MM/YYYY format",
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 113,
+              "line": 137,
               "column": 10
             },
             "end": {
-              "line": 116,
+              "line": 140,
               "column": 11
             }
           },
@@ -60265,15 +60296,15 @@
         {
           "name": "loading",
           "type": "boolean | null | undefined",
-          "description": "",
+          "description": "¿Is loading page?",
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 117,
+              "line": 145,
               "column": 10
             },
             "end": {
-              "line": 117,
+              "line": 145,
               "column": 26
             }
           },
@@ -60534,11 +60565,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 126,
+              "line": 154,
               "column": 6
             },
             "end": {
-              "line": 130,
+              "line": 158,
               "column": 7
             }
           },
@@ -62505,11 +62536,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 139,
+              "line": 167,
               "column": 6
             },
             "end": {
-              "line": 146,
+              "line": 174,
               "column": 7
             }
           },
@@ -62532,11 +62563,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 158,
+              "line": 186,
               "column": 6
             },
             "end": {
-              "line": 166,
+              "line": 192,
               "column": 7
             }
           },
@@ -62559,11 +62590,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 167,
+              "line": 193,
               "column": 6
             },
             "end": {
-              "line": 169,
+              "line": 195,
               "column": 7
             }
           },
@@ -62579,11 +62610,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 170,
+              "line": 196,
               "column": 6
             },
             "end": {
-              "line": 172,
+              "line": 198,
               "column": 7
             }
           },
@@ -63559,11 +63590,11 @@
       "metadata": {},
       "sourceRange": {
         "start": {
-          "line": 104,
+          "line": 106,
           "column": 4
         },
         "end": {
-          "line": 173,
+          "line": 199,
           "column": 5
         }
       },
@@ -63573,30 +63604,30 @@
       "attributes": [
         {
           "name": "fund",
-          "description": "",
+          "description": "fund object with finantial data.",
           "sourceRange": {
             "start": {
-              "line": 110,
+              "line": 117,
               "column": 10
             },
             "end": {
-              "line": 110,
+              "line": 117,
               "column": 22
             }
           },
           "metadata": {},
-          "type": "Object | null | undefined"
+          "type": "{elements: Array.<HTMLElement>, level: number}"
         },
         {
           "name": "date",
-          "description": "",
+          "description": "Date in Number (timestamp) format,today rounded with 0 h, m, s, and ms.",
           "sourceRange": {
             "start": {
-              "line": 111,
+              "line": 124,
               "column": 10
             },
             "end": {
-              "line": 111,
+              "line": 124,
               "column": 22
             }
           },
@@ -63605,14 +63636,14 @@
         },
         {
           "name": "compared-date",
-          "description": "",
+          "description": "Date in Number (timestamp) format, date selected.",
           "sourceRange": {
             "start": {
-              "line": 112,
+              "line": 131,
               "column": 10
             },
             "end": {
-              "line": 112,
+              "line": 131,
               "column": 30
             }
           },
@@ -63621,14 +63652,14 @@
         },
         {
           "name": "today",
-          "description": "",
+          "description": "today date in strin DD/MM/YYYY format",
           "sourceRange": {
             "start": {
-              "line": 113,
+              "line": 137,
               "column": 10
             },
             "end": {
-              "line": 116,
+              "line": 140,
               "column": 11
             }
           },
@@ -63637,14 +63668,14 @@
         },
         {
           "name": "loading",
-          "description": "",
+          "description": "¿Is loading page?",
           "sourceRange": {
             "start": {
-              "line": 117,
+              "line": 145,
               "column": 10
             },
             "end": {
-              "line": 117,
+              "line": 145,
               "column": 26
             }
           },

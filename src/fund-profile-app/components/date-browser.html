@@ -87,9 +87,10 @@
               // A function to format given `Object` as
               // date string. Object is in the format `{ day: ..., month: ..., year: ... }`
               formatDate: d => {
+                const addZero = value => (value < 10 ? "0" + value : value);
                 // returns a string representation of the given
                 // object in Spanish 'DD/MM/YYYY' format
-                return `${d.day}/${d.month + 1}/${d.year}`;
+                return `${addZero(d.day)}/${addZero(d.month + 1)}/${d.year}`;
               },
 
               // A function to parse the given text to an `Object` in the format `{ day: ..., month: ..., year: ... }`.

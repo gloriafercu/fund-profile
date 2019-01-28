@@ -110,13 +110,39 @@
       }
       static get properties() {
         return {
+          /**
+          * fund object with finantial data.
+          *
+          * @type {{elements: Array<HTMLElement>, level: number}}
+          */
           fund: Object,
+
+          /**
+          * Date in Number (timestamp) format,today rounded with 0 h, m, s, and ms.
+          *
+          * @type Number
+          */
           date: Number,
+
+           /**
+          * Date in Number (timestamp) format, date selected.
+          *
+          * @type Number
+          */
           comparedDate: Number,
+
+          /**
+          * today date in strin DD/MM/YYYY format
+          * @type String
+          */
           today: {
             type: String,
             computed: "formatDate(date)",
           },
+          /**
+          *¿Is loading page?
+          *@type Boolean
+          */
           loading: Boolean
         };
       }

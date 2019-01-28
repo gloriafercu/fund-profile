@@ -112,7 +112,7 @@
       * Return the value of "netAssetValue", the financial data
       * corresponding to a date (which is a timestamp)
       * 
-       * @param {array} data array of objects timestamp + financialdata
+       * @param {Array<Object>} data array of objects timestamp + financialdata
        * @param {boolean} computed, true for ref to last year
        * @param {...number} args, values for first day of year or first day of mouth
        *
@@ -147,7 +147,7 @@
       * (first day of year or mouth) to today
       * 
       * @param {number} todayValue financial value for today
-      * @param {number} firstDayValue, financial value or calculation oringin
+      * @param {number} firstDayValue financial value or calculation oringin
       * @return {number} the calculated rentability value
       */
       valuesChange(todayValue, firstDayValue) {

@@ -3,7 +3,6 @@
 <link rel="import" href="../../../bower_components/paper-button/paper-button.html">
 <link rel="import" href="../../../bower_components/iron-image/iron-image.html">
 <link rel="stylesheet" href="../../../bower_components/iron-icons/iron-icons.html">
-<link rel="stylesheet" href="../../../bower_components/iron-icon/iron-icon.html>
 
 <link rel="import" href="../theme/shared-styles.html">
 
@@ -41,7 +40,6 @@
                 display: flex;
                 align-items: center;
                 padding: 10px 0;
-                /* justify-content: flex-start; */
                 align-items: flex-start
             }
             .pdf-icon{
@@ -57,6 +55,40 @@
             .colum-pdf{
                 display: flex;
                 flex-direction: column;
+            }
+            .fund-h2{
+                font-size: 16px;
+                padding: 15px 11px;
+                background-color: #e9e9e9;
+            }
+            p{
+                color: #666;
+                font-size: 14px;
+                padding: 15px 0px 0 0px;
+                margin: 0;
+                line-height: 1.80em;
+            }
+            .box-end{
+                color: #666;
+                font-size: 14px;
+                margin: 0;
+                line-height: 1.80em;
+                padding: 0;
+            }
+            .style-box{
+                background-color: #D4EDFC;
+                margin-block-start: 20px;
+                margin-block-end: 50px;
+                display: flex;
+                align-items: flex-start;
+                padding: 40px;
+            }
+            .msg{
+                display: flex;
+            }
+            .info-icon{
+                width: 25%;
+
             }
         </style>
 
@@ -116,7 +148,36 @@
         <a target="_blank" href="https://www.bbva.es/productos/ficha/traspaso-de-fondos/t000000305/&amp;amp;int=homefondos-vercondicionespromociontraspaso"
             style="color: #006DC0;position: relative;top: 5px;left: 10px;">Ver condiciones de la bonificación
         </a>
-        
+        <div class="plans-description">
+            <h2 class="fund-h2">Descripcion</h2>
+                <p>Fondo Monetario que invierte en activos de renta fija pública y privada denominados en EUR. La duración media de su
+                    cartera es inferior o igual a 6 meses y los activos que la componen no superarán los 12 meses hasta el vencimiento.
+                    El fondo no invierte en ABS.
+                    <br>
+                    Si desea más información consulte folleto informativo del fondo y datos de Interes
+                </p>
+                <p id="masobjetivo" style="display:none;">
+                    La gestión toma como referencia el comportamiento del índice repo día sobre deuda pública española. El objetivo de
+                    gestión es mantener el principal y obtener una rentabilidad acorde con los tipos del mercado monetario. Se invierte el
+                    100% de la exposición total en instrumentos de mercado monetario cotizados y, hasta un 20%, en depósitos denominados en
+                    euros, de emisores públicos o privados de la OCDE.
+                </p>
+                
+                    <a on-click="moreInfo" id="linkmasinf" title="Más informacion">Más información
+                    </a>
+                </div>
+            <div>
+                <h2 class="fund-h2">Horizonte</h2>
+                <p>Recomendado para posiciones a corto plazo</p>        
+            </div>
+        <div class="msg msg-info">
+           <div class="style-box">
+               <iron-icon class="info-icon" icon="icons:info"></iron-icon>
+                <p class="box-end">El 25/10/2013 se modificó la vocación inversora del Fondo por ello sólo se muestra la evolución del valor liquidativo y
+                rentabilidades a partir de esa fecha según artículo 60.3 del Real Decreto 217/2008, de 15 de febrero.</p>
+            </div>
+        </div>
+
     </template>
 
     <script>
@@ -187,6 +248,12 @@
             dateEndChanged (e) {
                 this.dateend = e.detail.value
             }
+
+            moreInfo() {
+                this.$.masobjetivo.style = "display:block";
+                this.$.linkmasinf.style = "display:none";
+            }
+
         }
         window.customElements.define(PosicionGlobal.is, PosicionGlobal);
     </script>

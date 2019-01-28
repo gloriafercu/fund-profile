@@ -1,6 +1,9 @@
 <link rel="import" href="../../../bower_components/polymer/polymer-element.html">
 <link rel="import" href="../components/posicion-global-chart.html">
 <link rel="import" href="../../../bower_components/paper-button/paper-button.html">
+<link rel="import" href="../../../bower_components/iron-image/iron-image.html">
+<link rel="stylesheet" href="../../../bower_components/iron-icons/iron-icons.html">
+<link rel="stylesheet" href="../../../bower_components/iron-icon/iron-icon.html>
 
 <link rel="import" href="../theme/shared-styles.html">
 
@@ -10,6 +13,50 @@
         <style include="shared-styles">
             :host {
                 display: block
+            }
+            .download-container{
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: space-between;
+                width: 100%;
+            }
+            .download-container > *{
+                width: 50%
+            }
+            a{
+                font-size: 14px;
+                color: #2A86CA;
+                cursor: pointer;
+                font-weight: bold;
+                text-decoration: none;
+            }
+            iron-image {
+                width: 100%;
+                max-width: 564px;
+                height: 115px;
+                margin: 25px;
+                text-align: center;
+            }
+            .span-pdf {
+                display: flex;
+                align-items: center;
+                padding: 10px 0;
+                /* justify-content: flex-start; */
+                align-items: flex-start
+            }
+            .pdf-icon{
+                margin-right: 10px;
+            }
+            .print-icon{
+                margin-right: 10px;
+            }
+            .download-size{
+                font-weight: normal;
+                color: #666666;
+            }
+            .colum-pdf{
+                display: flex;
+                flex-direction: column;
             }
         </style>
 
@@ -29,6 +76,47 @@
             today="[[today]]">
         </posicion-global-chart>
 
+        <div class="download-container">
+
+            <a class="span-pdf" href="https://www.bbvaassetmanagement.com/am/tlwgpub/informes/ES0113276002_FR2018032301.pdf" target="_blank">
+                <iron-icon class="pdf-icon" icon="image:picture-as-pdf"></iron-icon>
+                <div class="colum-pdf">
+                <span class="download-description">Datos Fundamentales Inversor </span>
+                <span class="download-size"> (23/03/2018)</span>
+                </div>
+            </a>
+            
+            <a class="span-pdf" href="https://www.bbvaassetmanagement.com/am/tlwgpub/informes/ES0113276002_CA2018100101.pdf" target="_blank">
+                <iron-icon class="pdf-icon" icon="image:picture-as-pdf"></iron-icon>
+                <div class="colum-pdf">
+                <span class="download-description">Informacion de Producto</span>
+                <span class="download-size">(01/10/2018)</span>
+            </div>
+            </a>
+            <a class="span-pdf" href="https://www.bbvaassetmanagement.com/am/amspring/web/services/rest17/informesREST/getUnificarDocumentosFondos/194/ES/ES/ES/1" target="_blank">
+                <iron-icon class="print-icon" icon="icons:print"></iron-icon>
+                <span class="download-description">Imprimir Documentacion</span>
+                <span class="download-size"></span>
+            
+            </a>
+            <a class="span-pdf" href="https://www.bbvaassetmanagement.com/am/tlwgpub/informes/ES0113276002_FI2018123101.pdf" target="_blank">
+                <iron-icon class="pdf-icon" icon="image:picture-as-pdf"></iron-icon>
+                <div class="colum-pdf">
+                <span class="download-description">Ficha Mensual de Seguimiento</span>
+                <span class="download-size">(31/12/2018)</span>
+                </div>
+            </a>
+        </div>
+        
+        <div class="banner-container">
+            <a class="aportaYa" href="https://www.bbva.es/productos/ficha/traspaso-de-fondos/t000000305" target="_blank">
+                <iron-image sizing="contain" preload src="src\fund-profile-app\images\Banner.jpg" alt="[FIELDNAME_IMAGENALT]" title></iron-image>
+            </a>
+        </div>
+        <a target="_blank" href="https://www.bbva.es/productos/ficha/traspaso-de-fondos/t000000305/&amp;amp;int=homefondos-vercondicionespromociontraspaso"
+            style="color: #006DC0;position: relative;top: 5px;left: 10px;">Ver condiciones de la bonificación
+        </a>
+        
     </template>
 
     <script>

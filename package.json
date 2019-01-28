@@ -6,7 +6,9 @@
   "directories": {
     "test": "test"
   },
-  "dependencies": {},
+  "dependencies": {
+    "@polymer/iron-image": "^3.0.1"
+  },
   "devDependencies": {
     "@polymer/iron-component-page": "^4.0.1"
   },

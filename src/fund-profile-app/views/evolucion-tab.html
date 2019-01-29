@@ -11,6 +11,50 @@
             :host {
                 display: block
             }
+
+            .table-simple{
+                background-color:rgba(0, 0, 0, 0);
+                border-bottom-color:rgb(220, 220, 220);
+                width:100%;
+                border-bottom-style:solid;
+                border-bottom-width:1px;
+                border-collapse:collapse;
+                border-image-outset:0px;
+                border-image-repeat:stretch;
+                border-image-slice:100%;
+                border-image-source:none;
+                border-image-width:1;
+                border-left-color:rgb(220, 220, 220);
+                border-left-style:solid;
+                border-left-width:1px;
+                border-right-color:rgb(220, 220, 220);
+                border-right-style:solid;
+                border-right-width:1px;
+                border-top-color:rgb(51, 51, 51);
+                border-top-style:none;
+                border-top-width:0px;
+                box-sizing:border-box;
+                color:rgb(51, 51, 51);
+                display:table;
+                font-family:BentonSansBook, Arial, Helvetica, sans-serif;
+                font-size:14px;
+                height:171px;
+                line-height:20px;
+                margin-bottom:10px;
+                margin-left:0px;
+                margin-right:0px;
+                margin-top:0px;
+                outline-color:rgb(51, 51, 51);
+                outline-style:none;
+                outline-width:0px;
+                padding-bottom:0px;
+                padding-left:0px;
+                padding-right:0px;
+                padding-top:0px;
+                text-size-adjust:100%;
+                width:566px
+
+            }
         </style>
 
         
@@ -47,6 +91,90 @@
     <div class="header-tab">
             <h2>Datos a <b>[[endDateInterval]]</b></h2>
     </div> 
+
+    <div class="data-tables">
+        <table class="table-simple">
+            <tr>
+                <th>Rentabilidad acumulada</th>
+                <th>1 mes</th> 
+                <th>Año en curso</th>
+                <th>Un año</th>
+            </tr>
+            <tr>
+                <td>Fondo</td>
+                <td>Smith</td> 
+                <td>50</td>
+                <td>50</td>
+            </tr>
+            <tr>
+                <td>Indice</td>
+                <td>Jackson</td> 
+                <td>94</td>
+                <td>50</td>
+            </tr>
+        </table>
+
+        <table class="table-simple">
+            <tr>
+                <th> Rentabilidad anualizadaa</th>
+                <th>1 año</th> 
+                <th>3 años</th>
+                <th>5 años</th>
+                <th>10 años</th> 
+                <th>15 años</th>
+                <th>20 años</th>
+            </tr>
+            <tr>
+                <td>Fondo</td>
+                <td>Smith</td> 
+                <td>50</td>
+                <td>50</td>
+                <td>50</td>
+                <td>Smith</td> 
+                <td>Smith</td> 
+            </tr>
+            <tr>
+                <td>Indice</td>
+                <td>Jackson</td> 
+                <td>94</td>
+                <td>50</td>
+                <td>Jackson</td> 
+                <td>94</td>
+                <td>50</td>
+            </tr>
+        </table>
+
+        <table class="table-simple">
+            <tr>
+                <th>Rentabilidad últimos 5 años</th>
+                <th>2018</th> 
+                <th>2017</th>
+                <th>2016</th>
+                <th>2015</th> 
+                <th>2016</th>
+                <th>2014</th>
+            </tr>
+            <tr>
+                <td>Fondo</td>
+                <td>Smith</td> 
+                <td>50</td>
+                <td>50</td>
+                <td>Smith</td> 
+                <td>Smith</td>
+                <td>Smith</td>
+            </tr>
+            <tr>
+                <td>Indice</td>
+                <td>Jackson</td> 
+                <td>94</td>
+                <td>50</td>
+                <td>Jackson</td> 
+                <td>94</td>
+                <td>50</td>
+            </tr>
+        </table>
+
+    </div>
 
 
     <div class="header-tab">
@@ -116,6 +244,36 @@
                         value: function(){
                             return []
                         }
+                    },
+                    /**
+                    * todayDate computed by method thas also give 
+                    * value to other four properties
+                    *
+                    */
+                    todayDate: {
+                        type: Number,
+                        value: "",
+                        computed: 'getDateValues()'
+                    },
+
+                    aMounthAgoDate:{
+                        type: Number,
+                        value:""
+                    },
+                    
+                    firstDayOfThisYearDate: {
+                        type: Number,
+                        value:""
+                    },
+
+                    aYearAgoDate:{
+                        type: Number,
+                        value: ""
+                    },
+
+                    threeYearAgoDate:{
+                        type: Number,
+                        value:""
                     }
 
                 };
@@ -171,8 +329,66 @@
                 // a object that have a name and an array of arrays(2) for the data, so:
                 const arrayTwoData = this.filteredValues.map(item => [item.date, item.netAssetValue])
                 this.set('series', [{ name: this.name, data: arrayTwoData }])
-
+              
             }
+
+            getDateValues(){
+                /*to get first day of this mounth*/
+                let todayDate=new Date();
+                let realTodayDate=todayDate; //to keep the value of real todayDate
+                let firstDayOfThisMounth;
+                let firstDayOfThisYear;
+                let thisYear;
+                let aYearAgo;
+                let previousMounth;
+                let aMounthAgo;
+                let thisMounth;
+                let treeYearsAgo;
+
+                /*To get firstDayOfThisMounth*/
+                firstDayOfThisMounth=new Date(todayDate.setDate(1));
+                console.log("firstDayOfThisMounth: ",firstDayOfThisMounth);
+                
+                /*To get first day of this year, first day of januay 1*/
+                todayDate = new Date(); //refresh todayDate
+                firstDayOfThisMounth=new Date(todayDate.setDate(1));
+                firstDayOfThisYear=new Date(firstDayOfThisMounth.setMonth(0));
+                console.log("firstDayOfThisYeare: ",typeof(firstDayOfThisYear));
+ 
+                /*to get a year ago date*/
+                todayDate=new Date() //refresh todayDate
+                thisYear=todayDate.getUTCFullYear();
+                aYearAgo=new Date(todayDate.setFullYear(thisYear-1))
+                todayDate=new Date()
+                treeYearsAgo=new Date(todayDate.setFullYear(thisYear-3))
+                console.log("a year ago: ",aYearAgo);
+                console.log("TREE years ago: ",treeYearsAgo)
+
+                /*To get a mounth ago, look at mounth and year*/
+                todayDate=new Date() //refresh todayDte
+                thisMounth=todayDate.getMonth() //actual Mounth
+              
+                if (thisMounth==0) { 
+                    previousMounth=11
+                    let temp=new Date(todayDate.setMonth(previousMounth))
+                    aMounthAgo=new Date(temp.setFullYear(thisYear-1))
+                } else {
+                    previousMounth = thisMounth-1;
+                    aMounthAgo=new Date(todayDate.setMonth(previousMounth))
+                    }
+                console.log("a Mounth ago: ",aMounthAgo)
+
+                /*to set the properties as Number (timestamp)*/
+                this.aMounthAgoDate=aMounthAgo.getTime();
+                this.firstDayOfThisYearDate=firstDayOfThisYear.getTime();
+                this.aMounthAgoDate=aMounthAgo.getTime();
+                this.aYearAgoDate=aYearAgo.getTime()
+                this.threeYearAgoDate=treeYearsAgo.getTime();
+                console.log(this.aMounthAgoDate,this.firstDayOfThisYearDate,this.aMounthAgoDate);
+                    /*and return todaydate as timestamp*/
+                return todayDate.getTime();
+            }
+
 
 
 

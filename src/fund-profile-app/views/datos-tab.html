@@ -11,39 +11,114 @@
                 display: grid;
                 grid-template-columns: repeat(2, 1fr);
             }
-
+            .header-tab{
+                justify-content: space-around;
+                height: 30px;
+            }
             .data-table dd {
                 justify-self: right;
             }
+            dt{
+                margin: 8px;
+            }
+            dd{
+                margin-block-start: 8px;
+            }
+            .arrow-down {
+                width: 0; 
+                height: 0; 
+                border-left: 10px solid transparent;
+                border-right: 10px solid transparent;
+                border-top: 10px solid var(--bbva-dark-grey);
+                transition: all 0.3s ease-out;
+            }
 
+            .arrow-right {
+                width: 0; 
+                height: 0; 
+                border-top: 10px solid transparent;
+                border-bottom: 10px solid transparent;
+                border-right: 10px solid var(--bbva-dark-grey);
+                transform: rotate(-180deg) translate(0%, -100%);    
+                transform-origin: 100% -20%;   
+                transition: all 0.3s ease-out;
+            }
         </style>
 
-    <div class="header-tab">
-        <h2>Datos</h2>
-    </div> 
-
-    <dl class="data-table">
-        <dt>Divisa denominación fondo</dt>
-        <dd>[[fund.currency]]</dd>
-
-        <dt>Bono</dt>
-        <dd>[[fund.name]]</dd>
-
-        <dt>Typeshort</dt>
-        <dd>[[fund.typeShort]]</dd>
-
-        <dt>Subtype</dt>
-        <dd>[[fund.subtype]]</dd>
-
-        <dt>Risk Level</dt>
-        <dd>[[fund.riskLevel]]</dd>
-
-        <dt>ISIN</dt>
-        <dd>[[fund.ISIN]]</dd>
-
-    </dl>
-     
-
+        <div on-click="dropdownControl" class="header-tab">
+            <h2>Datos</h2>
+            <p class$="[[arrow]]"></p>
+        </div>
+        
+        <iron-dropdown id="dropdown" no-overlap allow-outside-scroll no-cancel-on-outside-click opened>
+            <div id="top-ten-table" slot="dropdown-content">
+                <dl class="data-table">
+        
+                    <dt>Fecha lanzamiento del fondo</dt>
+                    <dd>[[fund.date]]</dd>
+        
+                    <dt>Fecha lanzamiento</dt>
+                    <dd>[[fund.date]]</dd>
+        
+                    <dt>Divisa denominación fondo</dt>
+                    <dd>[[fund.currency]]</dd>
+        
+                    <dt>Tipo</dt>
+                    <dd>[[fund.typeData]]</dd>
+        
+                    <dt>Inversión mínima</dt>
+                    <dd>[[fund.minInv]] EUR</dd>
+        
+                    <dt>Minimo mantener</dt>
+                    <dd>[[fund.minInv]] EUR</dd>
+        
+                    <dt>Valor liquidativo aplicable</dt>
+                    <dd>[[fund.valorLiqui]]</dd>
+        
+                    <dt>Hora limite suscripciones y reembolsos</dt>
+                    <dd>[[fund.hourLimit]] H</dd>
+        
+                    <dt>Tramitación suscripciones y reembolsos</dt>
+                    <dd>[[fund.valorLiqui]][[fund.tramit]]</dd>
+        
+                    <dt>Código ISIN</dt>
+                    <dd>[[fund.ISIN]]</dd>
+        
+                    <dt>Código CIF</dt>
+                    <dd>[[fund.CIF]]</dd>
+        
+                    <dt>Código registro</dt>
+                    <dd>[[fund.regis]]</dd>
+        
+                    <dt>Domicilio</dt>
+                    <dd>[[fund.country]]</dd>
+        
+                    <dt>Registrado en</dt>
+                    <dd>[[fund.country]]</dd>
+        
+                    <dt>Estructura legal</dt>
+                    <dd>[[fund.structure]]</dd>
+        
+                    <dt>Gestora</dt>
+                    <dd>[[fund.gestor]]</dd>
+        
+                    <dt>Depositario</dt>
+                    <dd>[[fund.depos]].</dd>
+        
+                    <dt>Auditor</dt>
+                    <dd>[[fund.audit]]</dd>
+        
+                    <dt>Patrimonio (24/1/2019)</dt>
+                    <dd>[[fund.patrim]]€</dd>
+        
+                    <dt>Indice de referencia</dt>
+                    <dd>[[fund.ref]]</dd>
+        
+                    <dt>Frecuencia de cálculo del valor liquidativo</dt>
+                    <dd>[[fund.frecuence]]</dd>
+                </dl>
+            </div>
+        </iron-dropdown>
     </template>
 
     <script>
@@ -68,7 +143,10 @@
              */
             static get properties() {
                 return {
-                    
+                    arrow: {
+                        type: String, 
+                        value: 'arrow-down'
+                    }
                 };
             }
 
@@ -80,6 +158,16 @@
             constructor() {
                 super();
             }
+
+            dropdownControl() {
+                this.arrow === "arrow-right" ?
+                    this.$.dropdown.open() :
+                    this.$.dropdown.close()
+                this.arrow = (this.arrow === 'arrow-right') ?
+                    'arrow-down' :
+                    'arrow-right'
+            } 
+            
         }
 
         window.customElements.define(DatosTab.is, DatosTab);

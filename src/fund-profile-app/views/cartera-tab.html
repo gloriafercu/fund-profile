@@ -91,7 +91,7 @@
             <button >Top Ten Inversiones</button>
             <p class$="[[arrow]]"></p>
         </div>
-        <iron-dropdown id="dropdown" no-overlap allow-outside-scroll>
+        <iron-dropdown id="dropdown" no-overlap allow-outside-scroll no-cancel-on-outside-click>
             <div id="top-ten-table" slot="dropdown-content" >
                 <dl>
                     <dt>Inversiones</dt>
@@ -203,10 +203,14 @@
                                     ["RENTA FIJA", this.rentafija]])
             }
 
-            dropdownOpen() {
-                this.$.dropdown.open()
-                this.arrow = (this.arrow === 'arrow-down') ? 'arrow-right' : 'arrow-down'
-            }
+            dropdownControl() {
+                this.arrow === "arrow-right" ?
+                    this.$.dropdown.open() :
+                    this.$.dropdown.close()
+                this.arrow = (this.arrow === 'arrow-right') ?
+                    'arrow-down' :
+                    'arrow-right'
+            } 
         }
 
         window.customElements.define(CarteraTab.is, CarteraTab);

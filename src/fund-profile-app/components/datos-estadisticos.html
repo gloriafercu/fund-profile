@@ -1,16 +1,136 @@
-<link rel="import" href="../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../../../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../../../bower_components/iron-dropdown/iron-dropdown.html">
+<link rel="import" href="../theme/shared-styles.html">
 
 <dom-module id="datos-estadisticos">
     <template>
-        <style>
+        <style include="shared-styles">
             :host {
-                display: block
+                display: block;
+                height:1500px;
+            }
+            .arrow-down {
+                width: 0; 
+                height: 0; 
+                border-left: 10px solid transparent;
+                border-right: 10px solid transparent;
+                border-top: 10px solid var(--bbva-dark-grey);
+                transition: all 0.3s ease-out;
+            }
+
+            .arrow-right {
+                width: 0; 
+                height: 0; 
+                border-top: 10px solid transparent;
+                border-bottom: 10px solid transparent;
+                border-right: 10px solid var(--bbva-dark-grey);
+                transform: rotate(-180deg) translate(0%, -100%);    
+                transform-origin: 100% -20%;   
+                transition: all 0.3s ease-out;
             }
         </style>
 
-        <p>Stadisticos datos</p>
-        <div>Datos y calculos</div>
-
+      <div  on-click="dropdownControl" class="header-tab">
+          <h2>Datos Estadisticos</h2>
+          <p class$="[[arrow]]"></p>
+      </div> 
+      <div>
+          <iron-dropdown 
+          id="dropdown" 
+          allow-outside-scroll 
+          focus-target
+          no-over-lap
+          no-auto-focus>
+            <table slot="dropdown-content">
+                <tr>
+                  <th>      </th>
+                  <th>1 año</th> 
+                  <th>3 años</th>
+                </tr>
+                <tr>
+                  <td>Volatilidad Fondo</td>
+                  <td>0,31 %</td> 
+                  <td>0,20 %</td>
+                </tr>
+                <tr>
+                  <td>Volatilidad Índice</td>
+                  <td>0,04 %</td> 
+                  <td>0,03 %</td>
+                </tr>
+                <tr>
+                    <td>Ratio Sharpe Fondo</td>
+                    <td>-1,16</td> 
+                    <td>-0,47</td>
+                </tr>
+                <tr>
+                    <td>Ratio Sharpe Índice  </td>
+                    <td>-1,28</td> 
+                    <td>-2,88</td>
+                  </tr>
+                  <tr>
+                    <td>Ratio Información </td>
+                    <td>-0,99</td> 
+                    <td>-0,06</td>
+                  </tr>
+                  <tr>
+                    <td>Tracking Error0,31 %0,20 %</td>
+                    <td>Jackson</td> 
+                    <td>94</td>
+                  </tr>
+                  <tr>
+                    <td>Correlación0,05 0,03 </td>
+                    <td>Jackson</td> 
+                    <td>94</td>
+                  </tr>
+                  <tr>
+                    <td>Alpha0,00 %0,00 %</td>
+                    <td>Jackson</td> 
+                    <td>94</td>
+                  </tr>
+                  <tr>
+                    <td>Beta0,41 0,18 </td>
+                    <td>Jackson</td> 
+                    <td>94</td>
+                  </tr>
+                  <tr>
+                    <td>Máxima pérdida diaria del fondo-0,20 %-0,20 %</td>
+                    <td>Jackson</td> 
+                    <td>94</td>
+                  </tr>
+                  <tr>
+                    <td>Máxima pérdida diaria del índice-0,01 %-0,48 %</td>
+                    <td>Jackson</td> 
+                    <td>94</td>
+                  </tr>
+                  <tr>
+                    <td>Número meses negativos fondo1030</td>
+                    <td>Jackson</td> 
+                    <td>94</td>
+                  </tr>
+                  <tr>
+                    <td>Número meses negativos índice1337</td>
+                    <td>Jackson</td> 
+                    <td>94</td>
+                  </tr>
+                  <tr>
+                    <td>Mínima rentabilidad diaria-0,20 %-0,20 %</td>
+                    <td>Jackson</td> 
+                    <td>94</td>
+                  </tr>
+                  <tr>
+                    <td>Fecha máxima rentabilidad diaria31/05/201831/05/2018</td>
+                    <td>Jackson</td> 
+                    <td>94</td>
+                  </tr>
+                  <tr>
+                    <td>Máxima rentabilidad diaria0,07 %0,07 %</td>
+                    <td>Jackson</td> 
+                    <td>94</td>
+                  </tr>
+            </table>
+        </iron-dropdown>
+      </div>
+    
 
     </template>
 
@@ -37,6 +157,10 @@
             static get properties() {
                 return {
                     dataCalculations:{
+                      arrow: {
+                        type: String, 
+                        value: 'arrow-right'
+                    },
                         type: Array,
                         value: function(){
                             return []
@@ -44,6 +168,18 @@
                     }
                 };
             }
+
+            dropdownControl() {
+                
+                this.arrow === "arrow-right" ?
+                    this.$.dropdown.open() :
+                    this.$.dropdown.close()
+                this.arrow = (this.arrow === 'arrow-right') ?
+                    'arrow-down' :
+                    'arrow-right'
+            } 
+
+
 
             /**
               * Array of strings describing multi-property observer methods and their

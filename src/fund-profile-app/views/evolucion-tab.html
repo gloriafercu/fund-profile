@@ -6,6 +6,7 @@
 <link rel="import" href="../theme/shared-styles.html">
 <link rel="import" href="../components/datos-estadisticos.html">
 
+
 <dom-module id="evolucion-tab">
     <template>
         <style include="shared-styles">
@@ -52,141 +53,138 @@
                 padding-left:0px;
                 padding-right:0px;
                 padding-top:0px;
-                text-size-adjust:100%;
-                width:566px
+                text-size-adjust:100%
 
             }
+
+          
         </style>
 
+            
+        <div class="header-tab">
+            <h2>Evolución</h2>
+        </div> 
+
+        <p>Período consultado: [[startDateInterval]] to [[endDateInterval]]</p>
+        <p>Última actualización:</p>
+
+    <!--pongo directamente my-highcharts-stock-->
+        <my-highcharts-stock 
+            title='[[name]]' 
+            subtitle='Valor Liquidativo' 
+            series='[[series]]'>
+        </my-highcharts-stock>
+
+        <!--Deberia retirar esta posicion-golbalchart 
+        <posicion-global-chart values="[[values]]" name="[[name]]" ></posicion-global-chart>
+        -->
+
+        <vaadin-date-picker
+            label="DateStart" placeholder="Pick a date" value="{{startDateInterval}}">
+        </vaadin-date-picker>
+
+        <vaadin-date-picker
+            label="DateEnd" placeholder="Pick a date" value="{{endDateInterval}}">
+        </vaadin-date-picker>
+
+        <button>
+            <iron-icon on-click="updateData" class="lupa" icon="icons:search"></iron-icon>
+        </button>
+ 
+        <div class="header-tab">
+                <h2>Datos a <b>[[endDateInterval]]</b></h2>
+                
+        </div> 
+
         
-    <div class="header-tab">
-        <h2>Evolución</h2>
-    </div> 
+                    <table class="table-simple">
+                        <tr>
+                            <th>Rentabilidad acumulada</th>
+                            <th>1 mes</th> 
+                            <th>Año en curso</th>
+                            <th>Un año</th>
+                        </tr>
+                        <tr>
+                            <td>Fondo</td>
+                            <td>[[oneMonthRentability]]</td> 
+                            <td>[[yearRentability]]</td>
+                            <td>[[yearAgoRentability]]</td>
+                        </tr>
+                        <tr>
+                            <td>Indice</td>
+                            <td>[[oneMonthRentability]]</td> 
+                            <td>[[yearRentability]]</td>
+                            <td>[[yearAgoRentability]]</td>
+                        </tr>
+                    </table>
+    
+                    <table class="table-simple">
+                        <tr>
+                            <th> Rentabilidad anualizadaa</th>
+                            <th>1 año</th> 
+                            <th>3 años</th>
+                            <th>5 años</th>
+                            <th>10 años</th> 
+                            <th>15 años</th>
+                            <th>20 años</th>
+                        </tr>
+                        <tr>
+                            <td>Fondo</td>
+                            <td>Smith</td> 
+                            <td>50</td>
+                            <td>50</td>
+                            <td>50</td>
+                            <td>Smith</td> 
+                            <td>Smith</td> 
+                        </tr>
+                        <tr>
+                            <td>Indice</td>
+                            <td>Jackson</td> 
+                            <td>94</td>
+                            <td>50</td>
+                            <td>Jackson</td> 
+                            <td>94</td>
+                            <td>50</td>
+                        </tr>
+                    </table>
+    
+                    <table class="table-simple">
+                        <tr>
+                            <th>Rentabilidad últimos 5 años</th>
+                            <th>2018</th> 
+                            <th>2017</th>
+                            <th>2016</th>
+                            <th>2015</th> 
+                            <th>2016</th>
+                            <th>2014</th>
+                        </tr>
+                        <tr>
+                            <td>Fondo</td>
+                            <td>Smith</td> 
+                            <td>50</td>
+                            <td>50</td>
+                            <td>Smith</td> 
+                            <td>Smith</td>
+                            <td>Smith</td>
+                        </tr>
+                        <tr>
+                            <td>Indice</td>
+                            <td>Jackson</td> 
+                            <td>94</td>
+                            <td>50</td>
+                            <td>Jackson</td> 
+                            <td>94</td>
+                            <td>50</td>
+                        </tr>
+                    </table>
 
-    <p>Período consultado: [[startDateInterval]] to [[endDateInterval]]</p>
-    <p>Última actualización:</p>
-
-   <!--pongo directamente my-highcharts-stock-->
-    <my-highcharts-stock 
-        title='[[name]]' 
-        subtitle='Valor Liquidativo' 
-        series='[[series]]'>
-    </my-highcharts-stock>
-
-    <!--Deberia retirar esta posicion-golbalchart 
-    <posicion-global-chart values="[[values]]" name="[[name]]" ></posicion-global-chart>
-    -->
-
-    <vaadin-date-picker
-        label="DateStart" placeholder="Pick a date" value="{{startDateInterval}}">
-    </vaadin-date-picker>
-
-    <vaadin-date-picker
-        label="DateEnd" placeholder="Pick a date" value="{{endDateInterval}}">
-    </vaadin-date-picker>
-
-    <button>
-        <iron-icon on-click="updateData" class="lupa" icon="icons:search"></iron-icon>
-    </button>
-
-    <div class="header-tab">
-            <h2>Datos a <b>[[endDateInterval]]</b></h2>
-    </div> 
-
-    <div class="data-tables">
-        <table class="table-simple">
-            <tr>
-                <th>Rentabilidad acumulada</th>
-                <th>1 mes</th> 
-                <th>Año en curso</th>
-                <th>Un año</th>
-            </tr>
-            <tr>
-                <td>Fondo</td>
-                <td>[[oneMonthRentability]]</td> 
-                <td>[[yearRentability]]</td>
-                <td>[[yearAgoRentability]]</td>
-            </tr>
-            <tr>
-                <td>Indice</td>
-                <td>[[oneMonthRentability]]</td> 
-                <td>[[yearRentability]]</td>
-                <td>[[yearAgoRentability]]</td>
-            </tr>
-        </table>
-
-        <table class="table-simple">
-            <tr>
-                <th> Rentabilidad anualizadaa</th>
-                <th>1 año</th> 
-                <th>3 años</th>
-                <th>5 años</th>
-                <th>10 años</th> 
-                <th>15 años</th>
-                <th>20 años</th>
-            </tr>
-            <tr>
-                <td>Fondo</td>
-                <td>Smith</td> 
-                <td>50</td>
-                <td>50</td>
-                <td>50</td>
-                <td>Smith</td> 
-                <td>Smith</td> 
-            </tr>
-            <tr>
-                <td>Indice</td>
-                <td>Jackson</td> 
-                <td>94</td>
-                <td>50</td>
-                <td>Jackson</td> 
-                <td>94</td>
-                <td>50</td>
-            </tr>
-        </table>
-
-        <table class="table-simple">
-            <tr>
-                <th>Rentabilidad últimos 5 años</th>
-                <th>2018</th> 
-                <th>2017</th>
-                <th>2016</th>
-                <th>2015</th> 
-                <th>2016</th>
-                <th>2014</th>
-            </tr>
-            <tr>
-                <td>Fondo</td>
-                <td>Smith</td> 
-                <td>50</td>
-                <td>50</td>
-                <td>Smith</td> 
-                <td>Smith</td>
-                <td>Smith</td>
-            </tr>
-            <tr>
-                <td>Indice</td>
-                <td>Jackson</td> 
-                <td>94</td>
-                <td>50</td>
-                <td>Jackson</td> 
-                <td>94</td>
-                <td>50</td>
-            </tr>
-        </table>
-
-    </div>
-
-
-    <div class="header-tab">
-            <h2>Datos Estadisticos</h2>
-    </div> 
-    <datos-estadisticos data-calculations="[[values]]">
-
-    </datos-estadisticos>
-
-
-
+    
+        <datos-estadisticos data-calculations="[[values]]"></datos-estadisticos>
+        <div>El 25/10/2013 se modificó la vocación inversora del Fondo por ello sólo 
+            se muestra la evolución del valor liquidativo y rentabilidades a partir 
+            de esa fecha según artículo 60.3 del Real Decreto 217/2008, 
+            de 15 de febrero.l</div>
+      
     </template>
 
     <script>

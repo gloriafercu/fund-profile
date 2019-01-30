@@ -4,6 +4,7 @@
 <link rel="import" href="../components/my-highcharts-stock.html">
 <link rel="import" href="../../../bower_components/vaadin-date-picker/vaadin-date-picker.html">
 <link rel="import" href="../theme/shared-styles.html">
+<link rel="import" href="../components/datos-estadisticos.html">
 
 <dom-module id="evolucion-tab">
     <template>
@@ -180,6 +181,10 @@
     <div class="header-tab">
             <h2>Datos Estadisticos</h2>
     </div> 
+    <datos-estadisticos data-calculations="[[values]]">
+
+    </datos-estadisticos>
+
 
 
     </template>
@@ -301,7 +306,7 @@
             static get observers() {
                 return [
                     'Changed(values,name)',
-                    'calcRentMonthAgo(aMonthAgoDate)'
+                   // 'calcRentMonthAgo(aMonthAgoDate)'
 
                 ];
             }
@@ -392,6 +397,7 @@
                
             }
             
+            /*
             calcRentMonthAgo(monthago){
                 let backMonth=new Date(monthago);
                //To get timestamp with year month and date(day) 
@@ -422,7 +428,7 @@
                 this.calcRentability(dataOrigin);
 
             }
-            
+            */
 
             calcAllRentability(dataOrigin,option){
                 let rentability;
@@ -467,7 +473,7 @@
                 else this.yearAgoRentability=`${rentability}%`;
             }
 
-            calcRentability(dataOrigin){
+           /* calcRentability(dataOrigin){
                 let rentability;
                 
                 let today=new Date();
@@ -504,10 +510,11 @@
 
                 } else rentability="N/C"
               
-                /*gives value to oneMonthRentability*/    
+                //gives value to oneMonthRentability   
                 this.oneMonthRentability=`${rentability}%`;
                 
             }
+            */
 
             calcRentFromStartYear(){
 

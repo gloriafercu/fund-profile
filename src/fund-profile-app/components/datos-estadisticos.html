@@ -1,0 +1,86 @@
+<link rel="import" href="../bower_components/polymer/polymer-element.html">
+
+<dom-module id="datos-estadisticos">
+    <template>
+        <style>
+            :host {
+                display: block
+            }
+        </style>
+
+        <p>Stadisticos datos</p>
+        <div>Datos y calculos</div>
+
+
+    </template>
+
+    <script>
+        /**
+         * `datos-estadisticos` Component to make stadistical calculations for evolution-tab view
+         *
+         * @summary Stadistical calculations for ecolution-tab.
+         * @customElement
+         * @polymer
+         * @extends {Polymer.Element}
+         */
+        class DatosEstadisticos extends Polymer.Element {
+            /**
+             * String providing the tag name to register the element under.
+             */
+            static get is() {
+                return 'datos-estadisticos';
+            }
+
+            /**
+             * Object describing property-related metadata used by Polymer features
+             */
+            static get properties() {
+                return {
+                    dataCalculations:{
+                        type: Array,
+                        value: function(){
+                            return []
+                        }
+                    }
+                };
+            }
+
+            /**
+              * Array of strings describing multi-property observer methods and their
+              * dependant properties
+              */
+            static get observers() {
+                return [
+                    'Changed(dataCalculations)'
+                ];
+            }
+
+            Changed(data){
+                console.log("Aqui estan los datos para estadistica",data)
+            }
+
+            /**
+             * Instance of the element is created/upgraded. Use: initializing state,
+             * set up event listeners, create shadow dom.
+             * @constructor
+             */
+            constructor() {
+                super();
+            }
+
+            /**
+             * Use for one-time configuration of your component after local DOM is initialized. 
+             */
+            ready() {
+                super.ready();
+
+                Polymer.RenderStatus.afterNextRender(this, function() {
+                    
+                });
+            }
+
+        }
+
+        window.customElements.define(DatosEstadisticos.is, DatosEstadisticos);
+    </script>
+</dom-module>

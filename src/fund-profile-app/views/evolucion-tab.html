@@ -118,87 +118,86 @@
                 
         </div> 
 
-        
-                    <table class="table-simple">
-                        <tr>
-                            <th>Rentabilidad acumulada</th>
-                            <th>1 mes</th> 
-                            <th>Año en curso</th>
-                            <th>Un año</th>
-                        </tr>
-                        <tr>
-                            <td>Fondo</td>
-                            <td>[[oneMonthRentability]]</td> 
-                            <td>[[yearRentability]]</td>
-                            <td>[[yearAgoRentability]]</td>
-                        </tr>
-                        <tr>
-                            <td>Indice</td>
-                            <td>[[oneMonthRentability]]</td> 
-                            <td>[[yearRentability]]</td>
-                            <td>[[yearAgoRentability]]</td>
-                        </tr>
-                    </table>
-    
-                    <table class="table-simple">
-                        <tr>
-                            <th> Rentabilidad anualizadaa</th>
-                            <th>1 año</th> 
-                            <th>3 años</th>
-                            <th>5 años</th>
-                            <th>10 años</th> 
-                            <th>15 años</th>
-                            <th>20 años</th>
-                        </tr>
-                        <tr>
-                            <td>Fondo</td>
-                            <td>Smith</td> 
-                            <td>50</td>
-                            <td>50</td>
-                            <td>50</td>
-                            <td>Smith</td> 
-                            <td>Smith</td> 
-                        </tr>
-                        <tr>
-                            <td>Indice</td>
-                            <td>Jackson</td> 
-                            <td>94</td>
-                            <td>50</td>
-                            <td>Jackson</td> 
-                            <td>94</td>
-                            <td>50</td>
-                        </tr>
-                    </table>
-    
-                    <table class="table-simple">
-                        <tr>
-                            <th>Rentabilidad últimos 5 años</th>
-                            <th>2018</th> 
-                            <th>2017</th>
-                            <th>2016</th>
-                            <th>2015</th> 
-                            <th>2016</th>
-                            <th>2014</th>
-                        </tr>
-                        <tr>
-                            <td>Fondo</td>
-                            <td>Smith</td> 
-                            <td>50</td>
-                            <td>50</td>
-                            <td>Smith</td> 
-                            <td>Smith</td>
-                            <td>Smith</td>
-                        </tr>
-                        <tr>
-                            <td>Indice</td>
-                            <td>Jackson</td> 
-                            <td>94</td>
-                            <td>50</td>
-                            <td>Jackson</td> 
-                            <td>94</td>
-                            <td>50</td>
-                        </tr>
-                    </table>
+        <table class="table-simple">
+            <tr>
+                <th>Rentabilidad acumulada</th>
+                <th>1 mes</th> 
+                <th>Año en curso</th>
+                <th>Un año</th>
+            </tr>
+            <tr>
+                <td>Fondo</td>
+                <td>[[oneMonthRentability]]</td> 
+                <td>[[yearRentability]]</td>
+                <td>[[yearAgoRentability]]</td>
+            </tr>
+            <tr>
+                <td>Indice</td>
+                <td>[[oneMonthRentability]]</td> 
+                <td>[[yearRentability]]</td>
+                <td>[[yearAgoRentability]]</td>
+            </tr>
+        </table>
+
+        <table class="table-simple">
+            <tr>
+                <th> Rentabilidad anualizadaa</th>
+                <th>1 año</th> 
+                <th>3 años</th>
+                <th>5 años</th>
+                <th>10 años</th> 
+                <th>15 años</th>
+                <th>20 años</th>
+            </tr>
+            <tr>
+                <td>Fondo</td>
+                <td>[[yearAgoRentability]]</td> 
+                <td>N/C</td>
+                <td>N/C</td>
+                <td>N/C</td>
+                <td>N/C</td> 
+                <td>N/C</td> 
+            </tr>
+            <tr>
+                <td>Indice</td>
+                <td>[[yearAgoRentability]]</td> 
+                <td>N/C</td>
+                <td>N/C</td>
+                <td>N/C</td> 
+                <td>N/C</td>
+                <td>N/C</td>
+            </tr>
+        </table>
+
+        <table class="table-simple">
+            <tr>
+                <th>Rentabilidad últimos 5 años</th>
+                <th>2018</th> 
+                <th>2017</th>
+                <th>2016</th>
+                <th>2015</th> 
+                <th>2016</th>
+                <th>2014</th>
+            </tr>
+            <tr>
+                <td>Fondo</td>
+                <td>N/C</td> 
+                <td>N/C</td>
+                <td>N/C</td>
+                <td>N/C</td> 
+                <td>N/C</td>
+                <td>N/C</td>
+            </tr>
+            <tr>
+                <td>Indice</td>
+                <td>N/C</td> 
+                <td>N/C</td>
+                <td>N/C</td>
+                <td>N/C</td> 
+                <td>N/C</td>
+                <td>N/C</td>
+            </tr>
+        </table>
 
     
         <datos-estadisticos data-calculations="[[values]]"></datos-estadisticos>
@@ -420,38 +419,6 @@
                
             }
             
-            /*
-            calcRentMonthAgo(monthago){
-                let backMonth=new Date(monthago);
-               //To get timestamp with year month and date(day) 
-               //only at 00:00:00 hours
-                let dateToCalcCeroHour=new Date(
-                    backMonth.getFullYear(),
-                    backMonth.getMonth(),
-                    backMonth.getDate()
-                    );
-                //To get timestamp with year month and date(day) 
-                //only at 01:00:00 hours
-                let dateToCalcOneHour=new Date(
-                    backMonth.getFullYear(),
-                    backMonth.getMonth(),
-                    backMonth.getDate(),
-                    );
-                dateToCalcOneHour.setHours('01');
-
-
-                //pass dates to timestamps
-                let compDateCeroHour=Date.parse(dateToCalcCeroHour);
-                let compDateOneHour=Date.parse(dateToCalcOneHour)
-                
-                //filter values to get objet corresponding to timestamp fod a date,
-                // 00 or 01 hour
-                let dataOrigin=this.values.filter(element=>(element.date==compDateCeroHour||element.date==compDateOneHour))
-                
-                this.calcRentability(dataOrigin);
-
-            }
-            */
 
             calcAllRentability(dataOrigin,option){
                 let rentability;
@@ -494,57 +461,6 @@
                 if (option===0){this.oneMonthRentability=`${rentability}%`;}
                 else if (option===1){this.yearRentability=`${rentability}%`;}
                 else this.yearAgoRentability=`${rentability}%`;
-            }
-
-           /* calcRentability(dataOrigin){
-                let rentability;
-                
-                let today=new Date();
-
-                let roundedTodayDate=new Date(
-                    today.getFullYear(),
-                    today.getMonth(),
-                    today.getDate()
-                );
-
-           
-                let roundedTodayDateOneHour=new Date(
-                    today.getFullYear(),
-                    today.getMonth(),
-                    today.getDate()
-                );
-                roundedTodayDateOneHour.setHours('01');
-
-                let compDateCeroHour=Date.parse(roundedTodayDate);
-                let compDateOneHour=Date.parse(roundedTodayDateOneHour);
-
-                let lastData=this.values.filter(
-                    element=>(
-                        (element.date==compDateCeroHour)||(element.date==compDateOneHour)
-                        )
-                    )
-            
-            
-                if (lastData[0]&&dataOrigin[0]){
-                    rentability = (
-                    ((lastData[0].netAssetValue - dataOrigin[0].netAssetValue) /
-                    dataOrigin[0].netAssetValue )* 100
-                    ).toFixed(2);
-
-                } else rentability="N/C"
-              
-                //gives value to oneMonthRentability   
-                this.oneMonthRentability=`${rentability}%`;
-                
-            }
-            */
-
-            calcRentFromStartYear(){
-
-            }
-
-            calcRentAYearAgo(){
-
             }
 
             

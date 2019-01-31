@@ -57,6 +57,28 @@
 
             }
 
+            .box-end{
+                color: #666;
+                font-size: 14px;
+                margin: 0;
+                line-height: 1.80em;
+                padding: 0;
+            }
+            .style-box{
+                background-color: #D4EDFC;
+                margin-block-start: 20px;
+                margin-block-end: 50px;
+                display: flex;
+                align-items: flex-start;
+                padding: 40px;
+            }
+            .msg{
+                display: flex;
+            }
+            .info-icon{
+                width: 25%;
+
+            }
           
         </style>
 
@@ -180,10 +202,13 @@
 
     
         <datos-estadisticos data-calculations="[[values]]"></datos-estadisticos>
-        <div>El 25/10/2013 se modificó la vocación inversora del Fondo por ello sólo 
-            se muestra la evolución del valor liquidativo y rentabilidades a partir 
-            de esa fecha según artículo 60.3 del Real Decreto 217/2008, 
-            de 15 de febrero.l</div>
+        <div class="msg msg-info">
+            <div class="style-box">
+                <iron-icon class="info-icon" icon="icons:info"></iron-icon>
+                 <p class="box-end">El 25/10/2013 se modificó la vocación inversora del Fondo por ello sólo se muestra la evolución del valor liquidativo y
+                 rentabilidades a partir de esa fecha según artículo 60.3 del Real Decreto 217/2008, de 15 de febrero.</p>
+             </div>
+         </div>
       
     </template>
 

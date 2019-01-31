@@ -2,13 +2,56 @@
 <link rel="import" href="../../../bower_components/iron-dropdown/iron-dropdown.html">
 <link rel="import" href="../theme/shared-styles.html">
 
+
 <dom-module id="datos-estadisticos">
     <template>
         <style include="shared-styles">
             :host {
                 display: block;
-                height:1500px;
             }
+
+            .table-simple{
+                background-color:rgba(0, 0, 0, 0);
+                border-bottom-color:rgb(220, 220, 220);
+                width: inherit;
+                border-bottom-style:solid;
+                border-bottom-width:1px;
+                border-collapse:collapse;
+                border-image-outset:0px;
+                border-image-repeat:stretch;
+                border-image-slice:100%;
+                border-image-source:none;
+                border-image-width:1;
+                border-left-color:rgb(220, 220, 220);
+                border-left-style:solid;
+                border-left-width:1px;
+                border-right-color:rgb(220, 220, 220);
+                border-right-style:solid;
+                border-right-width:1px;
+                border-top-color:rgb(51, 51, 51);
+                border-top-style:none;
+                border-top-width:0px;
+                box-sizing:border-box;
+                color:rgb(51, 51, 51);
+                display:table;
+                font-family:BentonSansBook, Arial, Helvetica, sans-serif;
+                font-size:14px;
+                height:171px;
+                line-height:20px;
+                margin-bottom:10px;
+                margin-left:0px;
+                margin-right:0px;
+                margin-top:0px;
+                outline-color:rgb(51, 51, 51);
+                outline-style:none;
+                outline-width:0px;
+                padding-bottom:0px;
+                padding-left:0px;
+                padding-right:0px;
+                padding-top:0px;
+                text-size-adjust:100%
+            }
+
             .arrow-down {
                 width: 0; 
                 height: 0; 
@@ -28,20 +71,35 @@
                 transform-origin: 100% -20%;   
                 transition: all 0.3s ease-out;
             }
-        </style>
 
-      <div  on-click="dropdownControl" class="header-tab">
-          <h2>Datos Estadisticos</h2>
-          <p class$="[[arrow]]"></p>
-      </div> 
-      <div>
-          <iron-dropdown 
-          id="dropdown" 
-          allow-outside-scroll 
-          focus-target
-          no-over-lap
-          no-auto-focus>
-            <table slot="dropdown-content">
+            #dropdown{
+                margin-top:60px
+            }
+
+            .closed{
+                height : 100px;
+            }
+
+            .opened{
+                height : 500px;
+            }
+        </style>
+      <div id="datos-estadisticos-main" class$="[[stateClass]]">
+
+    
+        <div  on-click="dropdownControl" class="header-tab">
+            <h2>Datos Estadisticos</h2>
+            <p class$="[[arrow]]"></p>
+        </div> 
+      
+        <iron-dropdown 
+          id="dropdown"
+          allow-outside-scroll
+          >
+            <table 
+                slot="dropdown-content" 
+                class="table-simple"
+                style="width:627px">
                 <tr>
                   <th>      </th>
                   <th>1 año</th> 
@@ -63,73 +121,74 @@
                     <td>-0,47</td>
                 </tr>
                 <tr>
-                    <td>Ratio Sharpe Índice  </td>
+                    <td>Ratio Sharpe Índice</td>
                     <td>-1,28</td> 
                     <td>-2,88</td>
                   </tr>
                   <tr>
-                    <td>Ratio Información </td>
+                    <td>Ratio Información</td>
                     <td>-0,99</td> 
                     <td>-0,06</td>
                   </tr>
                   <tr>
-                    <td>Tracking Error0,31 %0,20 %</td>
-                    <td>Jackson</td> 
-                    <td>94</td>
+                    <td>Tracking Error</td>
+                    <td>0,31 %</td> 
+                    <td>0,20 %</td>
                   </tr>
                   <tr>
-                    <td>Correlación0,05 0,03 </td>
-                    <td>Jackson</td> 
-                    <td>94</td>
+                    <td>Correlación</td>
+                    <td>0,05</td> 
+                    <td>0,03</td>
                   </tr>
                   <tr>
-                    <td>Alpha0,00 %0,00 %</td>
-                    <td>Jackson</td> 
-                    <td>94</td>
+                    <td>Alpha</td>
+                    <td>0,00 %</td> 
+                    <td>0,00 %</td>
                   </tr>
                   <tr>
-                    <td>Beta0,41 0,18 </td>
-                    <td>Jackson</td> 
-                    <td>94</td>
+                    <td>Beta</td>
+                    <td>0,41</td> 
+                    <td>0,18</td>
                   </tr>
                   <tr>
-                    <td>Máxima pérdida diaria del fondo-0,20 %-0,20 %</td>
-                    <td>Jackson</td> 
-                    <td>94</td>
+                    <td>Máxima pérdida diaria del fondo</td>
+                    <td>-0,20 %</td> 
+                    <td>-0,20 %</td>
                   </tr>
                   <tr>
-                    <td>Máxima pérdida diaria del índice-0,01 %-0,48 %</td>
-                    <td>Jackson</td> 
-                    <td>94</td>
+                    <td>Máxima pérdida diaria del índice</td>
+                    <td>-0,01 %</td> 
+                    <td>-0,48 %</td>
                   </tr>
                   <tr>
-                    <td>Número meses negativos fondo1030</td>
-                    <td>Jackson</td> 
-                    <td>94</td>
+                    <td>Número meses negativos fondo</td>
+                    <td>10</td> 
+                    <td>30</td>
                   </tr>
                   <tr>
-                    <td>Número meses negativos índice1337</td>
-                    <td>Jackson</td> 
-                    <td>94</td>
+                    <td>Número meses negativos índice</td>
+                    <td>13</td> 
+                    <td>37</td>
                   </tr>
                   <tr>
-                    <td>Mínima rentabilidad diaria-0,20 %-0,20 %</td>
-                    <td>Jackson</td> 
-                    <td>94</td>
+                    <td>Mínima rentabilidad diaria</td>
+                    <td>-0,20 %</td> 
+                    <td>-0,20 %</td>
                   </tr>
                   <tr>
-                    <td>Fecha máxima rentabilidad diaria31/05/201831/05/2018</td>
-                    <td>Jackson</td> 
-                    <td>94</td>
+                    <td>Fecha máxima rentabilidad diaria</td>
+                    <td>31/05/2018</td> 
+                    <td>31/05/2018</td>
                   </tr>
                   <tr>
-                    <td>Máxima rentabilidad diaria0,07 %0,07 %</td>
-                    <td>Jackson</td> 
-                    <td>94</td>
+                    <td>Máxima rentabilidad diaria</td>
+                    <td>0,07 %</td> 
+                    <td>0,07 %</td>
                   </tr>
             </table>
         </iron-dropdown>
-      </div>
+
+      </div> <!--datos-estadisticos-main-->
     
 
     </template>
@@ -157,23 +216,33 @@
             static get properties() {
                 return {
                     dataCalculations:{
-                      arrow: {
-                        type: String, 
-                        value: 'arrow-right'
-                    },
                         type: Array,
                         value: function(){
                             return []
                         }
+                    },
+                    arrow: {
+                        type: String, 
+                        value: 'arrow-right'
+                    },
+                    stateClass:{
+                        type: String,
+                        value: 'closed'
                     }
                 };
             }
 
             dropdownControl() {
                 
-                this.arrow === "arrow-right" ?
-                    this.$.dropdown.open() :
-                    this.$.dropdown.close()
+                if( this.arrow === "arrow-right") 
+                    {
+                        this.$.dropdown.open();
+                        this.stateClass='opened'
+                    } else
+                    {
+                        this.$.dropdown.close();
+                        this.stateClass='closed'
+                    }
                 this.arrow = (this.arrow === 'arrow-right') ?
                     'arrow-down' :
                     'arrow-right'

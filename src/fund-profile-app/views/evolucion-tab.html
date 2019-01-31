@@ -53,8 +53,32 @@
                 padding-left:0px;
                 padding-right:0px;
                 padding-top:0px;
-                text-size-adjust:100%
+                text-size-adjust:100%;
+                text-align: left
 
+            }
+
+            .table-simple > thead {
+                border-bottom-color:rgb(220, 220, 220);
+                border-collapse:collapse;
+                border-left-color:rgb(220, 220, 220);
+                border-right-color:rgb(175, 70, 70);
+                border-top-color:rgb(51, 51, 51);
+                box-sizing:border-box;
+                color:rgb(51, 51, 51);
+                display:table-header-group;
+                background-color: rgb(248, 248, 245);
+          
+            }
+
+            .table-simple > thead> tr > th {
+                padding-top: 15px;
+                padding-bottom: 15px;
+                padding-left:5px
+            }
+
+            .table-simple > tbody > tr > td{
+                padding-left:5px;
             }
 
             .box-end{
@@ -119,84 +143,100 @@
         </div> 
 
         <table class="table-simple">
-            <tr>
-                <th>Rentabilidad acumulada</th>
-                <th>1 mes</th> 
-                <th>Año en curso</th>
-                <th>Un año</th>
-            </tr>
-            <tr>
-                <td>Fondo</td>
-                <td>[[oneMonthRentability]]</td> 
-                <td>[[yearRentability]]</td>
-                <td>[[yearAgoRentability]]</td>
-            </tr>
-            <tr>
-                <td>Indice</td>
-                <td>[[oneMonthRentability]]</td> 
-                <td>[[yearRentability]]</td>
-                <td>[[yearAgoRentability]]</td>
-            </tr>
+            <thead>
+                <tr>
+                    <th>Rentabilidad acumulada</th>
+                    <th>1 mes</th> 
+                    <th>Año en curso</th>
+                    <th>Un año</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Fondo</td>
+                    <td>[[oneMonthRentability]]</td> 
+                    <td>[[yearRentability]]</td>
+                    <td>[[yearAgoRentability]]</td>
+                </tr>
+                <tr>
+                    <td>Indice</td>
+                    <td>[[oneMonthRentability]]</td> 
+                    <td>[[yearRentability]]</td>
+                    <td>[[yearAgoRentability]]</td>
+                </tr>
+            </tbody>
+           
         </table>
 
         <table class="table-simple">
-            <tr>
-                <th> Rentabilidad anualizadaa</th>
-                <th>1 año</th> 
-                <th>3 años</th>
-                <th>5 años</th>
-                <th>10 años</th> 
-                <th>15 años</th>
-                <th>20 años</th>
-            </tr>
-            <tr>
-                <td>Fondo</td>
-                <td>[[yearAgoRentability]]</td> 
-                <td>N/C</td>
-                <td>N/C</td>
-                <td>N/C</td>
-                <td>N/C</td> 
-                <td>N/C</td> 
-            </tr>
-            <tr>
-                <td>Indice</td>
-                <td>[[yearAgoRentability]]</td> 
-                <td>N/C</td>
-                <td>N/C</td>
-                <td>N/C</td> 
-                <td>N/C</td>
-                <td>N/C</td>
-            </tr>
+            <thead>
+                <tr>
+                    <th>Rentabilidad anualizada</th>
+                    <th>1 año</th> 
+                    <th>3 años</th>
+                    <th>5 años</th>
+                    <th>10 años</th> 
+                    <th>15 años</th>
+                    <th>20 años</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Fondo</td>
+                    <td>[[yearAgoRentability]]</td> 
+                    <td>N/C</td>
+                    <td>N/C</td>
+                    <td>N/C</td>
+                    <td>N/C</td> 
+                    <td>N/C</td> 
+                </tr>
+                <tr>
+                    <td>Indice</td>
+                    <td>[[yearAgoRentability]]</td> 
+                    <td>N/C</td>
+                    <td>N/C</td>
+                    <td>N/C</td> 
+                    <td>N/C</td>
+                    <td>N/C</td>
+                </tr>
+            </tbody>
+       
         </table>
 
         <table class="table-simple">
-            <tr>
-                <th>Rentabilidad últimos 5 años</th>
-                <th>2018</th> 
-                <th>2017</th>
-                <th>2016</th>
-                <th>2015</th> 
-                <th>2016</th>
-                <th>2014</th>
-            </tr>
-            <tr>
-                <td>Fondo</td>
-                <td>N/C</td> 
-                <td>N/C</td>
-                <td>N/C</td>
-                <td>N/C</td> 
-                <td>N/C</td>
-                <td>N/C</td>
-            </tr>
-            <tr>
-                <td>Indice</td>
-                <td>N/C</td> 
-                <td>N/C</td>
-                <td>N/C</td>
-                <td>N/C</td> 
-                <td>N/C</td>
-                <td>N/C</td>
-            </tr>
+            <thead>
+                <tr>
+                    <th>Rentabilidad últimos 5 años</th>
+                    <th>2018</th> 
+                    <th>2017</th>
+                    <th>2016</th>
+                    <th>2015</th> 
+                    <th>2016</th>
+                    <th>2014</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Fondo</td>
+                    <td>N/C</td> 
+                    <td>N/C</td>
+                    <td>N/C</td>
+                    <td>N/C</td> 
+                    <td>N/C</td>
+                    <td>N/C</td>
+                </tr>
+                <tr>
+                    <td>Indice</td>
+                    <td>N/C</td> 
+                    <td>N/C</td>
+                    <td>N/C</td>
+                    <td>N/C</td> 
+                    <td>N/C</td>
+                    <td>N/C</td>
+                </tr>
+            </tbody>
+          
+       
         </table>
 
     

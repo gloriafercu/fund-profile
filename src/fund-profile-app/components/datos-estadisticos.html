@@ -52,6 +52,29 @@
                 text-size-adjust:100%
             }
 
+            .table-simple > thead {
+                border-bottom-color:rgb(220, 220, 220);
+                border-collapse:collapse;
+                border-left-color:rgb(220, 220, 220);
+                border-right-color:rgb(175, 70, 70);
+                border-top-color:rgb(51, 51, 51);
+                box-sizing:border-box;
+                color:rgb(51, 51, 51);
+                display:table-header-group;
+                background-color: rgb(248, 248, 245);
+          
+            }
+
+            .table-simple > thead> tr > th {
+                padding-top: 15px;
+                padding-bottom: 15px;
+                padding-left:5px
+            }
+
+            .table-simple > tbody > tr > td{
+                padding-left:5px;
+            }
+
             .arrow-down {
                 width: 0; 
                 height: 0; 
@@ -100,91 +123,96 @@
                 slot="dropdown-content" 
                 class="table-simple"
                 style="width:627px">
-                <tr>
-                  <th>      </th>
-                  <th>1 año</th> 
-                  <th>3 años</th>
-                </tr>
-                <tr>
-                  <td>Volatilidad Fondo</td>
-                  <td>0,31 %</td> 
-                  <td>0,20 %</td>
-                </tr>
-                <tr>
-                  <td>Volatilidad Índice</td>
-                  <td>0,04 %</td> 
-                  <td>0,03 %</td>
-                </tr>
-                <tr>
-                    <td>Ratio Sharpe Fondo</td>
-                    <td>-1,16</td> 
-                    <td>-0,47</td>
-                </tr>
-                <tr>
-                    <td>Ratio Sharpe Índice</td>
-                    <td>-1,28</td> 
-                    <td>-2,88</td>
-                  </tr>
-                  <tr>
-                    <td>Ratio Información</td>
-                    <td>-0,99</td> 
-                    <td>-0,06</td>
-                  </tr>
-                  <tr>
-                    <td>Tracking Error</td>
-                    <td>0,31 %</td> 
-                    <td>0,20 %</td>
-                  </tr>
-                  <tr>
-                    <td>Correlación</td>
-                    <td>0,05</td> 
-                    <td>0,03</td>
-                  </tr>
-                  <tr>
-                    <td>Alpha</td>
-                    <td>0,00 %</td> 
-                    <td>0,00 %</td>
-                  </tr>
-                  <tr>
-                    <td>Beta</td>
-                    <td>0,41</td> 
-                    <td>0,18</td>
-                  </tr>
-                  <tr>
-                    <td>Máxima pérdida diaria del fondo</td>
-                    <td>-0,20 %</td> 
-                    <td>-0,20 %</td>
-                  </tr>
-                  <tr>
-                    <td>Máxima pérdida diaria del índice</td>
-                    <td>-0,01 %</td> 
-                    <td>-0,48 %</td>
-                  </tr>
-                  <tr>
-                    <td>Número meses negativos fondo</td>
-                    <td>10</td> 
-                    <td>30</td>
-                  </tr>
-                  <tr>
-                    <td>Número meses negativos índice</td>
-                    <td>13</td> 
-                    <td>37</td>
-                  </tr>
-                  <tr>
-                    <td>Mínima rentabilidad diaria</td>
-                    <td>-0,20 %</td> 
-                    <td>-0,20 %</td>
-                  </tr>
-                  <tr>
-                    <td>Fecha máxima rentabilidad diaria</td>
-                    <td>31/05/2018</td> 
-                    <td>31/05/2018</td>
-                  </tr>
-                  <tr>
-                    <td>Máxima rentabilidad diaria</td>
-                    <td>0,07 %</td> 
-                    <td>0,07 %</td>
-                  </tr>
+                <thead>
+                    <tr>
+                        <th>      </th>
+                        <th>1 año</th> 
+                        <th>3 años</th>
+                    </tr>
+                </thead>
+               <tbody>
+                    <tr>
+                        <td>Volatilidad Fondo</td>
+                        <td>0,31 %</td> 
+                        <td>0,20 %</td>
+                    </tr>
+                    <tr>
+                        <td>Volatilidad Índice</td>
+                        <td>0,04 %</td> 
+                        <td>0,03 %</td>
+                    </tr>
+                    <tr>
+                        <td>Ratio Sharpe Fondo</td>
+                        <td>-1,16</td> 
+                        <td>-0,47</td>
+                    </tr>
+                    <tr>
+                        <td>Ratio Sharpe Índice</td>
+                        <td>-1,28</td> 
+                        <td>-2,88</td>
+                    </tr>
+                    <tr>
+                        <td>Ratio Información</td>
+                        <td>-0,99</td> 
+                        <td>-0,06</td>
+                    </tr>
+                    <tr>
+                        <td>Tracking Error</td>
+                        <td>0,31 %</td> 
+                        <td>0,20 %</td>
+                    </tr>
+                    <tr>
+                        <td>Correlación</td>
+                        <td>0,05</td> 
+                        <td>0,03</td>
+                    </tr>
+                    <tr>
+                        <td>Alpha</td>
+                        <td>0,00 %</td> 
+                        <td>0,00 %</td>
+                    </tr>
+                    <tr>
+                        <td>Beta</td>
+                        <td>0,41</td> 
+                        <td>0,18</td>
+                    </tr>
+                    <tr>
+                        <td>Máxima pérdida diaria del fondo</td>
+                        <td>-0,20 %</td> 
+                        <td>-0,20 %</td>
+                    </tr>
+                    <tr>
+                        <td>Máxima pérdida diaria del índice</td>
+                        <td>-0,01 %</td> 
+                        <td>-0,48 %</td>
+                    </tr>
+                    <tr>
+                        <td>Número meses negativos fondo</td>
+                        <td>10</td> 
+                        <td>30</td>
+                    </tr>
+                    <tr>
+                        <td>Número meses negativos índice</td>
+                        <td>13</td> 
+                        <td>37</td>
+                    </tr>
+                    <tr>
+                        <td>Mínima rentabilidad diaria</td>
+                        <td>-0,20 %</td> 
+                        <td>-0,20 %</td>
+                    </tr>
+                    <tr>
+                        <td>Fecha máxima rentabilidad diaria</td>
+                        <td>31/05/2018</td> 
+                        <td>31/05/2018</td>
+                    </tr>
+                    <tr>
+                        <td>Máxima rentabilidad diaria</td>
+                        <td>0,07 %</td> 
+                        <td>0,07 %</td>
+                    </tr>
+               </tbody>
+
             </table>
         </iron-dropdown>
 

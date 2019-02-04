@@ -11,6 +11,9 @@
                 display: grid;
                 grid-template-columns: repeat(2, 1fr);
             }
+            .tableWrapper {
+                width: 627px;
+            }
             .header-tab{
                 justify-content: space-around;
                 height: 30px;
@@ -51,7 +54,7 @@
         </div>
         
         <iron-dropdown id="dropdown" no-overlap allow-outside-scroll no-cancel-on-outside-click opened>
-            <div id="top-ten-table" slot="dropdown-content">
+            <div class="tableWrapper" slot="dropdown-content">
                 <dl class="data-table">
         
                     <dt>Fecha lanzamiento del fondo</dt>

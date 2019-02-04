@@ -138,7 +138,7 @@
         }
         UTCoffset = date.getTimezoneOffset() * 60 * 1000;
         date = date.getTime() - UTCoffset;
-        return data.find(item => item.date === date).netAssetValue;
+        return data.find(item => item.date === date ).netAssetValue;
       }
 
         /**

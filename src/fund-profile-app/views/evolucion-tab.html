@@ -1,6 +1,11 @@
 <link rel="import" href="../../../bower_components/polymer/polymer-element.html">
-<link rel="import" href="../components/posicion-global-chart.html">
+<link rel="import" href="../../../bower_components/iron-icon/iron-icon.html">
+<!-- <link rel="import" href="../components/posicion-global-chart.html">-->
+<link rel="import" href="../components/my-highcharts-stock.html">
+<link rel="import" href="../../../bower_components/vaadin-date-picker/vaadin-date-picker.html">
 <link rel="import" href="../theme/shared-styles.html">
+<link rel="import" href="../components/datos-estadisticos.html">
+
 
 <dom-module id="evolucion-tab">
     <template>
@@ -8,18 +13,176 @@
             :host {
                 display: block
             }
+
+            
+            .box-end{
+                color: #666;
+                font-size: 14px;
+                margin: 0;
+                line-height: 1.80em;
+                padding: 0;
+            }
+            .style-box{
+                background-color: #D4EDFC;
+                margin-block-start: 20px;
+                margin-block-end: 50px;
+                display: flex;
+                align-items: flex-start;
+                padding: 40px;
+            }
+            .msg{
+                display: flex;
+            }
+            .info-icon{
+                width: 25%;
+
+            }
+          
         </style>
 
-        
-    <div class="header-tab">
-        <h2>Evolución</h2>
-    </div> 
+            
+        <div class="header-tab">
+            <h2>Evolución</h2>
+        </div> 
 
-    <p>Período consultado:</p>
-    <p>Última actualización:</p>
+        <p>Período consultado: [[startDateInterval]] to [[endDateInterval]]</p>
+        <p>Última actualización:</p>
 
-    <posicion-global-chart values="[[values]]" name="[[name]]" ></posicion-global-chart>
+    <!--pongo directamente my-highcharts-stock-->
+        <my-highcharts-stock 
+            title='[[name]]' 
+            subtitle='Valor Liquidativo' 
+            series='[[series]]'>
+        </my-highcharts-stock>
 
+        <!--Deberia retirar esta posicion-golbalchart 
+        <posicion-global-chart values="[[values]]" name="[[name]]" ></posicion-global-chart>
+        -->
+
+        <vaadin-date-picker
+            label="DateStart" placeholder="Pick a date" value="{{startDateInterval}}">
+        </vaadin-date-picker>
+
+        <vaadin-date-picker
+            label="DateEnd" placeholder="Pick a date" value="{{endDateInterval}}">
+        </vaadin-date-picker>
+
+        <button>
+            <iron-icon on-click="updateData" class="lupa" icon="icons:search"></iron-icon>
+        </button>
+ 
+        <div class="header-tab">
+                <h2>Datos a <b>[[endDateInterval]]</b></h2>
+                
+        </div> 
+
+        <table class="table-simple" style="width:627px">
+            <thead>
+                <tr>
+                    <th>Rentabilidad acumulada</th>
+                    <th>1 mes</th> 
+                    <th>Año en curso</th>
+                    <th>Un año</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Fondo</td>
+                    <td>[[oneMonthRentability]]</td> 
+                    <td>[[yearRentability]]</td>
+                    <td>[[yearAgoRentability]]</td>
+                </tr>
+                <tr>
+                    <td>Indice</td>
+                    <td>[[oneMonthRentability]]</td> 
+                    <td>[[yearRentability]]</td>
+                    <td>[[yearAgoRentability]]</td>
+                </tr>
+            </tbody>
+           
+        </table>
+
+        <table class="table-simple" style="width:627px">
+            <thead>
+                <tr>
+                    <th>Rentabilidad anualizada</th>
+                    <th>1 año</th> 
+                    <th>3 años</th>
+                    <th>5 años</th>
+                    <th>10 años</th> 
+                    <th>15 años</th>
+                    <th>20 años</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Fondo</td>
+                    <td>[[yearAgoRentability]]</td> 
+                    <td>N/C</td>
+                    <td>N/C</td>
+                    <td>N/C</td>
+                    <td>N/C</td> 
+                    <td>N/C</td> 
+                </tr>
+                <tr>
+                    <td>Indice</td>
+                    <td>[[yearAgoRentability]]</td> 
+                    <td>N/C</td>
+                    <td>N/C</td>
+                    <td>N/C</td> 
+                    <td>N/C</td>
+                    <td>N/C</td>
+                </tr>
+            </tbody>
+       
+        </table>
+
+        <table class="table-simple" style="width:627px">
+            <thead>
+                <tr>
+                    <th>Rentabilidad últimos 5 años</th>
+                    <th>2018</th> 
+                    <th>2017</th>
+                    <th>2016</th>
+                    <th>2015</th> 
+                    <th>2016</th>
+                    <th>2014</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Fondo</td>
+                    <td>N/C</td> 
+                    <td>N/C</td>
+                    <td>N/C</td>
+                    <td>N/C</td> 
+                    <td>N/C</td>
+                    <td>N/C</td>
+                </tr>
+                <tr>
+                    <td>Indice</td>
+                    <td>N/C</td> 
+                    <td>N/C</td>
+                    <td>N/C</td>
+                    <td>N/C</td> 
+                    <td>N/C</td>
+                    <td>N/C</td>
+                </tr>
+            </tbody>
+          
+       
+        </table>
+
+    
+        <datos-estadisticos data-calculations="[[values]]"></datos-estadisticos>
+        <div class="msg msg-info">
+            <div class="style-box">
+                <iron-icon class="info-icon" icon="icons:info"></iron-icon>
+                 <p class="box-end">El 25/10/2013 se modificó la vocación inversora del Fondo por ello sólo se muestra la evolución del valor liquidativo y
+                 rentabilidades a partir de esa fecha según artículo 60.3 del Real Decreto 217/2008, de 15 de febrero.</p>
+             </div>
+         </div>
+      
     </template>
 
     <script>
@@ -44,10 +207,293 @@
              */
             static get properties() {
                 return {
-                    values: Array,
-                    name: String
+                    values:{
+                        type: Array,
+                        value: function(){
+                            return []
+                        }
+                    },
+                    /** 
+                    *Array with Object that have nave and data, data is a array of array(2)
+                    */
+                    series:{
+                        type: Array,
+                        value:function(){
+                            return []
+                        }
+                    },
+                   
+                    name: {
+                        type: String,
+                        value:""
+                    },
+
+                    startDateInterval:{
+                        type: String,
+                        value:"",
+                        observer: "_startdate"
+                    },
+
+                    endDateInterval:{
+                        type: String,
+                        value:"",
+                        observer:"_enddate"
+                    },
+
+                    filteredValues:{
+                        type: Array,
+                        value: function(){
+                            return []
+                        }
+                    },
+                    /**
+                    * todayDate computed by method thas also give 
+                    * value to other four properties
+                    *
+                    */
+                    todayDate: {
+                        type: Number,
+                        value: "",
+                        computed: 'getDateValues()'
+                    },
+
+                    aMonthAgoDate:{
+                        type: Number,
+                        value:""
+                    },
+                    
+                    firstDayOfThisYearDate: {
+                        type: Number,
+                        value:""
+                    },
+
+                    aYearAgoDate:{
+                        type: Number,
+                        value: ""
+                    },
+
+                    threeYearAgoDate:{
+                        type: Number,
+                        value:""
+                    },
+
+                    oneMonthRentability:{
+                        type: String,
+                        value: "N/C"
+                    },
+
+                    yearRentability:{
+                        type: String,
+                        value: "N/C"
+                    },
+
+                    yearAgoRentability:{
+                        type: String,
+                        value: "N/C"
+                    }
+
                 };
             }
+
+            /**
+              * Array of strings describing multi-property observer methods and their
+              * dependant properties
+              */
+            static get observers() {
+                return [
+                    'Changed(values,name)',
+                   // 'calcRentMonthAgo(aMonthAgoDate)'
+
+                ];
+            }
+
+            Changed(values,name){
+                console.log("values: ",values)
+                console.log("Name: ",name)
+            }
+
+            _startdate(){
+              
+                if (this.startDateInterval!=="") {
+                    this.filterValues(this.startDateInterval,this.endDateInterval,this.values);
+                }
+            }
+            _enddate(){
+             
+               if (this.endDateInterval!=="") {
+                this.filterValues(this.startDateInterval,this.endDateInterval,this.values);
+           
+               } }
+
+            /**
+            * Filter values to set data for "filteredValues" parameter for 
+            * my-highcharts-stock graph
+            * @param {string} startDate
+            * @param {string} endDate
+            * @param {object} values
+            */
+            filterValues(startDate,endDate,values){
+ 
+                let localFilteredValues=[];
+                let startTimestamp=Date.parse(startDate)
+                let endTimestamp=Date.parse(endDate)
+ 
+                localFilteredValues=values.filter(
+                    element => 
+                        ((element.date>=startTimestamp)&&(element.date<=endTimestamp))
+                    );
+
+                this.set("filteredValues",localFilteredValues)
+            }
+
+            /**
+            * filteredValues is a array of objects, HighCharts needs an array with
+            * a object that have a name and an array of arrays(2) for the data, so:
+            * updateDate build the [{}] that HighCharts need
+            * and fire the calculations for the tables
+            */
+            updateData(){
+                const arrayTwoData = this.filteredValues.map(item => [item.date, item.netAssetValue])
+                this.set('series', [{ name: this.name, data: arrayTwoData }])
+                //this.calcRentMonthAgo(this.aMonthAgoDate); //to begin rentabilityes calculations.
+                this.getDataOrigin(this.aMonthAgoDate,0)
+                this.getDataOrigin(this.firstDayOfThisYearDate,1) 
+                this.getDataOrigin(this.aYearAgoDate,2)
+            }
+
+            getDataOrigin(originDate,option){
+
+                let objectOriginDate=new Date(originDate);
+               /*To get timestamp with year month and date(day) 
+               only at 00:00:00 hours*/
+                let dateToCalcCeroHour=new Date(
+                    objectOriginDate.getFullYear(),
+                    objectOriginDate.getMonth(),
+                    objectOriginDate.getDate()
+                    );
+                /*To get timestamp with year month and date(day) 
+                only at 01:00:00 hours*/
+                let dateToCalcOneHour=new Date(
+                    objectOriginDate.getFullYear(),
+                    objectOriginDate.getMonth(),
+                    objectOriginDate.getDate(),
+                    );
+                dateToCalcOneHour.setHours('01');
+
+
+                /* pass dates to timestamps*/
+                let compDateCeroHour=Date.parse(dateToCalcCeroHour);
+                let compDateOneHour=Date.parse(dateToCalcOneHour)
+                
+                /*filter values to get objet corresponding to timestamp fod a date,
+                 00 or 01 hour*/
+                let dataOrigin=this.values.filter(element=>(element.date==compDateCeroHour||element.date==compDateOneHour))
+                
+                this.calcAllRentability(dataOrigin,option)
+               
+            }
+            
+
+            calcAllRentability(dataOrigin,option){
+                let rentability;
+                
+                let today=new Date();
+
+                let roundedTodayDate=new Date(
+                    today.getFullYear(),
+                    today.getMonth(),
+                    today.getDate()
+                );
+
+           
+                let roundedTodayDateOneHour=new Date(
+                    today.getFullYear(),
+                    today.getMonth(),
+                    today.getDate()
+                );
+                roundedTodayDateOneHour.setHours('01');
+
+                let compDateCeroHour=Date.parse(roundedTodayDate);
+                let compDateOneHour=Date.parse(roundedTodayDateOneHour);
+
+                let lastData=this.values.filter(
+                    element=>(
+                        (element.date==compDateCeroHour)||(element.date==compDateOneHour)
+                        )
+                    )
+            
+            
+                if (lastData[0]&&dataOrigin[0]){
+                    rentability = (
+                    ((lastData[0].netAssetValue - dataOrigin[0].netAssetValue) /
+                    dataOrigin[0].netAssetValue )* 100
+                    ).toFixed(2);
+
+                } else rentability="N/C"
+              
+                /*gives value to oneMonthRentability*/  
+                if (option===0){this.oneMonthRentability=`${rentability}%`;}
+                else if (option===1){this.yearRentability=`${rentability}%`;}
+                else this.yearAgoRentability=`${rentability}%`;
+            }
+
+            
+            /**
+            * getDateValues gives values to the parameters, as timestamp
+            */
+            getDateValues(){
+                /*to get first day of this mounth*/
+                let todayDate=new Date();
+                let realTodayDate=todayDate; //to keep the value of real todayDate
+                let firstDayOfThisMonth;
+                let firstDayOfThisYear;
+                let thisYear;
+                let aYearAgo;
+                let previousMonth;
+                let aMonthAgo;
+                let thisMonth;
+                let treeYearsAgo;
+
+                /*To get firstDayOfThisMonth*/
+                firstDayOfThisMonth=new Date(todayDate.setDate(1));
+                
+                /*To get first day of this year, first day of januay 1*/
+                todayDate = new Date(); //refresh todayDate
+                firstDayOfThisMonth=new Date(todayDate.setDate(1));
+                firstDayOfThisYear=new Date(firstDayOfThisMonth.setMonth(0));
+ 
+                /*to get a year ago date*/
+                todayDate=new Date() //refresh todayDate
+                thisYear=todayDate.getUTCFullYear();
+                aYearAgo=new Date(todayDate.setFullYear(thisYear-1))
+                todayDate=new Date()
+                treeYearsAgo=new Date(todayDate.setFullYear(thisYear-3))
+
+
+                /*To get a mounth ago, look at mounth and year*/
+                todayDate=new Date() //refresh todayDte
+                thisMonth=todayDate.getMonth() //actual Month
+              
+                if (thisMonth==0) { 
+                    previousMonth=11
+                    let temp=new Date(todayDate.setMonth(previousMonth))
+                    aMonthAgo=new Date(temp.setFullYear(thisYear-1))
+                } else {
+                    previousMonth = thisMonth-1;
+                    aMonthAgo=new Date(todayDate.setMonth(previousMonth))
+                    }
+
+                /*to finally set the properties as Number (timestamp)*/
+                this.aMonthAgoDate=aMonthAgo.getTime();
+                this.firstDayOfThisYearDate=firstDayOfThisYear.getTime();
+                this.aMonthAgoDate=aMonthAgo.getTime();
+                this.aYearAgoDate=aYearAgo.getTime()
+                this.threeYearAgoDate=treeYearsAgo.getTime();
+                    /*and return todaydate as timestamp*/
+                return todayDate.getTime();
+            }
+
+
 
             /**
              * Instance of the element is created/upgraded. Use: initializing state,

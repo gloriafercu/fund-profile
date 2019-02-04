@@ -1,0 +1,256 @@
+<link rel="import" href="../../../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../../../bower_components/iron-dropdown/iron-dropdown.html">
+<link rel="import" href="../theme/shared-styles.html">
+
+
+<dom-module id="datos-estadisticos">
+    <template>
+        <style include="shared-styles">
+            :host {
+                display: block;
+            }
+
+           
+
+            .arrow-down {
+                width: 0; 
+                height: 0; 
+                border-left: 10px solid transparent;
+                border-right: 10px solid transparent;
+                border-top: 10px solid var(--bbva-dark-grey);
+                transition: all 0.3s ease-out;
+            }
+
+            .arrow-right {
+                width: 0; 
+                height: 0; 
+                border-top: 10px solid transparent;
+                border-bottom: 10px solid transparent;
+                border-right: 10px solid var(--bbva-dark-grey);
+                transform: rotate(-180deg) translate(0%, -100%);    
+                transform-origin: 100% -20%;   
+                transition: all 0.3s ease-out;
+            }
+
+            #dropdown{
+                margin-top:60px
+            }
+
+            .closed{
+                height : 100px;
+            }
+
+            .opened{
+                height : 500px;
+            }
+        </style>
+      <div id="datos-estadisticos-main" class$="[[stateClass]]">
+
+    
+        <div  on-click="dropdownControl" class="header-tab">
+            <h2>Datos Estadisticos</h2>
+            <p class$="[[arrow]]"></p>
+        </div> 
+      
+        <iron-dropdown 
+          id="dropdown"
+          allow-outside-scroll
+          >
+            <table 
+                slot="dropdown-content" 
+                class="table-simple"
+                style="width:627px">
+                <thead>
+                    <tr>
+                        <th>      </th>
+                        <th>1 año</th> 
+                        <th>3 años</th>
+                    </tr>
+                </thead>
+               <tbody>
+                    <tr>
+                        <td>Volatilidad Fondo</td>
+                        <td>0,31 %</td> 
+                        <td>0,20 %</td>
+                    </tr>
+                    <tr>
+                        <td>Volatilidad Índice</td>
+                        <td>0,04 %</td> 
+                        <td>0,03 %</td>
+                    </tr>
+                    <tr>
+                        <td>Ratio Sharpe Fondo</td>
+                        <td>-1,16</td> 
+                        <td>-0,47</td>
+                    </tr>
+                    <tr>
+                        <td>Ratio Sharpe Índice</td>
+                        <td>-1,28</td> 
+                        <td>-2,88</td>
+                    </tr>
+                    <tr>
+                        <td>Ratio Información</td>
+                        <td>-0,99</td> 
+                        <td>-0,06</td>
+                    </tr>
+                    <tr>
+                        <td>Tracking Error</td>
+                        <td>0,31 %</td> 
+                        <td>0,20 %</td>
+                    </tr>
+                    <tr>
+                        <td>Correlación</td>
+                        <td>0,05</td> 
+                        <td>0,03</td>
+                    </tr>
+                    <tr>
+                        <td>Alpha</td>
+                        <td>0,00 %</td> 
+                        <td>0,00 %</td>
+                    </tr>
+                    <tr>
+                        <td>Beta</td>
+                        <td>0,41</td> 
+                        <td>0,18</td>
+                    </tr>
+                    <tr>
+                        <td>Máxima pérdida diaria del fondo</td>
+                        <td>-0,20 %</td> 
+                        <td>-0,20 %</td>
+                    </tr>
+                    <tr>
+                        <td>Máxima pérdida diaria del índice</td>
+                        <td>-0,01 %</td> 
+                        <td>-0,48 %</td>
+                    </tr>
+                    <tr>
+                        <td>Número meses negativos fondo</td>
+                        <td>10</td> 
+                        <td>30</td>
+                    </tr>
+                    <tr>
+                        <td>Número meses negativos índice</td>
+                        <td>13</td> 
+                        <td>37</td>
+                    </tr>
+                    <tr>
+                        <td>Mínima rentabilidad diaria</td>
+                        <td>-0,20 %</td> 
+                        <td>-0,20 %</td>
+                    </tr>
+                    <tr>
+                        <td>Fecha máxima rentabilidad diaria</td>
+                        <td>31/05/2018</td> 
+                        <td>31/05/2018</td>
+                    </tr>
+                    <tr>
+                        <td>Máxima rentabilidad diaria</td>
+                        <td>0,07 %</td> 
+                        <td>0,07 %</td>
+                    </tr>
+               </tbody>
+
+            </table>
+        </iron-dropdown>
+
+      </div> <!--datos-estadisticos-main-->
+    
+
+    </template>
+
+    <script>
+        /**
+         * `datos-estadisticos` Component to make stadistical calculations for evolution-tab view
+         *
+         * @summary Stadistical calculations for ecolution-tab.
+         * @customElement
+         * @polymer
+         * @extends {Polymer.Element}
+         */
+        class DatosEstadisticos extends Polymer.Element {
+            /**
+             * String providing the tag name to register the element under.
+             */
+            static get is() {
+                return 'datos-estadisticos';
+            }
+
+            /**
+             * Object describing property-related metadata used by Polymer features
+             */
+            static get properties() {
+                return {
+                    dataCalculations:{
+                        type: Array,
+                        value: function(){
+                            return []
+                        }
+                    },
+                    arrow: {
+                        type: String, 
+                        value: 'arrow-right'
+                    },
+                    stateClass:{
+                        type: String,
+                        value: 'closed'
+                    }
+                };
+            }
+
+            dropdownControl() {
+                
+                if( this.arrow === "arrow-right") 
+                    {
+                        this.$.dropdown.open();
+                        this.stateClass='opened'
+                    } else
+                    {
+                        this.$.dropdown.close();
+                        this.stateClass='closed'
+                    }
+                this.arrow = (this.arrow === 'arrow-right') ?
+                    'arrow-down' :
+                    'arrow-right'
+            } 
+
+
+
+            /**
+              * Array of strings describing multi-property observer methods and their
+              * dependant properties
+              */
+            static get observers() {
+                return [
+                    'Changed(dataCalculations)'
+                ];
+            }
+
+            Changed(data){
+                console.log("Aqui estan los datos para estadistica",data)
+            }
+
+            /**
+             * Instance of the element is created/upgraded. Use: initializing state,
+             * set up event listeners, create shadow dom.
+             * @constructor
+             */
+            constructor() {
+                super();
+            }
+
+            /**
+             * Use for one-time configuration of your component after local DOM is initialized. 
+             */
+            ready() {
+                super.ready();
+
+                Polymer.RenderStatus.afterNextRender(this, function() {
+                    
+                });
+            }
+
+        }
+
+        window.customElements.define(DatosEstadisticos.is, DatosEstadisticos);
+    </script>
+</dom-module>

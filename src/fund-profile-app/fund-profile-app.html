@@ -4,6 +4,7 @@
 <link rel="import" href="../../bower_components/paper-button/paper-button.html" />
 <link rel="import" href="../../bower_components/paper-spinner/paper-spinner-lite.html">
 <link rel="import" href="../../bower_components/polymer/lib/elements/dom-if.html">
+
 <link rel="import" href="../fund-profile-app/components/tab-menu.html" />
 <link rel="import" href="../fund-profile-app/theme/shared-styles.html" />
 <link rel="import" href="../fund-profile-app/components/general-information.html" />
@@ -178,7 +179,7 @@
       * From a date in "YYYY-MM-DD" format 
       * Return a date as timestamp with day, year and mouth
       * and 0 hours, 0 minutes, 0 seconds, 0 ms....
-      * and sustraying it the offset from timezone.
+      * and modifying it with the timezone offset.
       * 
        * @param {string} date in YYYY-MM-DD format
        *

@@ -91,8 +91,8 @@
             <button >Top Ten Inversiones</button>
             <p class$="[[arrow]]"></p>
         </div>
-        <iron-dropdown id="dropdown" no-overlap allow-outside-scroll no-cancel-on-outside-click>
-            <div id="top-ten-table" slot="dropdown-content" >
+        <iron-collapse id="dropdown">
+            <div id="top-ten-table">
                 <dl>
                     <dt>Inversiones</dt>
                     <dd>Peso Cartera</dd>
@@ -106,7 +106,7 @@
                     </dl>
                 </template>
             </div>    
-        </iron-dropdown>
+        </iron-collapse>
     </template>
 
     <script>
@@ -204,9 +204,7 @@
             }
 
             dropdownControl() {
-                this.arrow === "arrow-right" ?
-                    this.$.dropdown.open() :
-                    this.$.dropdown.close()
+                this.$.dropdown.toggle();
                 this.arrow = (this.arrow === 'arrow-right') ?
                     'arrow-down' :
                     'arrow-right'

@@ -11,10 +11,6 @@
         padding: 10px 0;
       }
 
-      :host::slotted:last-child {
-        border-bottom: none;
-      }
-
       dd {
         font-family: "BentonSans Regular";
         text-transform: uppercase;
@@ -48,21 +44,6 @@
         return "table-row";
       }
 
-      /**
-       * Object describing property-related metadata used by Polymer features
-       */
-      static get properties() {
-        return {};
-      }
-
-      /**
-       * Instance of the element is created/upgraded. Use: initializing state,
-       * set up event listeners, create shadow dom.
-       * @constructor
-       */
-      constructor() {
-        super();
-      }
     }
 
     window.customElements.define(TableRow.is, TableRow);

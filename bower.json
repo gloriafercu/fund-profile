@@ -18,7 +18,8 @@
     "l2t-paper-rating": "^2.0.4",
     "vaadin-date-picker": "vaadin/vaadin-date-picker#^3.3.2",
     "paper-spinner": "PolymerElements/paper-spinner#^2.0.0",
-    "iron-image": "PolymerElements/iron-image#^2.0.1"
+    "iron-image": "PolymerElements/iron-image#^2.0.1",
+    "iron-collapse": "PolymerElements/iron-collapse#^2.2.1"
   },
   "devDependencies": {
     "web-component-tester": "Polymer/web-component-tester#^6.0.0",

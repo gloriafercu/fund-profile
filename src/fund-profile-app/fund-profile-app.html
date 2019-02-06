@@ -11,6 +11,7 @@
 <link rel="import" href="../fund-profile-app/components/return-calculation.html" />
 <link rel="import" href="../fund-profile-app/components/info-table.html" />
 <link rel="import" href="../fund-profile-app/components/table-row.html" />
+<link rel="import" href="../fund-profile-app/components/dropdown-table.html">
 
 <dom-module id="fund-profile-app" class="fund-profile-app">
   <template>
@@ -147,9 +148,7 @@
           loading: Boolean
         };
       }
-      constructor() {
-        super();
-      }
+
       /**
        * Use for one-time configuration of your component after local DOM is initialized.
        */

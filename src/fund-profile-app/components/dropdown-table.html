@@ -7,14 +7,6 @@
             :host {
                 display: block
             }
-            :host ::slotted([slot="content"]) {
-                display: grid;
-                grid-template-columns: 2fr auto;
-                justify-content: space-between;
-                align-content: stretch;
-                grid-row-gap: 15px;
-                padding: 20px;
-            }
 
             .arrow-down {
                 width: 0; 
@@ -42,10 +34,8 @@
             <p class$="[[arrow]]"></p>
         </div>
 
-        <iron-collapse id="dropdown" 
-        opened>
-            <slot name="content">
-            </slot>
+        <iron-collapse id="dropdown" opened>
+            <slot name="table-content"></slot>
         </iron-collapse>
 
     </template>
@@ -80,7 +70,6 @@
             }
 
             dropdownControl() {
-                
                 this.$.dropdown.toggle();
                 this.arrow = (this.arrow === 'arrow-right') ?
                     'arrow-down' :

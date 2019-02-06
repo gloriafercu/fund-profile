@@ -1,6 +1,5 @@
 <link rel="import" href="../../../bower_components/polymer/polymer-element.html">
 <link rel="import" href="../../../bower_components/iron-icon/iron-icon.html">
-
 <link rel="import" href="../../../bower_components/iron-icons/image-icons.html">
 
 <link rel="import" href="../theme/shared-styles.html">
@@ -11,168 +10,166 @@
             :host {
                 display: block
             }
-            .pdf-icon {
-                --iron-icon-height: 30px;  
-                --iron-icon-width: 30px;  
-                margin-right: 10px                
-            }
 
             .documents {
+                margin: 20px 0;
                 display: grid;
-                grid-template-columns: repeat(2, 1fr);
+                grid: auto-flow 1fr / repeat(2, 1fr);
+                grid-row-gap: 15px;
             }
 
             .documents a {
-                padding: 15px 0;
-                font-weight: bold;
-                font-size: 14px;
-                line-height: 18px;
+                display: grid;
+                grid: auto-flow auto / 40px auto;
                 text-decoration: none;
+                grid-column-gap: 10px;
+                grid-row-gap: 5px;
+            }
+
+            .pdf-icon {
+                grid-row: 1 / 3;
+                align-self: center;
+                --iron-icon-height: 30px;
+                --iron-icon-width: 30px;
+            }
+
+            .download-description {
+                font-weight: bold;
+                align-self: end;
+                font-size: 14px;
+            }
+
+            .download-date {
+                grid-row-start: 2;
+                grid-column-start: 2;
+                color: var(--bbva-dark-grey);
+                font-weight: 100;
+                font-size: 11px;
             }
         </style>
 
-    <div class="header-tab">
-        <h2>Documentación</h2>
-    </div>   
+        <div class="header-tab">
+            <h2>Documentación</h2>
+        </div>
 
-    <div class="documents">
-        <a class="span-pdf" href="https://www.bbvaassetmanagement.com/am/tlwgpub/informes/ES0113276002_FR2018032301.pdf" target="_blank">
-            <iron-icon class="pdf-icon" icon="image:picture-as-pdf"></iron-icon>
-            <div class="colum-pdf">
-            <span class="download-description">Datos Fundamentales Inversor </span>
-            <span class="download-size"> (23/03/2018)</span>
-            </div>
-        </a>
-            
-        <a class="span-pdf" href="https://www.bbvaassetmanagement.com/am/tlwgpub/informes/ES0113276002_FC2018032301.pdf" target="_blank">
-            <iron-icon class="pdf-icon" icon="image:picture-as-pdf"></iron-icon>
-            <div class="colum-pdf">
-            <span class="download-description">Folleto completo </span>
-            <span class="download-size"> (23/03/2018)</span>
-            </div>
-        </a>
-        
-        <a class="span-pdf" href="https://www.bbvaassetmanagement.com/am/tlwgpub/informes/ES0113276002_DC2018071801.pdf" target="_blank">
-            <iron-icon class="pdf-icon" icon="image:picture-as-pdf"></iron-icon>
-            <div class="colum-pdf">
-            <span class="download-description">Documento de información complementaria </span>
-            <span class="download-size"> (23/03/2018)</span>
-            </div>
-        </a>
-
-
-    </div>
-
-    <div class="header-tab">
-        <h2>Información del producto</h2>
-    </div>   
-
-    <div class="documents">
-
-           
-
-            <a class="span-pdf" href="https://www.bbvaassetmanagement.com/am/tlwgpub/informes/ES0113276002_CA2018100101.pdf" target="_blank">
+        <div class="documents">
+            <a href="https://www.bbvaassetmanagement.com/am/tlwgpub/informes/ES0113276002_FR2018032301.pdf"
+                target="_blank">
                 <iron-icon class="pdf-icon" icon="image:picture-as-pdf"></iron-icon>
-                <div class="colum-pdf">
+                <span class="download-description">Datos Fundamentales Inversor</span>
+                <span class="download-date"> (23/03/2018)</span>
+            </a>
+
+            <a href="https://www.bbvaassetmanagement.com/am/tlwgpub/informes/ES0113276002_FC2018032301.pdf"
+                target="_blank">
+                <iron-icon class="pdf-icon" icon="image:picture-as-pdf"></iron-icon>
+                <span class="download-description">Folleto completo </span>
+                <span class="download-date"> (23/03/2018)</span>
+            </a>
+
+            <a href="https://www.bbvaassetmanagement.com/am/tlwgpub/informes/ES0113276002_DC2018071801.pdf"
+                target="_blank">
+                <iron-icon class="pdf-icon" icon="image:picture-as-pdf"></iron-icon>
+                <span class="download-description">Documento de información complementaria </span>
+                <span class="download-date"> (23/03/2018)</span>
+            </a>
+        </div>
+
+        <div class="header-tab">
+            <h2>Información del producto</h2>
+        </div>
+
+        <div class="documents">
+
+            <a href="https://www.bbvaassetmanagement.com/am/tlwgpub/informes/ES0113276002_CA2018100101.pdf"
+                target="_blank">
+                <iron-icon class="pdf-icon" icon="image:picture-as-pdf"></iron-icon>
                 <span class="download-description">Informacion de Producto</span>
-                <span class="download-size">(01/10/2018)</span>
-            </div>
+                <span class="download-date">(01/10/2018)</span>
             </a>
 
-        <a class="span-pdf" href="https://www.bbvaassetmanagement.com/am/tlwgpub/informes/ES0113276002_FI2018123101.pdf" target="_blank">
-            <iron-icon class="pdf-icon" icon="image:picture-as-pdf"></iron-icon>
-            <div class="colum-pdf">
-            <span class="download-description">Ficha Mensual de Seguimiento</span>
-            <span class="download-size">(31/12/2018)</span>
-            </div>
-        </a>
-        
-    </div>
-
-    <div class="header-tab">
-        <h2>Informes periódicos</h2>
-    </div>   
-    
-    <div class="documents">
-          
-        <a class="span-pdf" href="https://www.bbvaassetmanagement.com/am/tlwgpub/informes/ES0113276002_TR2018033101.pdf" target="_blank">
-            <iron-icon class="pdf-icon" icon="image:picture-as-pdf"></iron-icon>
-            <div class="colum-pdf">
-            <span class="download-description">Informe trimestral reducido</span>
-            <span class="download-size">(31/03/2018)</span>
-            </div>
-        </a>
-
-        <a class="span-pdf" href="https://www.bbvaassetmanagement.com/am/tlwgpub/informes/ES0113276002_TA2018093001.pdf" target="_blank">
-            <iron-icon class="pdf-icon" icon="image:picture-as-pdf"></iron-icon>
-            <div class="colum-pdf">
-            <span class="download-description">Informe trimestral ampliado</span>
-            <span class="download-size">(31/09/2018)</span>
-            </div>
-        </a>
-
-        <a class="span-pdf" href="https://www.bbvaassetmanagement.com/am/tlwgpub/informes/ES0113276002_SE2018063001.pdf" target="_blank">
-            <iron-icon class="pdf-icon" icon="image:picture-as-pdf"></iron-icon>
-            <div class="colum-pdf">
-            <span class="download-description">Informe semestral</span>
-            <span class="download-size">(30/06/2018)</span>
-            </div>
-        </a>
-          
-        <a class="span-pdf" href="https://www.bbvaassetmanagement.com/am/tlwgpub/informes/ES0113276002_SE2017123101.pdf" target="_blank">
-            <iron-icon class="pdf-icon" icon="image:picture-as-pdf"></iron-icon>
-            <div class="colum-pdf">
-            <span class="download-description">Informe semestral</span>
-            <span class="download-size">(31/12/2017)</span>
-            </div>
-        </a>
-
-        <a class="span-pdf" href="https://www.bbvaassetmanagement.com/am/tlwgpub/informes/ES0113276002_SE2017063001.pdf" target="_blank">
-            <iron-icon class="pdf-icon" icon="image:picture-as-pdf"></iron-icon>
-            <div class="colum-pdf">
-            <span class="download-description">Informe semestral</span>
-            <span class="download-size">(30/06/2017)</span>
-            </div>
-        </a>
-    
-        <a class="span-pdf" href="https://www.bbvaassetmanagement.com/am/tlwgpub/informes/ES0113276002_ME2017123101.pdf" target="_blank">
-            <iron-icon class="pdf-icon" icon="image:picture-as-pdf"></iron-icon>
-            <div class="colum-pdf">
-            <span class="download-description">Informe anual</span>
-            <span class="download-size">(31/12/2017)</span>
-            </div>
-        </a>
-        
-    </div>
-
-    <div class="header-tab">
-        <h2>Otros Documentos</h2>
-    </div>   
-        
-    <div class="documents">
-            <a class="span-pdf" href="https://www.bbvaassetmanagement.com/am/tlwgpub/informes/ES0113276002_AF2019012501.pdf" target="_blank">
+            <a href="https://www.bbvaassetmanagement.com/am/tlwgpub/informes/ES0113276002_FI2018123101.pdf"
+                target="_blank">
                 <iron-icon class="pdf-icon" icon="image:picture-as-pdf"></iron-icon>
-                <div class="colum-pdf">
+                <span class="download-description">Ficha Mensual de Seguimiento</span>
+                <span class="download-date">(31/12/2018)</span>
+            </a>
+
+        </div>
+
+        <div class="header-tab">
+            <h2>Informes periódicos</h2>
+        </div>
+
+        <div class="documents">
+
+            <a href="https://www.bbvaassetmanagement.com/am/tlwgpub/informes/ES0113276002_TR2018033101.pdf"
+                target="_blank">
+                <iron-icon class="pdf-icon" icon="image:picture-as-pdf"></iron-icon>
+                <span class="download-description">Informe trimestral reducido</span>
+                <span class="download-date">(31/03/2018)</span>
+            </a>
+
+            <a href="https://www.bbvaassetmanagement.com/am/tlwgpub/informes/ES0113276002_TA2018093001.pdf"
+                target="_blank">
+                <iron-icon class="pdf-icon" icon="image:picture-as-pdf"></iron-icon>
+                <span class="download-description">Informe trimestral ampliado</span>
+                <span class="download-date">(31/09/2018)</span>
+            </a>
+
+            <a href="https://www.bbvaassetmanagement.com/am/tlwgpub/informes/ES0113276002_SE2018063001.pdf"
+                target="_blank">
+                <iron-icon class="pdf-icon" icon="image:picture-as-pdf"></iron-icon>
+                <span class="download-description">Informe semestral</span>
+                <span class="download-date">(30/06/2018)</span>
+            </a>
+
+            <a href="https://www.bbvaassetmanagement.com/am/tlwgpub/informes/ES0113276002_SE2017123101.pdf"
+                target="_blank">
+                <iron-icon class="pdf-icon" icon="image:picture-as-pdf"></iron-icon>
+                <span class="download-description">Informe semestral</span>
+                <span class="download-date">(31/12/2017)</span>
+            </a>
+
+            <a href="https://www.bbvaassetmanagement.com/am/tlwgpub/informes/ES0113276002_SE2017063001.pdf"
+                target="_blank">
+                <iron-icon class="pdf-icon" icon="image:picture-as-pdf"></iron-icon>
+                <span class="download-description">Informe semestral</span>
+                <span class="download-date">(30/06/2017)</span>
+            </a>
+
+            <a href="https://www.bbvaassetmanagement.com/am/tlwgpub/informes/ES0113276002_ME2017123101.pdf"
+                target="_blank">
+                <iron-icon class="pdf-icon" icon="image:picture-as-pdf"></iron-icon>
+                <span class="download-description">Informe anual</span>
+                <span class="download-date">(31/12/2017)</span>
+            </a>
+
+        </div>
+
+        <div class="header-tab">
+            <h2>Otros Documentos</h2>
+        </div>
+
+        <div class="documents">
+
+            <a href="https://www.bbvaassetmanagement.com/am/tlwgpub/informes/ES0113276002_AF2019012501.pdf"
+                target="_blank">
+                <iron-icon class="pdf-icon" icon="image:picture-as-pdf"></iron-icon>
                 <span class="download-description">Anuncio de Autorización de Fusión</span>
-                <span class="download-size">(25/01/2019)</span>
-                </div>
+                <span class="download-date">(25/01/2019)</span>
             </a>
-            
-            
-            
-            <a class="span-pdf" href="https://www.bbvaassetmanagement.com/am/tlwgpub/informes/ES0113276002_CP2017051701.pdf" target="_blank">
-                <iron-icon class="pdf-icon" icon="image:picture-as-pdf"></iron-icon>
-                <div class="colum-pdf">
-                <span class="download-description">Cartas enviadas a partícipes</span>
-                <span class="download-size">(17/05/2017)</span>
-                </div>
-            </a>
-        
-            <a href="#"><iron-icon class="pdf-icon" icon="image:picture-as-pdf"></iron-icon>Anuncio de autorización de fusión</a>
-        <a href="#"><iron-icon class="pdf-icon" icon="image:picture-as-pdf"></iron-icon>Cartas enviadas a pertícipes</a>
-    </div>
 
-</template>
+            <a href="https://www.bbvaassetmanagement.com/am/tlwgpub/informes/ES0113276002_CP2017051701.pdf"
+                target="_blank">
+                <iron-icon class="pdf-icon" icon="image:picture-as-pdf"></iron-icon>
+                <span class="download-description">Cartas enviadas a partícipes</span>
+                <span class="download-date">(17/05/2017)</span>
+            </a>
+
+        </div>
+
+    </template>
 
     <script>
         /**
@@ -196,18 +193,10 @@
              */
             static get properties() {
                 return {
-                    
+
                 };
             }
 
-            /**
-             * Instance of the element is created/upgraded. Use: initializing state,
-             * set up event listeners, create shadow dom.
-             * @constructor
-             */
-            constructor() {
-                super();
-            }
         }
 
         window.customElements.define(DocumentacionTab.is, DocumentacionTab);

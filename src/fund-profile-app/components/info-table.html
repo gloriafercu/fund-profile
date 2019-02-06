@@ -42,8 +42,14 @@
       }
 
       :host ::slotted([slot="title"]) {
+        display:grid;
+        grid: auto / auto-flow auto;
         font-size: 14px;
         padding: 17px 20px;
+      }
+      :host ::slotted([slot="columns"]) {
+        display: grid;
+        grid: auto / auto-flow auto;
       }
 
       :host > ::slotted(*) {
@@ -61,6 +67,7 @@
     </style>
     <slot name="title"></slot>
     <slot name="rows"></slot>
+    <slot name="columns"></slot>
     <slot name="annex_controller"></slot>
     <slot name="annex_content" id="animatable"></slot>
   </template>

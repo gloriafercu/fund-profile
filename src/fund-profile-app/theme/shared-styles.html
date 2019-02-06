@@ -62,7 +62,6 @@
                 padding: 10px 30px;
                 display: flex;
                 justify-content: space-between;
-                margin-bottom: 3px;
             }
 
             .header-tab h2 {
@@ -168,7 +167,37 @@
             .table-simple > tbody > tr > td{
                 padding-left:5px;
             }
-
+            table {
+                width: 100%;
+                margin-bottom: 10px;
+            }
+            tr {
+                border: 1px solid var(--bbva-light-grey);
+                border-top: none;
+            }
+            tr:first-child{
+                border-top: 1px solid var(--bbva-light-grey);
+            }
+            tr {
+                display: grid;
+                grid: auto / auto-flow 1fr
+            }
+            th{
+                font-weight: normal;
+                background: var(--sandy);
+            }
+            th:not(:last-child){
+                border-right: 1px solid var(--bbva-light-grey)
+            }
+            td, th {
+                display: grid;
+                justify-content: center;
+                align-content: center;
+                padding: 20px 5px;
+            }
+            td {
+                border: none;
+            }
         </style>
     </template>
 </dom-module>

@@ -1,6 +1,5 @@
 <link rel="import" href="../../../bower_components/polymer/polymer-element.html">
 <link rel="import" href="../../../bower_components/google-charts/google-chart.html">
-<link rel="import" href="../../../bower_components/iron-dropdown/iron-dropdown.html">
 <link rel="import" href="../theme/shared-styles.html" />
 
 <dom-module id="cartera-tab">
@@ -9,69 +8,19 @@
             :host {
                 display: block;
             }
-
-            button {
-                font-size: 1.5rem;
-                background-color: transparent;
-                color: var(--bbva-dark-grey);
-                font-family: 'Roboto', 'BentonSans Light', Arial !important;
-                font-size: 1em;
-                line-height: 2.4em;
-                font-weight: 500;
-                border: none;
-                outline: none;
+            td,th{
+                padding: 20px;
             }
-            .header-tab{
-                justify-content: space-around;
-                height: 30px;
-            }
-            #top-ten-table {
-                width: 627px;
-                display: grid;
-            }
-            dl{
-                display: grid;
-                margin: 0;
-                padding: 0 50px;
-                grid-auto-flow: column;
-                grid-template-columns: auto 150px;
-                border: 1px solid var(--bbva-light-grey)
-            }
-            dl:first-child{
-                background: var(--sandy);
-            }
-            dl:first-child dt{
-                border-right: 1px solid var(--bbva-light-grey);
-            }
-            dl:not(:first-child) >*{
+            td{
                 font-size: 11px;
             }
-            dd,dt{
-                padding: 10px 0;
+            td:first-child{
+                justify-self: start;
             }
-            dd {
-                justify-self: right;
-            }
-            
-            .arrow-down {
-                width: 0; 
-                height: 0; 
-                border-left: 10px solid transparent;
-                border-right: 10px solid transparent;
-                border-top: 10px solid var(--bbva-dark-grey);
-                transition: all 0.3s ease-out;
+            td:last-child{
+                justify-self: end;
             }
 
-            .arrow-right {
-                width: 0; 
-                height: 0; 
-                border-top: 10px solid transparent;
-                border-bottom: 10px solid transparent;
-                border-right: 10px solid var(--bbva-dark-grey);
-                transform: rotate(-180deg) translate(0%, -100%);    
-                transform-origin: 100% -20%;   
-                transition: all 0.3s ease-out;
-            }
             google-chart{
                 margin: auto;
             }
@@ -87,26 +36,23 @@
             >
         </google-chart>
 
-        <div on-click="dropdownControl" class="header-tab">
-            <button >Top Ten Inversiones</button>
-            <p class$="[[arrow]]"></p>
-        </div>
-        <iron-collapse id="dropdown">
-            <div id="top-ten-table">
-                <dl>
-                    <dt>Inversiones</dt>
-                    <dd>Peso Cartera</dd>
-                </dl>
+        <dropdown-table>
+            <span slot="title">Top Ten Inversiones</span>
+            <table slot="table-content">
+                <tr>
+                    <th>Inversiones</th>
+                    <th>Peso Cartera</th>
+                </tr>
                 <template is="dom-repeat"
                 items="[[inversiones]]"
                 as="inversion">
-                    <dl>
-                        <dt>[[inversion.name]]</dt>
-                        <dd>[[inversion.percentage]]%</dd>
-                    </dl>
+                    <tr>
+                        <td>[[inversion.name]]</td>
+                        <td>[[inversion.percentage]]%</td>
+                    </tr>
                 </template>
-            </div>    
-        </iron-collapse>
+            </table>    
+        </dropdown-table>
     </template>
 
     <script>
@@ -203,12 +149,6 @@
                                     ["RENTA FIJA", this.rentafija]])
             }
 
-            dropdownControl() {
-                this.$.dropdown.toggle();
-                this.arrow = (this.arrow === 'arrow-right') ?
-                    'arrow-down' :
-                    'arrow-right'
-            } 
         }
 
         window.customElements.define(CarteraTab.is, CarteraTab);

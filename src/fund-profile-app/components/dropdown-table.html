@@ -1,0 +1,82 @@
+<link rel="import" href="../../../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../../../bower_components/iron-collapse/iron-collapse.html">
+
+<dom-module id="dropdown-table">
+    <template>
+        <style include="shared-styles">
+            :host {
+                display: block
+            }
+
+            .arrow-down {
+                width: 0; 
+                height: 0; 
+                border-left: 10px solid transparent;
+                border-right: 10px solid transparent;
+                border-top: 10px solid var(--bbva-dark-grey);
+                transition: all 0.3s ease-out;
+            }
+
+            .arrow-right {
+                width: 0; 
+                height: 0; 
+                border-top: 10px solid transparent;
+                border-bottom: 10px solid transparent;
+                border-right: 10px solid var(--bbva-dark-grey);
+                transform: rotate(-180deg) translate(0%, -100%);    
+                transform-origin: 100% -20%;   
+                transition: all 0.3s ease-out;
+            }
+        </style>
+
+        <div on-click="dropdownControl" class="header-tab">
+            <h2><slot name="title"></slot></h2>
+            <p class$="[[arrow]]"></p>
+        </div>
+
+        <iron-collapse id="dropdown" opened>
+            <slot name="table-content"></slot>
+        </iron-collapse>
+
+    </template>
+
+    <script>
+        /**
+         * `dropdown-table` Description
+         *
+         * @summary ShortDescription.
+         * @customElement
+         * @polymer
+         * @extends {Polymer.Element}
+         */
+        class DropdownTable extends Polymer.Element {
+            /**
+             * String providing the tag name to register the element under.
+             */
+            static get is() {
+                return 'dropdown-table';
+            }
+
+            /**
+             * Object describing property-related metadata used by Polymer features
+             */
+             static get properties() {
+                return {
+                    arrow: {
+                        type: String, 
+                        value: 'arrow-down'
+                    }
+                };
+            }
+
+            dropdownControl() {
+                this.$.dropdown.toggle();
+                this.arrow = (this.arrow === 'arrow-right') ?
+                    'arrow-down' :
+                    'arrow-right'
+            } 
+        }
+
+        window.customElements.define(DropdownTable.is, DropdownTable);
+    </script>
+</dom-module>

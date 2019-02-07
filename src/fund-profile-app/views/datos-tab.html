@@ -1,127 +1,155 @@
 <link rel="import" href="../../../bower_components/polymer/polymer-element.html">
+
+<link rel="import" href="../components/table-row.html">
+<link rel="import" href="../components/info-table.html">
+<link rel="import" href="../components/position-list.html">
 <link rel="import" href="../theme/shared-styles.html">
 
 <dom-module id="datos-tab">
     <template>
         <style include="shared-styles">
             :host {
-                display: block
+                display: block;
             }
-            .data-table {
-                display: grid;
-                grid-template-columns: repeat(2, 1fr);
-            }
-            .tableWrapper {
-                width: 627px;
-            }
-            .header-tab{
-                justify-content: space-around;
-                height: 30px;
-            }
-            .data-table dd {
-                justify-self: right;
-            }
-            dt{
-                margin: 8px;
-            }
-            dd{
-                margin-block-start: 8px;
-            }
-            .arrow-down {
-                width: 0; 
-                height: 0; 
-                border-left: 10px solid transparent;
-                border-right: 10px solid transparent;
-                border-top: 10px solid var(--bbva-dark-grey);
-                transition: all 0.3s ease-out;
-            }
-
-            .arrow-right {
-                width: 0; 
-                height: 0; 
-                border-top: 10px solid transparent;
-                border-bottom: 10px solid transparent;
-                border-right: 10px solid var(--bbva-dark-grey);
-                transform: rotate(-180deg) translate(0%, -100%);    
-                transform-origin: 100% -20%;   
-                transition: all 0.3s ease-out;
-            }
+            
         </style>
 
-        <div on-click="dropdownControl" class="header-tab">
-            <h2>Datos</h2>
-            <p class$="[[arrow]]"></p>
-        </div>
-        
-        <iron-dropdown id="dropdown" no-overlap allow-outside-scroll no-cancel-on-outside-click opened>
-            <div class="tableWrapper" slot="dropdown-content">
-                <dl class="data-table">
-        
+        <dropdown-table>
+            <span slot="title">Datos</span>
+
+            <position-list slot="table-content">
+                <div slot="list-content">
                     <dt>Fecha lanzamiento del fondo</dt>
                     <dd>[[fund.date]]</dd>
-        
+
                     <dt>Fecha lanzamiento</dt>
                     <dd>[[fund.date]]</dd>
-        
+
                     <dt>Divisa denominación fondo</dt>
                     <dd>[[fund.currency]]</dd>
-        
+
                     <dt>Tipo</dt>
                     <dd>[[fund.typeData]]</dd>
-        
+
                     <dt>Inversión mínima</dt>
                     <dd>[[fund.minInv]] EUR</dd>
-        
+
                     <dt>Minimo mantener</dt>
                     <dd>[[fund.minInv]] EUR</dd>
-        
+
                     <dt>Valor liquidativo aplicable</dt>
                     <dd>[[fund.valorLiqui]]</dd>
-        
+
                     <dt>Hora limite suscripciones y reembolsos</dt>
                     <dd>[[fund.hourLimit]] H</dd>
-        
+
                     <dt>Tramitación suscripciones y reembolsos</dt>
                     <dd>[[fund.valorLiqui]][[fund.tramit]]</dd>
-        
+
                     <dt>Código ISIN</dt>
                     <dd>[[fund.ISIN]]</dd>
-        
+
                     <dt>Código CIF</dt>
                     <dd>[[fund.CIF]]</dd>
-        
+
                     <dt>Código registro</dt>
                     <dd>[[fund.regis]]</dd>
-        
+
                     <dt>Domicilio</dt>
                     <dd>[[fund.country]]</dd>
-        
+
                     <dt>Registrado en</dt>
                     <dd>[[fund.country]]</dd>
-        
+
                     <dt>Estructura legal</dt>
                     <dd>[[fund.structure]]</dd>
-        
+
                     <dt>Gestora</dt>
                     <dd>[[fund.gestor]]</dd>
-        
+
                     <dt>Depositario</dt>
                     <dd>[[fund.depos]].</dd>
-        
+
                     <dt>Auditor</dt>
                     <dd>[[fund.audit]]</dd>
-        
+
                     <dt>Patrimonio (24/1/2019)</dt>
                     <dd>[[fund.patrim]]€</dd>
-        
+
                     <dt>Indice de referencia</dt>
                     <dd>[[fund.ref]]</dd>
-        
+
                     <dt>Frecuencia de cálculo del valor liquidativo</dt>
                     <dd>[[fund.frecuence]]</dd>
-                </dl>
-            </div>
-        </iron-dropdown>
+                </div>
+            </position-list>
+
+        </dropdown-table>
+
+        <dropdown-table>
+            <span slot="title">Comisiones</span>
+
+            <table slot="table-content">
+                <tr>
+                    <th></th>
+                    <th>Base</th>
+                    <th>%</th>
+                    <th>Tramo/Plazo</th>  
+                </tr>
+                <tr>
+                    <td>Comisión de gestión</td>
+                    <td>Patrimonio</td>
+                    <td>0.25</td>
+                    <td>Desde el 01/01/2019 y hasta el 31/03/2019, ambos incluidos.</td>
+                </tr>   
+                <tr>
+                    <td>Comisión de depósito</td>
+                    <td>Patrimonio</td>
+                    <td>0.05</td>
+                    <td></td>
+                </tr>
+            </table>
+
+        </dropdown-table>
+
+        <dropdown-table>
+            <span slot="title">Historico de comisiones</span>
+
+            <table slot="table-content">
+                    <tr>
+                        <th></th>
+                        <th>Base</th>
+                        <th>%</th>
+                        <th>Tramo/Plazo</th>  
+                    </tr>
+                    <tr>
+                        <td>Comisión de gestión</td>
+                        <td>Patrimonio</td>
+                        <td>0.25</td>
+                        <td>Desde el 27/07/2015 y hasta el 31/12/2018, ambos incluidos.</td>
+                    </tr>   
+                    <tr>
+                        <td>Comisión de depósito</td>
+                        <td>Patrimonio</td>
+                        <td>0.65</td>
+                        <td>Hasta el 26/07/2015, inclusive.</td>
+                    </tr>
+                </table>
+
+        </dropdown-table>
+
+        <dropdown-table>
+            <span slot="title">Otros datos de interes</span>
+
+            <article slot="table-content">
+               <p><b>Valor liquidativo aplicable:</b> el mismo día de la fecha de solicitud.</p>
+               <p><b>Lugar de publicación del valor liquidativo:</b> el Boletín de cotización de la bolsa de Valores de Madrid.</p>
+               <p><b>Tramitación de las órdenes de suscripción y reembolso: </b> las órdenes cursadas por el partícipe a partir de las 15:00 horas o en un día inhábil se tramitarán junto con las realizadas al día siguiente hábil. A estos efectos, se entiende por día hábil todos los días de lunes a viernes, excepto festivos en todo el territorio nacional. El límite de las 15:00 horas señalado anteriormente se refiere al horario peninsular.</p>
+               <p>No se considerarán días hábiles aquellos en los que no exista mercado para los activos que representen más del 5% del patrimonio. Los comercializadores podrán fijar horas de corte distintas y anteriores a la establecida con carácter general por la Sociedad Gestora, debiendo ser informado el partícipe al respecto por el comercializador.</p>
+            </article>
+
+        </dropdown-table>
+
     </template>
 
     <script>
@@ -152,25 +180,6 @@
                     }
                 };
             }
-
-            /**
-             * Instance of the element is created/upgraded. Use: initializing state,
-             * set up event listeners, create shadow dom.
-             * @constructor
-             */
-            constructor() {
-                super();
-            }
-
-            dropdownControl() {
-                this.arrow === "arrow-right" ?
-                    this.$.dropdown.open() :
-                    this.$.dropdown.close()
-                this.arrow = (this.arrow === 'arrow-right') ?
-                    'arrow-down' :
-                    'arrow-right'
-            } 
-            
         }
 
         window.customElements.define(DatosTab.is, DatosTab);

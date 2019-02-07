@@ -1,0 +1,48 @@
+<link rel="import" href="../../../bower_components/polymer/polymer-element.html">
+
+<dom-module id="position-list">
+    <template>
+        <style>
+            :host ::slotted([slot="list-content"]) {
+                display: grid;
+                grid-template-columns: 2fr auto;
+                justify-content: space-between;
+                align-content: stretch;
+                grid-row-gap: 15px;
+                padding: 20px;
+            }
+        </style>
+        <slot name="list-content"></slot>
+    </template>
+
+    <script>
+        /**
+         * `position-list` Description
+         *
+         * @summary ShortDescription.
+         * @customElement
+         * @polymer
+         * @extends {Polymer.Element}
+         */
+        class PositionList extends Polymer.Element {
+            /**
+             * String providing the tag name to register the element under.
+             */
+            static get is() {
+                return 'position-list';
+            }
+
+            /**
+             * Object describing property-related metadata used by Polymer features
+             */
+            static get properties() {
+                return {
+                    
+                };
+            }
+
+        }
+
+        window.customElements.define(PositionList.is, PositionList);
+    </script>
+</dom-module>

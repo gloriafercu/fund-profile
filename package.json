@@ -7,7 +7,8 @@
     "test": "test"
   },
   "dependencies": {
-    "@polymer/iron-image": "^3.0.1"
+    "@polymer/iron-image": "^3.0.1",
+    "yarn-install": "^1.0.0"
   },
   "devDependencies": {
     "@polymer/iron-component-page": "^4.0.1"

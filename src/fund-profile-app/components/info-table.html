@@ -33,13 +33,6 @@
         left: 50%;
         z-index: 999
       }
-      :host ::slotted([white]) {
-        background:white;
-      }
-      :host ::slotted([blue]) {
-        background: var(--bbva-blue);
-        color: white;
-      }
 
       :host ::slotted([slot="title"]) {
         display:grid;
@@ -47,17 +40,20 @@
         font-size: 14px;
         padding: 17px 20px;
       }
-      :host ::slotted([slot="columns"]) {
-        display: grid;
-        grid: auto / auto-flow auto;
-      }
 
       :host > ::slotted(*) {
         padding: 0 20px 10px 20px;
         position: relative;
-        z-index: 3
+        z-index: 3;
       }
-
+      :host(:not([slot="annex_content"])) ::slotted(*){
+        background: white;
+      }
+      :host ::slotted([blue]) {
+        background: var(--bbva-blue);
+        color: white;
+      }
+      
       :host ::slotted([slot="annex_content"]) {
         background: var(--correct);
         font-size: 0.7rem;

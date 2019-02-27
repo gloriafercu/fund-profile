@@ -8,6 +8,7 @@
 <link rel="import" href="../views/datos-tab.html">
 <link rel="import" href="../views/comentario-gestor.html">
 <link rel="import" href="../views/cartera-tab.html">
+<link rel="import" href="../components/dropdown-table.html">
 
 
 <dom-module id="tab-menu">
@@ -39,6 +40,24 @@
                 background-color: var(--bbva-dark-blue);
                 color:white;
             }
+            dropdown-table{
+              display: none;
+            }
+            @media(max-width: 960px){
+              dropdown-table{
+                display: block;
+              }
+              paper-tab{
+                width: 100%;
+              }
+              :host > paper-tabs{
+                display:none;
+              }
+              .header-tab{
+                background-color: var(--bbva-dark-blue);
+                color:white;
+              }
+            }
         </style>
 
         <paper-tabs selected="{{selected}}" no-bar>
@@ -49,7 +68,18 @@
             <paper-tab>Comentario Gestor</paper-tab>
             <paper-tab>Cartera</paper-tab>
         </paper-tabs>
-
+        <dropdown-table>
+          <span slot="title">[[tab]]</span>
+          <paper-tabs slot="table-content" selected="{{selected}}" no-bar>
+            <paper-tab>Información</paper-tab>
+            <paper-tab>Documentación</paper-tab>
+            <paper-tab>Evolución</paper-tab>
+            <paper-tab>Datos</paper-tab>
+            <paper-tab>Comentario Gestor</paper-tab>
+            <paper-tab>Cartera</paper-tab>
+        </paper-tabs>
+        </dropdown-table>
+        
         <iron-pages selected="{{selected}}">
             <posicion-global values="[[ fund.data ]]" name="[[fund.name]]" today="[[today]]"></posicion-global>
             <documentacion-tab></documentacion-tab>
@@ -82,18 +112,37 @@
              * Object describing property-related metadata used by Polymer features
              */
             static get properties() {
-                return {
-                    selected: {
-                        type: Number,
-                        value: 0
-                    },
-                    fund: {
-                        type: Object,
-                        return: function(){
 
-                        }
+                return {
+                  categories: {
+                    type: Array,
+                    value: [
+                      "Información",
+                      "Documentación",
+                      "Evolución",
+                      "Datos",
+                      "Comentario gestor",
+                      "Cartera"
+                    ]
+                  },
+                  tab: {
+                    type: String,
+                    computed: "getTab(selected)"
+                  },
+                  selected: {
+                    type: Number,
+                    value: 0
+                  },
+                  fund: {
+                    type: Object,
+                    return: function(){
+
                     }
+                  }
                 };
+            }
+            getTab(selected){
+              return this.categories[selected]
             }
         }
         window.customElements.define(TabMenu.is, TabMenu);

@@ -24,30 +24,32 @@
         max-width: 940px;
         margin: 0 auto;
       }
+
       header {
         display: flex;
         flex-direction: column;
       }
+
       main {
         display: grid;
-        grid-template-columns: 1fr 2fr;
+        grid-column-gap: 20px;
+        grid-template-columns: 300px 2fr;
       }
-      sidebar {
-        padding-right: 20px;
-      }
+
       .page-container {
         display: grid;
         grid-template-rows: auto;
         grid-column-gap: 15px;
+        padding: 0 20px;
       }
-      h1 {
-        font-size: 30px;
-        line-height: 35px;
-      }
-      h5 {
-        font-size: 16px;
-        font-weight: 400px;
-        line-height: 20px;
+
+      /* Adaptive design */
+      @media( max-width: 960px ){
+        main {
+          display: flex;
+          flex-direction: column;
+          width: calc(100vw - 40px);
+        }
       }
     </style>
     <template dom-if="[[loading]]">
@@ -70,12 +72,12 @@
             <span slot="title" blue>Información general</span>
             <general-information slot="rows" underline data="[[ fund ]]"></general-information>
           </info-table>
-          
+
           <info-table>
             <span slot="title" blue>Datos al [[ today ]]</span>
-            <return-calculation white slot="rows" underline fund-data="[[ fund.data ]]" date="[[ date ]]">
+            <return-calculation slot="rows" underline fund-data="[[ fund.data ]]" date="[[ date ]]">
             </return-calculation>
-            <date-browser white slot="annex_controller" label="Consultar otra fecha" set-date="[[ today ]]" on-date-changed="changeDate"></date-browser>
+            <date-browser slot="annex_controller" label="Consultar otra fecha" set-date="[[ today ]]" on-date-changed="changeDate"></date-browser>
             <template id="annex" is="dom-if" restamp if="[[comparedDate]]">
               <info-table slot="annex_content">
                 <div slot="title">Datos al [[ formatDate(comparedDate) ]]</div>
@@ -126,11 +128,11 @@
           */
           date: Number,
 
-           /**
-          * Date in Number (timestamp) format, date selected.
-          *
-          * @type Number
-          */
+          /**
+         * Date in Number (timestamp) format, date selected.
+         *
+         * @type Number
+         */
           comparedDate: Number,
 
           /**
@@ -174,36 +176,36 @@
         return `${addZero(D)}/${addZero(M)}/${YYYY}`;
       }
 
-       /**
-      * From a date in "YYYY-MM-DD" format 
-      * Return a date as timestamp with day, year and mouth
-      * and 0 hours, 0 minutes, 0 seconds, 0 ms....
-      * and modifying it with the timezone offset.
-      * 
-       * @param {string} date in YYYY-MM-DD format
-       *
-      * @return {number} the "roundeddate" in timestamp format
-      */
+      /**
+     * From a date in "YYYY-MM-DD" format 
+     * Return a date as timestamp with day, year and mouth
+     * and 0 hours, 0 minutes, 0 seconds, 0 ms....
+     * and modifying it with the timezone offset.
+     * 
+      * @param {string} date in YYYY-MM-DD format
+      *
+     * @return {number} the "roundeddate" in timestamp format
+     */
       convertDate(date) {
         let day = new Date(date)
         let time = day.setHours(0, 0, 0, 0)
         let UTCoffset = day.getTimezoneOffset() * 60 * 1000
         return time - UTCoffset
-        
+
       }
       handleResponse() {
         this.loading = !this.loading;
       }
 
-         /**
-     * Fired when `vaadin-date-picker` changes and sent a data on event.detail.value
-     * as a string "2019-01-16"
-     *
-     * @event vaadin-date-picker
-     * @param {string} string format "YYYY-DD-MM".
-     */
+      /**
+  * Fired when `vaadin-date-picker` changes and sent a data on event.detail.value
+  * as a string "2019-01-16"
+  *
+  * @event vaadin-date-picker
+  * @param {string} string format "YYYY-DD-MM".
+  */
       changeDate(e) {
-        console.log("en changeDAte: ",e);
+        console.log("en changeDAte: ", e);
         this.set("comparedDate", e.detail.value);
       }
     }

@@ -31,15 +31,83 @@
                 --lumo-font-size-m: 0.8rem;
                 --lumo-border-radius: 0%;
             }
-
+            /*  General selectors */
             p {
                 font-size: 0.8rem;
                 line-height: 1.2rem;
                 text-align: justify
             }
+
             dd{
                 justify-self: end;
             }
+            /* Headings */
+            h1 {
+                font-weight: 100;
+                text-transform: uppercase;
+                font-size: 30px;
+                color: #121212;
+                line-height: 35px;
+            }
+
+            h5 {
+                margin-top: 0;
+                margin-bottom: 20px;
+                font-size: 16px;
+                font-weight: 400px;
+                line-height: 20px;
+            }
+
+            .header-tab h2 {
+                margin: 0;
+                font-size: 1em;
+                line-height: 3em;
+                font-weight: 500;
+            }
+            /*  Tables */
+            table {
+                width: 100%;
+                margin-bottom: 10px;
+            }
+
+            tr {
+                border: 1px solid var(--bbva-light-grey);
+                border-top: none;
+            }
+
+            tr:first-child{
+                border-top: 1px solid var(--bbva-light-grey);
+            }
+
+            tr {
+                display: grid;
+                grid: auto / auto-flow 1fr
+            }
+
+            th{
+                font-weight: normal;
+                background: var(--sandy);
+            }
+
+            th:not(:last-child){
+                border-right: 1px solid var(--bbva-light-grey)
+            }
+
+            td, th {
+                display: grid;
+                justify-content: center;
+                align-content: center;
+                padding: 20px 5px;
+            }
+
+            td:first-child{
+                justify-self: start;
+                padding-left: 20px;
+            }
+            td {
+                border: none;
+            }
+            /* Buttons */
             paper-button.blue {
                 background-color: var(--bbva-blue);
                 font-size: 0.8em;
@@ -57,31 +125,14 @@
             .info-icon, .documents a{
                 color: var(--bbva-blue);
             }
+            
             .header-tab {
                 background-color: var(--bbva-light-grey);
-                padding: 10px 30px;
+                padding: 10px 20px;
                 display: flex;
                 justify-content: space-between;
             }
 
-            .header-tab h2 {
-                margin: 0;
-                font-size: 1em;
-                line-height: 3em;
-                font-weight: 500;
-            }
-
-            h1 {
-                font-weight: 100;
-                text-transform: uppercase;
-                font-size: 30px;
-                color: #121212;
-            }
-
-            h5 {
-                margin-top: 0;
-                margin-bottom: 20px;
-            }
             /* Scrollbar */
 
             ::-webkit-scrollbar {
@@ -173,37 +224,7 @@
                 color: rgb(102, 102, 102);
 
             }
-            table {
-                width: 100%;
-                margin-bottom: 10px;
-            }
-            tr {
-                border: 1px solid var(--bbva-light-grey);
-                border-top: none;
-            }
-            tr:first-child{
-                border-top: 1px solid var(--bbva-light-grey);
-            }
-            tr {
-                display: grid;
-                grid: auto / auto-flow 1fr
-            }
-            th{
-                font-weight: normal;
-                background: var(--sandy);
-            }
-            th:not(:last-child){
-                border-right: 1px solid var(--bbva-light-grey)
-            }
-            td, th {
-                display: grid;
-                justify-content: center;
-                align-content: center;
-                padding: 20px 5px;
-            }
-            td {
-                border: none;
-            }
+            
         </style>
     </template>
 </dom-module>

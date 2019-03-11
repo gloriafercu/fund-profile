@@ -7,6 +7,12 @@
             :host {
                 display: block
             }
+            .header-tab {
+                background-color: var(--bbva-light-grey);
+                padding: 10px 30px;
+                display: flex;
+                justify-content: space-between;
+            }
 
             .arrow-down {
                 width: 0; 
@@ -71,10 +77,13 @@
 
             dropdownControl() {
                 this.$.dropdown.toggle();
+                this.toggleArrow()
+            } 
+            toggleArrow() {
                 this.arrow = (this.arrow === 'arrow-right') ?
                     'arrow-down' :
                     'arrow-right'
-            } 
+            }
         }
 
         window.customElements.define(DropdownTable.is, DropdownTable);

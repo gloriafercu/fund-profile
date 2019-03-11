@@ -1,5 +1,4 @@
 <link rel="import" href="../../../bower_components/polymer/polymer-element.html">
-<link rel="import" href="../../../bower_components/iron-dropdown/iron-dropdown.html">
 <link rel="import" href="../theme/shared-styles.html">
 
 
@@ -10,107 +9,106 @@
                 display: block;
             }
         </style>
-        
+
         <div id="datos-estadisticos-main" class$="[[stateClass]]">
 
-        <dropdown-table>
-            <span slot="title">Datos Estadisticos</span>
-            <table 
-                    class="table-simple"
-                    slot="table-content">
+            <dropdown-table>
+                <span slot="title">Datos Estadisticos</span>
+                <table class="table-simple" slot="table-content">
                     <thead>
                         <tr>
-                            <th>      </th>
-                            <th>1 año</th> 
+                            <th> </th>
+                            <th>1 año</th>
                             <th>3 años</th>
                         </tr>
                     </thead>
-                <tbody>
+                    <tbody>
                         <tr>
                             <td>Volatilidad Fondo</td>
-                            <td>0,31 %</td> 
+                            <td>0,31 %</td>
                             <td>0,20 %</td>
                         </tr>
                         <tr>
                             <td>Volatilidad Índice</td>
-                            <td>0,04 %</td> 
+                            <td>0,04 %</td>
                             <td>0,03 %</td>
                         </tr>
                         <tr>
                             <td>Ratio Sharpe Fondo</td>
-                            <td>-1,16</td> 
+                            <td>-1,16</td>
                             <td>-0,47</td>
                         </tr>
                         <tr>
                             <td>Ratio Sharpe Índice</td>
-                            <td>-1,28</td> 
+                            <td>-1,28</td>
                             <td>-2,88</td>
                         </tr>
                         <tr>
                             <td>Ratio Información</td>
-                            <td>-0,99</td> 
+                            <td>-0,99</td>
                             <td>-0,06</td>
                         </tr>
                         <tr>
                             <td>Tracking Error</td>
-                            <td>0,31 %</td> 
+                            <td>0,31 %</td>
                             <td>0,20 %</td>
                         </tr>
                         <tr>
                             <td>Correlación</td>
-                            <td>0,05</td> 
+                            <td>0,05</td>
                             <td>0,03</td>
                         </tr>
                         <tr>
                             <td>Alpha</td>
-                            <td>0,00 %</td> 
+                            <td>0,00 %</td>
                             <td>0,00 %</td>
                         </tr>
                         <tr>
                             <td>Beta</td>
-                            <td>0,41</td> 
+                            <td>0,41</td>
                             <td>0,18</td>
                         </tr>
                         <tr>
                             <td>Máxima pérdida diaria del fondo</td>
-                            <td>-0,20 %</td> 
+                            <td>-0,20 %</td>
                             <td>-0,20 %</td>
                         </tr>
                         <tr>
                             <td>Máxima pérdida diaria del índice</td>
-                            <td>-0,01 %</td> 
+                            <td>-0,01 %</td>
                             <td>-0,48 %</td>
                         </tr>
                         <tr>
                             <td>Número meses negativos fondo</td>
-                            <td>10</td> 
+                            <td>10</td>
                             <td>30</td>
                         </tr>
                         <tr>
                             <td>Número meses negativos índice</td>
-                            <td>13</td> 
+                            <td>13</td>
                             <td>37</td>
                         </tr>
                         <tr>
                             <td>Mínima rentabilidad diaria</td>
-                            <td>-0,20 %</td> 
+                            <td>-0,20 %</td>
                             <td>-0,20 %</td>
                         </tr>
                         <tr>
                             <td>Fecha máxima rentabilidad diaria</td>
-                            <td>31/05/2018</td> 
+                            <td>31/05/2018</td>
                             <td>31/05/2018</td>
                         </tr>
                         <tr>
                             <td>Máxima rentabilidad diaria</td>
-                            <td>0,07 %</td> 
+                            <td>0,07 %</td>
                             <td>0,07 %</td>
                         </tr>
-                </tbody>
+                    </tbody>
 
                 </table>
             </dropdown-table>
-        </div> <!--datos-estadisticos-main-->
+        </div>
+        <!--datos-estadisticos-main-->
     </template>
 
     <script>
@@ -135,9 +133,9 @@
              */
             static get properties() {
                 return {
-                    dataCalculations:{
+                    dataCalculations: {
                         type: Array,
-                        value: function(){
+                        value: function () {
                             return []
                         }
                     }
@@ -150,32 +148,12 @@
               */
             static get observers() {
                 return [
-                    'Changed(dataCalculations)'
+                    'changed(dataCalculations)'
                 ];
             }
 
-            Changed(data){
-                console.log("Aqui estan los datos para estadistica",data)
-            }
-
-            /**
-             * Instance of the element is created/upgraded. Use: initializing state,
-             * set up event listeners, create shadow dom.
-             * @constructor
-             */
-            constructor() {
-                super();
-            }
-
-            /**
-             * Use for one-time configuration of your component after local DOM is initialized. 
-             */
-            ready() {
-                super.ready();
-
-                Polymer.RenderStatus.afterNextRender(this, function() {
-                    
-                });
+            changed(data) {
+                console.log("Aqui estan los datos para estadistica", data)
             }
 
         }

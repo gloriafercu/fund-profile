@@ -134,13 +134,13 @@
                 <table class="table-simple">
                     <thead>
                         <tr>
-                            <th>Rentabilidad últimos 5 años</th>
+                            <th>Rentabilidad últimos 6 años</th>
                             <th>2018</th>
                             <th>2017</th>
                             <th>2016</th>
                             <th>2015</th>
-                            <th>2016</th>
                             <th>2014</th>
+                            
                         </tr>
                     </thead>
                     <tbody>
@@ -151,7 +151,7 @@
                             <td>N/C</td>
                             <td>N/C</td>
                             <td>N/C</td>
-                            <td>N/C</td>
+                            
                         </tr>
                         <tr>
                             <td>Indice</td>
@@ -160,7 +160,7 @@
                             <td>N/C</td>
                             <td>N/C</td>
                             <td>N/C</td>
-                            <td>N/C</td>
+                            
                         </tr>
                     </tbody>
     
@@ -357,6 +357,7 @@
                 this.getDataOrigin(this.aMonthAgoDate, 0)
                 this.getDataOrigin(this.firstDayOfThisYearDate, 1)
                 this.getDataOrigin(this.aYearAgoDate, 2)
+                
             }
 
             getDataOrigin(originDate, option) {
@@ -423,7 +424,7 @@
                     rentability = (
                         ((lastData[0].netAssetValue - dataOrigin[0].netAssetValue) /
                             dataOrigin[0].netAssetValue) * 100
-                    ).toFixed(2);
+                    ).toFixed(2);  //changeable to fixed 3 for more decimals.
 
                 } else rentability = "N/C"
 

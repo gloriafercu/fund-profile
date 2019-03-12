@@ -112,20 +112,20 @@
                         <tr>
                             <td>Fondo</td>
                             <td>[[yearAgoRentability]]</td>
-                            <td>N/C</td>
-                            <td>N/C</td>
-                            <td>N/C</td>
-                            <td>N/C</td>
-                            <td>N/C</td>
+                            <td>[[treeYearsAgoRentability]]</td>
+                            <td>[[fiveYearsAgoRentability]]</td>
+                            <td>--</td>
+                            <td>--</td>
+                            <td>--</td>
                         </tr>
                         <tr>
                             <td>Indice</td>
                             <td>[[yearAgoRentability]]</td>
-                            <td>N/C</td>
-                            <td>N/C</td>
-                            <td>N/C</td>
-                            <td>N/C</td>
-                            <td>N/C</td>
+                            <td>[[treeYearsAgoRentability]]</td>
+                            <td>[[fiveYearsAgoRentability]]</td>
+                            <td>--</td>
+                            <td>--</td>
+                            <td>--</td>
                         </tr>
                     </tbody>
     
@@ -274,6 +274,11 @@
                         value: ""
                     },
 
+                    fiveYearAgoDate: {
+                        type: Number,
+                        value: ""
+                    },
+
                     oneMonthRentability: {
                         type: String,
                         value: "N/C"
@@ -285,6 +290,16 @@
                     },
 
                     yearAgoRentability: {
+                        type: String,
+                        value: "N/C"
+                    },
+
+                    treeYearsAgoRentability: {
+                        type: String,
+                        value: "N/C"
+                    },
+
+                    fiveYearsAgoRentability: {
                         type: String,
                         value: "N/C"
                     }
@@ -357,6 +372,8 @@
                 this.getDataOrigin(this.aMonthAgoDate, 0)
                 this.getDataOrigin(this.firstDayOfThisYearDate, 1)
                 this.getDataOrigin(this.aYearAgoDate, 2)
+                this.getDataOrigin(this.threeYearAgoDate, 3)
+                this.getDataOrigin(this.fiveYearAgoDate, 4)
                 
             }
 
@@ -431,7 +448,9 @@
                 /*gives value to oneMonthRentability*/
                 if (option === 0) { this.oneMonthRentability = `${rentability}%`; }
                 else if (option === 1) { this.yearRentability = `${rentability}%`; }
-                else this.yearAgoRentability = `${rentability}%`;
+                else if (option === 2) { this.yearAgoRentability = `${rentability}%`; }
+                else if (option === 3) { this.treeYearsAgoRentability = `${rentability}%`; }
+                else if (option === 4) { this.fiveYearsAgoRentability = `${rentability}%`; }
             }
 
 
@@ -450,6 +469,7 @@
                 let aMonthAgo;
                 let thisMonth;
                 let treeYearsAgo;
+                let fiveYearsAgo;
 
                 /*To get firstDayOfThisMonth*/
                 firstDayOfThisMonth = new Date(todayDate.setDate(1));
@@ -465,6 +485,7 @@
                 aYearAgo = new Date(todayDate.setFullYear(thisYear - 1))
                 todayDate = new Date()
                 treeYearsAgo = new Date(todayDate.setFullYear(thisYear - 3))
+                fiveYearsAgo = new Date(todayDate.setFullYear(thisYear - 5))
 
 
                 /*To get a mounth ago, look at mounth and year*/
@@ -486,6 +507,8 @@
                 this.aMonthAgoDate = aMonthAgo.getTime();
                 this.aYearAgoDate = aYearAgo.getTime()
                 this.threeYearAgoDate = treeYearsAgo.getTime();
+                this.fiveYearAgoDate = fiveYearsAgo.getTime();
+
                 /*and return todaydate as timestamp*/
                 return todayDate.getTime();
             }

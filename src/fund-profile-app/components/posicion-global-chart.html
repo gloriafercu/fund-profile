@@ -173,7 +173,6 @@
 
                 const newArray = this.values.filter(value => value.date >= date1 && value.date <= date2)
                 const newData = newArray.map(item => [item.date, item.netAssetValue])
-                console.log(newData)
                 this.set('series', [{ name: this.name, data: newData }])
             }
 

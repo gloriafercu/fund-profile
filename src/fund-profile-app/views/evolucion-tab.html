@@ -342,13 +342,23 @@
                 ];
             }
 
-            Changed(values, name) {
-                console.log("values: ", values)
-                console.log("Name: ", name)
 
+            /**
+            * Method Changed, on load of component, begin the data upload and
+            * show
+            */
+            Changed(values, name) {
+               
                 this.filterValues('2015-01-01','2019-01-01',values)
-                this.startDateInterval='2015-01-01';
-                this.endDateInterval = '2019-01-01';
+                if (values[0]){
+                    console.log(values[0].date)
+                    let startDateInterval = new Date(values[0].date)
+                    let endDateInterval = new Date(values[values.length-1].date)
+                    console.log(startDateInterval)
+                    this.startDateInterval=`${startDateInterval.getFullYear()}-${startDateInterval.getMonth()}-${startDateInterval.getDay()}`;
+                    this.endDateInterval = `${endDateInterval.getFullYear()}-${endDateInterval.getMonth()}-${endDateInterval.getDay()}`;
+                }
+              
 
                 this.getDataOrigin(this.aMonthAgoDate, 0)
                 this.getDataOrigin(this.firstDayOfThisYearDate, 1)

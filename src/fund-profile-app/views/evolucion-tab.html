@@ -191,6 +191,7 @@
          * @polymer
          * @extends {Polymer.Element}
          */
+         'use strict'
         class EvolucionTab extends Polymer.Element {
             /**
              * String providing the tag name to register the element under.
@@ -349,40 +350,33 @@
             */
             Changed(values, name) {
                
-                this.filterValues('2015-01-01','2019-01-01',values)
+                //this.filterValues('2015-01-01','2019-01-01',values)
                 if (values[0]){
-                    console.log(values[0].date)
                     let startDateInterval = new Date(values[0].date)
                     let endDateInterval = new Date(values[values.length-1].date)
-                    console.log(startDateInterval)
-                    this.startDateInterval=`${startDateInterval.getFullYear()}-${startDateInterval.getMonth()}-${startDateInterval.getDay()}`;
-                    this.endDateInterval = `${endDateInterval.getFullYear()}-${endDateInterval.getMonth()}-${endDateInterval.getDay()}`;
-                }
-              
+                    let dateNow = new Date(Date.now());
+                    console.log(dateNow.getDate());
+                    this.startDateInterval=`${startDateInterval.getFullYear()}-${startDateInterval.getMonth()+1}-${startDateInterval.getDate()}`;
+                    this.endDateInterval = `${dateNow.getFullYear()}-${dateNow.getMonth()+1}-${dateNow.getDate()}`;
+                
+                    this.getDataOrigin(this.aMonthAgoDate, 0);
+                    this.getDataOrigin(this.firstDayOfThisYearDate, 1);
+                    this.getDataOrigin(this.aYearAgoDate, 2);
+                    this.getDataOrigin(this.threeYearAgoDate, 3);
+                    this.getDataOrigin(this.fiveYearAgoDate, 4);
+                    this._rentability(2014,values);
+                    this._rentability(2015,values);
+                    this._rentability(2016,values);
+                    this._rentability(2017,values);
+                    this._rentability(2018,values);
 
-                this.getDataOrigin(this.aMonthAgoDate, 0)
-                this.getDataOrigin(this.firstDayOfThisYearDate, 1)
-                this.getDataOrigin(this.aYearAgoDate, 2)
-                this.getDataOrigin(this.threeYearAgoDate, 3)
-                this.getDataOrigin(this.fiveYearAgoDate, 4)
-                this._rentability(2014,values);
-                this._rentability(2015,values);
-                this._rentability(2016,values);
-                this._rentability(2017,values);
-                this._rentability(2018,values);
-                //this._rentability2014(values);
-                // this._rentability2015(values);
-                // this._rentability2016(values);
-                // this._rentability2017(values);
-                // this._rentability2018(values);
-
-                this.updateData();
+                    this.updateData();
+                } 
             }
 
             _startdate() {
 
                 if (this.startDateInterval !== "") {
-                    
                     this.filterValues(this.startDateInterval, this.endDateInterval, this.values);
                 }
             }
@@ -390,7 +384,6 @@
 
                 if (this.endDateInterval !== "") {
                     this.filterValues(this.startDateInterval, this.endDateInterval, this.values);
-
                 }
             }
 

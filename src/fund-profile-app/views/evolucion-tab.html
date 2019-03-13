@@ -365,11 +365,16 @@
                 this.getDataOrigin(this.aYearAgoDate, 2)
                 this.getDataOrigin(this.threeYearAgoDate, 3)
                 this.getDataOrigin(this.fiveYearAgoDate, 4)
-                this._rentability2014(values);
-                this._rentability2015(values);
-                this._rentability2016(values);
-                this._rentability2017(values);
-                this._rentability2018(values);
+                this._rentability(2014,values);
+                this._rentability(2015,values);
+                this._rentability(2016,values);
+                this._rentability(2017,values);
+                this._rentability(2018,values);
+                //this._rentability2014(values);
+                // this._rentability2015(values);
+                // this._rentability2016(values);
+                // this._rentability2017(values);
+                // this._rentability2018(values);
 
                 this.updateData();
             }
@@ -573,9 +578,10 @@
             /**
             * method to directly calculate rentability in a year 
             */
-            _rentability2014(values) {
-                let firstDay = Date.parse('2014-01-01');
-                let lastDay = Date.parse('2015-01-01');
+            _rentability(year,values) {
+                
+                let firstDay = Date.parse(`${year}-01-01`);
+                let lastDay = Date.parse(`${year+1}-01-01`);
                 let rentability;
               
                 let yearValues = values.filter(
@@ -590,102 +596,27 @@
 
                 } else rentability = "N/C"
 
-                this.rentability2014 = `${rentability}%`;
-
+                switch (year) {
+                    case 2014:
+                        this.rentability2014 = `${rentability}%`;
+                        break;
+                    case 2015:
+                        this.rentability2015 = `${rentability}%`;
+                        break;
+                    case 2016:
+                        this.rentability2016 = `${rentability}%`;
+                        break;
+                    case 2017:
+                        this.rentability2017 = `${rentability}%`;
+                        break;
+                    case 2018:
+                        this.rentability2018 = `${rentability}%`;
+                        break;
+                
+                    default:
+                        break;
+                }
             }
-
-            /**
-            * method to directly calculate rentability in a year 
-            */
-            _rentability2015(values) {
-                let firstDay = Date.parse('2015-01-01');
-                let lastDay = Date.parse('2016-01-01');
-                let rentability;
-              
-                let yearValues = values.filter(
-                    element => (element.date > firstDay && element.date < lastDay)
-                )
-              
-                if (yearValues!==undefined && yearValues.length>1) {
-                    rentability = (
-                        ((yearValues[yearValues.length - 1].netAssetValue - yearValues[0].netAssetValue) /
-                            yearValues[0].netAssetValue) * 100
-                    ).toFixed(2); //changeable to fixed 3 for more decimals.
-
-                } else rentability = "N/C"
-
-                this.rentability2015 = `${rentability}%`;
-            }
-
-            /**
-            * method to directly calculate rentability in a year 
-            */
-            _rentability2016(values) {
-                let firstDay = Date.parse('2016-01-01');
-                let lastDay = Date.parse('2017-01-01');
-                let rentability;
-              
-                let yearValues = values.filter(
-                    element => (element.date > firstDay && element.date < lastDay)
-                )
-              
-                if (yearValues!==undefined && yearValues.length>1) {
-                    rentability = (
-                        ((yearValues[yearValues.length - 1].netAssetValue - yearValues[0].netAssetValue) /
-                            yearValues[0].netAssetValue) * 100
-                    ).toFixed(2); //changeable to fixed 3 for more decimals.
-
-                } else rentability = "N/C"
-
-                this.rentability2016 = `${rentability}%`;
-            }
-
-            /**
-            * method to directly calculate rentability in a year 
-            */
-            _rentability2017(values) {
-                let firstDay = Date.parse('2017-01-01');
-                let lastDay = Date.parse('2018-01-01');
-                let rentability;
-              
-                let yearValues = values.filter(
-                    element => (element.date > firstDay && element.date < lastDay)
-                )
-              
-                if (yearValues!==undefined && yearValues.length>1) {
-                    rentability = (
-                        ((yearValues[yearValues.length - 1].netAssetValue - yearValues[0].netAssetValue) /
-                            yearValues[0].netAssetValue) * 100
-                    ).toFixed(2); //changeable to fixed 3 for more decimals.
-
-                } else rentability = "N/C"
-
-                this.rentability2017 = `${rentability}%`;
-            }
-
-            /**
-            * method to directly calculate rentability in a year 
-            */
-            _rentability2018(values) {
-                let firstDay = Date.parse('2018-01-01');
-                let lastDay = Date.parse('2019-01-01');
-                let rentability;
-              
-                let yearValues = values.filter(
-                    element => (element.date > firstDay && element.date < lastDay)
-                )
-              
-                if (yearValues!==undefined && yearValues.length>1) {
-                    rentability = (
-                        ((yearValues[yearValues.length - 1].netAssetValue - yearValues[0].netAssetValue) /
-                            yearValues[0].netAssetValue) * 100
-                    ).toFixed(2); //changeable to fixed 3 for more decimals.
-
-                } else rentability = "N/C"
-
-                this.rentability2018 = `${rentability}%`;
-            }
-
 
         }
 

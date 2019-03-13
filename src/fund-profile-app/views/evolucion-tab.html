@@ -350,12 +350,10 @@
             */
             Changed(values, name) {
                
-                //this.filterValues('2015-01-01','2019-01-01',values)
                 if (values[0]){
                     let startDateInterval = new Date(values[0].date)
-                    let endDateInterval = new Date(values[values.length-1].date)
                     let dateNow = new Date(Date.now());
-                    console.log(dateNow.getDate());
+
                     this.startDateInterval=`${startDateInterval.getFullYear()}-${startDateInterval.getMonth()+1}-${startDateInterval.getDate()}`;
                     this.endDateInterval = `${dateNow.getFullYear()}-${dateNow.getMonth()+1}-${dateNow.getDate()}`;
                 
@@ -610,7 +608,6 @@
                         break;
                 }
             }
-
         }
 
         window.customElements.define(EvolucionTab.is, EvolucionTab);
